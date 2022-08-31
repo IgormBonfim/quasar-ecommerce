@@ -105,15 +105,15 @@ CREATE TABLE IF NOT EXISTS quasarecommerce.produto (
   descricao_produto VARCHAR(100) NOT NULL,
   nome_produto VARCHAR(100) NOT NULL,
   especificacao_produto VARCHAR(100) NOT NULL,
-  categoria_id_categoria INT NOT NULL,
-  fornecedor_id_fornecedor INT NOT NULL,
+  id_categoria INT NOT NULL,
+  id_fornecedor INT NOT NULL,
   img_principal_produto BLOB NOT NULL,
   img_adicional1_produto BLOB NULL,
   img_adicional2_produto BLOB NULL,
   PRIMARY KEY (id_produto),
-  FOREIGN KEY (categoria_id_categoria)
+  FOREIGN KEY (id_categoria)
   REFERENCES quasarecommerce.categoria (id_categoria),
-  FOREIGN KEY (fornecedor_id_fornecedor)
+  FOREIGN KEY (id_fornecedor)
   REFERENCES quasarecommerce.fornecedor (id_fornecedor)
   );
   
@@ -132,9 +132,9 @@ CREATE TABLE IF NOT EXISTS quasarecommerce.produto (
 CREATE TABLE IF NOT EXISTS quasarecommerce.estoque (
   id_estoque INT NOT NULL,
   qtd_estoque VARCHAR(100) NULL,
-  produto_id_produto INT NOT NULL,
+  id_produto INT NOT NULL,
   PRIMARY KEY (id_estoque),
-  FOREIGN KEY (produto_id_produto)
+  FOREIGN KEY (id_produto)
   REFERENCES quasarecommerce.produto (id_produto)
   );
   
@@ -148,3 +148,4 @@ CREATE TABLE IF NOT EXISTS quasarecommerce.estoque (
   FOREIGN KEY (id_usuario)
   REFERENCES quasarecommerce.usuario (id_usuario)
   );
+  
