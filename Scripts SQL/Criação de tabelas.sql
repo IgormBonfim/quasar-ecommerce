@@ -83,6 +83,12 @@ CREATE TABLE IF NOT EXISTS quasarecommerce.endereco (
   FOREIGN KEY (id_usuario)
   REFERENCES quasarecommerce.usuario (id_usuario)
 );
-   
+
+   CREATE TABLE IF NOT EXISTS quasarecommerce.categoria (
+  id_categoria INT NOT NULL AUTO_INCREMENT,
+  nome_categoria VARCHAR(100) NOT NULL,
+  img_categoria BLOB NOT NULL,
+  PRIMARY KEY (id_categoria)
+  );
   
   
