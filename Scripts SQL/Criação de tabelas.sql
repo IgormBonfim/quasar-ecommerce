@@ -33,3 +33,22 @@ CREATE TABLE IF NOT EXISTS quasarecommerce.tipo_usuario (
   nome_tipo_usuario VARCHAR(20) NULL,
   PRIMARY KEY (id_tipo_usuario)
 );
+
+CREATE TABLE IF NOT EXISTS quasarecommerce.usuario (
+id_usuario INT NOT NULL AUTO_INCREMENT,
+email_usuario VARCHAR(100) NOT NULL UNIQUE,
+senha_usuario VARCHAR(100) NOT NULL,
+nome_usuario VARCHAR(100) NOT NULL,
+id_tipo_usuario INT NOT NULL,
+telefone_usuario VARCHAR(11) NULL,
+cpf_usuario VARCHAR(11) NULL,
+cnpj_usuario VARCHAR(14) NULL,
+razao_social_usuario VARCHAR(100) NULL,
+ie_usuario VARCHAR(14) NULL,
+PRIMARY KEY (id_usuario),
+FOREIGN KEY (id_tipo_usuario)
+REFERENCES quasarecommerce.tipo_usuario (id_tipo_usuario)
+);
+
+  
+  
