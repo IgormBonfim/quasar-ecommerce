@@ -67,6 +67,22 @@ CREATE TABLE IF NOT EXISTS quasarecommerce.endereco (
   REFERENCES quasarecommerce.usuario (id_usuario)
    );
    
+   CREATE TABLE IF NOT EXISTS quasarecommerce.venda (
+  id_venda INT NOT NULL AUTO_INCREMENT,
+  id_status_venda INT NOT NULL,
+  id_forma_pagamento INT NOT NULL,
+  id_endereco INT NOT NULL,
+  id_usuario INT NOT NULL,
+  PRIMARY KEY (id_venda),
+  FOREIGN KEY (id_status_venda)
+  REFERENCES quasarecommerce.status_venda (id_status_venda),
+  FOREIGN KEY (id_forma_pagamento)
+  REFERENCES quasarecommerce.forma_pagamento (id_forma_pagamento),
+  FOREIGN KEY (id_endereco)
+  REFERENCES quasarecommerce.endereco (id_endereco),
+  FOREIGN KEY (id_usuario)
+  REFERENCES quasarecommerce.usuario (id_usuario)
+);
    
   
   
