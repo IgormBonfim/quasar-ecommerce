@@ -149,3 +149,14 @@ CREATE TABLE IF NOT EXISTS quasarecommerce.estoque (
   REFERENCES quasarecommerce.usuario (id_usuario)
   );
   
+CREATE TABLE IF NOT EXISTS quasarecommerce.carrinho (
+  id_carrinho INT NOT NULL AUTO_INCREMENT,
+  id_usuario INT NOT NULL,
+  id_produto INT NOT NULL,
+  PRIMARY KEY (id_carrinho),
+  FOREIGN KEY (id_usuario)
+  REFERENCES quasarecommerce.usuario (id_usuario),
+  FOREIGN KEY (id_produto)
+  REFERENCES quasarecommerce.produto (id_produto)  
+  );
+  
