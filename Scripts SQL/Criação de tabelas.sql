@@ -116,3 +116,15 @@ CREATE TABLE IF NOT EXISTS quasarecommerce.produto (
   FOREIGN KEY (fornecedor_id_fornecedor)
   REFERENCES quasarecommerce.fornecedor (id_fornecedor)
   );
+  
+  CREATE TABLE IF NOT EXISTS quasarecommerce.item_venda (
+  id_item_venda INT NOT NULL AUTO_INCREMENT,
+  id_venda INT NOT NULL,
+  id_produto INT NOT NULL,
+  quantidade_item_venda INT NOT NULL,
+  PRIMARY KEY (id_item_venda),
+  FOREIGN KEY (id_venda)
+  REFERENCES quasarecommerce.venda (id_venda),
+  FOREIGN KEY (id_produto)
+  REFERENCES quasarecommerce.produto (id_produto)
+);
