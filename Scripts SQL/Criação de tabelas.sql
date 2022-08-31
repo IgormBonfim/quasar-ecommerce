@@ -160,3 +160,15 @@ CREATE TABLE IF NOT EXISTS quasarecommerce.carrinho (
   REFERENCES quasarecommerce.produto (id_produto)  
   );
   
+  CREATE TABLE IF NOT EXISTS quasarecommerce.especificacao (
+  id_especificacao INT NOT NULL AUTO_INCREMENT,
+  posicao_especificacao VARCHAR(50) NOT NULL,
+  cor_especificacao VARCHAR(20) NOT NULL,
+  ano_especificacao DATE NOT NULL,
+  veiculo_especificacao VARCHAR(45) NOT NULL,
+  id_produto INT NOT NULL,
+  PRIMARY KEY (id_especificacao),
+  FOREIGN KEY (id_produto)
+  REFERENCES quasarecommerce.produto (id_produto)
+  );
+  
