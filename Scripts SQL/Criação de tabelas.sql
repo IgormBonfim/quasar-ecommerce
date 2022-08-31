@@ -57,7 +57,7 @@ CREATE TABLE IF NOT EXISTS quasarecommerce.endereco (
   rua_endereco VARCHAR(100) NOT NULL,
   ponto_referencia_endereco VARCHAR(100) NULL,
   complemento_endereco VARCHAR(100) NULL,
-  cep_endereco VARCHAR(100) NOT NULL,
+  cep_endereco VARCHAR(8) NOT NULL,
   cidade_idcidade INT NOT NULL,
   usuario_id_usuario INT NOT NULL,
   PRIMARY KEY (id_endereco),
@@ -92,7 +92,7 @@ CREATE TABLE IF NOT EXISTS quasarecommerce.endereco (
   );
   
   CREATE TABLE IF NOT EXISTS quasarecommerce.fornecedor (
-  id_fornecedor INT NOT NULL,
+  id_fornecedor INT NOT NULL AUTO_INCREMENT,
   nome_fornecedor VARCHAR(100) NULL,
   razao_social_fornecedor VARCHAR(100) NULL,
   cnpj_fornecedor VARCHAR(14) NULL,
@@ -102,9 +102,8 @@ CREATE TABLE IF NOT EXISTS quasarecommerce.endereco (
 
 CREATE TABLE IF NOT EXISTS quasarecommerce.produto (
   id_produto INT NOT NULL AUTO_INCREMENT,
-  descricao_produto VARCHAR(100) NOT NULL,
+  descricao_produto VARCHAR(255) NOT NULL,
   nome_produto VARCHAR(100) NOT NULL,
-  especificacao_produto VARCHAR(100) NOT NULL,
   id_categoria INT NOT NULL,
   id_fornecedor INT NOT NULL,
   img_principal_produto BLOB NOT NULL,
@@ -130,8 +129,8 @@ CREATE TABLE IF NOT EXISTS quasarecommerce.produto (
 );
 
 CREATE TABLE IF NOT EXISTS quasarecommerce.estoque (
-  id_estoque INT NOT NULL,
-  qtd_estoque VARCHAR(100) NULL,
+  id_estoque INT NOT NULL auto_increment,
+  qtd_estoque INT NOT NULL,
   id_produto INT NOT NULL,
   PRIMARY KEY (id_estoque),
   FOREIGN KEY (id_produto)
