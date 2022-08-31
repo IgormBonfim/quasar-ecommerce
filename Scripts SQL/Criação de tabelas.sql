@@ -99,3 +99,20 @@ CREATE TABLE IF NOT EXISTS quasarecommerce.endereco (
   ie_fornecedor VARCHAR(14) NULL,
   PRIMARY KEY (id_fornecedor)
   );
+
+CREATE TABLE IF NOT EXISTS quasarecommerce.produto (
+  id_produto INT NOT NULL AUTO_INCREMENT,
+  descricao_produto VARCHAR(100) NOT NULL,
+  nome_produto VARCHAR(100) NOT NULL,
+  especificacao_produto VARCHAR(100) NOT NULL,
+  categoria_id_categoria INT NOT NULL,
+  fornecedor_id_fornecedor INT NOT NULL,
+  img_principal_produto BLOB NOT NULL,
+  img_adicional1_produto BLOB NULL,
+  img_adicional2_produto BLOB NULL,
+  PRIMARY KEY (id_produto),
+  FOREIGN KEY (categoria_id_categoria)
+  REFERENCES quasarecommerce.categoria (id_categoria),
+  FOREIGN KEY (fornecedor_id_fornecedor)
+  REFERENCES quasarecommerce.fornecedor (id_fornecedor)
+  );
