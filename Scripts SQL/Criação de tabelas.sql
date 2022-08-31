@@ -128,3 +128,12 @@ CREATE TABLE IF NOT EXISTS quasarecommerce.produto (
   FOREIGN KEY (id_produto)
   REFERENCES quasarecommerce.produto (id_produto)
 );
+
+CREATE TABLE IF NOT EXISTS quasarecommerce.estoque (
+  id_estoque INT NOT NULL,
+  qtd_estoque VARCHAR(100) NULL,
+  produto_id_produto INT NOT NULL,
+  PRIMARY KEY (id_estoque),
+  FOREIGN KEY (produto_id_produto)
+  REFERENCES quasarecommerce.produto (id_produto)
+  );
