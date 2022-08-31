@@ -50,5 +50,23 @@ FOREIGN KEY (id_tipo_usuario)
 REFERENCES quasarecommerce.tipo_usuario (id_tipo_usuario)
 );
 
+CREATE TABLE IF NOT EXISTS quasarecommerce.endereco (
+  id_endereco INT NOT NULL AUTO_INCREMENT,
+  numero_endereco INT NOT NULL,
+  bairro_endereco VARCHAR(100) NOT NULL,
+  rua_endereco VARCHAR(100) NOT NULL,
+  ponto_referencia_endereco VARCHAR(100) NULL,
+  complemento_endereco VARCHAR(100) NULL,
+  cep_endereco VARCHAR(100) NOT NULL,
+  cidade_idcidade INT NOT NULL,
+  usuario_id_usuario INT NOT NULL,
+  PRIMARY KEY (id_endereco),
+  FOREIGN KEY (cidade_idcidade)
+  REFERENCES quasarecommerce.cidade (id_cidade),
+  FOREIGN KEY (usuario_id_usuario)
+  REFERENCES quasarecommerce.usuario (id_usuario)
+   );
+   
+   
   
   
