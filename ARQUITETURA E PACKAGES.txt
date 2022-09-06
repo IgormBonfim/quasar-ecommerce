@@ -1,0 +1,68 @@
+----- CRIANDO A ARQUITETURA -------
+CRIAR SOLUÇÃO E ADICIONAR PROJETO
+CRIE A PASTA
+ENTRE NA PASTA NO PowerShell
+cd .....
+dotnet new sln
+ls >>>> listar
+ 	dotnet new webapi --name xxxxx.API 
+(CRIA UM APP ASP DOTNET API)- O que vai comunciar o frot com o back- para retornar o produto para o site.
+	dotnet new classlib --name xxxxxx.aplicacao
+ 	dotnet new classlib --name xxxxxx.Dominio
+ 	dotnet new classlib --name xxxxxxx.Infra
+	dotnet new classlib --name xxxxxxxxxx.DataTransfer
+
+dotnet sln add .\xxxxxxx.API\xxxxxxx.API.csproj
+dotnet sln add .\xxxxxx.aplicacao\xxxxxxxx.aplicacao.csproj
+dotnet sln add .\xxxxxxxx.DataTransfer\xxxxxxxx.DataTransfer.csproj
+dotnet sln add .\xxxxxxxx.Dominio\xxxxxxx.Dominio.csproj
+dotnet sln add .\xxxxxxxxxxx.Infra\xxxxxxxx.Infra.csproj
+------ ADICIONANDO AS REFERÊNCIAS-----
+
+ENTRAR NA CD API
+dotnet build
+dotnet run
+
+cd .. >> sair da API e voltar para pasta
+
+FAZER REFERÊNCIA- Quando cria uma classe na camada de dominio, a maior parte do programa iremos precisar usar o produto, 
+mas a classe de Aplicacao n tem esse produto, ao usarmos referencia, atraves de "using", teremos acesso a classe que esta na Aplicacao, dentro de Dominio
+
+dotnet add .\xxxxxx.API\xxxxxxx.API.csproj reference .\xxxxxx.aplicacao\xxxxxxxx.aplicacao.csproj
+dotnet add .\xxxxxxxxxxx.API\xxxxxxx.API.csproj reference .\xxxxxxx.DataTransfer\xxxxxxxxxxx.DataTransfer.csproj
+dotnet add .\xxxxxxxxxxx.API\ reference .\xxxxxxxxxx.Dominio\
+dotnet add .\xxxxxxx.Infra  reference .\xxxxxxxx.Dominio\
+dotnet add .\xxxxxxxxxxxx.aplicacao\ reference .\xxxxxxxxx.Dominio\
+dotnet add .\xxxxxxxxxx.aplicacao\ reference .\xxxxxxxxxxxx.Infra\
+dotnet add .\xxxxxxxxxxxx.aplicacao\ reference .\xxxxxxxxxxx.DataTransfer\
+
+----- ADICONANDO AS PACKAGES DO NHibernate, FluetHibernate e Mysql--------
+cd .\xxxxxx.Infra\
+
+(BAIXANDO ARQUIVO PRO PROJETO)
+
+dotnet add package NHibernate
+dotnet add package FluentNHibernate
+
+cd .\xxxxxxxx.API\
+dotnet add package NHibernate
+dotnet add package FluentNHibernate
+
+cd .\xxxxxxxx_c#.aplicacao\
+dotnet add package AutoMapper
+
+cd .\xxxxxxx.API\
+
+CONEXÃO COM O BANCO - p/ MySQL
+
+(DENTRO DA API)
+
+dotnet add package MySql.data
+dotnet add package MySqlConnector
+
+-------
+
+
+
+
+
