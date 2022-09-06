@@ -88,7 +88,7 @@ CREATE TABLE IF NOT EXISTS quasarecommerce.endereco (
    CREATE TABLE IF NOT EXISTS quasarecommerce.categoria (
   idCategoria INT NOT NULL AUTO_INCREMENT,
   nomeCategoria VARCHAR(100) NOT NULL,
-  imgCategoria BLOB NOT NULL,
+  imgCategoria VARCHAR(255) NOT NULL,
   PRIMARY KEY (idCategoria)
   );
   
@@ -107,9 +107,9 @@ CREATE TABLE IF NOT EXISTS quasarecommerce.produto (
   nomeProduto VARCHAR(100) NOT NULL,
   idCategoria INT NOT NULL,
   idFornecedor INT NOT NULL,
-  imgPrincipalProduto BLOB NOT NULL,
-  imgSegundaProduto BLOB NULL,
-  imgTerceiraProduto BLOB NULL,
+  imgPrincipalProduto VARCHAR(255) NOT NULL,
+  imgSegundaProduto VARCHAR(255) NULL,
+  imgTerceiraProduto VARCHAR(255) NULL,
   PRIMARY KEY (idProduto),
   FOREIGN KEY (idCategoria)
   REFERENCES quasarecommerce.categoria (idCategoria),
