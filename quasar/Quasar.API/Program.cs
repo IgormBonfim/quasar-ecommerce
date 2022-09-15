@@ -1,6 +1,7 @@
 using FluentNHibernate.Cfg;
 using FluentNHibernate.Cfg.Db;
 using NHibernate;
+using ISession = NHibernate.ISession;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,6 +20,7 @@ builder.Services.AddSingleton<ISessionFactory>(factory =>
                                             .ShowSql())
                                             .BuildSessionFactory();
 });
+builder.Services.AddSingleton<ISession>(factory => factory.GetService<ISessionFactory>()?.OpenSession());
 
 var app = builder.Build();
 
