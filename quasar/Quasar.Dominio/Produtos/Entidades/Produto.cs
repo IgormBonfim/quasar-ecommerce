@@ -21,7 +21,13 @@ namespace Quasar.Dominio.Produtos.Entidades
         public Produto() { }
         public Produto(string? descricaoProduto, string? nomeProduto, Categoria? categoria, Fornecedor? fornecedor, string? imgPrincipalProduto, string? imgSegundaProduto, string? imgTerceiraProduto)
         {
-            
+            SetDescricaoProduto(descricaoProduto);
+            SetNomeProduto(nomeProduto);
+            SetCategoria(categoria);
+            SetFornecedor(fornecedor);
+            SetImgPrincipalProduto(imgPrincipalProduto);
+            SetImgSegundaProduto(imgSegundaProduto);
+            SetImgTerceiraProduto(imgTerceiraProduto);
         }
 
         public virtual void SetIdProduto(int? idProduto)
@@ -70,6 +76,16 @@ namespace Quasar.Dominio.Produtos.Entidades
         public virtual void SetImgPrincipalProduto(string? imgPrincipalProduto)
         {
             ImgPrincipalProduto = imgPrincipalProduto;
+        }
+
+        public virtual void SetImgSegundaProduto(string? imgSegundaProduto)
+        {
+            ImgSegundaProduto = imgSegundaProduto;
+        }
+        
+        public virtual void SetImgTerceiraProduto(string? imgTerceiraProduto)
+        {
+            ImgTerceiraProduto = imgTerceiraProduto;
         }
     }
 }
