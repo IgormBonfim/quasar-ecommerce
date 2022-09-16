@@ -20,7 +20,6 @@ builder.Services.AddSingleton<ISessionFactory>(factory =>
                                             .ShowSql())
                                             .BuildSessionFactory();
 });
-builder.Services.AddSingleton<ISession>(factory => factory.GetService<ISessionFactory>()?.OpenSession());
 
 builder.Services.AddSingleton<ISession>(factory => factory.GetService<ISessionFactory>()?.OpenSession());
 
