@@ -1,0 +1,26 @@
+Adicionar a configuração de Session do NHibernate 
+_________________________________________________
+
+Singleton > A classe só será instanciada uma vez, sempre que for usar a classe, irá buscar essa instância. 
+
+_______________________________________________
+
+Criações das Classes no Domínio:
+
+Produtos > Entidades, Repositórios, Serviços
+
+Classe Produto- 
+
+Criação das propriedades da classe. 
+
+Criação do construtor nulo para o funcionamento do NHibernate. 
+
+Criação do construtor.
+
+*OBS: Tudo no construtor pode ser nulo, para que caso receba um valor nulo, possa cair na exceção e a partir disso ser tratado.
+
+Criação do métodos de Set. 
+
+
+  
+
