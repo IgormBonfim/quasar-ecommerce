@@ -41,10 +41,7 @@ namespace Quasar.Dominio.Produtos.Entidades
 
         public virtual void SetDescricaoProduto(string? descricaoProduto)
         {
-            if(string.IsNullOrWhiteSpace(descricaoProduto))
-                throw new Exception("O campo descrição é obrigatório!");
-
-            if(descricaoProduto.Length < 20)
+            if(string.IsNullOrWhiteSpace(descricaoProduto) && descricaoProduto.Length < 20)
                 throw new Exception("O campo descrição deve possuir ao menos 20 caracteres!");
 
             if(descricaoProduto.Length > 255)
@@ -55,10 +52,7 @@ namespace Quasar.Dominio.Produtos.Entidades
 
         public virtual void SetNomeProduto(string? nomeProduto)
         {
-            if(string.IsNullOrWhiteSpace(nomeProduto))
-                throw new Exception("O campo nome é obrigatório!");
-
-            if(nomeProduto.Length < 10)
+            if(string.IsNullOrWhiteSpace(nomeProduto) && nomeProduto.Length < 10)
                 throw new Exception("O campo nome deve possuir ao menos 10 caracteres");
 
             if(nomeProduto.Length > 100)
