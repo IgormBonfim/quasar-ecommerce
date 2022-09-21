@@ -47,7 +47,7 @@ namespace Quasar.Infra.Produtos
 
         public Produto Recuperar(int id)
         {
-            throw new NotImplementedException();
+            return session.Get<Produto>(id);
         }
     }
 }
