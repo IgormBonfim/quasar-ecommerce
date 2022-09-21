@@ -43,7 +43,7 @@ namespace Quasar.Infra.Produtos
 
         public IQueryable<Produto> Query()
         {
-            throw new NotImplementedException();
+            return session.Query<Produto>();
         }
 
         public Produto Recuperar(int id)
