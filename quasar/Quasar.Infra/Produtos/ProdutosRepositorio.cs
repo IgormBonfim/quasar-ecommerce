@@ -22,7 +22,7 @@ namespace Quasar.Infra.Produtos
 
         public void Deletar(Produto produto)
         {
-            throw new NotImplementedException();
+            session.Delete(produto);
         }
 
         public Produto Editar(Produto produto)
