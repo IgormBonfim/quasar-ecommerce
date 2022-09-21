@@ -32,11 +32,18 @@ namespace Quasar.Dominio.Produtos.Servicos
             throw new NotImplementedException();
         }
 
+
+        //Metodo que chama o metodo de inserir do ProdutosRepositorio
+        //Recebe um Produto
+        //Retorna um Produto com o id do Produto inserido no banco de dados
         public Produto Inserir(Produto produto)
         {
             return produtosRepositorio.Inserir(produto);
         }
 
+        //Metodo que Instancia um novo objeto do tipo Produto
+        //Recebe as informações do produto
+        //Retorna um Produto
         public Produto Instanciar(string? descricaoProduto, string? nomeProduto, Categoria? categoria, Fornecedor? fornecedor, string? imgPrincipalProduto, string? imgSegundaProduto, string? imgTerceiraProduto)
         {
             Produto produto = new Produto(descricaoProduto, nomeProduto, categoria, fornecedor, imgPrincipalProduto, imgSegundaProduto, imgTerceiraProduto);
