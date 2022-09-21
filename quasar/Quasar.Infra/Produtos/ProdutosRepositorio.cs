@@ -27,7 +27,8 @@ namespace Quasar.Infra.Produtos
 
         public Produto Editar(Produto produto)
         {
-            throw new NotImplementedException();
+            session.Update(produto);
+            return produto;
         }
 
         //Insere produto no banco que devolve o id gerado pelo banco
