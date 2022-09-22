@@ -22,16 +22,39 @@ namespace Quasar.Dominio.Produtos.Servicos
             this.produtosRepositorio = produtosRepositorio;
         }
 
-        public void Deletar(Produto produto)
+        //Metodo que chama o metodo de deletar do ProdutosRepositorio
+        //Recebe o id do produto que será deletado e valida se esse produto existe no banco
+        //Não retorna nada
+        public void Deletar(int idProduto)
         {
-            throw new NotImplementedException();
+            Produto produtoDeletar = Validar(idProduto);
+            produtosRepositorio.Deletar(produtoDeletar);
         }
 
+        //Metodo que recebe um produto, verifica se esse produto existe no banco
+        //Compara todos os campos e altera os que estierem diferente
+        //Retorna o produto atualizado no banco
         public Produto Editar(Produto produto)
         {
-            throw new NotImplementedException();
-        }
+            Produto produtoEditar = Validar(produto.IdProduto);
 
+            if (produto.NomeProduto != produtoEditar.NomeProduto)
+                produtoEditar.SetNomeProduto(produto.NomeProduto);
+
+            if (produto.DescricaoProduto != produtoEditar.DescricaoProduto) 
+                produtoEditar.SetDescricaoProduto(produto.DescricaoProduto);
+
+            if (produto.ImgPrincipalProduto != produtoEditar.ImgPrincipalProduto) 
+                produtoEditar.SetImgPrincipalProduto(produto.ImgPrincipalProduto);
+
+            if (produto.Categoria != produtoEditar.Categoria)
+                produtoEditar.SetCategoria(produto.Categoria);
+
+            if (produto.Fornecedor != produtoEditar.Fornecedor)
+                produtoEditar.SetFornecedor(produto.Fornecedor);
+
+            return produtosRepositorio.Editar(produtoEditar);
+        }
 
         //Metodo que chama o metodo de inserir do ProdutosRepositorio
         //Recebe um Produto
@@ -52,7 +75,10 @@ namespace Quasar.Dominio.Produtos.Servicos
 
         public Produto Validar(int id)
         {
-            throw new NotImplementedException();
+            Produto produtoValidar = produtosRepositorio.Recuperar(id);
+            if (produtoValidar == null)
+                throw new Exception("Produto não encontado.");
+            return produtoValidar;
         }
     }
 }
