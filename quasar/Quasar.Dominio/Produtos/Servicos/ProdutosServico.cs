@@ -22,8 +22,8 @@ namespace Quasar.Dominio.Produtos.Servicos
             this.produtosRepositorio = produtosRepositorio;
         }
 
-        //Metodo que chama o metodo de deletar do ProdutosRepositorio
         //Recebe o id do produto que será deletado e valida se esse produto existe no banco
+        //Metodo que chama o metodo de deletar de ProdutosRepositorio
         //Não retorna nada
         public void Deletar(int idProduto)
         {
@@ -32,7 +32,7 @@ namespace Quasar.Dominio.Produtos.Servicos
         }
 
         //Metodo que recebe um produto, verifica se esse produto existe no banco
-        //Compara todos os campos e altera os que estierem diferente
+        //Compara todos os campos e altera os que estiverem diferente
         //Retorna o produto atualizado no banco
         public Produto Editar(Produto produto)
         {
@@ -73,6 +73,9 @@ namespace Quasar.Dominio.Produtos.Servicos
             return produto;
         }
 
+        //Metodo que valida se um produto existe no banco
+        //Recebe o id do produto a ser validado
+        //Retorna o produto caso exista no banco
         public Produto Validar(int id)
         {
             Produto produtoValidar = produtosRepositorio.Recuperar(id);
