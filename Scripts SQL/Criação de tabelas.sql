@@ -107,9 +107,7 @@ CREATE TABLE IF NOT EXISTS quasarecommerce.produto (
   nomeProduto VARCHAR(100) NOT NULL,
   idCategoria INT NOT NULL,
   idFornecedor INT NOT NULL,
-  imgPrincipalProduto VARCHAR(255) NOT NULL,
-  imgSegundaProduto VARCHAR(255) NULL,
-  imgTerceiraProduto VARCHAR(255) NULL,
+  imgProduto VARCHAR(255) NOT NULL,
   PRIMARY KEY (idProduto),
   FOREIGN KEY (idCategoria)
   REFERENCES quasarecommerce.categoria (idCategoria),
