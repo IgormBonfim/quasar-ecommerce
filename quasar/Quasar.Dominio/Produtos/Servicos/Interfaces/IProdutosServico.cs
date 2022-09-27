@@ -12,7 +12,7 @@ namespace Quasar.Dominio.Produtos.Servicos.Interfaces
     {
         Produto Validar(int id);
         Produto Inserir(Produto produto);
-        Produto Instanciar(string? descricaoProduto, string? nomeProduto, Categoria? categoria, Fornecedor? fornecedor, string? imgPrincipalProduto, string? imgSegundaProduto, string? imgTerceiraProduto);
+        Produto Instanciar(string? descricaoProduto, string? nomeProduto, Categoria? categoria, Fornecedor? fornecedor, string? imgPrincipalProduto);
         Produto Editar(Produto produto);
         void Deletar(int idProduto);
     }
