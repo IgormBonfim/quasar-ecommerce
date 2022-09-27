@@ -19,15 +19,13 @@ namespace Quasar.Dominio.Produtos.Entidades
         public virtual string? ImgTerceiraProduto { get; protected set; }
         
         public Produto() { }
-        public Produto(string? descricaoProduto, string? nomeProduto, Categoria? categoria, Fornecedor? fornecedor, string? imgPrincipalProduto, string? imgSegundaProduto, string? imgTerceiraProduto)
+        public Produto(string? descricaoProduto, string? nomeProduto, Categoria? categoria, Fornecedor? fornecedor, string? imgPrincipalProduto)
         {
             SetDescricaoProduto(descricaoProduto);
             SetNomeProduto(nomeProduto);
             SetCategoria(categoria);
             SetFornecedor(fornecedor);
             SetImgPrincipalProduto(imgPrincipalProduto);
-            SetImgSegundaProduto(imgSegundaProduto);
-            SetImgTerceiraProduto(imgTerceiraProduto);
         }
 
         public virtual void SetIdProduto(int? idProduto)
