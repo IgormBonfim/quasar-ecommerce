@@ -30,7 +30,7 @@ namespace Quasar.Dominio.FormasPagamento.Servicos
         {
             FormaPagamento formaPagamento = formasPagamentoRepositorio.Recuperar(id);
             if(formaPagamento == null)
-                throw new Exception("Forma de pagamento não encontrada.")
+                throw new Exception("Forma de pagamento não encontrada.");
             return formaPagamento;
         }
     }
