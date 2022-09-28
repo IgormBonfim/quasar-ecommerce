@@ -55,6 +55,7 @@ namespace Quasar.Dominio.Produtos.Entidades
 
             if(nomeProduto.Length > 100)
                 throw new Exception("O campo nome deve possuir até 100 caracteres!");
+            NomeProduto = nomeProduto;
         }
         public virtual void SetCategoria(Categoria categoria)
         {
