@@ -16,6 +16,12 @@ namespace Quasar.Infra.FormasPagamento
         {
             this.session = session;
         }
+
+        public IQueryable<FormaPagamento> Query()
+        {
+            return session.Query<FormaPagamento>();
+        }
+
         public FormaPagamento Recuperar(int id)
         {
             return session.Get<FormaPagamento>(id);
