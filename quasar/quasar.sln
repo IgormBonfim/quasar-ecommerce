@@ -1,0 +1,46 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30114.105
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Quasar.API", "Quasar.API\Quasar.API.csproj", "{9F53A48C-C28A-4FA4-82EE-7C6F3F3EAC7A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Quasar.Aplicacao", "Quasar.Aplicacao\Quasar.Aplicacao.csproj", "{784C3DA7-096C-4868-B8DD-3CF0EA965D79}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Quasar.DataTransfer", "Quasar.DataTransfer\Quasar.DataTransfer.csproj", "{087D1B3F-4FFA-40FA-9DED-9B153D38CCA5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Quasar.Dominio", "Quasar.Dominio\Quasar.Dominio.csproj", "{15CC713C-7A9B-463E-A909-BC7736880F22}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Quasar.Infra", "Quasar.Infra\Quasar.Infra.csproj", "{72C0EF4C-1D70-443E-99FD-502B57BC5488}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9F53A48C-C28A-4FA4-82EE-7C6F3F3EAC7A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F53A48C-C28A-4FA4-82EE-7C6F3F3EAC7A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9F53A48C-C28A-4FA4-82EE-7C6F3F3EAC7A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9F53A48C-C28A-4FA4-82EE-7C6F3F3EAC7A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{784C3DA7-096C-4868-B8DD-3CF0EA965D79}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{784C3DA7-096C-4868-B8DD-3CF0EA965D79}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{784C3DA7-096C-4868-B8DD-3CF0EA965D79}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{784C3DA7-096C-4868-B8DD-3CF0EA965D79}.Release|Any CPU.Build.0 = Release|Any CPU
+		{087D1B3F-4FFA-40FA-9DED-9B153D38CCA5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{087D1B3F-4FFA-40FA-9DED-9B153D38CCA5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{087D1B3F-4FFA-40FA-9DED-9B153D38CCA5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{087D1B3F-4FFA-40FA-9DED-9B153D38CCA5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{15CC713C-7A9B-463E-A909-BC7736880F22}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{15CC713C-7A9B-463E-A909-BC7736880F22}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{15CC713C-7A9B-463E-A909-BC7736880F22}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{15CC713C-7A9B-463E-A909-BC7736880F22}.Release|Any CPU.Build.0 = Release|Any CPU
+		{72C0EF4C-1D70-443E-99FD-502B57BC5488}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{72C0EF4C-1D70-443E-99FD-502B57BC5488}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{72C0EF4C-1D70-443E-99FD-502B57BC5488}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{72C0EF4C-1D70-443E-99FD-502B57BC5488}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
