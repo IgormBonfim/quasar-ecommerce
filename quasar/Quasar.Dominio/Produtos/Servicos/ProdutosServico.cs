@@ -44,8 +44,8 @@ namespace Quasar.Dominio.Produtos.Servicos
             if (produto.DescricaoProduto != produtoEditar.DescricaoProduto) 
                 produtoEditar.SetDescricaoProduto(produto.DescricaoProduto);
 
-            if (produto.ImgPrincipalProduto != produtoEditar.ImgPrincipalProduto) 
-                produtoEditar.SetImgPrincipalProduto(produto.ImgPrincipalProduto);
+            if (produto.ImgProduto != produtoEditar.ImgProduto) 
+                produtoEditar.SetImgProduto(produto.ImgProduto);
 
             if (produto.Categoria != produtoEditar.Categoria)
                 produtoEditar.SetCategoria(produto.Categoria);
@@ -67,9 +67,9 @@ namespace Quasar.Dominio.Produtos.Servicos
         //Metodo que Instancia um novo objeto do tipo Produto
         //Recebe as informações do produto
         //Retorna um Produto
-        public Produto Instanciar(string? descricaoProduto, string? nomeProduto, string? imgPrincipalProduto)
+        public Produto Instanciar(string? descricaoProduto, string? nomeProduto, string? imgProduto)
         {
-            Produto produto = new Produto(descricaoProduto, nomeProduto, imgPrincipalProduto);
+            Produto produto = new Produto(descricaoProduto, nomeProduto, imgProduto);
             return produto;
         }
 
