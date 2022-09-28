@@ -7,9 +7,9 @@ using Quasar.Dominio.FormasPagamento.Entidades;
 
 namespace Quasar.Infra.FormasPagamento.Mapeamentos
 {
-    public class FormasPagamentoMap : ClassMap<FormaPagamento>
+    public class FormaPagamentoMap : ClassMap<FormaPagamento>
     {
-        public FormasPagamentoMap()
+        public FormaPagamentoMap()
         {
             Schema("quasarecommerce");
             Table("formaPagamento");
