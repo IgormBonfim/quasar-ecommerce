@@ -15,6 +15,11 @@ namespace Quasar.Dominio.FormasPagamento.Entidades
             
         }
 
+        public FormaPagamento(string? descricaoFormaPagamento)
+        {
+            SetDescricaoFormaPagamento(descricaoFormaPagamento);
+        }
+
         public virtual void SetIdFormaPagamento(int? id)
         {
             if(!id.HasValue || id.Value <= 0)
