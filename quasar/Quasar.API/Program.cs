@@ -1,6 +1,14 @@
 using FluentNHibernate.Cfg;
 using FluentNHibernate.Cfg.Db;
 using NHibernate;
+using Quasar.Aplicacao.Produtos.Profiles;
+using Quasar.Aplicacao.Produtos.Servicos;
+using Quasar.Aplicacao.Produtos.Servicos.Interfaces;
+using Quasar.Dominio.Produtos.Repositorios;
+using Quasar.Dominio.Produtos.Servicos;
+using Quasar.Dominio.Produtos.Servicos.Interfaces;
+using Quasar.Infra.Produtos;
+using Quasar.Infra.Produtos.Mapeamentos;
 using ISession = NHibernate.ISession;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -18,10 +26,20 @@ builder.Services.AddSingleton<ISessionFactory>(factory =>
                                             .ConnectionString(connectionString)
                                             .FormatSql()
                                             .ShowSql())
+                                            .Mappings(x => 
+                                            {
+                                                x.FluentMappings.AddFromAssemblyOf<ProdutosMap>();
+                                            })
                                             .BuildSessionFactory();
 });
 
 builder.Services.AddSingleton<ISession>(factory => factory.GetService<ISessionFactory>()?.OpenSession());
+
+builder.Services.AddSingleton<IProdutosRepositorio, ProdutosRepositorio>();
+builder.Services.AddSingleton<IProdutosServico, ProdutosServico>();
+builder.Services.AddSingleton<IProdutosAppServico, ProdutosAppServico>();
+
+builder.Services.AddAutoMapper(typeof(ProdutosProfile));
 
 var app = builder.Build();
 
