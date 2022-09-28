@@ -67,9 +67,9 @@ namespace Quasar.Dominio.Produtos.Servicos
         //Metodo que Instancia um novo objeto do tipo Produto
         //Recebe as informações do produto
         //Retorna um Produto
-        public Produto Instanciar(string? descricaoProduto, string? nomeProduto, Categoria? categoria, Fornecedor? fornecedor, string? imgPrincipalProduto)
+        public Produto Instanciar(string? descricaoProduto, string? nomeProduto, string? imgPrincipalProduto)
         {
-            Produto produto = new Produto(descricaoProduto, nomeProduto, categoria, fornecedor, imgPrincipalProduto);
+            Produto produto = new Produto(descricaoProduto, nomeProduto, imgPrincipalProduto);
             return produto;
         }
 
