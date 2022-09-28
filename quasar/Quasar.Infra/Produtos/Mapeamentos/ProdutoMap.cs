@@ -16,7 +16,7 @@ namespace Quasar.Infra.Produtos.Mapeamentos
             Id(p => p.IdProduto).Column("idProduto").GeneratedBy.Identity();
             Map(p => p.DescricaoProduto).Column("descricaoProduto");
             Map(p => p.NomeProduto).Column("nomeProduto");
-            Map(p => p.ImgPrincipalProduto).Column("imgProduto");
+            Map(p => p.ImgProduto).Column("imgProduto");
             References(p => p.Categoria).Column("idCategoria");
             References(p => p.Fornecedor).Column("idFornecedor");
             
