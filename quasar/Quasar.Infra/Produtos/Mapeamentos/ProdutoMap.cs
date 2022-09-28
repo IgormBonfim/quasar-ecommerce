@@ -7,9 +7,9 @@ using Quasar.Dominio.Produtos.Entidades;
 
 namespace Quasar.Infra.Produtos.Mapeamentos
 {
-    public class ProdutosMap : ClassMap<Produto>
+    public class ProdutoMap : ClassMap<Produto>
     {
-        public ProdutosMap()
+        public ProdutoMap()
         {
             Schema("quasarecommerce");
             Table("produto");
