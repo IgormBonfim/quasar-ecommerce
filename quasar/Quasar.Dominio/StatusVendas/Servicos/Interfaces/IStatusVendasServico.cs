@@ -9,10 +9,5 @@ namespace Quasar.Dominio.StatusVendas.Servicos.Interfaces
     public interface IStatusVendasServico
     {
         StatusVenda Validar(int id);
-        StatusVenda Inserir(StatusVenda statusVenda);
-        StatusVenda Instanciar(string? descricaoStatusVenda);
-        StatusVenda Editar(StatusVenda statusVenda);
-        StatusVenda Deletar(int idStatusVenda);
-
     }
 }
