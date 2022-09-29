@@ -5,8 +5,10 @@ using System.Threading.Tasks;
 
 namespace Quasar.DataTransfer.Ufs.Responses
 {
-    public class UfsResponse
+    public class UfResponse
     {
-        
+        public int IdUf { get;  set; }
+        public string SiglaUf { get;  set; }
+        public string DescUf { get;  set; }
     }
 }

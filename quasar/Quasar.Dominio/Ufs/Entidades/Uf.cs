@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Quasar.Dominio.Ufs.Entidades
 {
-    public class Ufs
+    public class Uf
     {
         
 
@@ -13,9 +13,11 @@ namespace Quasar.Dominio.Ufs.Entidades
         public virtual string SiglaUf { get; protected set; }
         public virtual  string DescUf { get; protected set; }
 
-        public Ufs(){ }
+        public Uf(){
 
-        public Ufs(int idUf, string siglaUf, string descUf)
+         }
+
+        public Uf(int idUf, string siglaUf, string descUf)
         {
             SetIdUf(idUf);
             SetSiglaUf(siglaUf);

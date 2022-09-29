@@ -4,11 +4,18 @@ using NHibernate;
 using Quasar.Aplicacao.Produtos.Profiles;
 using Quasar.Aplicacao.Produtos.Servicos;
 using Quasar.Aplicacao.Produtos.Servicos.Interfaces;
+using Quasar.Aplicacao.Ufs.Servicos;
+using Quasar.Aplicacao.Ufs.Servicos.Interfaces;
 using Quasar.Dominio.Produtos.Repositorios;
 using Quasar.Dominio.Produtos.Servicos;
 using Quasar.Dominio.Produtos.Servicos.Interfaces;
+using Quasar.Dominio.Ufs.Repositorios;
+using Quasar.Dominio.Ufs.Servicos;
+using Quasar.Dominio.Ufs.Servicos.Interfaces;
 using Quasar.Infra.Produtos;
 using Quasar.Infra.Produtos.Mapeamentos;
+using Quasar.Infra.Ufs;
+using Quasar.Infra.Ufs.Mapeamentos;
 using ISession = NHibernate.ISession;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -29,6 +36,7 @@ builder.Services.AddSingleton<ISessionFactory>(factory =>
                                             .Mappings(x => 
                                             {
                                                 x.FluentMappings.AddFromAssemblyOf<ProdutosMap>();
+                                                x.FluentMappings.AddFromAssemblyOf<UfsMap>();
                                             })
                                             .BuildSessionFactory();
 });
@@ -38,6 +46,10 @@ builder.Services.AddSingleton<ISession>(factory => factory.GetService<ISessionFa
 builder.Services.AddSingleton<IProdutosRepositorio, ProdutosRepositorio>();
 builder.Services.AddSingleton<IProdutosServico, ProdutosServico>();
 builder.Services.AddSingleton<IProdutosAppServico, ProdutosAppServico>();
+
+builder.Services.AddSingleton<IUfsAppServico, UfsAppServico>();
+builder.Services.AddSingleton<IUfsRepositorio, UfsRepositorio>();
+builder.Services.AddSingleton<IUfsServico, UfsServico>();
 
 builder.Services.AddAutoMapper(typeof(ProdutosProfile));
 
