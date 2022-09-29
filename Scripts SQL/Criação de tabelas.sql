@@ -94,9 +94,9 @@ CREATE TABLE IF NOT EXISTS quasarecommerce.endereco (
   
   CREATE TABLE IF NOT EXISTS quasarecommerce.fornecedor (
   idFornecedor INT NOT NULL AUTO_INCREMENT,
-  nomeFornecedor VARCHAR(100) NULL,
-  razaoSocialFornecedor VARCHAR(100) NULL,
-  cnpjFornecedor VARCHAR(14) NULL,
+  nomeFornecedor VARCHAR(100) NOT NULL,
+  razaoSocialFornecedor VARCHAR(100) NOT NULL,
+  cnpjFornecedor VARCHAR(14) NOT NULL,
   ieFornecedor VARCHAR(14) NULL,
   PRIMARY KEY (idFornecedor)
   );
