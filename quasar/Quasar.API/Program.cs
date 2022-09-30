@@ -1,12 +1,19 @@
 using FluentNHibernate.Cfg;
 using FluentNHibernate.Cfg.Db;
 using NHibernate;
+using Quasar.Aplicacao.Categorias.Servicos;
+using Quasar.Aplicacao.Categorias.Servicos.Interfaces;
 using Quasar.Aplicacao.Produtos.Profiles;
 using Quasar.Aplicacao.Produtos.Servicos;
 using Quasar.Aplicacao.Produtos.Servicos.Interfaces;
+using Quasar.Dominio.Categorias.Repositorios;
+using Quasar.Dominio.Categorias.Servicos;
+using Quasar.Dominio.Categorias.Servicos.Interfaces;
 using Quasar.Dominio.Produtos.Repositorios;
 using Quasar.Dominio.Produtos.Servicos;
 using Quasar.Dominio.Produtos.Servicos.Interfaces;
+using Quasar.Infra.Categorias;
+using Quasar.Infra.Categorias.Mapeamentos;
 using Quasar.Infra.Produtos;
 using Quasar.Infra.Produtos.Mapeamentos;
 using ISession = NHibernate.ISession;
@@ -29,6 +36,7 @@ builder.Services.AddSingleton<ISessionFactory>(factory =>
                                             .Mappings(x => 
                                             {
                                                 x.FluentMappings.AddFromAssemblyOf<ProdutosMap>();
+                                                x.FluentMappings.AddFromAssemblyOf<CategoriaMap>();
                                             })
                                             .BuildSessionFactory();
 });
@@ -38,6 +46,10 @@ builder.Services.AddSingleton<ISession>(factory => factory.GetService<ISessionFa
 builder.Services.AddSingleton<IProdutosRepositorio, ProdutosRepositorio>();
 builder.Services.AddSingleton<IProdutosServico, ProdutosServico>();
 builder.Services.AddSingleton<IProdutosAppServico, ProdutosAppServico>();
+
+builder.Services.AddSingleton<ICategoriasRepositorio, CategoriasRepositorio>();
+builder.Services.AddSingleton<ICategoriasServico, CategoriasServico>();
+builder.Services.AddSingleton<ICategoriasAppServico, CategoriasAppServico>();
 
 builder.Services.AddAutoMapper(typeof(ProdutosProfile));
 
