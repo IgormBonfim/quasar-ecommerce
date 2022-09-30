@@ -28,8 +28,8 @@ namespace Quasar.Dominio.StatusVendas.Entidades
 
         public virtual void SetDescricaoStatusVenda (string? descricaoStatusVenda)
         {
-            if(string.IsNullOrWhiteSpace(descricaoStatusVenda) && descricaoStatusVenda.Length < 20)
-                throw new Exception("O campo descrição deve possuir ao menos 20 caracteres!");
+            if(string.IsNullOrWhiteSpace(descricaoStatusVenda) && descricaoStatusVenda.Length < 3)
+                throw new Exception("O campo descrição deve possuir ao menos 3 caracteres!");
 
             if(descricaoStatusVenda.Length > 50)
                 throw new Exception("O campo descrição deve possuir até 50 caracteres!");
