@@ -50,7 +50,7 @@ builder.Services.AddSingleton<IProdutosAppServico, ProdutosAppServico>();
 
 builder.Services.AddSingleton<IStatusVendasRepositorio, StatusVendasRepositorio>();
 builder.Services.AddSingleton<IStatusVendasServico, StatusVendasServico>();
-builder.Services.AddSingleton< IStatusVendasAppServico, StatusVendasAppServico>();
+builder.Services.AddSingleton<IStatusVendasAppServico, StatusVendasAppServico>();
 
 builder.Services.AddAutoMapper(typeof(ProdutosProfile));
 
