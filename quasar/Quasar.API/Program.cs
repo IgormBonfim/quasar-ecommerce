@@ -1,6 +1,8 @@
 using FluentNHibernate.Cfg;
 using FluentNHibernate.Cfg.Db;
 using NHibernate;
+using Quasar.Aplicacao.FormasPagamento.Servicos;
+using Quasar.Aplicacao.FormasPagamento.Servicos.Interfaces;
 using Quasar.Aplicacao.Produtos.Profiles;
 using Quasar.Aplicacao.Produtos.Servicos;
 using Quasar.Aplicacao.Produtos.Servicos.Interfaces;
@@ -12,6 +14,14 @@ using Quasar.Dominio.Produtos.Servicos.Interfaces;
 using Quasar.Dominio.Ufs.Repositorios;
 using Quasar.Dominio.Ufs.Servicos;
 using Quasar.Dominio.Ufs.Servicos.Interfaces;
+using Quasar.Dominio.FormasPagamento.Repositorios;
+using Quasar.Dominio.FormasPagamento.Servicos;
+using Quasar.Dominio.FormasPagamento.Servicos.Interfaces;
+using Quasar.Dominio.Produtos.Repositorios;
+using Quasar.Dominio.Produtos.Servicos;
+using Quasar.Dominio.Produtos.Servicos.Interfaces;
+using Quasar.Infra.FormasPagamento;
+using Quasar.Infra.FormasPagamento.Mapeamentos;
 using Quasar.Infra.Produtos;
 using Quasar.Infra.Produtos.Mapeamentos;
 using Quasar.Infra.Ufs;
@@ -35,8 +45,9 @@ builder.Services.AddSingleton<ISessionFactory>(factory =>
                                             .ShowSql())
                                             .Mappings(x => 
                                             {
-                                                x.FluentMappings.AddFromAssemblyOf<ProdutosMap>();
                                                 x.FluentMappings.AddFromAssemblyOf<UfsMap>();
+                                                x.FluentMappings.AddFromAssemblyOf<ProdutoMap>();
+                                                x.FluentMappings.AddFromAssemblyOf<FormaPagamentoMap>();
                                             })
                                             .BuildSessionFactory();
 });
@@ -50,6 +61,10 @@ builder.Services.AddSingleton<IProdutosAppServico, ProdutosAppServico>();
 builder.Services.AddSingleton<IUfsAppServico, UfsAppServico>();
 builder.Services.AddSingleton<IUfsRepositorio, UfsRepositorio>();
 builder.Services.AddSingleton<IUfsServico, UfsServico>();
+
+builder.Services.AddSingleton<IFormasPagamentoRepositorio, FormasPagamentoRepositorio>();
+builder.Services.AddSingleton<IFormasPagamentoServico, FormasPagamentoServico>();
+builder.Services.AddSingleton<IFormasPagamentoAppServico, FormasPagamentoAppServico>();
 
 builder.Services.AddAutoMapper(typeof(ProdutosProfile));
 

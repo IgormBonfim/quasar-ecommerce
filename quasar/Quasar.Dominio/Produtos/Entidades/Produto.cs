@@ -14,18 +14,16 @@ namespace Quasar.Dominio.Produtos.Entidades
         public virtual string NomeProduto { get; protected set; }
         public virtual Categoria Categoria { get; protected set; }
         public virtual Fornecedor Fornecedor { get; protected set; }
-        public virtual string ImgPrincipalProduto { get; protected set; }
-        public virtual string? ImgSegundaProduto { get; protected set; }
-        public virtual string? ImgTerceiraProduto { get; protected set; }
+        public virtual string ImgProduto { get; protected set; }
         
         public Produto() { }
-        public Produto(string? descricaoProduto, string? nomeProduto, string? imgPrincipalProduto)
+        public Produto(string? descricaoProduto, string? nomeProduto, string? imgProduto)
         {
             SetDescricaoProduto(descricaoProduto);
             SetNomeProduto(nomeProduto);
             // SetCategoria(categoria);
             // SetFornecedor(fornecedor);
-            SetImgPrincipalProduto(imgPrincipalProduto);
+            SetImgProduto(imgProduto);
         }
 
         public virtual void SetIdProduto(int? idProduto)
@@ -39,7 +37,7 @@ namespace Quasar.Dominio.Produtos.Entidades
 
         public virtual void SetDescricaoProduto(string? descricaoProduto)
         {
-            if(string.IsNullOrWhiteSpace(descricaoProduto) && descricaoProduto.Length < 20)
+            if(string.IsNullOrWhiteSpace(descricaoProduto) || descricaoProduto.Length < 20)
                 throw new Exception("O campo descrição deve possuir ao menos 20 caracteres!");
 
             if(descricaoProduto.Length > 255)
@@ -50,7 +48,7 @@ namespace Quasar.Dominio.Produtos.Entidades
 
         public virtual void SetNomeProduto(string? nomeProduto)
         {
-            if(string.IsNullOrWhiteSpace(nomeProduto) && nomeProduto.Length < 10)
+            if(string.IsNullOrWhiteSpace(nomeProduto) || nomeProduto.Length < 10)
                 throw new Exception("O campo nome deve possuir ao menos 10 caracteres");
 
             if(nomeProduto.Length > 100)
@@ -66,19 +64,11 @@ namespace Quasar.Dominio.Produtos.Entidades
             Fornecedor = fornecedor;
         }
 
-        public virtual void SetImgPrincipalProduto(string? imgPrincipalProduto)
+        public virtual void SetImgProduto(string? imgProduto)
         {
-            ImgPrincipalProduto = imgPrincipalProduto;
-        }
-
-        public virtual void SetImgSegundaProduto(string? imgSegundaProduto)
-        {
-            ImgSegundaProduto = imgSegundaProduto;
-        }
-        
-        public virtual void SetImgTerceiraProduto(string? imgTerceiraProduto)
-        {
-            ImgTerceiraProduto = imgTerceiraProduto;
+            if (string.IsNullOrWhiteSpace(imgProduto))
+                throw new Exception("O campo de URL da imagem do produto é obrigatório");
+            ImgProduto = imgProduto;
         }
     }
 }

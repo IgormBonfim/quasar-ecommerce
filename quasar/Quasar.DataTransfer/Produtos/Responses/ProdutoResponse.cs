@@ -10,7 +10,7 @@ namespace Quasar.DataTransfer.Produtos.Responses
         public int IdProduto { get; set; }
         public string DescricaoProduto { get; set; }
         public string NomeProduto { get; set; }
-        public string ImgPrincipalProduto { get; set; }
+        public string ImgProduto { get; set; }
 
     }
 }
