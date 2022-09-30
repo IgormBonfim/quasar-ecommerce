@@ -7,7 +7,6 @@ namespace Quasar.Dominio.Fornecedores.Entidades
 {
     public class Fornecedor
     {
-
         // COLOCAR REGEX DE CNPJ E DE IE
         // DESCOMENTAR TUDO QUE É REFERENTE A FORNECEDOR EM PRODUTO 
         public virtual int IdFornecedor { get; protected set; }
