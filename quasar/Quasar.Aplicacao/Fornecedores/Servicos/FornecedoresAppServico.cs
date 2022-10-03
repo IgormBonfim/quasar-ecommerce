@@ -7,6 +7,7 @@ using NHibernate;
 using Quasar.Aplicacao.Fornecedores.Servicos.Interfaces;
 using Quasar.DataTransfer.Fornecedores.Requests;
 using Quasar.DataTransfer.Fornecedores.Responses;
+using Quasar.Dominio.Fornecedores.Entidades;
 using Quasar.Dominio.Fornecedores.Repositorios;
 using Quasar.Dominio.Fornecedores.Servicos.Interfaces;
 
@@ -48,7 +49,16 @@ namespace Quasar.Aplicacao.Fornecedores.Servicos
 
         public FornecedorResponse Recuperar(int id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                Fornecedor fornecedor = fornecedoresServico.Validar(id);
+                return mapper.Map<FornecedorResponse>(fornecedor);
+            }
+            catch
+            {
+                return null;
+            }
+            
         }
     }
 }

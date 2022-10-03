@@ -58,7 +58,6 @@ namespace Quasar.Dominio.Fornecedores.Servicos
             if(fornecedorValidar == null)
                 throw new Exception("Fornecedor não encontrado.");
             return fornecedorValidar;
-
         }
     }
 }
