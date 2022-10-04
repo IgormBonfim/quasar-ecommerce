@@ -27,24 +27,96 @@ namespace Quasar.Aplicacao.Fornecedores.Servicos
             this.fornecedoresServico = fornecedoresServico;
             this.fornecedoresRepositorio = fornecedoresRepositorio;
         }
-        public IList<FornecedorResponse> Buscar(CategoriaBuscarRequest BuscarRequest)
+        public IList<FornecedorResponse> Listar(FornecedorListarRequest listarRequest)
         {
-            throw new NotImplementedException();
+            try
+            {
+                IQueryable<Fornecedor> query = fornecedoresRepositorio.Query();
+
+                if(listarRequest.IdFornecedor != null)
+                {
+                    query = query.Where(f => f.IdFornecedor == listarRequest.IdFornecedor);
+                }
+
+                if(listarRequest.NomeFornecedor != null)
+                {
+                    query = query.Where(f => f.NomeFornecedor.Contains(listarRequest.NomeFornecedor));
+                }
+
+                if(listarRequest.CnpjFornecedor != null)
+                {
+                    query = query.Where(f => f.CnpjFornecedor.Contains(listarRequest.CnpjFornecedor));
+                }
+
+                IList<Fornecedor> listaFornecedores = fornecedoresServico.Listar(query);
+
+                return mapper.Map<IList<FornecedorResponse>>(listaFornecedores);
+            }
+            catch
+            {
+                throw;
+            }
         }
 
         public void Deletar(int id)
         {
-            throw new NotImplementedException();
+            ITransaction transacao = session.BeginTransaction();
+
+            try
+            {
+                fornecedoresServico.Deletar(id);
+                if(transacao.IsActive)
+                    transacao.Commit();
+            }
+            catch
+            {
+                if(transacao.IsActive)
+                    transacao.Rollback();
+                throw;
+            }
         }
 
         public FornecedorEditarResponse Editar(FornecedorEditarRequest editarRequest)
         {
-            throw new NotImplementedException();
+            ITransaction transacao = session.BeginTransaction();
+
+            try
+            {
+                Fornecedor fornecedorEditar = fornecedoresServico.Instanciar(editarRequest.NomeFornecedor, editarRequest.RazaoSocialFornecedor, editarRequest.CnpjFornecedor, editarRequest.IeFornecedor);
+                Fornecedor fornecedorEditado = fornecedoresServico.Editar(fornecedorEditar);
+
+                if(transacao.IsActive)
+                    transacao.Commit();
+                return mapper.Map<FornecedorEditarResponse>(editarRequest);
+            }
+            catch
+            {
+                if(transacao.IsActive)
+                    transacao.Rollback();
+                throw;
+            }
         }
 
         public FornecedorInserirResponse Inserir(FornecedorInserirRequest inserirRequest)
         {
-            throw new NotImplementedException();
+            ITransaction transacao = session.BeginTransaction();
+
+            try
+            {
+                Fornecedor fornecedorInserir = fornecedoresServico.Instanciar(inserirRequest.NomeFornecedor, inserirRequest.RazaoSocialFornecedor, inserirRequest.CnpjFornecedor, inserirRequest.IeFornecedor);
+                
+                Fornecedor fornecedorInserido = fornecedoresServico.Inserir(fornecedorInserir);
+
+                if(transacao.IsActive)
+                    transacao.Commit();
+                return mapper.Map<FornecedorInserirResponse>(fornecedorInserir);
+            }
+            catch
+            {
+                if(transacao.IsActive)
+                    transacao.Rollback();
+                throw;
+            }
         }
 
         public FornecedorResponse Recuperar(int id)
@@ -56,7 +128,7 @@ namespace Quasar.Aplicacao.Fornecedores.Servicos
             }
             catch
             {
-                return null;
+                throw;
             }
             
         }
