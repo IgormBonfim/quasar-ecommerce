@@ -12,7 +12,7 @@ namespace Quasar.Aplicacao.Fornecedores.Servicos.Interfaces
         FornecedorResponse Recuperar(int id);
         FornecedorInserirResponse Inserir(FornecedorInserirRequest inserirRequest);
         FornecedorEditarResponse Editar(FornecedorEditarRequest editarRequest);
-        IList<FornecedorResponse> Buscar (CategoriaBuscarRequest BuscarRequest);
+        IList<FornecedorResponse> Listar (FornecedorListarRequest BuscarRequest);
         void Deletar (int id);
     }
 }
