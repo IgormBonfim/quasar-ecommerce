@@ -59,5 +59,10 @@ namespace Quasar.Dominio.Fornecedores.Servicos
                 throw new Exception("Fornecedor não encontrado.");
             return fornecedorValidar;
         }
+
+        IList<Fornecedor> IFornecedoresServico.Listar(IQueryable<Fornecedor> query)
+        {
+            return query.ToList();
+        }
     }
 }
