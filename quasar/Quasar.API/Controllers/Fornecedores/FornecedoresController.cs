@@ -9,7 +9,7 @@ using Quasar.DataTransfer.Fornecedores.Requests;
 namespace Quasar.API.Controllers.Fornecedores
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api/fornecedores")]
     public class FornecedoresController : ControllerBase
     {
         private readonly IFornecedoresAppServico fornecedoresAppServico;
@@ -26,14 +26,15 @@ namespace Quasar.API.Controllers.Fornecedores
             return Ok(retorno);
         }
 
-        [HttpPut]
-        public IActionResult Editar(FornecedorEditarRequest editarRequest)
+        [HttpPut("{id}")]
+        public IActionResult Editar(int id, FornecedorEditarRequest editarRequest)
         {
+            editarRequest.IdFornecedor = id;
             var retorno = fornecedoresAppServico.Editar(editarRequest);
             return Ok(retorno);
         }
 
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public IActionResult Deletar (int id)
         {
             fornecedoresAppServico.Deletar(id);
@@ -41,7 +42,7 @@ namespace Quasar.API.Controllers.Fornecedores
         }
 
         [HttpGet]
-        public IActionResult Listar(FornecedorListarRequest listarRequest)
+        public IActionResult Listar([FromQuery]FornecedorListarRequest listarRequest)
         {
             var retorno = fornecedoresAppServico.Listar(listarRequest);
             return Ok(retorno);
