@@ -53,7 +53,7 @@ namespace Quasar.Aplicacao.Fornecedores.Servicos
                 return mapper.Map<IList<FornecedorResponse>>(listaFornecedores);
             }
             catch
-            {
+            {   
                 throw;
             }
         }
@@ -83,11 +83,14 @@ namespace Quasar.Aplicacao.Fornecedores.Servicos
             try
             {
                 Fornecedor fornecedorEditar = fornecedoresServico.Instanciar(editarRequest.NomeFornecedor, editarRequest.RazaoSocialFornecedor, editarRequest.CnpjFornecedor, editarRequest.IeFornecedor);
+                
+                fornecedorEditar.SetIdFornecedor(editarRequest.IdFornecedor);
+
                 Fornecedor fornecedorEditado = fornecedoresServico.Editar(fornecedorEditar);
 
                 if(transacao.IsActive)
                     transacao.Commit();
-                return mapper.Map<FornecedorEditarResponse>(editarRequest);
+                return mapper.Map<FornecedorEditarResponse>(fornecedorEditado);
             }
             catch
             {
