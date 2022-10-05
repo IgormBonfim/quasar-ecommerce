@@ -47,8 +47,8 @@ namespace Quasar.Dominio.Produtos.Servicos
             if (produto.ImgProduto != produtoEditar.ImgProduto) 
                 produtoEditar.SetImgProduto(produto.ImgProduto);
 
-            if (produto.Categoria != produtoEditar.Categoria)
-                produtoEditar.SetCategoria(produto.Categoria);
+            // if (produto.Categoria != produtoEditar.Categoria)
+            //     produtoEditar.SetCategoria(produto.Categoria);
 
             if (produto.Fornecedor != produtoEditar.Fornecedor)
                 produtoEditar.SetFornecedor(produto.Fornecedor);
