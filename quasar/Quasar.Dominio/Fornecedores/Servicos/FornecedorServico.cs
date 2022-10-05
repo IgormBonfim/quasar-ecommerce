@@ -27,18 +27,18 @@ namespace Quasar.Dominio.Fornecedores.Servicos
             Fornecedor fornecedorEditar = Validar(fornecedor.IdFornecedor);
 
             if(fornecedor.NomeFornecedor != fornecedorEditar.NomeFornecedor)
-                fornecedorEditar.SetNomeFornecedor(fornecedorEditar.NomeFornecedor);
+                fornecedorEditar.SetNomeFornecedor(fornecedor.NomeFornecedor);
 
             if(fornecedor.RazaoSocialFornecedor != fornecedorEditar.RazaoSocialFornecedor)
-                fornecedorEditar.SetRazaoSocialFornecedor(fornecedorEditar.RazaoSocialFornecedor);
+                fornecedorEditar.SetRazaoSocialFornecedor(fornecedor.RazaoSocialFornecedor);
 
             if(fornecedor.CnpjFornecedor != fornecedorEditar.CnpjFornecedor)
-                fornecedorEditar.SetCnpjFornecedor(fornecedorEditar.CnpjFornecedor);
+                fornecedorEditar.SetCnpjFornecedor(fornecedor.CnpjFornecedor);
 
             if(fornecedor.IeFornecedor != fornecedorEditar.IeFornecedor)
-                fornecedorEditar.SetIeFornecedor(fornecedorEditar.IeFornecedor);
+                fornecedorEditar.SetIeFornecedor(fornecedor.IeFornecedor);
 
-            return fornecedoresRepositorio.Editar(fornecedor);
+            return fornecedoresRepositorio.Editar(fornecedorEditar);
         }
 
         public Fornecedor Inserir(Fornecedor fornecedor)
