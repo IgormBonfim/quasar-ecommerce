@@ -12,7 +12,7 @@ namespace Quasar.Dominio.Produtos.Entidades
         public virtual int IdProduto { get; protected set; }
         public virtual string DescricaoProduto { get; protected set; }
         public virtual string NomeProduto { get; protected set; }
-        public virtual Categoria Categoria { get; protected set; }
+        // public virtual Categoria Categoria { get; protected set; }
         public virtual Fornecedor Fornecedor { get; protected set; }
         public virtual string ImgProduto { get; protected set; }
         
@@ -55,10 +55,10 @@ namespace Quasar.Dominio.Produtos.Entidades
                 throw new Exception("O campo nome deve possuir até 100 caracteres!");
             NomeProduto = nomeProduto;
         }
-        public virtual void SetCategoria(Categoria categoria)
-        {
-            Categoria = categoria;
-        }
+        // public virtual void SetCategoria(Categoria categoria)
+        // {
+        //     Categoria = categoria;
+        // }
         public virtual void SetFornecedor(Fornecedor fornecedor)
         {
             Fornecedor = fornecedor;
