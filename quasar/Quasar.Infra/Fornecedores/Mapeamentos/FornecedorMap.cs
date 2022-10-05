@@ -7,9 +7,9 @@ using Quasar.Dominio.Fornecedores.Entidades;
 
 namespace Quasar.Infra.Fornecedores.Mapeamentos
 {
-    public class FornecedoresMap : ClassMap<Fornecedor>
+    public class FornecedorMap : ClassMap<Fornecedor>
     {
-        public FornecedoresMap()
+        public FornecedorMap()
         {
             Schema("quasarecommerce");
             Table("fornecedor");
