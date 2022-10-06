@@ -8,7 +8,7 @@ namespace Quasar.DataTransfer.Categorias.Requests
     public class CategoriaEditarRequest
     {
         public int? IdCategoria {get; set;}
-        public string NomeCategoria {get; set;}
-        public string ImgCategoria {get; set;}
+        public string? NomeCategoria {get; set;}
+        public string? ImgCategoria {get; set;}
     }
 }
