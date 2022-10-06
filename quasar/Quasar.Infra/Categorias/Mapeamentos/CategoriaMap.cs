@@ -12,7 +12,7 @@ namespace Quasar.Infra.Categorias.Mapeamentos
       public CategoriaMap()
         {
             Schema("quasarecommerce");
-            Table("produto");
+            Table("categoria");
             Id(c => c.IdCategoria).Column("idCategoria").GeneratedBy.Identity();
             Map(c => c.NomeCategoria).Column("nomeCategoria");
             Map(c => c.ImgCategoria).Column("imgCategoria");

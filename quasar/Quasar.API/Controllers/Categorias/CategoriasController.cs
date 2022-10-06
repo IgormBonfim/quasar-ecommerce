@@ -9,7 +9,7 @@ using Quasar.DataTransfer.Categorias.Requests;
 namespace Quasar.API.Controllers.Categorias
 {
     [ApiController]
-    [Route("api/categoria")]
+    [Route("api/categorias")]
     public class CategoriasController : ControllerBase
     {
         private readonly ICategoriasAppServico categoriasAppServico;
@@ -24,14 +24,16 @@ namespace Quasar.API.Controllers.Categorias
             var retorno = categoriasAppServico.Inserir(inserirRequest);
             return Ok(retorno);
         }
-        [HttpPut]
-        public IActionResult Editar (CategoriaEditarRequest editarRequest)
+        [HttpPut("{id}")]
+        public IActionResult Editar (int id, [FromBody] CategoriaEditarRequest editarRequest)
         {
+            editarRequest.IdCategoria = id;
+
             var retorno = categoriasAppServico.Editar(editarRequest);
             return Ok(retorno);
         }
 
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public IActionResult Deletar (int id)
         {
             categoriasAppServico.Deletar(id);

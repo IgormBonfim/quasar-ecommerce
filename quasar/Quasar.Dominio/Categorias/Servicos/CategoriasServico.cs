@@ -12,6 +12,11 @@ namespace Quasar.Dominio.Categorias.Servicos
     {
         private readonly ICategoriasRepositorio categoriasRepositorio;
 
+        public CategoriasServico(ICategoriasRepositorio categoriasRepositorio)
+        {
+            this.categoriasRepositorio = categoriasRepositorio;
+        }
+
         public IList<Categoria> Buscar(IQueryable<Categoria> query)
         {
             return query.ToList();

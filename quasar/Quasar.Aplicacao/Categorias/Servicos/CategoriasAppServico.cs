@@ -53,6 +53,8 @@ namespace Quasar.Aplicacao.Categorias.Servicos
             try
             {
                 Categoria categoriaEditar = categoriasServico.Instanciar(editarRequest.NomeCategoria, editarRequest.ImgCategoria);
+                categoriaEditar.SetIdCategoria(editarRequest.IdCategoria);
+
                 Categoria categoriaSalvo = categoriasServico.Editar(categoriaEditar);
                 if(transacao.IsActive)
                     transacao.Commit();
