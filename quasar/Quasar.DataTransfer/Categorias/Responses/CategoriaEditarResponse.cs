@@ -9,5 +9,6 @@ namespace Quasar.DataTransfer.Categorias.Responses
     {
         public int IdCategoria {get; set;}
         public string NomeCategoria {get; set;}
+        public string ImgCategoria {get; set;}
     }
 }
