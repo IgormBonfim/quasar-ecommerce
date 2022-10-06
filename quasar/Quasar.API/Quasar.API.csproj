@@ -18,7 +18,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Quasar.Aplicacao\Quasar.Aplicacao.csproj" />
     <ProjectReference Include="..\Quasar.DataTransfer\Quasar.DataTransfer.csproj" />
-    <ProjectReference Include="..\Quasar.Dominio\Quasar.Dominio.csproj" />
+    <ProjectReference Include="..\Quasar.Ioc\Quasar.Ioc.csproj" />
   </ItemGroup>
 
 </Project>
