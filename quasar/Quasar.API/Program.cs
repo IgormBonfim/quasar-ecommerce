@@ -40,6 +40,7 @@ using Quasar.Infra.Produtos;
 using Quasar.Infra.StatusVendas;
 using Quasar.Infra.Ufs;
 using ISession = NHibernate.ISession;
+using Quasar.Ioc;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -49,46 +50,8 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddSingleton<ISessionFactory>(factory =>
-{
-    string connectionString = builder.Configuration.GetConnectionString("MySql");
-    return Fluently.Configure().Database(MySQLConfiguration.Standard
-                                            .ConnectionString(connectionString)
-                                            .FormatSql()
-                                            .ShowSql())
-                                            .Mappings(x => 
-                                            {
-                                                x.FluentMappings.AddFromAssemblyOf<FornecedorMap>();
-                                            })
-                                            .BuildSessionFactory();
-});
 
-builder.Services.AddSingleton<ISession>(factory => factory.GetService<ISessionFactory>()?.OpenSession());
-
-builder.Services.AddSingleton<IProdutosRepositorio, ProdutosRepositorio>();
-builder.Services.AddSingleton<IProdutosServico, ProdutosServico>();
-builder.Services.AddSingleton<IProdutosAppServico, ProdutosAppServico>();
-
-builder.Services.AddSingleton<ICategoriasRepositorio, CategoriasRepositorio>();
-builder.Services.AddSingleton<ICategoriasServico, CategoriasServico>();
-builder.Services.AddSingleton<ICategoriasAppServico, CategoriasAppServico>();
-
-builder.Services.AddSingleton<IStatusVendasRepositorio, StatusVendasRepositorio>();
-builder.Services.AddSingleton<IStatusVendasServico, StatusVendasServico>();
-builder.Services.AddSingleton<IStatusVendasAppServico, StatusVendasAppServico>();
-builder.Services.AddSingleton<IUfsAppServico, UfsAppServico>();
-builder.Services.AddSingleton<IUfsRepositorio, UfsRepositorio>();
-builder.Services.AddSingleton<IUfsServico, UfsServico>();
-
-builder.Services.AddSingleton<IFormasPagamentoRepositorio, FormasPagamentoRepositorio>();
-builder.Services.AddSingleton<IFormasPagamentoServico, FormasPagamentoServico>();
-builder.Services.AddSingleton<IFormasPagamentoAppServico, FormasPagamentoAppServico>();
-
-builder.Services.AddSingleton<IFornecedoresRepositorio, FornecedoresRepositorio>();
-builder.Services.AddSingleton<IFornecedoresServico, FornecedoresServico>();
-builder.Services.AddSingleton<IFornecedoresAppServico, FornecedoresAppServico>();
-
-builder.Services.AddAutoMapper(typeof(ProdutosProfile));
+builder.Services.InjetarDependencias(builder.Configuration);
 
 var app = builder.Build();
 
