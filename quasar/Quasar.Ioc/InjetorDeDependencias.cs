@@ -1,5 +1,6 @@
 using FluentNHibernate.Cfg;
 using FluentNHibernate.Cfg.Db;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using NHibernate;
@@ -16,6 +17,7 @@ using Quasar.Aplicacao.StatusVendas.Servicos;
 using Quasar.Aplicacao.StatusVendas.Servicos.Interfaces;
 using Quasar.Aplicacao.Ufs.Servicos;
 using Quasar.Aplicacao.Ufs.Servicos.Interfaces;
+using Quasar.Autenticacao.Data;
 using Quasar.Dominio.Categorias.Repositorios;
 using Quasar.Dominio.Categorias.Servicos;
 using Quasar.Dominio.Categorias.Servicos.Interfaces;
@@ -63,6 +65,13 @@ namespace Quasar.Ioc
             });
 
             services.AddSingleton<ISession>(factory => factory.GetService<ISessionFactory>().OpenSession());
+
+            services.AddDbContext<IdentityDataContext>(options =>
+                options.UseMySql(
+                    configuration.GetConnectionString("MySql"),
+                    ServerVersion.Parse("8.0.28")
+                )
+            );
 
             services.AddSingleton<IProdutosRepositorio, ProdutosRepositorio>();
             services.AddSingleton<IProdutosServico, ProdutosServico>();
