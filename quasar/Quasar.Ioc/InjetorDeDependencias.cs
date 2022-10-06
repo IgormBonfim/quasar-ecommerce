@@ -25,6 +25,7 @@ using Quasar.Dominio.FormasPagamento.Servicos.Interfaces;
 using Quasar.Dominio.Fornecedores.Repositorios;
 using Quasar.Dominio.Fornecedores.Servicos;
 using Quasar.Dominio.Fornecedores.Servicos.Interfaces;
+using Quasar.Dominio.Produtos.Repositorios;
 using Quasar.Dominio.Produtos.Servicos;
 using Quasar.Dominio.Produtos.Servicos.Interfaces;
 using Quasar.Dominio.StatusVendas.Repositorios;
@@ -36,6 +37,7 @@ using Quasar.Dominio.Ufs.Servicos.Interfaces;
 using Quasar.Infra.Categorias;
 using Quasar.Infra.FormasPagamento;
 using Quasar.Infra.Fornecedores;
+using Quasar.Infra.Produtos;
 using Quasar.Infra.Produtos.Mapeamentos;
 using Quasar.Infra.StatusVendas;
 using Quasar.Infra.Ufs;
@@ -62,6 +64,7 @@ namespace Quasar.Ioc
 
             services.AddSingleton<ISession>(factory => factory.GetService<ISessionFactory>().OpenSession());
 
+            services.AddSingleton<IProdutosRepositorio, ProdutosRepositorio>();
             services.AddSingleton<IProdutosServico, ProdutosServico>();
             services.AddSingleton<IProdutosAppServico, ProdutosAppServico>();
 
@@ -72,6 +75,7 @@ namespace Quasar.Ioc
             services.AddSingleton<IStatusVendasRepositorio, StatusVendasRepositorio>();
             services.AddSingleton<IStatusVendasServico, StatusVendasServico>();
             services.AddSingleton<IStatusVendasAppServico, StatusVendasAppServico>();
+
             services.AddSingleton<IUfsAppServico, UfsAppServico>();
             services.AddSingleton<IUfsRepositorio, UfsRepositorio>();
             services.AddSingleton<IUfsServico, UfsServico>();
