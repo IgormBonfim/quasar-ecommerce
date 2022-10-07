@@ -62,31 +62,31 @@ namespace Quasar.Ioc
                                             .BuildSessionFactory();
             });
 
-            services.AddSingleton<ISession>(factory => factory.GetService<ISessionFactory>().OpenSession());
+            services.AddScoped<ISession>(factory => factory.GetService<ISessionFactory>().OpenSession());
 
-            services.AddSingleton<IProdutosRepositorio, ProdutosRepositorio>();
-            services.AddSingleton<IProdutosServico, ProdutosServico>();
-            services.AddSingleton<IProdutosAppServico, ProdutosAppServico>();
+            services.AddScoped<IProdutosRepositorio, ProdutosRepositorio>();
+            services.AddScoped<IProdutosServico, ProdutosServico>();
+            services.AddScoped<IProdutosAppServico, ProdutosAppServico>();
 
-            services.AddSingleton<ICategoriasRepositorio, CategoriasRepositorio>();
-            services.AddSingleton<ICategoriasServico, CategoriasServico>();
-            services.AddSingleton<ICategoriasAppServico, CategoriasAppServico>();
+            services.AddScoped<ICategoriasRepositorio, CategoriasRepositorio>();
+            services.AddScoped<ICategoriasServico, CategoriasServico>();
+            services.AddScoped<ICategoriasAppServico, CategoriasAppServico>();
 
-            services.AddSingleton<IStatusVendasRepositorio, StatusVendasRepositorio>();
-            services.AddSingleton<IStatusVendasServico, StatusVendasServico>();
-            services.AddSingleton<IStatusVendasAppServico, StatusVendasAppServico>();
+            services.AddScoped<IStatusVendasRepositorio, StatusVendasRepositorio>();
+            services.AddScoped<IStatusVendasServico, StatusVendasServico>();
+            services.AddScoped<IStatusVendasAppServico, StatusVendasAppServico>();
 
-            services.AddSingleton<IUfsAppServico, UfsAppServico>();
-            services.AddSingleton<IUfsRepositorio, UfsRepositorio>();
-            services.AddSingleton<IUfsServico, UfsServico>();
+            services.AddScoped<IUfsAppServico, UfsAppServico>();
+            services.AddScoped<IUfsRepositorio, UfsRepositorio>();
+            services.AddScoped<IUfsServico, UfsServico>();
 
-            services.AddSingleton<IFormasPagamentoRepositorio, FormasPagamentoRepositorio>();
-            services.AddSingleton<IFormasPagamentoServico, FormasPagamentoServico>();
-            services.AddSingleton<IFormasPagamentoAppServico, FormasPagamentoAppServico>();
+            services.AddScoped<IFormasPagamentoRepositorio, FormasPagamentoRepositorio>();
+            services.AddScoped<IFormasPagamentoServico, FormasPagamentoServico>();
+            services.AddScoped<IFormasPagamentoAppServico, FormasPagamentoAppServico>();
 
-            services.AddSingleton<IFornecedoresRepositorio, FornecedoresRepositorio>();
-            services.AddSingleton<IFornecedoresServico, FornecedoresServico>();
-            services.AddSingleton<IFornecedoresAppServico, FornecedoresAppServico>();
+            services.AddScoped<IFornecedoresRepositorio, FornecedoresRepositorio>();
+            services.AddScoped<IFornecedoresServico, FornecedoresServico>();
+            services.AddScoped<IFornecedoresAppServico, FornecedoresAppServico>();
 
             services.AddAutoMapper(typeof(ProdutosProfile));
         }
