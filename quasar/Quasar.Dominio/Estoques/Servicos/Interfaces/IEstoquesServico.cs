@@ -11,7 +11,7 @@ namespace Quasar.Dominio.Estoques.Servicos.Interfaces
         Estoque Validar(int idEstoque);
         Estoque Inserir(Estoque Estoque);
         Estoque Editar(Estoque estoque);
-        Estoque Instanciar(int qntEstoque);
+        Estoque Instanciar(int qntEstoque, int CodProduto);
         
 
     }

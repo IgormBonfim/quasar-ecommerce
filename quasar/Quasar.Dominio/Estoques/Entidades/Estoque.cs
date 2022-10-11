@@ -8,8 +8,8 @@ namespace Quasar.Dominio.Estoques.Entidades
 {
     public class Estoque
     {
-        public virtual int IdEstoque {get; protected set;}
-        public virtual int QntEstoque {get; protected set;}
+        public virtual int Codigo {get; protected set;}
+        public virtual int Quantidade {get; protected set;}
         public virtual Produto Produto {get; protected set;}
 
         public Estoque ()   
@@ -18,22 +18,22 @@ namespace Quasar.Dominio.Estoques.Entidades
          }
         public Estoque(int qntEstoque, Produto produto)
         {
-            SetQntEstoque(qntEstoque);
+            SetQuantidade(qntEstoque);
             SetProduto(produto);
         }
 
-        public virtual void SetIdEstoque(int? idEstoque)
+        public virtual void SetCodigo(int? codigo)
         {
-            if(!idEstoque.HasValue)
+            if(!codigo.HasValue)
             throw new Exception("O código do estoque é obirgatório!");
-            IdEstoque = idEstoque.Value;
+            Codigo = codigo.Value;
         }
 
-        public virtual void SetQntEstoque(int qntEstoque)
+        public virtual void SetQuantidade(int qntEstoque)
         {
             if(qntEstoque < 0)
             throw new Exception("A quantidade em estoque do produto não pode ser negativo");
-            QntEstoque = qntEstoque;
+            Quantidade = qntEstoque;
         }
 
         public virtual void SetProduto(Produto produto)

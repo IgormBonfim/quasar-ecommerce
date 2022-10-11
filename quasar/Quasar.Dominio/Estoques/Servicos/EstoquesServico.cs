@@ -23,10 +23,10 @@ namespace Quasar.Dominio.Estoques.Servicos
 
     public Estoque Editar(Estoque estoque)
     {
-        Estoque estoqueEditar = Validar(estoque.IdEstoque);
+        Estoque estoqueEditar = Validar(estoque.Codigo);
 
-        if (estoque.QntEstoque != estoqueEditar.QntEstoque)
-                estoqueEditar.SetQntEstoque(estoque.QntEstoque);
+        if (estoque.Quantidade != estoqueEditar.Quantidade)
+                estoqueEditar.SetQuantidade(estoque.Quantidade);
         return estoquesRepositorio.Editar(estoqueEditar);
     }
 
@@ -40,9 +40,9 @@ namespace Quasar.Dominio.Estoques.Servicos
         Estoque estoque = new Estoque(qntEstoque, produto);
         return estoque;
     }
-    public Estoque Validar(int idEstoque)
+    public Estoque Validar(int codigo)
     {
-        Estoque estoqueValidar = estoquesRepositorio.Recuperar(idEstoque);
+        Estoque estoqueValidar = estoquesRepositorio.Recuperar(codigo);
         if(estoqueValidar == null)
             throw new Exception("Produto não encontrado.");
             return estoqueValidar;

@@ -12,6 +12,6 @@ namespace Quasar.Dominio.Estoques.Respositorios
         Estoque Editar(Estoque estoque);
         Estoque Recuperar(Estoque estoque);
         IQueryable<Estoque> Query();
-        
+        Estoque Recuperar(int codigo);
     }
 }
