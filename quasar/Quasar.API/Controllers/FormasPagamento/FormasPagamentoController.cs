@@ -25,10 +25,10 @@ namespace Quasar.API.Controllers.FormasPagamento
             return Ok(retorno);
         }
 
-        [HttpGet("{id}")]
-        public IActionResult Recuperar(int id)
+        [HttpGet("{codigo}")]
+        public IActionResult Recuperar(int codigo)
         {
-            var retorno = formasPagamentoAppServico.Recuperar(id);
+            var retorno = formasPagamentoAppServico.Recuperar(codigo);
             return Ok(retorno);
         }
     }

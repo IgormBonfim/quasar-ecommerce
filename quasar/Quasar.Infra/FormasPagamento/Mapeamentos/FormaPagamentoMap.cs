@@ -13,8 +13,8 @@ namespace Quasar.Infra.FormasPagamento.Mapeamentos
         {
             Schema("quasarecommerce");
             Table("formaPagamento");
-            Id(f => f.IdFormaPagamento).Column("idFormaPagamento").GeneratedBy.Identity();
-            Map(f => f.DescricaoFormaPagamento).Column("descricaoFormaPagamento");
+            Id(f => f.Codigo).Column("codFormaPagamento").GeneratedBy.Identity();
+            Map(f => f.Descricao).Column("descricao");
         }
     }
 }
