@@ -20,12 +20,12 @@ namespace Quasar.Dominio.Ufs.Entidades
 
         public Uf(int codigo, string sigla, string nome)
         {
-            SetCodUf(codigo);
+            SetCodigo(codigo);
             SetSigla(sigla);
             SetNome(nome);
         }
 
-        public virtual void SetCodUf(int? codigo)
+        public virtual void SetCodigo(int? codigo)
         {
             if (!codigo.HasValue)
                 throw new Exception("O código da UF tem que ser obrigatório!");

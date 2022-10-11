@@ -20,9 +20,9 @@ namespace Quasar.Infra.StatusVendas
             return session.Query<StatusVenda>();
         }
 
-        public StatusVenda Recuperar(int cod)
+        public StatusVenda Recuperar(int codigo)
         {
-            return session.Get<StatusVenda>(cod);
+            return session.Get<StatusVenda>(codigo);
         }
     }
 }

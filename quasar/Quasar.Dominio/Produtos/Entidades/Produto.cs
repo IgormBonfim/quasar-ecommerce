@@ -9,7 +9,7 @@ namespace Quasar.Dominio.Produtos.Entidades
 {
     public class Produto
     {
-        public virtual int CodProduto { get; protected set; }
+        public virtual int Codigo { get; protected set; }
         public virtual string Descricao { get; protected set; }
         public virtual string Nome { get; protected set; }
         // public virtual Categoria Categoria { get; protected set; }
@@ -19,23 +19,23 @@ namespace Quasar.Dominio.Produtos.Entidades
         public Produto() { }
         public Produto(string? descricao, string? nome, string? imagem)
         {
-            SetDescricaoProduto(descricao);
-            SetNomeProduto(nome);
+            SetDescricao(descricao);
+            SetNome(nome);
             // SetCategoria(categoria);
             // SetFornecedor(fornecedor);
-            SetImgProduto(imagem);
+            SetImagem(imagem);
         }
 
-        public virtual void SetIdProduto(int? codProduto)
+        public virtual void SetCodigo(int? codigo)
         {
-            if(!codProduto.HasValue)
+            if(!codigo.HasValue)
             {
                 throw new Exception("Código do produto é obrigatório!");
             }
-            CodProduto = codProduto.Value;
+            Codigo = codigo.Value;
         }
 
-        public virtual void SetDescricaoProduto(string? descricao)
+        public virtual void SetDescricao(string? descricao)
         {
             if(string.IsNullOrWhiteSpace(descricao) || descricao.Length < 20)
                 throw new Exception("O campo descrição deve possuir ao menos 20 caracteres!");
@@ -46,7 +46,7 @@ namespace Quasar.Dominio.Produtos.Entidades
             Descricao = descricao;
         }
 
-        public virtual void SetNomeProduto(string? nome)
+        public virtual void SetNome(string? nome)
         {
             if(string.IsNullOrWhiteSpace(nome) || nome.Length < 10)
                 throw new Exception("O campo nome deve possuir ao menos 10 caracteres");
@@ -67,7 +67,7 @@ namespace Quasar.Dominio.Produtos.Entidades
             Fornecedor = fornecedor;
         }
 
-        public virtual void SetImgProduto(string? imagem)
+        public virtual void SetImagem(string? imagem)
         {
             if (string.IsNullOrWhiteSpace(imagem))
                 throw new Exception("O campo de URL da imagem do produto é obrigatório");
