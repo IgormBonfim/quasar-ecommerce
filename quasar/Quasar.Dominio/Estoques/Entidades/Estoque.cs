@@ -12,13 +12,14 @@ namespace Quasar.Dominio.Estoques.Entidades
         public virtual int QntEstoque {get; protected set;}
         public virtual Produto Produto {get; protected set;}
 
-        public Estoque ()   {   }
+        public Estoque ()   
+        {  
 
-            public Estoque(int idEstoque, int qntEstoque, Produto produto)
+         }
+        public Estoque(int qntEstoque, Produto produto)
         {
-            IdEstoque = idEstoque;
-            QntEstoque = qntEstoque;
-            Produto = produto;
+            SetQntEstoque(qntEstoque);
+            SetProduto(produto);
         }
 
         public virtual void SetIdEstoque(int? idEstoque)
