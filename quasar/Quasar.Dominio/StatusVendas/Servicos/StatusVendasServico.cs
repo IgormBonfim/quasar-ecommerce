@@ -15,9 +15,9 @@ namespace Quasar.Dominio.StatusVendas.Servicos
         {
             this.statusVendasRepositorio = statusVendasRepositorio;
         }
-        public StatusVenda Validar(int id)
+        public StatusVenda Validar(int cod)
         {
-            StatusVenda statusVendaValidar = statusVendasRepositorio.Recuperar(id);
+            StatusVenda statusVendaValidar = statusVendasRepositorio.Recuperar(cod);
             if (statusVendaValidar == null)
                 throw new Exception("Status da venda não identificado.");
             return statusVendaValidar;

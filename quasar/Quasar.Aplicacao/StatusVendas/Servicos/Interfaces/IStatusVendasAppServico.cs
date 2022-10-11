@@ -8,6 +8,6 @@ namespace Quasar.Aplicacao.StatusVendas.Servicos.Interfaces
 {
     public interface IStatusVendasAppServico
     {
-        StatusVendaResponse Recuperar(int id);
+        StatusVendaResponse Recuperar(int cod);
     }
 }

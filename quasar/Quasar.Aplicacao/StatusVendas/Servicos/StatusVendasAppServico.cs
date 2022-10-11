@@ -23,11 +23,11 @@ namespace Quasar.Aplicacao.StatusVendas.Servicos
             this.statusVendasServico = statusVendasServico;
             this.mapper = mapper;
         }
-        public StatusVendaResponse Recuperar(int id)
+        public StatusVendaResponse Recuperar(int cod)
         {
             try
             {
-                StatusVenda statusVenda = statusVendasServico.Validar(id);
+                StatusVenda statusVenda = statusVendasServico.Validar(cod);
                 return mapper.Map<StatusVendaResponse>(statusVenda);
                 
             }
