@@ -7,8 +7,7 @@ namespace Quasar.DataTransfer.Genericos.Requests
 {
     public class PaginacaoRequest
     {
-        public int Pagina { get; set; }
-        public int QuantidadePorPagina { get; set; }
-        public int TotalPaginas { get; set; }
+        public int Pagina { get; set; } = 1;
+        public int QuantidadePorPagina { get; set; } = 20;
     }
 }
