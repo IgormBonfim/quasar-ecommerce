@@ -19,9 +19,9 @@ namespace Quasar.API.Controllers.StatusVendas
         }
 
         [HttpGet("{id}")]
-        public IActionResult Recuperar(int id)
+        public IActionResult Recuperar(int cod)
         {
-            var retorno = statusVendasAppServico.Recuperar(id);
+            var retorno = statusVendasAppServico.Recuperar(cod);
             return Ok(retorno);
         }
         

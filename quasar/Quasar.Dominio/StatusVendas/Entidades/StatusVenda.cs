@@ -7,34 +7,34 @@ namespace Quasar.Dominio.StatusVendas.Entidades
 {
     public class StatusVenda
     {
-        public virtual int IdStatusVenda { get; protected set; }
-        public virtual string DescricaoStatusVenda { get; protected set; }
+        public virtual int CodStatusVenda { get; protected set; }
+        public virtual string Descricao { get; protected set; }
 
         public StatusVenda () {}
 
-        public StatusVenda(string? DescricaoStatusVenda)
+        public StatusVenda(string? descricaoStatusVenda)
         {
-            SetDescricaoStatusVenda(DescricaoStatusVenda);
+            SetDescricaoStatusVenda(descricaoStatusVenda);
         }
 
-        public virtual void SetIdStatusVenda (int? idStatusVenda)
+        public virtual void SetIdStatusVenda (int? codStatusVenda)
         {
-            if(!idStatusVenda.HasValue)
+            if(!codStatusVenda.HasValue)
             {
                 throw new Exception("Código do Status da Venda é obrigatório!");
             }
-            IdStatusVenda = idStatusVenda.Value;
+            CodStatusVenda = codStatusVenda.Value;
         }
 
-        public virtual void SetDescricaoStatusVenda (string? descricaoStatusVenda)
+        public virtual void SetDescricaoStatusVenda (string? descricao)
         {
-            if(string.IsNullOrWhiteSpace(descricaoStatusVenda) && descricaoStatusVenda.Length < 3)
+            if(string.IsNullOrWhiteSpace(descricao) && descricao.Length < 3)
                 throw new Exception("O campo descrição deve possuir ao menos 3 caracteres!");
 
-            if(descricaoStatusVenda.Length > 50)
+            if(descricao.Length > 50)
                 throw new Exception("O campo descrição deve possuir até 50 caracteres!");
 
-            DescricaoStatusVenda = descricaoStatusVenda;
+            Descricao = descricao;
         }
 
     }
