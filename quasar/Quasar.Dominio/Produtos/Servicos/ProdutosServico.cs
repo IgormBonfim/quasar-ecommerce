@@ -25,9 +25,9 @@ namespace Quasar.Dominio.Produtos.Servicos
         //Recebe o id do produto que será deletado e valida se esse produto existe no banco
         //Metodo que chama o metodo de deletar de ProdutosRepositorio
         //Não retorna nada
-        public void Deletar(int idProduto)
+        public void Deletar(int codigo)
         {
-            Produto produtoDeletar = Validar(idProduto);
+            Produto produtoDeletar = Validar(codigo);
             produtosRepositorio.Deletar(produtoDeletar);
         }
 
@@ -36,16 +36,16 @@ namespace Quasar.Dominio.Produtos.Servicos
         //Retorna o produto atualizado no banco
         public Produto Editar(Produto produto)
         {
-            Produto produtoEditar = Validar(produto.CodProduto);
+            Produto produtoEditar = Validar(produto.Codigo);
 
             if (produto.Nome != produtoEditar.Nome)
-                produtoEditar.SetNomeProduto(produto.Nome);
+                produtoEditar.SetNome(produto.Nome);
 
             if (produto.Descricao != produtoEditar.Descricao) 
-                produtoEditar.SetDescricaoProduto(produto.Descricao);
+                produtoEditar.SetDescricao(produto.Descricao);
 
             if (produto.Imagem != produtoEditar.Imagem) 
-                produtoEditar.SetImgProduto(produto.Imagem);
+                produtoEditar.SetImagem(produto.Imagem);
 
             // if (produto.Categoria != produtoEditar.Categoria)
             //     produtoEditar.SetCategoria(produto.Categoria);
@@ -76,9 +76,9 @@ namespace Quasar.Dominio.Produtos.Servicos
         //Metodo que valida se um produto existe no banco
         //Recebe o id do produto a ser validado
         //Retorna o produto caso exista no banco
-        public Produto Validar(int cod)
+        public Produto Validar(int codigo)
         {
-            Produto produtoValidar = produtosRepositorio.Recuperar(cod);
+            Produto produtoValidar = produtosRepositorio.Recuperar(codigo);
             if (produtoValidar == null)
                 throw new Exception("Produto não encontado.");
             return produtoValidar;

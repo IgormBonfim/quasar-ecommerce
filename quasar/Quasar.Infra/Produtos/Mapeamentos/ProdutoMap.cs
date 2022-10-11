@@ -13,7 +13,7 @@ namespace Quasar.Infra.Produtos.Mapeamentos
         {
             Schema("quasarecommerce");
             Table("produto");
-            Id(p => p.CodProduto).Column("codProduto").GeneratedBy.Identity();
+            Id(p => p.Codigo).Column("codProduto").GeneratedBy.Identity();
             Map(p => p.Descricao).Column("descricao");
             Map(p => p.Nome).Column("nome");
             Map(p => p.Imagem).Column("imagem");
