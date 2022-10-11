@@ -13,4 +13,8 @@
     <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="6.0.2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Quasar.DataTransfer\Quasar.DataTransfer.csproj" />
+  </ItemGroup>
+
 </Project>
