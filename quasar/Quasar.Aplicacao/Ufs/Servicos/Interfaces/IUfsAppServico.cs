@@ -8,7 +8,7 @@ namespace Quasar.Aplicacao.Ufs.Servicos.Interfaces
 {
     public interface IUfsAppServico
     {
-        UfResponse Recuperar(int id);
+        UfResponse Recuperar(int cod);
         IList<UfResponse> Listar();
     }
 }

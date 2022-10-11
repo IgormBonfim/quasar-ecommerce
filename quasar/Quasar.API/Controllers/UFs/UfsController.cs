@@ -26,9 +26,9 @@ namespace Quasar.API.Controllers.UFs
     }
 
     [HttpGet("{id}")]
-    public IActionResult Recuperar(int id)
+    public IActionResult Recuperar(int cod)
     {
-        var retorno = ufsAppServico.Recuperar(id);
+        var retorno = ufsAppServico.Recuperar(cod);
         return Ok(retorno);
     }
 
