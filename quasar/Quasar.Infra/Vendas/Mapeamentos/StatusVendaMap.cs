@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using FluentNHibernate.Mapping;
-using Quasar.Dominio.StatusVendas.Entidades;
+using Quasar.Dominio.Vendas.Entidades;
 
-namespace Quasar.Infra.StatusVendas.Mapeamentos
+namespace Quasar.Infra.Vendas.Mapeamentos
 {
     public class StatusVendaMap : ClassMap<StatusVenda>
     {
