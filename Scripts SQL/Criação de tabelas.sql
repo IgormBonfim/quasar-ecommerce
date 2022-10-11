@@ -3,49 +3,49 @@ USE quasarecommerce;
 
 CREATE TABLE IF NOT EXISTS quasarecommerce.statusVenda (
   codStatusVenda INT NOT NULL AUTO_INCREMENT,
-  descricaoStatusVenda VARCHAR(50) NOT NULL,
+  descricao VARCHAR(50) NOT NULL,
   PRIMARY KEY (codStatusVenda)
 );
 
 CREATE TABLE IF NOT EXISTS quasarecommerce.formaPagamento (
   codFormaPagamento INT NOT NULL,
-  descricaoFormaPagamento VARCHAR(50) NOT NULL,
+  descricao VARCHAR(50) NOT NULL,
   PRIMARY KEY (codFormaPagamento)
 );
 
 CREATE TABLE IF NOT EXISTS quasarecommerce.UF (
   codUf INT NULL AUTO_INCREMENT,
-  siglaUf VARCHAR(2) NOT NULL,
-  descUf VARCHAR(100) NOT NULL,
+  sigla VARCHAR(2) NOT NULL,
+  nome VARCHAR(100) NOT NULL,
   PRIMARY KEY (codUf)
 );
 
 CREATE TABLE IF NOT EXISTS quasarecommerce.cidade (
   codCidade INT NOT NULL AUTO_INCREMENT,
-  nomeCidade VARCHAR(100) NOT NULL,
-  idUf INT NOT NULL,
+  nome VARCHAR(100) NOT NULL,
+  codUf INT NOT NULL,
   PRIMARY KEY (codCidade),
   FOREIGN KEY (codUf) REFERENCES quasarecommerce.uf (idUf)
 );
 
 CREATE TABLE IF NOT EXISTS quasarecommerce.tipoUsuario (
   codTipoUsuario INT NOT NULL AUTO_INCREMENT,
-  nomeTipoUsuario VARCHAR(20) NULL,
+  nome VARCHAR(20) NULL,
   PRIMARY KEY (codTipoUsuario)
 );
 
 CREATE TABLE IF NOT EXISTS quasarecommerce.usuario (
 id INT NOT NULL AUTO_INCREMENT,
-emailUsuario VARCHAR(100) NOT NULL UNIQUE,
-senhaUsuario VARCHAR(100) NOT NULL,
-nomeUsuario VARCHAR(100) NOT NULL,
-codTipoUsuario INT NOT NULL,
-telefoneUsuario VARCHAR(11) NULL,
-cpfUsuario VARCHAR(11) NULL,
-dataNascimentoUsuario DATE NULL,
-cnpjUsuario VARCHAR(14) NULL,
-razaoSocialUsuario VARCHAR(100) NULL,
-ieUsuario VARCHAR(14) NULL,
+email VARCHAR(100) NOT NULL UNIQUE,
+senha VARCHAR(100) NOT NULL,
+nome VARCHAR(100) NOT NULL,
+codTipo INT NOT NULL,
+telefone VARCHAR(11) NULL,
+cpf VARCHAR(11) NULL,
+dataNascimento DATE NULL,
+cnpj VARCHAR(14) NULL,
+razaoSocial VARCHAR(100) NULL,
+ie VARCHAR(14) NULL,
 PRIMARY KEY (codUsuario),
 FOREIGN KEY (codTipoUsuario)
 REFERENCES quasarecommerce.tipoUsuario (codTipoUsuario)
@@ -53,12 +53,12 @@ REFERENCES quasarecommerce.tipoUsuario (codTipoUsuario)
 
 CREATE TABLE IF NOT EXISTS quasarecommerce.endereco (
   codEndereco INT NOT NULL AUTO_INCREMENT,
-  numeroEndereco INT NOT NULL,
-  bairroEndereco VARCHAR(100) NOT NULL,
-  ruaEndereco VARCHAR(100) NOT NULL,
-  pontoReferenciaEndereco VARCHAR(100) NULL,
-  complementoEndereco VARCHAR(100) NULL,
-  cepEndereco VARCHAR(8) NOT NULL,
+  numero INT NOT NULL,
+  bairro VARCHAR(100) NOT NULL,
+  rua VARCHAR(100) NOT NULL,
+  pontoReferencia VARCHAR(100) NULL,
+  complemento VARCHAR(100) NULL,
+  cep VARCHAR(8) NOT NULL,
   codCidade INT NOT NULL,
   codUsuario INT NOT NULL,
   PRIMARY KEY (codEndereco),
@@ -87,27 +87,27 @@ CREATE TABLE IF NOT EXISTS quasarecommerce.endereco (
 
    CREATE TABLE IF NOT EXISTS quasarecommerce.categoria (
   codCategoria INT NOT NULL AUTO_INCREMENT,
-  nomeCategoria VARCHAR(100) NOT NULL,
-  imgCategoria VARCHAR(255) NOT NULL,
+  nome VARCHAR(100) NOT NULL,
+  imagem VARCHAR(255) NOT NULL,
   PRIMARY KEY (codCategoria)
   );
   
   CREATE TABLE IF NOT EXISTS quasarecommerce.fornecedor (
   codFornecedor INT NOT NULL AUTO_INCREMENT,
-  nomeFornecedor VARCHAR(100) NOT NULL,
-  razaoSocialFornecedor VARCHAR(100) NOT NULL,
-  cnpjFornecedor VARCHAR(14) NOT NULL,
-  ieFornecedor VARCHAR(14) NULL,
+  nome VARCHAR(100) NOT NULL,
+  razaoSocial VARCHAR(100) NOT NULL,
+  cnpj VARCHAR(14) NOT NULL,
+  ie VARCHAR(14) NULL,
   PRIMARY KEY (codFornecedor)
   );
 
 CREATE TABLE IF NOT EXISTS quasarecommerce.produto (
   codProduto INT NOT NULL AUTO_INCREMENT,
-  descricaoProduto VARCHAR(255) NOT NULL,
-  nomeProduto VARCHAR(100) NOT NULL,
+  descricao VARCHAR(255) NOT NULL,
+  nome VARCHAR(100) NOT NULL,
   codCategoria INT NOT NULL,
   codFornecedor INT NOT NULL,
-  imgProduto VARCHAR(255) NOT NULL,
+  imagem VARCHAR(255) NOT NULL,
   PRIMARY KEY (codProduto),
   FOREIGN KEY (codCategoria)
   REFERENCES quasarecommerce.categoria (codCategoria),
@@ -119,7 +119,7 @@ CREATE TABLE IF NOT EXISTS quasarecommerce.produto (
   codItemVenda INT NOT NULL AUTO_INCREMENT,
   codVenda INT NOT NULL,
   codProduto INT NOT NULL,
-  quantcodadeItemVenda INT NOT NULL,
+  quantcodade INT NOT NULL,
   PRIMARY KEY (codItemVenda),
   FOREIGN KEY (codVenda)
   REFERENCES quasarecommerce.venda (codVenda),
@@ -129,7 +129,7 @@ CREATE TABLE IF NOT EXISTS quasarecommerce.produto (
 
 CREATE TABLE IF NOT EXISTS quasarecommerce.estoque (
   codEstoque INT NOT NULL auto_increment,
-  qtdEstoque INT NOT NULL,
+  quantidade INT NOT NULL,
   codProduto INT NOT NULL,
   PRIMARY KEY (codEstoque),
   FOREIGN KEY (codProduto)
