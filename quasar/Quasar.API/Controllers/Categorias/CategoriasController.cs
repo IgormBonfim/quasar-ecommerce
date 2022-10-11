@@ -24,19 +24,19 @@ namespace Quasar.API.Controllers.Categorias
             var retorno = categoriasAppServico.Inserir(inserirRequest);
             return Ok(retorno);
         }
-        [HttpPut("{id}")]
-        public IActionResult Editar (int id, [FromBody] CategoriaEditarRequest editarRequest)
+        [HttpPut("{codigo}")]
+        public IActionResult Editar (int codigo, [FromBody] CategoriaEditarRequest editarRequest)
         {
-            editarRequest.IdCategoria = id;
+            editarRequest.Codigo = codigo;
 
             var retorno = categoriasAppServico.Editar(editarRequest);
             return Ok(retorno);
         }
 
-        [HttpDelete("{id}")]
-        public IActionResult Deletar (int id)
+        [HttpDelete("{codigo}")]
+        public IActionResult Deletar (int codigo)
         {
-            categoriasAppServico.Deletar(id);
+            categoriasAppServico.Deletar(codigo);
             return Ok();
         }
 
@@ -47,10 +47,10 @@ namespace Quasar.API.Controllers.Categorias
             return Ok(retorno);
         }
 
-        [HttpGet("{id}")]
-        public IActionResult Recuperar (int id)
+        [HttpGet("{codigo}")]
+        public IActionResult Recuperar (int codigo)
         {
-            var retorno = categoriasAppServico.Recuperar(id);
+            var retorno = categoriasAppServico.Recuperar(codigo);
             return Ok(retorno);
         }
     }
