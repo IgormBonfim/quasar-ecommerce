@@ -42,8 +42,8 @@ namespace Quasar.Infra.Produtos
         //Retorna o produto com o id
         public Produto Inserir(Produto produto)
         {
-            int id = (int)session.Save(produto);
-            produto.SetIdProduto(id);
+            int cod = (int)session.Save(produto);
+            produto.SetIdProduto(cod);
             return produto;
         }
 
@@ -56,9 +56,9 @@ namespace Quasar.Infra.Produtos
 
         //Metodo que recupera um produto no banco de dados
         //Equivalente a um "SELECT * FROM PRODUTOS WHERE IDPRODUTO = IDINFORMADO" no MySQL
-        public Produto Recuperar(int id)
+        public Produto Recuperar(int cod)
         {
-            return session.Get<Produto>(id);
+            return session.Get<Produto>(cod);
         }
     }
 }

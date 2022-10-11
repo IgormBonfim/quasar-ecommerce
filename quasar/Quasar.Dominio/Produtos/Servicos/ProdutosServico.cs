@@ -36,16 +36,16 @@ namespace Quasar.Dominio.Produtos.Servicos
         //Retorna o produto atualizado no banco
         public Produto Editar(Produto produto)
         {
-            Produto produtoEditar = Validar(produto.IdProduto);
+            Produto produtoEditar = Validar(produto.CodProduto);
 
-            if (produto.NomeProduto != produtoEditar.NomeProduto)
-                produtoEditar.SetNomeProduto(produto.NomeProduto);
+            if (produto.Nome != produtoEditar.Nome)
+                produtoEditar.SetNomeProduto(produto.Nome);
 
-            if (produto.DescricaoProduto != produtoEditar.DescricaoProduto) 
-                produtoEditar.SetDescricaoProduto(produto.DescricaoProduto);
+            if (produto.Descricao != produtoEditar.Descricao) 
+                produtoEditar.SetDescricaoProduto(produto.Descricao);
 
-            if (produto.ImgProduto != produtoEditar.ImgProduto) 
-                produtoEditar.SetImgProduto(produto.ImgProduto);
+            if (produto.Imagem != produtoEditar.Imagem) 
+                produtoEditar.SetImgProduto(produto.Imagem);
 
             // if (produto.Categoria != produtoEditar.Categoria)
             //     produtoEditar.SetCategoria(produto.Categoria);
@@ -67,18 +67,18 @@ namespace Quasar.Dominio.Produtos.Servicos
         //Metodo que Instancia um novo objeto do tipo Produto
         //Recebe as informações do produto
         //Retorna um Produto
-        public Produto Instanciar(string? descricaoProduto, string? nomeProduto, string? imgProduto)
+        public Produto Instanciar(string? descricao, string? nome, string? imagem)
         {
-            Produto produto = new Produto(descricaoProduto, nomeProduto, imgProduto);
+            Produto produto = new Produto(descricao, nome, imagem);
             return produto;
         }
 
         //Metodo que valida se um produto existe no banco
         //Recebe o id do produto a ser validado
         //Retorna o produto caso exista no banco
-        public Produto Validar(int id)
+        public Produto Validar(int cod)
         {
-            Produto produtoValidar = produtosRepositorio.Recuperar(id);
+            Produto produtoValidar = produtosRepositorio.Recuperar(cod);
             if (produtoValidar == null)
                 throw new Exception("Produto não encontado.");
             return produtoValidar;
