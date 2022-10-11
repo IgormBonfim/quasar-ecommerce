@@ -18,11 +18,7 @@ using Quasar.Aplicacao.StatusVendas.Servicos;
 using Quasar.Aplicacao.StatusVendas.Servicos.Interfaces;
 using Quasar.Aplicacao.Ufs.Servicos;
 using Quasar.Aplicacao.Ufs.Servicos.Interfaces;
-using Quasar.Aplicacao.Usuarios.Servicos;
-using Quasar.Aplicacao.Usuarios.Servicos.Interfaces;
 using Quasar.Autenticacao.Data;
-using Quasar.Autenticacao.Servicos;
-using Quasar.Autenticacao.Servicos.Interfaces;
 using Quasar.Dominio.Categorias.Repositorios;
 using Quasar.Dominio.Categorias.Servicos;
 using Quasar.Dominio.Categorias.Servicos.Interfaces;
@@ -41,9 +37,6 @@ using Quasar.Dominio.StatusVendas.Servicos.Interfaces;
 using Quasar.Dominio.Ufs.Repositorios;
 using Quasar.Dominio.Ufs.Servicos;
 using Quasar.Dominio.Ufs.Servicos.Interfaces;
-using Quasar.Dominio.Usuarios.Repositorios;
-using Quasar.Dominio.Usuarios.Servicos;
-using Quasar.Dominio.Usuarios.Servicos.Interfaces;
 using Quasar.Infra.Categorias;
 using Quasar.Infra.FormasPagamento;
 using Quasar.Infra.Fornecedores;
@@ -51,7 +44,6 @@ using Quasar.Infra.Produtos;
 using Quasar.Infra.Produtos.Mapeamentos;
 using Quasar.Infra.StatusVendas;
 using Quasar.Infra.Ufs;
-using Quasar.Infra.Usuarios;
 
 namespace Quasar.Ioc
 {
@@ -86,12 +78,6 @@ namespace Quasar.Ioc
             .AddRoles<IdentityRole>()
             .AddEntityFrameworkStores<IdentityDataContext>()
             .AddDefaultTokenProviders();
-            
-            services.AddSingleton<IUsuariosRepositorio, UsuariosRepositorio>();
-            services.AddSingleton<IUsuariosServico, UsuariosServico>();
-            services.AddScoped<IUsuariosAppServico, UsuariosAppServico>();
-
-            services.AddScoped<IIdentityServico, IdentityServico>();
 
             services.AddSingleton<IProdutosRepositorio, ProdutosRepositorio>();
             services.AddSingleton<IProdutosServico, ProdutosServico>();
