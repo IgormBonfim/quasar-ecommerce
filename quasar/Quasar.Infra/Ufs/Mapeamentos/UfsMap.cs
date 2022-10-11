@@ -14,7 +14,7 @@ namespace Quasar.Infra.Ufs.Mapeamentos
         {
             Schema("quasarecommerce");
             Table("UF");
-            Id(u => u.CodUf).Column("codUf").GeneratedBy.Identity();
+            Id(u => u.Codigo).Column("codUf").GeneratedBy.Identity();
             Map(u => u.Sigla).Column("sigla");
             Map(u => u.Nome).Column("nome");
         }

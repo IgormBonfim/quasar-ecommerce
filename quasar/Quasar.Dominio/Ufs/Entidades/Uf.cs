@@ -9,7 +9,7 @@ namespace Quasar.Dominio.Ufs.Entidades
     {
 
 
-        public virtual int CodUf { get; protected set; }
+        public virtual int Codigo { get; protected set; }
         public virtual string Sigla { get; protected set; }
         public virtual string Nome { get; protected set; }
 
@@ -18,18 +18,18 @@ namespace Quasar.Dominio.Ufs.Entidades
 
         }
 
-        public Uf(int codUf, string sigla, string nome)
+        public Uf(int codigo, string sigla, string nome)
         {
-            SetCodUf(codUf);
+            SetCodUf(codigo);
             SetSigla(sigla);
             SetNome(nome);
         }
 
-        public virtual void SetCodUf(int? codUf)
+        public virtual void SetCodUf(int? codigo)
         {
-            if (!codUf.HasValue)
+            if (!codigo.HasValue)
                 throw new Exception("O código da UF tem que ser obrigatório!");
-            CodUf = codUf.Value;
+            Codigo = codigo.Value;
         }
         public virtual void SetSigla(string sigla)
         {
