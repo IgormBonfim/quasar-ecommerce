@@ -13,9 +13,10 @@ namespace Quasar.Infra.Estoques.Mapeamentos
         {
             Schema("quasarecommerce");
             Table("estoque");
-            Id(p => p.Codigo).Column("Codigo").GeneratedBy.Identity();
-            Map(p => p.Quantidade).Column("Quantidade");
-            Map(p => p.Produto).Column("Produto");
+            Id(p => p.Codigo).Column("codEstoque").GeneratedBy.Identity();
+            Map(p => p.Quantidade).Column("quantidade");
+
+            References(p => p.Produto).Column("CodigoProduto");
         }
     }
 }
