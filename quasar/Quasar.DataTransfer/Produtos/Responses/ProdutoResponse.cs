@@ -7,7 +7,7 @@ namespace Quasar.DataTransfer.Produtos.Responses
 {
     public class ProdutoResponse
     {
-        public int CodProduto { get; set; }
+        public int Codigo { get; set; }
         public string Descricao { get; set; }
         public string Nome { get; set; }
         public string Imagem { get; set; }

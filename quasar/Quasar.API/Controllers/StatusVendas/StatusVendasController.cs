@@ -18,7 +18,7 @@ namespace Quasar.API.Controllers.StatusVendas
             this.statusVendasAppServico = statusVendasAppServico;
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("{codigo}")]
         public IActionResult Recuperar(int codigo)
         {
             var retorno = statusVendasAppServico.Recuperar(codigo);
