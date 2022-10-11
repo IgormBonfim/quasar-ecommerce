@@ -26,18 +26,18 @@ namespace Quasar.API.Controllers.Fornecedores
             return Ok(retorno);
         }
 
-        [HttpPut("{id}")]
-        public IActionResult Editar(int id, FornecedorEditarRequest editarRequest)
+        [HttpPut("{cod}")]
+        public IActionResult Editar(int codigo, FornecedorEditarRequest editarRequest)
         {
-            editarRequest.IdFornecedor = id;
+            editarRequest.Codigo = codigo;
             var retorno = fornecedoresAppServico.Editar(editarRequest);
             return Ok(retorno);
         }
 
-        [HttpDelete("{id}")]
-        public IActionResult Deletar (int id)
+        [HttpDelete("{cod}")]
+        public IActionResult Deletar (int codigo)
         {
-            fornecedoresAppServico.Deletar(id);
+            fornecedoresAppServico.Deletar(codigo);
             return Ok();
         }
 
@@ -48,10 +48,10 @@ namespace Quasar.API.Controllers.Fornecedores
             return Ok(retorno);
         }
 
-        [HttpGet("{Id}")]
-        public IActionResult Recuperar(int id)
+        [HttpGet("{cod}")]
+        public IActionResult Recuperar(int codigo)
         {
-            var retorno = fornecedoresAppServico.Recuperar(id);
+            var retorno = fornecedoresAppServico.Recuperar(codigo);
             return Ok(retorno);
         }
     }
