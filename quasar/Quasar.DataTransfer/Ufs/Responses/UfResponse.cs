@@ -7,8 +7,8 @@ namespace Quasar.DataTransfer.Ufs.Responses
 {
     public class UfResponse
     {
-        public int IdUf { get;  set; }
-        public string SiglaUf { get;  set; }
-        public string DescUf { get;  set; }
+        public int CodUf { get;  set; }
+        public string Sigla { get;  set; }
+        public string Nome { get;  set; }
     }
 }

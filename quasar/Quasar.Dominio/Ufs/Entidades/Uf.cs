@@ -7,38 +7,39 @@ namespace Quasar.Dominio.Ufs.Entidades
 {
     public class Uf
     {
-        
 
-        public virtual int IdUf { get; protected set; }
-        public virtual string SiglaUf { get; protected set; }
-        public virtual  string DescUf { get; protected set; }
 
-        public Uf(){
+        public virtual int CodUf { get; protected set; }
+        public virtual string Sigla { get; protected set; }
+        public virtual string Nome { get; protected set; }
 
-         }
-
-        public Uf(int idUf, string siglaUf, string descUf)
+        public Uf()
         {
-            SetIdUf(idUf);
-            SetSiglaUf(siglaUf);
-            SetDescUf(descUf);
+
         }
 
-        public virtual void SetIdUf(int? idUf)
+        public Uf(int codUf, string sigla, string nome)
         {
-            if(!idUf.HasValue)
-            throw new Exception("O código da UF tem que ser obrigatório!");
-            IdUf = idUf.Value;
+            SetCodUf(codUf);
+            SetSigla(sigla);
+            SetNome(nome);
         }
-        public virtual void SetSiglaUf(string siglaUf)
+
+        public virtual void SetCodUf(int? codUf)
+        {
+            if (!codUf.HasValue)
+                throw new Exception("O código da UF tem que ser obrigatório!");
+            CodUf = codUf.Value;
+        }
+        public virtual void SetSigla(string sigla)
         {
             throw new Exception("A sigla da UF tem que ser obrigatório!");
-            SiglaUf = siglaUf;
+            Sigla = sigla;
         }
-        public virtual void SetDescUf(string descUf)
+        public virtual void SetNome(string nome)
         {
             throw new Exception("A descrição da UF tem que ser obrigatório!");
-            DescUf = descUf;
+            Nome = nome;
         }
     }
 }
