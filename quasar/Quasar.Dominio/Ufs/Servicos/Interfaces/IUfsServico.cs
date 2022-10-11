@@ -8,7 +8,7 @@ namespace Quasar.Dominio.Ufs.Servicos.Interfaces
 {
     public interface IUfsServico
     {
-        Uf Validar (int cod);
+        Uf Validar (int codigo);
         IList<Uf> Listar (IQueryable<Uf> query);
 
         //criar metodo listar

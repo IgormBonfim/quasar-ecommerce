@@ -42,11 +42,11 @@ namespace Quasar.Aplicacao.Ufs.Servicos
             }
         }
 
-        public UfResponse Recuperar(int cod)
+        public UfResponse Recuperar(int codigo)
         {
             try
             {
-                Uf ufResponse = ufsServico.Validar(cod);
+                Uf ufResponse = ufsServico.Validar(codigo);
                 return mapper.Map<UfResponse>(ufResponse);
             }
 
