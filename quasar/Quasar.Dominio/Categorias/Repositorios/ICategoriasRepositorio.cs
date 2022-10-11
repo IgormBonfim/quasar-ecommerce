@@ -11,7 +11,7 @@ namespace Quasar.Dominio.Categorias.Repositorios
         Categoria Inserir(Categoria categoria);
         Categoria Editar(Categoria categoria);
         void Deletar(Categoria categoria);
-        Categoria Recuperar(int id);
+        Categoria Recuperar(int codigo);
         IQueryable<Categoria> Query();
     }
 }
