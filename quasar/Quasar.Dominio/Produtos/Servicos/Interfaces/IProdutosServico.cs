@@ -10,10 +10,10 @@ namespace Quasar.Dominio.Produtos.Servicos.Interfaces
 {
     public interface IProdutosServico
     {
-        Produto Validar(int cod);
+        Produto Validar(int codigo);
         Produto Inserir(Produto produto);
         Produto Instanciar(string? descricao, string? nome, string? imagem);
         Produto Editar(Produto produto);
-        void Deletar(int cod);
+        void Deletar(int codigo);
     }
 }

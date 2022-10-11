@@ -11,7 +11,7 @@ namespace Quasar.Dominio.Produtos.Repositorios
         Produto Inserir(Produto produto);
         Produto Editar(Produto produto);
         void Deletar(Produto produto);
-        Produto Recuperar(int cod);
+        Produto Recuperar(int codigo);
         IQueryable<Produto> Query();
     }
 }
