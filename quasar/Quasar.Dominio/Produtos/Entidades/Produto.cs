@@ -15,15 +15,17 @@ namespace Quasar.Dominio.Produtos.Entidades
         // public virtual Categoria Categoria { get; protected set; }
         public virtual Fornecedor Fornecedor { get; protected set; }
         public virtual string ImgProduto { get; protected set; }
+        public virtual Especificacao Especificacao { get; protected set; }
         
         public Produto() { }
-        public Produto(string? descricaoProduto, string? nomeProduto, string? imgProduto)
+        public Produto(string? descricaoProduto, string? nomeProduto, string? imgProduto, Especificacao? especificacao)
         {
             SetDescricaoProduto(descricaoProduto);
             SetNomeProduto(nomeProduto);
             // SetCategoria(categoria);
             // SetFornecedor(fornecedor);
             SetImgProduto(imgProduto);
+            
         }
 
         public virtual void SetIdProduto(int? idProduto)
@@ -69,6 +71,13 @@ namespace Quasar.Dominio.Produtos.Entidades
             if (string.IsNullOrWhiteSpace(imgProduto))
                 throw new Exception("O campo de URL da imagem do produto é obrigatório");
             ImgProduto = imgProduto;
+        }
+
+        public virtual void SetEspecificacao(Especificacao? especificacao)
+        {
+            if (especificacao == null)
+                throw new Exception("O campo especificacão é obrigatório!");
+            Especificacao = especificacao;
         }
     }
 }
