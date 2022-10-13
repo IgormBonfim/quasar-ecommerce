@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 
 namespace Quasar.DataTransfer.Estoques.Requests
 {
-    public class EstoqueListarRequest
+    public class EstoqueInserirRequest
     {
-        public int Codigo {get; set;}
         public int Quantidade {get; set;}
+        public int CodProduto {get; set;}
     }
 }
