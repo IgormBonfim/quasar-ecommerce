@@ -31,7 +31,7 @@ namespace Quasar.Aplicacao.Produtos.Servicos
 
             try
             {
-                Produto produtoInserir = produtosServico.Instanciar(inserirRequest.DescricaoProduto, inserirRequest.NomeProduto, inserirRequest.ImgPrincipalProduto);
+                Produto produtoInserir = produtosServico.Instanciar(inserirRequest.Descricao, inserirRequest.Nome, inserirRequest.Imagem);
                 Produto produtoSalvo = produtosServico.Inserir(produtoInserir);
 
                 if (transacao.IsActive)

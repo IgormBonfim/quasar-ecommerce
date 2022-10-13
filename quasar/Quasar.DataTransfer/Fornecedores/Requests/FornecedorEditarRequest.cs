@@ -7,10 +7,10 @@ namespace Quasar.DataTransfer.Fornecedores.Requests
 {
     public class FornecedorEditarRequest
     {
-        public int? IdFornecedor { get; set; }
-        public string NomeFornecedor { get; set; }
-        public string RazaoSocialFornecedor { get; set; }
-        public string CnpjFornecedor { get; set; }
-        public string IeFornecedor { get; set; }
+        public int? Codigo { get; set; }
+        public string Nome { get; set; }
+        public string RazaoSocial { get; set; }
+        public string Cnpj { get; set; }
+        public string Ie { get; set; }
     }
 }
