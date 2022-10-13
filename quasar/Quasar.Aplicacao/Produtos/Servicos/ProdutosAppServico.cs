@@ -16,12 +16,14 @@ namespace Quasar.Aplicacao.Produtos.Servicos
     {
         private readonly ISession session;
         private readonly IProdutosServico produtosServico;
+        private readonly IEspecificacoesServico especificacoesServico;
         private readonly IMapper mapper;
 
-        public ProdutosAppServico(ISession session, IProdutosServico produtosServico, IMapper mapper)
+        public ProdutosAppServico(ISession session, IProdutosServico produtosServico, IEspecificacoesServico especificacoesServico, IMapper mapper)
         {
             this.session = session;
             this.produtosServico = produtosServico;
+            this.especificacoesServico = especificacoesServico;
             this.mapper = mapper;
         }
 
@@ -31,7 +33,10 @@ namespace Quasar.Aplicacao.Produtos.Servicos
 
             try
             {
-                Produto produtoInserir = produtosServico.Instanciar(inserirRequest.DescricaoProduto, inserirRequest.NomeProduto, inserirRequest.ImgPrincipalProduto);
+                Especificacao especificacaoInserir = especificacoesServico.Instanciar(inserirRequest.Especificacao.Posicao, inserirRequest.Especificacao.Cor, inserirRequest.Especificacao.Ano, inserirRequest.Especificacao.Veiculo);
+                Especificacao especificacaoSalva = especificacoesServico.Inserir(especificacaoInserir);
+
+                Produto produtoInserir = produtosServico.Instanciar(inserirRequest.DescricaoProduto, inserirRequest.NomeProduto, inserirRequest.ImgPrincipalProduto, especificacaoSalva.Codigo);
                 Produto produtoSalvo = produtosServico.Inserir(produtoInserir);
 
                 if (transacao.IsActive)
