@@ -5,6 +5,8 @@ using Microsoft.Extensions.DependencyInjection;
 using NHibernate;
 using Quasar.Aplicacao.Categorias.Servicos;
 using Quasar.Aplicacao.Categorias.Servicos.Interfaces;
+using Quasar.Aplicacao.Estoques.Servicos;
+using Quasar.Aplicacao.Estoques.Servicos.Interfaces;
 using Quasar.Aplicacao.FormasPagamento.Servicos;
 using Quasar.Aplicacao.FormasPagamento.Servicos.Interfaces;
 using Quasar.Aplicacao.Fornecedores.Servicos;
@@ -19,6 +21,9 @@ using Quasar.Aplicacao.Ufs.Servicos.Interfaces;
 using Quasar.Dominio.Categorias.Repositorios;
 using Quasar.Dominio.Categorias.Servicos;
 using Quasar.Dominio.Categorias.Servicos.Interfaces;
+using Quasar.Dominio.Estoques.Respositorios;
+using Quasar.Dominio.Estoques.Servicos;
+using Quasar.Dominio.Estoques.Servicos.Interfaces;
 using Quasar.Dominio.FormasPagamento.Repositorios;
 using Quasar.Dominio.FormasPagamento.Servicos;
 using Quasar.Dominio.FormasPagamento.Servicos.Interfaces;
@@ -35,6 +40,7 @@ using Quasar.Dominio.Ufs.Repositorios;
 using Quasar.Dominio.Ufs.Servicos;
 using Quasar.Dominio.Ufs.Servicos.Interfaces;
 using Quasar.Infra.Categorias;
+using Quasar.Infra.Estoques;
 using Quasar.Infra.FormasPagamento;
 using Quasar.Infra.Fornecedores;
 using Quasar.Infra.Produtos;
@@ -87,6 +93,10 @@ namespace Quasar.Ioc
             services.AddSingleton<IFornecedoresRepositorio, FornecedoresRepositorio>();
             services.AddSingleton<IFornecedoresServico, FornecedoresServico>();
             services.AddSingleton<IFornecedoresAppServico, FornecedoresAppServico>();
+                
+            services.AddScoped<IEstoquesAppServico, EstoquesAppServico>();
+            services.AddScoped<IEstoquesRepositorio, EstoquesRepositorio>();
+            services.AddScoped<IEstoquesServico, EstoquesServico>();
 
             services.AddAutoMapper(typeof(ProdutosProfile));
         }
