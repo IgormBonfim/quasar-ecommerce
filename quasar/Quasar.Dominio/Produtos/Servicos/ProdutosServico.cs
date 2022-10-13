@@ -15,11 +15,13 @@ namespace Quasar.Dominio.Produtos.Servicos
 
         //Campo que tem todos os metodos de ProdutosRepositorio
         private readonly IProdutosRepositorio produtosRepositorio;
+        private readonly IEspecificacoesServico especificacoesServico;
 
         //Construtor que recebe um IProdutosRepositorio
-        public ProdutosServico(IProdutosRepositorio produtosRepositorio)
+        public ProdutosServico(IProdutosRepositorio produtosRepositorio, IEspecificacoesServico especificacoesServico)
         {
             this.produtosRepositorio = produtosRepositorio;
+            this.especificacoesServico = especificacoesServico;
         }
 
         //Recebe o id do produto que será deletado e valida se esse produto existe no banco
@@ -67,9 +69,11 @@ namespace Quasar.Dominio.Produtos.Servicos
         //Metodo que Instancia um novo objeto do tipo Produto
         //Recebe as informações do produto
         //Retorna um Produto
-        public Produto Instanciar(string? descricaoProduto, string? nomeProduto, string? imgProduto)
+        public Produto Instanciar(string? descricaoProduto, string? nomeProduto, string? imgProduto, int codigoEspecificacao)
         {
-            Produto produto = new Produto(descricaoProduto, nomeProduto, imgProduto);
+            Especificacao especificacaoBanco = especificacoesServico.Validar(codigoEspecificacao);
+
+            Produto produto = new Produto(descricaoProduto, nomeProduto, imgProduto, especificacaoBanco);
             return produto;
         }
 
