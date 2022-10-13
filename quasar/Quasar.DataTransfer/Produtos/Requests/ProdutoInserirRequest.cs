@@ -12,5 +12,6 @@ namespace Quasar.DataTransfer.Produtos.Requests
         public string ImgPrincipalProduto { get; set; }
         public int IdCategoria { get; set; }
         public int IdFornecedor { get; set; }
+        public EspecificacaoInserirRequest Especificacao { get; set; }
     }
 }
