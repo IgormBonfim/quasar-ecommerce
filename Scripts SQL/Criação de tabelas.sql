@@ -1,5 +1,6 @@
 CREATE SCHEMA IF NOT EXISTS quasarecommerce;
 USE quasarecommerce;
+
 CREATE TABLE IF NOT EXISTS quasarecommerce.statusVenda (
   codStatusVenda INT NOT NULL AUTO_INCREMENT,
   descricao VARCHAR(50) NOT NULL,
@@ -21,7 +22,7 @@ CREATE TABLE IF NOT EXISTS quasarecommerce.cidade (
   nome VARCHAR(100) NOT NULL,
   codUf INT NOT NULL,
   PRIMARY KEY (codCidade),
-  FOREIGN KEY (codUf) REFERENCES quasarecommerce.uf (idUf)
+  FOREIGN KEY (codUf) REFERENCES quasarecommerce.uf (codUf)
 );
 CREATE TABLE IF NOT EXISTS quasarecommerce.usuario (
   id INT NOT NULL AUTO_INCREMENT,
@@ -34,7 +35,7 @@ CREATE TABLE IF NOT EXISTS quasarecommerce.usuario (
   cnpj VARCHAR(14) NULL,
   razaoSocial VARCHAR(100) NULL,
   ie VARCHAR(14) NULL,
-  PRIMARY KEY (codUsuario)
+  PRIMARY KEY (id)
 );
 CREATE TABLE IF NOT EXISTS quasarecommerce.endereco (
   codEndereco INT NOT NULL AUTO_INCREMENT,
