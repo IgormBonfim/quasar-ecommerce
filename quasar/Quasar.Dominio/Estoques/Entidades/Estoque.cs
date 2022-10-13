@@ -15,7 +15,7 @@ namespace Quasar.Dominio.Estoques.Entidades
         public Estoque ()   
         {  
 
-         }
+        }
         public Estoque(int qntEstoque, Produto produto)
         {
             SetQuantidade(qntEstoque);
