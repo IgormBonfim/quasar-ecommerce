@@ -1,5 +1,5 @@
 INSERT INTO categoria(nome, imagem)
-VALUES (
+VALUES
     (
       'Vidro',
       'https://raw.githubusercontent.com/IgormBonfim/quasar-media/main/Categorias/VidroCategorias.png'
@@ -20,4 +20,4 @@ VALUES (
       'Para-Choque',
       'https://raw.githubusercontent.com/IgormBonfim/quasar-media/main/Categorias/ParachoqueCategorias.png'
     )
-  );
+    ;

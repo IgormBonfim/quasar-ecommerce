@@ -26,3 +26,4 @@ VALUES ("Acre", "AC"),
     ("Sergipe", "SE"),
     ("São Paulo", "SP"),
     ("Tocantins", "TO")
+    ;
