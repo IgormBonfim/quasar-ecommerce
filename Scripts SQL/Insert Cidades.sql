@@ -160,4 +160,5 @@ VALUES -- ES (8)
     ('Novo Alegre', 27),
     ('Novo Jardim', 27),
     ('Oliveira de Fátima', 27),
-    ('Palmas', 27);
+    ('Palmas', 27)
+    ;
