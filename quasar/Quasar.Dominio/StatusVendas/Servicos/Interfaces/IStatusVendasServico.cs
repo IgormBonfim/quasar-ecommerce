@@ -8,6 +8,6 @@ namespace Quasar.Dominio.StatusVendas.Servicos.Interfaces
 {
     public interface IStatusVendasServico
     {
-        StatusVenda Validar(int id);
+        StatusVenda Validar(int codigo);
     }
 }

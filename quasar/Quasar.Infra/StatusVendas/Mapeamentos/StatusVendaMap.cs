@@ -13,8 +13,8 @@ namespace Quasar.Infra.StatusVendas.Mapeamentos
         {
             Schema("quasarecommerce");
             Table("statusVenda");
-            Id(p => p.IdStatusVenda).Column("IdStatusVenda").GeneratedBy.Identity();
-            Map(p => p.DescricaoStatusVenda).Column("descricaoStatusVenda");
+            Id(p => p.Codigo).Column("codStatusVenda").GeneratedBy.Identity();
+            Map(p => p.Descricao).Column("descricao");
         }
     }
 }

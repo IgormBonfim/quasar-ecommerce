@@ -11,7 +11,7 @@ namespace Quasar.Dominio.Fornecedores.Repositorios
         Fornecedor Inserir(Fornecedor fornecedor);
         Fornecedor Editar(Fornecedor fornecedor);
         void Deletar(Fornecedor fornecedor);
-        Fornecedor Recuperar(int id);
+        Fornecedor Recuperar(int codigo);
         IQueryable<Fornecedor> Query();
     }
 }
