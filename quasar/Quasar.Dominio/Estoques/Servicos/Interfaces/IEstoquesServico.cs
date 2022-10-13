@@ -8,10 +8,10 @@ namespace Quasar.Dominio.Estoques.Servicos.Interfaces
 {
     public interface IEstoquesServico
     {
-        Estoque Validar(int idEstoque);
-        Estoque Inserir(Estoque Estoque);
+        Estoque Validar(int codigo);
+        Estoque Inserir(Estoque estoque);
         Estoque Editar(Estoque estoque);
-        Estoque Instanciar(int qntEstoque, int CodProduto);
+        Estoque Instanciar(int quantidade, int codProduto);
         
 
     }

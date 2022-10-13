@@ -40,10 +40,5 @@ namespace Quasar.Infra.Estoques
         {
             return session.Query<Estoque>();;
         }
-
-        public Estoque Recuperar(Estoque estoque)
-        {
-            throw new NotImplementedException();
-        }
     }
 }
