@@ -33,19 +33,19 @@ namespace Quasar.Aplicacao.Fornecedores.Servicos
             {
                 IQueryable<Fornecedor> query = fornecedoresRepositorio.Query();
 
-                if(listarRequest.IdFornecedor != null)
+                if(listarRequest.Codigo != null)
                 {
-                    query = query.Where(f => f.IdFornecedor == listarRequest.IdFornecedor);
+                    query = query.Where(f => f.Codigo == listarRequest.Codigo);
                 }
 
-                if(listarRequest.NomeFornecedor != null)
+                if(listarRequest.Nome != null)
                 {
-                    query = query.Where(f => f.NomeFornecedor.Contains(listarRequest.NomeFornecedor));
+                    query = query.Where(f => f.Nome.Contains(listarRequest.Nome));
                 }
 
-                if(listarRequest.CnpjFornecedor != null)
+                if(listarRequest.Cnpj != null)
                 {
-                    query = query.Where(f => f.CnpjFornecedor.Contains(listarRequest.CnpjFornecedor));
+                    query = query.Where(f => f.Cnpj.Contains(listarRequest.Cnpj));
                 }
 
                 IList<Fornecedor> listaFornecedores = fornecedoresServico.Listar(query);
@@ -58,13 +58,13 @@ namespace Quasar.Aplicacao.Fornecedores.Servicos
             }
         }
 
-        public void Deletar(int id)
+        public void Deletar(int codigo)
         {
             ITransaction transacao = session.BeginTransaction();
 
             try
             {
-                fornecedoresServico.Deletar(id);
+                fornecedoresServico.Deletar(codigo);
                 if(transacao.IsActive)
                     transacao.Commit();
             }
@@ -82,9 +82,9 @@ namespace Quasar.Aplicacao.Fornecedores.Servicos
 
             try
             {
-                Fornecedor fornecedorEditar = fornecedoresServico.Instanciar(editarRequest.NomeFornecedor, editarRequest.RazaoSocialFornecedor, editarRequest.CnpjFornecedor, editarRequest.IeFornecedor);
+                Fornecedor fornecedorEditar = fornecedoresServico.Instanciar(editarRequest.Nome, editarRequest.RazaoSocial, editarRequest.Cnpj, editarRequest.Ie);
                 
-                fornecedorEditar.SetIdFornecedor(editarRequest.IdFornecedor);
+                fornecedorEditar.SetCodigo(editarRequest.Codigo);
 
                 Fornecedor fornecedorEditado = fornecedoresServico.Editar(fornecedorEditar);
 
@@ -106,7 +106,7 @@ namespace Quasar.Aplicacao.Fornecedores.Servicos
 
             try
             {
-                Fornecedor fornecedorInserir = fornecedoresServico.Instanciar(inserirRequest.NomeFornecedor, inserirRequest.RazaoSocialFornecedor, inserirRequest.CnpjFornecedor, inserirRequest.IeFornecedor);
+                Fornecedor fornecedorInserir = fornecedoresServico.Instanciar(inserirRequest.Nome, inserirRequest.RazaoSocial, inserirRequest.Cnpj, inserirRequest.Ie);
                 
                 Fornecedor fornecedorInserido = fornecedoresServico.Inserir(fornecedorInserir);
 
@@ -122,11 +122,11 @@ namespace Quasar.Aplicacao.Fornecedores.Servicos
             }
         }
 
-        public FornecedorResponse Recuperar(int id)
+        public FornecedorResponse Recuperar(int codigo)
         {
             try
             {
-                Fornecedor fornecedor = fornecedoresServico.Validar(id);
+                Fornecedor fornecedor = fornecedoresServico.Validar(codigo);
                 return mapper.Map<FornecedorResponse>(fornecedor);
             }
             catch

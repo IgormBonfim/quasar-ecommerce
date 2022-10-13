@@ -21,9 +21,9 @@ namespace Quasar.Infra.Ufs
     return session.Query<Uf>();
     }
 
-    public Uf Recuperar (int id)
+    public Uf Recuperar (int codigo)
     {
-        return session.Get<Uf>(id);
+        return session.Get<Uf>(codigo);
     }
     }
 }

@@ -16,27 +16,27 @@ namespace Quasar.Dominio.Fornecedores.Servicos
         {
             fornecedoresRepositorio = FornecedoresRepositorio;
         }
-        public void Deletar(int idFornecedor)
+        public void Deletar(int codigo)
         {
-            Fornecedor fornecedorDeletar = Validar(idFornecedor);
+            Fornecedor fornecedorDeletar = Validar(codigo);
             fornecedoresRepositorio.Deletar(fornecedorDeletar);
         }
 
         public Fornecedor Editar(Fornecedor fornecedor)
         {
-            Fornecedor fornecedorEditar = Validar(fornecedor.IdFornecedor);
+            Fornecedor fornecedorEditar = Validar(fornecedor.Codigo);
 
-            if(fornecedor.NomeFornecedor != fornecedorEditar.NomeFornecedor)
-                fornecedorEditar.SetNomeFornecedor(fornecedor.NomeFornecedor);
+            if(fornecedor.Nome != fornecedorEditar.Nome)
+                fornecedorEditar.SetNome(fornecedor.Nome);
 
-            if(fornecedor.RazaoSocialFornecedor != fornecedorEditar.RazaoSocialFornecedor)
-                fornecedorEditar.SetRazaoSocialFornecedor(fornecedor.RazaoSocialFornecedor);
+            if(fornecedor.RazaoSocial != fornecedorEditar.RazaoSocial)
+                fornecedorEditar.SetRazaoSocial(fornecedor.RazaoSocial);
 
-            if(fornecedor.CnpjFornecedor != fornecedorEditar.CnpjFornecedor)
-                fornecedorEditar.SetCnpjFornecedor(fornecedor.CnpjFornecedor);
+            if(fornecedor.Cnpj != fornecedorEditar.Cnpj)
+                fornecedorEditar.SetCnpj(fornecedor.Cnpj);
 
-            if(fornecedor.IeFornecedor != fornecedorEditar.IeFornecedor)
-                fornecedorEditar.SetIeFornecedor(fornecedor.IeFornecedor);
+            if(fornecedor.Ie != fornecedorEditar.Ie)
+                fornecedorEditar.SetIe(fornecedor.Ie);
 
             return fornecedoresRepositorio.Editar(fornecedorEditar);
         }
@@ -46,15 +46,15 @@ namespace Quasar.Dominio.Fornecedores.Servicos
             return fornecedoresRepositorio.Inserir(fornecedor);
         }
         
-        public Fornecedor Instanciar(string? nomeFornecedor, string? razaoSocialFornecedor, string? cnpjFornecedor, string? ieFornecedor)
+        public Fornecedor Instanciar(string? nome, string? razaoSocial, string? cnpj, string? ie)
         {
-            var fornecedor = new Fornecedor(nomeFornecedor, razaoSocialFornecedor, cnpjFornecedor, ieFornecedor);
+            var fornecedor = new Fornecedor(nome, razaoSocial, cnpj, ie);
             return fornecedor;
         }
 
-        public Fornecedor Validar(int id)
+        public Fornecedor Validar(int codigo)
         {
-            Fornecedor fornecedorValidar = fornecedoresRepositorio.Recuperar(id);
+            Fornecedor fornecedorValidar = fornecedoresRepositorio.Recuperar(codigo);
             if(fornecedorValidar == null)
                 throw new Exception("Fornecedor não encontrado.");
             return fornecedorValidar;

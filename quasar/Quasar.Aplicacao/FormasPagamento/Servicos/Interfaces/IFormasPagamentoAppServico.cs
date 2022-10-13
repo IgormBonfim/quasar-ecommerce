@@ -8,7 +8,7 @@ namespace Quasar.Aplicacao.FormasPagamento.Servicos.Interfaces
 {
     public interface IFormasPagamentoAppServico
     {
-        FormaPagamentoResponse Recuperar(int id);
+        FormaPagamentoResponse Recuperar(int codigo);
         IList<FormaPagamentoResponse> Listar();
     }
 }
