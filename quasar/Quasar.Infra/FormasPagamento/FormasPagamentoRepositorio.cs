@@ -22,9 +22,9 @@ namespace Quasar.Infra.FormasPagamento
             return session.Query<FormaPagamento>();
         }
 
-        public FormaPagamento Recuperar(int id)
+        public FormaPagamento Recuperar(int codigo)
         {
-            return session.Get<FormaPagamento>(id);
+            return session.Get<FormaPagamento>(codigo);
         }
     }
 }

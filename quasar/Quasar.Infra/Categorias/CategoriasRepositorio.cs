@@ -31,8 +31,8 @@ namespace Quasar.Infra.Categorias
         //não entendi muito bem essa parte
         public Categoria Inserir(Categoria categoria)
         {
-            int id = (int)session.Save(categoria);
-            categoria.SetIdCategoria(id);
+            int codigo = (int)session.Save(categoria);
+            categoria.SetCodigo(codigo);
             return categoria;
         }
 
@@ -41,9 +41,9 @@ namespace Quasar.Infra.Categorias
             return session.Query<Categoria>();
         }
 
-        public Categoria Recuperar(int id)
+        public Categoria Recuperar(int codigo)
         {
-            return session.Get<Categoria>(id);
+            return session.Get<Categoria>(codigo);
         }
     }
 }

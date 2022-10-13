@@ -8,11 +8,11 @@ namespace Quasar.Dominio.Fornecedores.Servicos.Interfaces
 {
     public interface IFornecedoresServico
     {
-        Fornecedor Validar(int id);
+        Fornecedor Validar(int codigo);
         Fornecedor Inserir(Fornecedor fornecedor);
-        Fornecedor Instanciar(string? nomeFornecedor, string? razaoSocialFornecedor, string? cnpjFornecedor, string? ieFornecedor);
-        Fornecedor Editar(Fornecedor forncedor);
+        Fornecedor Instanciar(string? nome, string? razaoSocial, string? cnpj, string? ie);
+        Fornecedor Editar(Fornecedor fornecedor);
         IList<Fornecedor> Listar(IQueryable<Fornecedor> query);
-        void Deletar(int idProduto);
+        void Deletar(int codigo);
     }
 }
