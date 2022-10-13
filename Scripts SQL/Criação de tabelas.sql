@@ -48,7 +48,7 @@ CREATE TABLE IF NOT EXISTS quasarecommerce.endereco (
   codUsuario INT NOT NULL,
   PRIMARY KEY (codEndereco),
   FOREIGN KEY (codCidade) REFERENCES quasarecommerce.cidade (codCidade),
-  FOREIGN KEY (codUsuario) REFERENCES quasarecommerce.usuario (codUsuario)
+  FOREIGN KEY (codUsuario) REFERENCES quasarecommerce.usuario (id)
 );
 CREATE TABLE IF NOT EXISTS quasarecommerce.venda (
   codVenda INT NOT NULL AUTO_INCREMENT,
@@ -60,7 +60,7 @@ CREATE TABLE IF NOT EXISTS quasarecommerce.venda (
   FOREIGN KEY (codStatusVenda) REFERENCES quasarecommerce.statusVenda (codStatusVenda),
   FOREIGN KEY (codFormaPagamento) REFERENCES quasarecommerce.formaPagamento (codFormaPagamento),
   FOREIGN KEY (codEndereco) REFERENCES quasarecommerce.endereco (codEndereco),
-  FOREIGN KEY (codUsuario) REFERENCES quasarecommerce.usuario (codUsuario)
+  FOREIGN KEY (codUsuario) REFERENCES quasarecommerce.usuario (id)
 );
 CREATE TABLE IF NOT EXISTS quasarecommerce.categoria (
   codCategoria INT NOT NULL AUTO_INCREMENT,
@@ -91,7 +91,7 @@ CREATE TABLE IF NOT EXISTS quasarecommerce.itemVenda (
   codItemVenda INT NOT NULL AUTO_INCREMENT,
   codVenda INT NOT NULL,
   codProduto INT NOT NULL,
-  quantcodade INT NOT NULL,
+  quantidade INT NOT NULL,
   PRIMARY KEY (codItemVenda),
   FOREIGN KEY (codVenda) REFERENCES quasarecommerce.venda (codVenda),
   FOREIGN KEY (codProduto) REFERENCES quasarecommerce.produto (codProduto)
@@ -109,14 +109,14 @@ CREATE TABLE IF NOT EXISTS quasarecommerce.favorito (
   codUsuario INT NOT NULL,
   PRIMARY KEY (codFavorito),
   FOREIGN KEY (codProduto) REFERENCES quasarecommerce.produto (codProduto),
-  FOREIGN KEY (codUsuario) REFERENCES quasarecommerce.usuario (codUsuario)
+  FOREIGN KEY (codUsuario) REFERENCES quasarecommerce.usuario (id)
 );
 CREATE TABLE IF NOT EXISTS quasarecommerce.carrinho (
   codCarrinho INT NOT NULL AUTO_INCREMENT,
   codUsuario INT NOT NULL,
   codProduto INT NOT NULL,
   PRIMARY KEY (codCarrinho),
-  FOREIGN KEY (codUsuario) REFERENCES quasarecommerce.usuario (codUsuario),
+  FOREIGN KEY (codUsuario) REFERENCES quasarecommerce.usuario (id),
   FOREIGN KEY (codProduto) REFERENCES quasarecommerce.produto (codProduto)
 );
 CREATE TABLE IF NOT EXISTS quasarecommerce.especificacao (
