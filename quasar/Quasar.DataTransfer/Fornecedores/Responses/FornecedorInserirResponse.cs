@@ -7,7 +7,7 @@ namespace Quasar.DataTransfer.Fornecedores.Responses
 {
     public class FornecedorInserirResponse
     {
-        public int IdFornecedor { get; set; }
-        public string NomeFornecedor { get; set; }
+        public int Codigo { get; set; }
+        public string Nome { get; set; }
     }
 }

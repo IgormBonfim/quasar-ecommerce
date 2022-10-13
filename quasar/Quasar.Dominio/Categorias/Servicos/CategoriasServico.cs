@@ -22,21 +22,21 @@ namespace Quasar.Dominio.Categorias.Servicos
             return query.ToList();
         }
 
-        public void Deletar(int idCategoria)
+        public void Deletar(int codigo)
         {
-            Categoria categoriaDeletar = Validar(idCategoria);
+            Categoria categoriaDeletar = Validar(codigo);
             categoriasRepositorio.Deletar(categoriaDeletar);
         }
 
         public Categoria Editar(Categoria categoria)
         {
-            Categoria categoriaEditar = Validar(categoria.IdCategoria);
+            Categoria categoriaEditar = Validar(categoria.Codigo);
 
-            if(categoria.NomeCategoria != categoriaEditar.NomeCategoria);
-            categoriaEditar.SetNomeCategoria(categoria.NomeCategoria);
+            if(categoria.Nome != categoriaEditar.Nome);
+            categoriaEditar.SetNome(categoria.Nome);
 
-            if(categoria.ImgCategoria != categoriaEditar.ImgCategoria);
-            categoriaEditar.SetImgCategoria(categoria.ImgCategoria);
+            if(categoria.Imagem != categoriaEditar.Imagem);
+            categoriaEditar.SetImagem(categoria.Imagem);
 
             return categoriasRepositorio.Editar(categoriaEditar);
         }
@@ -46,15 +46,15 @@ namespace Quasar.Dominio.Categorias.Servicos
             return categoriasRepositorio.Inserir(categoria);
         }
 
-        public Categoria Instanciar(string nomeCategoria, string imgCategoria)
+        public Categoria Instanciar(string nome, string imagem)
         {
-            Categoria categoria = new Categoria(nomeCategoria, imgCategoria);
+            Categoria categoria = new Categoria(nome, imagem);
             return categoria;
         }
 
-        public Categoria Validar(int id)
+        public Categoria Validar(int codigo)
         {
-            Categoria categoriaValidar = categoriasRepositorio.Recuperar(id);
+            Categoria categoriaValidar = categoriasRepositorio.Recuperar(codigo);
             if(categoriaValidar == null)
                 throw new Exception ("Categoria não encontrado");
             return categoriaValidar;

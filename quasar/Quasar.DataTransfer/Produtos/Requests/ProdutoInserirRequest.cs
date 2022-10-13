@@ -7,10 +7,10 @@ namespace Quasar.DataTransfer.Produtos.Requests
 {
     public class ProdutoInserirRequest
     {
-        public string DescricaoProduto { get; set; }
-        public string NomeProduto { get; set; }
-        public string ImgPrincipalProduto { get; set; }
-        public int IdCategoria { get; set; }
-        public int IdFornecedor { get; set; }
+        public string Descricao { get; set; }
+        public string Nome { get; set; }
+        public string Imagem { get; set; }
+        public int CodigoCategoria { get; set; }
+        public int CodigoFornecedor { get; set; }
     }
 }

@@ -8,7 +8,7 @@ namespace Quasar.Dominio.Ufs.Repositorios
 {
     public interface IUfsRepositorio
     {
-        Uf Recuperar (int id);
+        Uf Recuperar (int codigo);
         IQueryable<Uf> Query();
     }
 }

@@ -8,7 +8,7 @@ namespace Quasar.Dominio.StatusVendas.Repositorios
 {
     public interface IStatusVendasRepositorio
     {
-        StatusVenda Recuperar(int id);
+        StatusVenda Recuperar(int codigo);
         IQueryable<StatusVenda> Query();
     }
 }
