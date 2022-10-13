@@ -31,22 +31,22 @@ namespace Quasar.Aplicacao.FormasPagamento.Servicos
                 IList<FormaPagamento> listaFormasPagamento = formasPagamentoServico.Query(query);
                 return mapper.Map<IList<FormaPagamentoResponse>>(listaFormasPagamento);
             }
-            catch (Exception e)
+            catch
             {
-                throw e;
+                throw;
             }
         }
 
-        public FormaPagamentoResponse Recuperar(int id)
+        public FormaPagamentoResponse Recuperar(int codigo)
         {
             try
             {
-                FormaPagamento formaPagamento = formasPagamentoServico.Validar(id);
+                FormaPagamento formaPagamento = formasPagamentoServico.Validar(codigo);
                 return mapper.Map<FormaPagamentoResponse>(formaPagamento);
             }
-            catch (Exception e)
+            catch
             {
-                throw e;
+                throw;
             }
 
         }

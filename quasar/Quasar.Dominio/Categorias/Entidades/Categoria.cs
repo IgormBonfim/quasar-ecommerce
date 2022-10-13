@@ -7,37 +7,37 @@ namespace Quasar.Dominio.Categorias.Entidades
 {
     public class Categoria
     {
-        public virtual int IdCategoria {get; protected set;}
-        public virtual string NomeCategoria{get; protected set;}
-        public virtual string ImgCategoria{get; protected set;}
+        public virtual int Codigo {get; protected set;}
+        public virtual string Nome {get; protected set;}
+        public virtual string Imagem {get; protected set;}
         public Categoria (){ }
-        public Categoria(string nomeCategoria, string imgCategoria)
+        public Categoria(string nome, string imagem)
         {
-            SetNomeCategoria(nomeCategoria);
-            SetImgCategoria(imgCategoria); 
+            SetNome(nome);
+            SetImagem(imagem); 
         }
         
-        public virtual void SetIdCategoria(int? idCategoria)
+        public virtual void SetCodigo(int? codigo)
         {
-            if(!idCategoria.HasValue)
+            if(!codigo.HasValue)
             {
                 throw new Exception("Código da categoria é obrigatório!");
             }
-            IdCategoria = idCategoria.Value;
+            Codigo = codigo.Value;
         }
 
-        public virtual void SetNomeCategoria(string nomeCategoria)
+        public virtual void SetNome(string nome)
         {
-            if(string.IsNullOrWhiteSpace(nomeCategoria) && nomeCategoria.Length < 2)
+            if(string.IsNullOrWhiteSpace(nome) && nome.Length < 2)
                 throw new Exception ("o campo nome deve possuir minimo 2 caracteres");
-            if(nomeCategoria.Length > 30)
+            if(nome.Length > 30)
                 throw new Exception("o campo nome deve possuir maximo 30 caracteres");
-            NomeCategoria = nomeCategoria;
+            Nome = nome;
         }
 
-        public virtual void SetImgCategoria(string imgCategoria)
+        public virtual void SetImagem(string imagem)
         {
-            ImgCategoria = imgCategoria;
+            Imagem = imagem;
         }
 
     }

@@ -29,8 +29,8 @@ namespace Quasar.Infra.Fornecedores
 
         public Fornecedor Inserir(Fornecedor fornecedor)
         {
-            int id = (int)session.Save(fornecedor);
-            fornecedor.SetIdFornecedor(id);
+            int codigo = (int)session.Save(fornecedor);
+            fornecedor.SetCodigo(codigo);
             return fornecedor;
         }
 
@@ -39,9 +39,9 @@ namespace Quasar.Infra.Fornecedores
             return session.Query<Fornecedor>();
         }
 
-        public Fornecedor Recuperar(int id)
+        public Fornecedor Recuperar(int codigo)
         {
-            return session.Get<Fornecedor>(id);
+            return session.Get<Fornecedor>(codigo);
         }
     }
 }

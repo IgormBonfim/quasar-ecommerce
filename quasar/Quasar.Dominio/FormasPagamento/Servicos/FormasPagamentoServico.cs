@@ -26,9 +26,9 @@ namespace Quasar.Dominio.FormasPagamento.Servicos
             return query.ToList();
         }
 
-        public FormaPagamento Validar(int id)
+        public FormaPagamento Validar(int codigo)
         {
-            FormaPagamento formaPagamento = formasPagamentoRepositorio.Recuperar(id);
+            FormaPagamento formaPagamento = formasPagamentoRepositorio.Recuperar(codigo);
             if(formaPagamento == null)
                 throw new Exception("Forma de pagamento não encontrada.");
             return formaPagamento;

@@ -8,7 +8,7 @@ namespace Quasar.Dominio.FormasPagamento.Repositorios
 {
     public interface IFormasPagamentoRepositorio
     {
-        FormaPagamento Recuperar(int id);
+        FormaPagamento Recuperar(int codigo);
         IQueryable<FormaPagamento> Query();
     }
 }
