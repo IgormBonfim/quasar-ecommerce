@@ -5,6 +5,8 @@ using Microsoft.Extensions.DependencyInjection;
 using NHibernate;
 using Quasar.Aplicacao.Categorias.Servicos;
 using Quasar.Aplicacao.Categorias.Servicos.Interfaces;
+using Quasar.Aplicacao.Cidades.Servicos;
+using Quasar.Aplicacao.Cidades.Servicos.Interfaces;
 using Quasar.Aplicacao.FormasPagamento.Servicos;
 using Quasar.Aplicacao.FormasPagamento.Servicos.Interfaces;
 using Quasar.Aplicacao.Fornecedores.Servicos;
@@ -19,6 +21,9 @@ using Quasar.Aplicacao.Ufs.Servicos.Interfaces;
 using Quasar.Dominio.Categorias.Repositorios;
 using Quasar.Dominio.Categorias.Servicos;
 using Quasar.Dominio.Categorias.Servicos.Interfaces;
+using Quasar.Dominio.Cidades.Repositorios;
+using Quasar.Dominio.Cidades.Servicos;
+using Quasar.Dominio.Cidades.Servicos.Interfaces;
 using Quasar.Dominio.FormasPagamento.Repositorios;
 using Quasar.Dominio.FormasPagamento.Servicos;
 using Quasar.Dominio.FormasPagamento.Servicos.Interfaces;
@@ -35,6 +40,7 @@ using Quasar.Dominio.Ufs.Repositorios;
 using Quasar.Dominio.Ufs.Servicos;
 using Quasar.Dominio.Ufs.Servicos.Interfaces;
 using Quasar.Infra.Categorias;
+using Quasar.Infra.Cidades;
 using Quasar.Infra.FormasPagamento;
 using Quasar.Infra.Fornecedores;
 using Quasar.Infra.Produtos;
@@ -88,6 +94,10 @@ namespace Quasar.Ioc
             services.AddScoped<IFornecedoresServico, FornecedoresServico>();
             services.AddScoped<IFornecedoresAppServico, FornecedoresAppServico>();
 
+            services.AddScoped<ICidadesRepositorio, CidadesRepositorio>();
+            services.AddScoped<ICidadesServico, CidadesServico>();
+            services.AddScoped<ICidadesAppServico, CidadesAppServico>();
+        
             services.AddAutoMapper(typeof(ProdutosProfile));
         }
     }
