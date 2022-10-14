@@ -13,17 +13,18 @@ namespace Quasar.Dominio.Produtos.Entidades
         public virtual string Descricao { get; protected set; }
         public virtual string Nome { get; protected set; }
         public virtual string Imagem { get; protected set; }
-        // public virtual Categoria Categoria { get; protected set; }
+        public virtual Categoria Categoria { get; protected set; }
         public virtual Fornecedor Fornecedor { get; protected set; }
         public virtual Especificacao Especificacao { get; protected set; }   
         
         public Produto() { }
-        public Produto(string? descricao, string? nome, string? imagem, Especificacao especificacaoBanco)
+        public Produto(string? descricao, string? nome, string? imagem, Especificacao especificacao, Categoria categoria, Fornecedor fornecedor)
         {
             SetDescricao(descricao);
             SetNome(nome);
-            // SetCategoria(categoria);
-            // SetFornecedor(fornecedor);
+            SetCategoria(categoria);
+            SetFornecedor(fornecedor);
+            SetEspecificacao(especificacao);
             SetImagem(imagem);
         }
 
@@ -56,10 +57,10 @@ namespace Quasar.Dominio.Produtos.Entidades
                 throw new Exception("O campo nome deve possuir até 100 caracteres!");
             Nome = nome;
         }
-        // public virtual void SetCategoria(Categoria categoria)
-        // {
-        //     Categoria = categoria;
-        // }
+        public virtual void SetCategoria(Categoria categoria)
+        {
+            Categoria = categoria;
+        }
         public virtual void SetFornecedor(Fornecedor fornecedor)
         {
             if(fornecedor == null)
@@ -67,14 +68,12 @@ namespace Quasar.Dominio.Produtos.Entidades
 
             Fornecedor = fornecedor;
         }
-
         public virtual void SetImagem(string? imagem)
         {
             if (string.IsNullOrWhiteSpace(imagem))
                 throw new Exception("O campo de URL da imagem do produto é obrigatório");
             Imagem = imagem;
         }
-
         public virtual void SetEspecificacao(Especificacao? especificacao)
         {
             if (especificacao == null)
