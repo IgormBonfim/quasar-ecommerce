@@ -13,6 +13,8 @@ namespace Quasar.Aplicacao.Estoques.Profiles
         public EstoquesProfile()
         {
             CreateMap<Estoque, EstoqueInserirResponse>();
+            CreateMap<Estoque, EstoqueEditarResponse>();
+            CreateMap<Estoque, EstoqueResponse>();
         }
     }
 }
