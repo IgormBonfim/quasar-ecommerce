@@ -68,6 +68,9 @@ namespace Quasar.Ioc
             services.AddScoped<IProdutosServico, ProdutosServico>();
             services.AddScoped<IProdutosAppServico, ProdutosAppServico>();
 
+            services.AddScoped<IEspecificacoesRepositorio, EspecificacoesRepositorio>();
+            services.AddScoped<IEspecificacoesServico, EspecificacoesServico>();
+
             services.AddScoped<ICategoriasRepositorio, CategoriasRepositorio>();
             services.AddScoped<ICategoriasServico, CategoriasServico>();
             services.AddScoped<ICategoriasAppServico, CategoriasAppServico>();
