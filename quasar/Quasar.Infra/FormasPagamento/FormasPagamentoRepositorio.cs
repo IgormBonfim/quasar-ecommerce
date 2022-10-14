@@ -5,26 +5,11 @@ using System.Threading.Tasks;
 using NHibernate;
 using Quasar.Dominio.FormasPagamento.Entidades;
 using Quasar.Dominio.FormasPagamento.Repositorios;
+using Quasar.Infra.Genericos;
 
 namespace Quasar.Infra.FormasPagamento
 {
-    public class FormasPagamentoRepositorio : IFormasPagamentoRepositorio
-    {
-        private readonly ISession session;
-
-        public FormasPagamentoRepositorio(ISession session)
-        {
-            this.session = session;
-        }
-
-        public IQueryable<FormaPagamento> Query()
-        {
-            return session.Query<FormaPagamento>();
-        }
-
-        public FormaPagamento Recuperar(int codigo)
-        {
-            return session.Get<FormaPagamento>(codigo);
-        }
+    public class FormasPagamentoRepositorio : GenericosRepositorio<FormaPagamento>, IFormasPagamentoRepositorio{
+        public FormasPagamentoRepositorio(ISession session) : base(session) {}
     }
 }
