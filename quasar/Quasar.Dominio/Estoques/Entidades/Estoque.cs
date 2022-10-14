@@ -16,9 +16,9 @@ namespace Quasar.Dominio.Estoques.Entidades
         {  
 
         }
-        public Estoque(int qntEstoque, Produto produto)
+        public Estoque(int quantidade, Produto produto)
         {
-            SetQuantidade(qntEstoque);
+            SetQuantidade(quantidade);
             SetProduto(produto);
         }
 
@@ -29,11 +29,11 @@ namespace Quasar.Dominio.Estoques.Entidades
             Codigo = codigo.Value;
         }
 
-        public virtual void SetQuantidade(int qntEstoque)
+        public virtual void SetQuantidade(int quantidade)
         {
-            if(qntEstoque < 0)
+            if(quantidade < 0)
             throw new Exception("A quantidade em estoque do produto não pode ser negativo");
-            Quantidade = qntEstoque;
+            Quantidade = quantidade;
         }
 
         public virtual void SetProduto(Produto produto)

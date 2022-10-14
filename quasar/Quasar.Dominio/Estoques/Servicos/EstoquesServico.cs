@@ -34,10 +34,10 @@ namespace Quasar.Dominio.Estoques.Servicos
     { 
         return estoquesRepositorio.Inserir(estoque);  
     }
-    public Estoque Instanciar(int qntEstoque, int CodProduto)
+    public Estoque Instanciar(int quantidade, int CodProduto)
     {
         Produto produto = produtosServico.Validar(CodProduto);
-        Estoque estoque = new Estoque(qntEstoque, produto);
+        Estoque estoque = new Estoque(quantidade, produto);
         return estoque;
     }
     public Estoque Validar(int codigo)
