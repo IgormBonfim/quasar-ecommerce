@@ -77,6 +77,14 @@ CREATE TABLE IF NOT EXISTS quasarecommerce.fornecedor (
   ie VARCHAR(14) NULL,
   PRIMARY KEY (codFornecedor)
 );
+CREATE TABLE IF NOT EXISTS quasarecommerce.especificacao (
+  codEspecificacao INT NOT NULL AUTO_INCREMENT,
+  posicao VARCHAR(50) NOT NULL,
+  cor VARCHAR(20) NOT NULL,
+  ano DATE NOT NULL,
+  veiculo VARCHAR(45) NOT NULL,
+  PRIMARY KEY (codEspecificacao)
+);
 CREATE TABLE IF NOT EXISTS quasarecommerce.produto (
   codProduto INT NOT NULL AUTO_INCREMENT,
   descricao VARCHAR(255) NOT NULL,
@@ -86,7 +94,7 @@ CREATE TABLE IF NOT EXISTS quasarecommerce.produto (
   codEspecificacao INT NOT NULL,
   imagem VARCHAR(255) NOT NULL,
   PRIMARY KEY (codProduto),
-  FOREIGN KEY (codEspecicacao) REFERENCES quasarecommerce.especificacao(codEspecificacao),
+  FOREIGN KEY (codEspecificacao) REFERENCES quasarecommerce.especificacao(codEspecificacao),
   FOREIGN KEY (codCategoria) REFERENCES quasarecommerce.categoria (codCategoria),
   FOREIGN KEY (codFornecedor) REFERENCES quasarecommerce.fornecedor (codFornecedor)
 );
@@ -121,12 +129,4 @@ CREATE TABLE IF NOT EXISTS quasarecommerce.carrinho (
   PRIMARY KEY (codCarrinho),
   FOREIGN KEY (codUsuario) REFERENCES quasarecommerce.usuario (id),
   FOREIGN KEY (codProduto) REFERENCES quasarecommerce.produto (codProduto)
-);
-CREATE TABLE IF NOT EXISTS quasarecommerce.especificacao (
-  codEspecificacao INT NOT NULL AUTO_INCREMENT,
-  posicao VARCHAR(50) NOT NULL,
-  cor VARCHAR(20) NOT NULL,
-  ano DATE NOT NULL,
-  veiculo VARCHAR(45) NOT NULL,
-  PRIMARY KEY (codEspecificacao)
 );
