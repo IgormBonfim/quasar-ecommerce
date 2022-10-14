@@ -12,7 +12,7 @@ CREATE TABLE IF NOT EXISTS quasarecommerce.formaPagamento (
   PRIMARY KEY (codFormaPagamento)
 );
 CREATE TABLE IF NOT EXISTS quasarecommerce.UF (
-  codUf INT NULL AUTO_INCREMENT,
+  codUf INT NOT NULL AUTO_INCREMENT,
   sigla VARCHAR(2) NOT NULL,
   nome VARCHAR(100) NOT NULL,
   PRIMARY KEY (codUf)
