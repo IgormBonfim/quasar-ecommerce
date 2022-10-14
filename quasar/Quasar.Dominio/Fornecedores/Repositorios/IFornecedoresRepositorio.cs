@@ -7,6 +7,5 @@ using Quasar.Dominio.Genericos;
 
 namespace Quasar.Dominio.Fornecedores.Repositorios
 {
-    public interface IFornecedoresRepositorio : IGenericosRepositorio<Fornecedor>
-    {}
+    public interface IFornecedoresRepositorio : IGenericosRepositorio<Fornecedor> {}
 }
