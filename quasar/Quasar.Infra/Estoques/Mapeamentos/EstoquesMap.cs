@@ -16,7 +16,7 @@ namespace Quasar.Infra.Estoques.Mapeamentos
             Id(p => p.Codigo).Column("codEstoque").GeneratedBy.Identity();
             Map(p => p.Quantidade).Column("quantidade");
 
-            References(p => p.Produto).Column("CodigoProduto");
+            References(p => p.Produto).Column("codProduto");
         }
     }
 }
