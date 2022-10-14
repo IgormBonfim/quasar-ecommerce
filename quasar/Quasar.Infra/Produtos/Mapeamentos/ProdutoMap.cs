@@ -17,8 +17,8 @@ namespace Quasar.Infra.Produtos.Mapeamentos
             Map(p => p.Descricao).Column("descricao");
             Map(p => p.Nome).Column("nome");
             Map(p => p.Imagem).Column("imagem");
-            // References(p => p.Categoria).Column("idCategoria");
-            References(p => p.Fornecedor).Column("idFornecedor");
+            References(p => p.Categoria).Column("codCategoria");
+            References(p => p.Fornecedor).Column("codFornecedor");
             References(p => p.Especificacao).Column("codEspecificacao");
             
             //References - Relacionamento um para um
