@@ -8,7 +8,7 @@ namespace Quasar.Dominio.Produtos.Servicos.Interfaces
 {
     public interface IEspecificacoesServico
     {
-        Especificacao Validar (int cod);
+        Especificacao Validar (int codigo);
         Especificacao Inserir (Especificacao especificacao);
         Especificacao Instanciar (string? posicao, string? cor, DateTime? ano, string? veiculo);
         Especificacao Editar (Especificacao especificacao);
