@@ -34,8 +34,8 @@ namespace Quasar.Dominio.Produtos.Entidades
         {
             if(string.IsNullOrWhiteSpace(posicao) || posicao.Length < 2)
             throw new Exception("O campo posicao deve possuir no mínimo 2 caracteres!");
-            if(posicao.Length > 20)
-                throw new Exception ("O campo posicao deve possuir no máximo 20 caracteres!");
+            if(posicao.Length > 50)
+                throw new Exception ("O campo posicao deve possuir no máximo 50 caracteres!");
             Posicao = posicao;
         }
         public virtual void SetCor(string? cor)
