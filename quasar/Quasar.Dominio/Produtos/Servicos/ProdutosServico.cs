@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Quasar.Dominio.Categorias.Entidades;
+using Quasar.Dominio.Categorias.Servicos.Interfaces;
 using Quasar.Dominio.Fornecedores.Entidades;
+using Quasar.Dominio.Fornecedores.Servicos.Interfaces;
 using Quasar.Dominio.Produtos.Entidades;
 using Quasar.Dominio.Produtos.Repositorios;
 using Quasar.Dominio.Produtos.Servicos.Interfaces;
@@ -15,11 +17,17 @@ namespace Quasar.Dominio.Produtos.Servicos
 
         //Campo que tem todos os metodos de ProdutosRepositorio
         private readonly IProdutosRepositorio produtosRepositorio;
+        private readonly IEspecificacoesServico especificacoesServico;
+        private readonly ICategoriasServico categoriasServico;
+        private readonly IFornecedoresServico fornecedoresServico;
 
         //Construtor que recebe um IProdutosRepositorio
-        public ProdutosServico(IProdutosRepositorio produtosRepositorio)
+        public ProdutosServico(IProdutosRepositorio produtosRepositorio, IEspecificacoesServico especificacoesServico, ICategoriasServico categoriasServico, IFornecedoresServico fornecedoresServico)
         {
+            this.fornecedoresServico = fornecedoresServico;
             this.produtosRepositorio = produtosRepositorio;
+            this.especificacoesServico = especificacoesServico;
+            this.categoriasServico = categoriasServico;
         }
 
         //Recebe o id do produto que será deletado e valida se esse produto existe no banco
@@ -50,8 +58,8 @@ namespace Quasar.Dominio.Produtos.Servicos
             // if (produto.Categoria != produtoEditar.Categoria)
             //     produtoEditar.SetCategoria(produto.Categoria);
 
-            if (produto.Fornecedor != produtoEditar.Fornecedor)
-                produtoEditar.SetFornecedor(produto.Fornecedor);
+            // if (produto.Fornecedor != produtoEditar.Fornecedor)
+            //     produtoEditar.SetFornecedor(produto.Fornecedor);
 
             return produtosRepositorio.Editar(produtoEditar);
         }
@@ -69,9 +77,14 @@ namespace Quasar.Dominio.Produtos.Servicos
         //Metodo que Instancia um novo objeto do tipo Produto
         //Recebe as informações do produto
         //Retorna um Produto
-        public Produto Instanciar(string? descricao, string? nome, string? imagem)
+
+        public Produto Instanciar(string? descricao, string? nome, string? imagem, int codigoEspecificacao, int codFornecedor, int codCategoria)
         {
-            Produto produto = new Produto(descricao, nome, imagem);
+            Especificacao especificacaoBanco = especificacoesServico.Validar(codigoEspecificacao);
+            Fornecedor fornecedor = fornecedoresServico.Validar(codFornecedor);
+            Categoria categoria = categoriasServico.Validar(codCategoria);
+
+            Produto produto = new Produto(descricao, nome, imagem, especificacaoBanco, categoria, fornecedor);
             return produto;
         }
 
