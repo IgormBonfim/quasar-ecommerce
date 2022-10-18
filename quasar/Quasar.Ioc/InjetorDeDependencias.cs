@@ -19,6 +19,8 @@ using Quasar.Aplicacao.StatusVendas.Servicos.Interfaces;
 using Quasar.Aplicacao.Ufs.Servicos;
 using Quasar.Aplicacao.Ufs.Servicos.Interfaces;
 using Quasar.Autenticacao.Data;
+using Quasar.Autenticacao.Servicos;
+using Quasar.Autenticacao.Servicos.Interfaces;
 using Quasar.Dominio.Categorias.Repositorios;
 using Quasar.Dominio.Categorias.Servicos;
 using Quasar.Dominio.Categorias.Servicos.Interfaces;
@@ -44,6 +46,7 @@ using Quasar.Infra.Produtos;
 using Quasar.Infra.Produtos.Mapeamentos;
 using Quasar.Infra.StatusVendas;
 using Quasar.Infra.Ufs;
+using Quasar.Ioc.Extensions;
 
 namespace Quasar.Ioc
 {
@@ -51,6 +54,7 @@ namespace Quasar.Ioc
     {
         public static void InjetarDependencias(this IServiceCollection services, IConfiguration configuration)
         {
+
             services.AddSingleton<ISessionFactory>(factory => 
             {
                 string connectionString = configuration.GetConnectionString("MySql");
@@ -65,6 +69,8 @@ namespace Quasar.Ioc
                                             .BuildSessionFactory();
             });
 
+            services.AddAutenticacao(configuration);
+            
             services.AddSingleton<ISession>(factory => factory.GetService<ISessionFactory>().OpenSession());
 
             services.AddDbContext<IdentityDataContext>(options =>
@@ -78,6 +84,9 @@ namespace Quasar.Ioc
             .AddRoles<IdentityRole>()
             .AddEntityFrameworkStores<IdentityDataContext>()
             .AddDefaultTokenProviders();
+
+            services.AddScoped<IAutenticacaoServico, AutenticacaoServico>();
+            services.AddScoped<IJwtServico, JwtServico>();
 
             services.AddSingleton<IProdutosRepositorio, ProdutosRepositorio>();
             services.AddSingleton<IProdutosServico, ProdutosServico>();
