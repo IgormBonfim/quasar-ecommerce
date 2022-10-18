@@ -5,45 +5,12 @@ using System.Threading.Tasks;
 using NHibernate;
 using Quasar.Dominio.Categorias.Entidades;
 using Quasar.Dominio.Categorias.Repositorios;
+using Quasar.Infra.Genericos;
 
 namespace Quasar.Infra.Categorias
 {
-    public class CategoriasRepositorio : ICategoriasRepositorio
+    public class CategoriasRepositorio : GenericosRepositorio<Categoria>, ICategoriasRepositorio
     {
-        private readonly ISession session;
-
-        public CategoriasRepositorio(ISession session)
-        {
-            this.session = session;
-        }
-
-        public void Deletar(Categoria categoria)
-        {
-            session.Delete(categoria);
-        }
-
-        public Categoria Editar(Categoria categoria)
-        {
-            session.Update(categoria);
-            return categoria;
-        }
-
-        //não entendi muito bem essa parte
-        public Categoria Inserir(Categoria categoria)
-        {
-            int codigo = (int)session.Save(categoria);
-            categoria.SetCodigo(codigo);
-            return categoria;
-        }
-
-        public IQueryable<Categoria> Query()
-        {
-            return session.Query<Categoria>();
-        }
-
-        public Categoria Recuperar(int codigo)
-        {
-            return session.Get<Categoria>(codigo);
-        }
+        public CategoriasRepositorio(ISession session) : base(session){}
     }
 }

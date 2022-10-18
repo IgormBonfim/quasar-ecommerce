@@ -43,7 +43,9 @@ namespace Quasar.Dominio.Fornecedores.Servicos
 
         public Fornecedor Inserir(Fornecedor fornecedor)
         {
-            return fornecedoresRepositorio.Inserir(fornecedor);
+            int codigo = fornecedoresRepositorio.Inserir(fornecedor);
+            fornecedor.SetCodigo(codigo);
+            return fornecedor;
         }
         
         public Fornecedor Instanciar(string? nome, string? razaoSocial, string? cnpj, string? ie)

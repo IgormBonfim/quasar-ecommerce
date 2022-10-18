@@ -61,7 +61,9 @@ namespace Quasar.Dominio.Produtos.Servicos
         //Retorna um Produto com o id do Produto inserido no banco de dados
         public Produto Inserir(Produto produto)
         {
-            return produtosRepositorio.Inserir(produto);
+            int codigo = produtosRepositorio.Inserir(produto);
+            produto.SetCodigo(codigo);
+            return produto;
         }
 
         //Metodo que Instancia um novo objeto do tipo Produto
