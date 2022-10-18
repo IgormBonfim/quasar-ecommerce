@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
-using Quasar.DataTransfer.StatusVendas.Responses;
-using Quasar.Dominio.StatusVendas.Entidades;
+using Quasar.DataTransfer.Vendas.Responses;
+using Quasar.Dominio.Vendas.Entidades;
 
-namespace Quasar.Aplicacao.StatusVendas.Profiles
+namespace Quasar.Aplicacao.Vendas.Profiles
 {
     public class StatusVendasProfile : Profile
 

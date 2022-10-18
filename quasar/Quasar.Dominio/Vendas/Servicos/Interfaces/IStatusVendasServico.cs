@@ -2,9 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Quasar.Dominio.StatusVendas.Entidades;
+using Quasar.Dominio.Vendas.Entidades;
 
-namespace Quasar.Dominio.StatusVendas.Servicos.Interfaces
+namespace Quasar.Dominio.Vendas.Servicos.Interfaces
 {
     public interface IStatusVendasServico
     {
