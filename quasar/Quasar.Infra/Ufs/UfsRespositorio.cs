@@ -5,25 +5,13 @@ using System.Threading.Tasks;
 using NHibernate;
 using Quasar.Dominio.Ufs.Entidades;
 using Quasar.Dominio.Ufs.Repositorios;
+using Quasar.Infra.Genericos;
 
 namespace Quasar.Infra.Ufs
 {
-    public class UfsRepositorio : IUfsRepositorio
+    public class UfsRepositorio : GenericosRepositorio<Uf>, IUfsRepositorio
     {
-        private readonly ISession session;
-        public UfsRepositorio(ISession session)
-        {
-            this.session = session;
-        }
-
-    public IQueryable<Uf> Query()
-    {
-    return session.Query<Uf>();
-    }
-
-    public Uf Recuperar (int codigo)
-    {
-        return session.Get<Uf>(codigo);
-    }
+        public UfsRepositorio(ISession session) : base(session)
+        {}
     }
 }
