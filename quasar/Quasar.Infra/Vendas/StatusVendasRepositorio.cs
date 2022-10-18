@@ -5,24 +5,13 @@ using System.Threading.Tasks;
 using NHibernate;
 using Quasar.Dominio.Vendas.Entidades;
 using Quasar.Dominio.Vendas.Repositorios;
+using Quasar.Infra.Genericos;
 
 namespace Quasar.Infra.Vendas
 {
-    public class StatusVendasRepositorio : IStatusVendasRepositorio
+    public class StatusVendasRepositorio : GenericosRepositorio<StatusVenda>, IStatusVendasRepositorio
     {
-        private readonly ISession session;
-        public StatusVendasRepositorio(ISession session)
-        {
-            this.session = session;
-        }
-        public IQueryable<StatusVenda> Query()
-        {
-            return session.Query<StatusVenda>();
-        }
-
-        public StatusVenda Recuperar(int id)
-        {
-            return session.Get<StatusVenda>(id);
-        }
+        public StatusVendasRepositorio(ISession session) : base(session)
+        {}
     }
 }

@@ -9,61 +9,61 @@ namespace Quasar.Dominio.Fornecedores.Entidades
     {
         // COLOCAR REGEX DE CNPJ E DE IE
         // DESCOMENTAR TUDO QUE É REFERENTE A FORNECEDOR EM PRODUTO 
-        public virtual int IdFornecedor { get; protected set; }
-        public virtual string NomeFornecedor { get; protected set; }
-        public virtual string RazaoSocialFornecedor { get; protected set; }
-        public virtual string CnpjFornecedor { get; protected set; }
-        public virtual string IeFornecedor { get; protected set; }
+        public virtual int Codigo { get; protected set; }
+        public virtual string Nome { get; protected set; }
+        public virtual string RazaoSocial { get; protected set; }
+        public virtual string Cnpj { get; protected set; }
+        public virtual string Ie { get; protected set; }
 
         public Fornecedor() { }
         
-        public Fornecedor(string? nomeFornecedor, string? razaoSocialFornecedor, string? cnpjFornecedor, string? ieFornecedor)
+        public Fornecedor(string? nome, string? razaoSocial, string? cnpj, string? ie)
         {
-            SetNomeFornecedor(nomeFornecedor);
-            SetRazaoSocialFornecedor(razaoSocialFornecedor);
-            SetCnpjFornecedor(cnpjFornecedor);
-            SetIeFornecedor(ieFornecedor);
+            SetNome(nome);
+            SetRazaoSocial(razaoSocial);
+            SetCnpj(cnpj);
+            SetIe(ie);
         }
 
-        public virtual void SetIdFornecedor(int? idFornecedor)
+        public virtual void SetCodigo(int? codigo)
         {
-            if(!idFornecedor.HasValue)
+            if(!codigo.HasValue)
                 throw new Exception("O código do Fornecedor é obrigatório");
 
-            IdFornecedor = idFornecedor.Value;
+            Codigo = codigo.Value;
         }
 
-        public virtual void SetNomeFornecedor(string? nomeFornecedor)
+        public virtual void SetNome(string? nome)
         {
             // A excessão não cobre o tamanho do nome do fornecedor, pois podem existir fornecedores cujos nomes são siglas com menos que até mesmo 5 caractéres.
-            if(string.IsNullOrWhiteSpace(nomeFornecedor))
+            if(string.IsNullOrWhiteSpace(nome))
                 throw new ArgumentException("O campo do fornecedor não pode ser nulo");
 
-            NomeFornecedor = nomeFornecedor;
+            Nome = nome;
         }
 
-        public virtual void SetRazaoSocialFornecedor(string? razaoSocialFornecedor)
+        public virtual void SetRazaoSocial(string? razaoSocial)
         {
-            if(string.IsNullOrWhiteSpace(razaoSocialFornecedor))
+            if(string.IsNullOrWhiteSpace(razaoSocial))
                 throw new ArgumentException("O campo da razão social do fornecedor não pode ser nulo");
 
-            RazaoSocialFornecedor = razaoSocialFornecedor;
+            RazaoSocial = razaoSocial;
         }
 
-        public virtual void SetCnpjFornecedor(string? cnpjFornecedor)
+        public virtual void SetCnpj(string? cnpj)
         {
-            if(string.IsNullOrWhiteSpace(cnpjFornecedor))
+            if(string.IsNullOrWhiteSpace(cnpj))
                 throw new ArgumentException("O CNPJ do fornecedor deve ser informado.");
 
-            CnpjFornecedor = cnpjFornecedor;
+            Cnpj = cnpj;
         }
 
-        public virtual void SetIeFornecedor (string? ieFornecedor)
+        public virtual void SetIe (string? ie)
         {
-            if(string.IsNullOrWhiteSpace(ieFornecedor))
+            if(string.IsNullOrWhiteSpace(ie))
                 throw new ArgumentException("A inscrição estadual deve ser informada");
 
-            IeFornecedor = ieFornecedor;    
+            Ie = ie;    
         }
     }
 }

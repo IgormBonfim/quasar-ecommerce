@@ -33,7 +33,7 @@ namespace Quasar.Aplicacao.Categorias.Servicos
 
             try
             {
-                Categoria categoriaInserir = categoriasServico.Instanciar(inserirResquest.NomeCategoria, inserirResquest.ImgCategoria);
+                Categoria categoriaInserir = categoriasServico.Instanciar(inserirResquest.Nome, inserirResquest.Imagem);
                 Categoria categoriaSalvo = categoriasServico.Inserir(categoriaInserir);
                 if(transacao.IsActive)
                     transacao.Commit();
@@ -52,8 +52,8 @@ namespace Quasar.Aplicacao.Categorias.Servicos
 
             try
             {
-                Categoria categoriaEditar = categoriasServico.Instanciar(editarRequest.NomeCategoria, editarRequest.ImgCategoria);
-                categoriaEditar.SetIdCategoria(editarRequest.IdCategoria);
+                Categoria categoriaEditar = categoriasServico.Instanciar(editarRequest.Nome, editarRequest.Imagem);
+                categoriaEditar.SetCodigo(editarRequest.Codigo);
 
                 Categoria categoriaSalvo = categoriasServico.Editar(categoriaEditar);
                 if(transacao.IsActive)
@@ -68,11 +68,11 @@ namespace Quasar.Aplicacao.Categorias.Servicos
             }
         }
 
-        public CategoriaResponse Recuperar(int id)
+        public CategoriaResponse Recuperar(int codigo)
         {
             try
             {
-                Categoria categoria = categoriasServico.Validar(id);
+                Categoria categoria = categoriasServico.Validar(codigo);
                 return mapper.Map<CategoriaResponse>(categoria);
             }
             catch
@@ -87,11 +87,11 @@ namespace Quasar.Aplicacao.Categorias.Servicos
             {
                 IQueryable<Categoria> query = categoriasRepositorio.Query();
 
-                if (buscarRequest.IdCategoria != null)
-                    query = query.Where(c => c.IdCategoria == buscarRequest.IdCategoria);
+                if (buscarRequest.Codigo != null)
+                    query = query.Where(c => c.Codigo == buscarRequest.Codigo);
 
-                if (buscarRequest.NomeCategoria != null)
-                    query = query.Where(c => c.NomeCategoria.Contains(buscarRequest.NomeCategoria));
+                if (buscarRequest.Nome != null)
+                    query = query.Where(c => c.Nome.Contains(buscarRequest.Nome));
 
                 IList<Categoria> listaCategorias = categoriasServico.Buscar(query);
 
@@ -103,13 +103,13 @@ namespace Quasar.Aplicacao.Categorias.Servicos
             }
         }
 
-        public void Deletar(int id)
+        public void Deletar(int codigo)
         {
             ITransaction transacao = session.BeginTransaction();
 
             try
             {
-                categoriasServico.Deletar(id);
+                categoriasServico.Deletar(codigo);
                 if(transacao.IsActive)
                     transacao.Commit();
             }

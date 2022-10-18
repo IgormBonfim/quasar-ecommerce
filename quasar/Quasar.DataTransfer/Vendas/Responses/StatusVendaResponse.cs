@@ -7,7 +7,7 @@ namespace Quasar.DataTransfer.Vendas.Responses
 {
     public class StatusVendaResponse
     {
-        public int IdStatusVenda { get; set; }
-        public string DescricaoStatusVenda { get; set; }
+        public int Codigo { get; set; }
+        public string Descricao { get; set; }
     }
 }
