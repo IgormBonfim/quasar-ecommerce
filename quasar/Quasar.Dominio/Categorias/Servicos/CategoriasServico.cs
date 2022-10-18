@@ -43,7 +43,9 @@ namespace Quasar.Dominio.Categorias.Servicos
 
         public Categoria Inserir(Categoria categoria)
         {
-            return categoriasRepositorio.Inserir(categoria);
+            int codigo = categoriasRepositorio.Inserir(categoria);
+            categoria.SetCodigo(codigo);
+            return categoria;
         }
 
         public Categoria Instanciar(string nome, string imagem)
