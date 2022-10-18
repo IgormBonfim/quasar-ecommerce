@@ -12,6 +12,6 @@ namespace Quasar.Dominio.Produtos.Servicos.Interfaces
         Especificacao Inserir (Especificacao especificacao);
         Especificacao Instanciar (string? posicao, string? cor, DateTime? ano, string? veiculo);
         Especificacao Editar (Especificacao especificacao);
-        void Deletar (int codEspecificacao);
+        void Deletar (int codigo);
     }
 }
