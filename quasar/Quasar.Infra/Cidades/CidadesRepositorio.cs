@@ -5,26 +5,13 @@ using System.Threading.Tasks;
 using NHibernate;
 using Quasar.Dominio.Cidades.Entidades;
 using Quasar.Dominio.Cidades.Repositorios;
+using Quasar.Infra.Genericos;
 
 namespace Quasar.Infra.Cidades
 {
-    public class CidadesRepositorio : ICidadesRepositorio
+    public class CidadesRepositorio :  GenericosRepositorio<Cidade>, ICidadesRepositorio
 
     {
-        private readonly ISession session;
-
-        public CidadesRepositorio(ISession session)
-        {
-            this.session = session;
-        }
-        public IQueryable<Cidade> Query()
-        {
-            return session.Query<Cidade>();
-        }
-
-        public Cidade Recuperar(int codigo)
-        {
-            return session.Get<Cidade>(codigo);
-        }
+        public CidadesRepositorio(ISession session) : base(session) {}
     }
 }
