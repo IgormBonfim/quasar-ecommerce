@@ -7,7 +7,7 @@ namespace Quasar.DataTransfer.FormasPagamento.Responses
 {
     public class FormaPagamentoResponse
     {
-        public int IdFormaPagamento { get; set; }
-        public string DescricaoFormaPagamento { get; set; }
+        public int Codigo { get; set; }
+        public string Descricao { get; set; }
     }
 }

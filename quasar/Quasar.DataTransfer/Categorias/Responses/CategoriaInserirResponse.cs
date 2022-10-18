@@ -7,7 +7,7 @@ namespace Quasar.DataTransfer.Categorias.Responses
 {
     public class CategoriaInserirResponse
     {
-        public int IdCategoria {get; set;}
-        public string NomeCategoria {get; set;}
+        public int Codigo {get; set;}
+        public string Nome {get; set;}
     }
 }

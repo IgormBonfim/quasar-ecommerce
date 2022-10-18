@@ -7,30 +7,30 @@ namespace Quasar.Dominio.FormasPagamento.Entidades
 {
     public class FormaPagamento
     {
-        public virtual int IdFormaPagamento { get; protected set; }
-        public virtual string DescricaoFormaPagamento { get; set; }
+        public virtual int Codigo { get; protected set; }
+        public virtual string Descricao { get; set; }
 
         public FormaPagamento()
         {
             
         }
 
-        public FormaPagamento(string? descricaoFormaPagamento)
+        public FormaPagamento(string? descricao)
         {
-            SetDescricaoFormaPagamento(descricaoFormaPagamento);
+            SetDescricao(descricao);
         }
 
-        public virtual void SetIdFormaPagamento(int? id)
+        public virtual void SetCodigo(int? codigo)
         {
-            if(!id.HasValue || id.Value <= 0)
+            if(!codigo.HasValue || codigo.Value <= 0)
                 throw new Exception("O campo Id não pode ter um valor inferior a 0!");
         }
 
-        public virtual void SetDescricaoFormaPagamento(string? descricaoFormaPagamento)
+        public virtual void SetDescricao(string? descricao)
         {
-            if(string.IsNullOrWhiteSpace(descricaoFormaPagamento))
+            if(string.IsNullOrWhiteSpace(descricao))
                 throw new Exception("O campo Descrição é obritagtório.");
-            DescricaoFormaPagamento = descricaoFormaPagamento;
+            Descricao = descricao;
         }
     }
 }
