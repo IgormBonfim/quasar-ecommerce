@@ -43,7 +43,9 @@ namespace Quasar.Dominio.Produtos.Servicos
 
         public Especificacao Inserir(Especificacao especificacao)
         {
-            return especificacoesRepositorio.Inserir(especificacao);
+            int codigo = especificacoesRepositorio.Inserir(especificacao);
+            especificacao.SetCodigo(codigo);
+            return especificacao;
         }
 
         public Especificacao Instanciar(string? posicao, string? cor, DateTime? ano, string? veiculo)
