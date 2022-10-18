@@ -16,9 +16,9 @@ namespace Quasar.Dominio.Produtos.Servicos
         {
             this.especificacoesRepositorio = especificacoesRepositorio;
         }
-        public void Deletar(int codEspecificacao)
+        public void Deletar(int codigo)
         {
-            Especificacao especificacaoDeletar = Validar(codEspecificacao);
+            Especificacao especificacaoDeletar = Validar(codigo);
             especificacoesRepositorio.Deletar(especificacaoDeletar);
         }
 
