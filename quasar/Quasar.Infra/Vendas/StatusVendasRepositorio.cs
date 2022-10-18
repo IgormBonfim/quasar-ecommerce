@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using NHibernate;
-using Quasar.Dominio.StatusVendas.Entidades;
-using Quasar.Dominio.StatusVendas.Repositorios;
+using Quasar.Dominio.Vendas.Entidades;
+using Quasar.Dominio.Vendas.Repositorios;
 using Quasar.Infra.Genericos;
 
-namespace Quasar.Infra.StatusVendas
+namespace Quasar.Infra.Vendas
 {
     public class StatusVendasRepositorio : GenericosRepositorio<StatusVenda>, IStatusVendasRepositorio
     {

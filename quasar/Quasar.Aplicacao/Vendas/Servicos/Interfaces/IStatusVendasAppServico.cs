@@ -2,9 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Quasar.DataTransfer.StatusVendas.Responses;
+using Quasar.DataTransfer.Vendas.Responses;
 
-namespace Quasar.Aplicacao.StatusVendas.Servicos.Interfaces
+namespace Quasar.Aplicacao.Vendas.Servicos.Interfaces
 {
     public interface IStatusVendasAppServico
     {

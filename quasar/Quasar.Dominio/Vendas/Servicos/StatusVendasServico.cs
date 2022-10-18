@@ -2,11 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Quasar.Dominio.StatusVendas.Entidades;
-using Quasar.Dominio.StatusVendas.Repositorios;
-using Quasar.Dominio.StatusVendas.Servicos.Interfaces;
+using Quasar.Dominio.Vendas.Entidades;
+using Quasar.Dominio.Vendas.Repositorios;
+using Quasar.Dominio.Vendas.Servicos.Interfaces;
 
-namespace Quasar.Dominio.StatusVendas.Servicos
+namespace Quasar.Dominio.Vendas.Servicos
 {
     public class StatusVendasServico : IStatusVendasServico
     {

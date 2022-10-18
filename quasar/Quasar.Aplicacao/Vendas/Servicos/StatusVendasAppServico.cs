@@ -4,12 +4,12 @@ using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using NHibernate;
-using Quasar.Aplicacao.StatusVendas.Servicos.Interfaces;
-using Quasar.DataTransfer.StatusVendas.Responses;
-using Quasar.Dominio.StatusVendas.Entidades;
-using Quasar.Dominio.StatusVendas.Servicos.Interfaces;
+using Quasar.Aplicacao.Vendas.Servicos.Interfaces;
+using Quasar.DataTransfer.Vendas.Responses;
+using Quasar.Dominio.Vendas.Entidades;
+using Quasar.Dominio.Vendas.Servicos.Interfaces;
 
-namespace Quasar.Aplicacao.StatusVendas.Servicos
+namespace Quasar.Aplicacao.Vendas.Servicos
 {
     public class StatusVendasAppServico : IStatusVendasAppServico
     {
