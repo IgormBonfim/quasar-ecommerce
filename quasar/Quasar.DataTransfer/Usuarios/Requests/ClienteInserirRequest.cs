@@ -8,6 +8,7 @@ namespace Quasar.DataTransfer.Usuarios.Requests
     public class ClienteInserirRequest
     {
         public string Nome { get; set; }
-        public string CPFCNPJ { get; set; }
+        public string Sobrenome { get; set; }
+        public string CpfCnpj { get; set; }
     }
 }
