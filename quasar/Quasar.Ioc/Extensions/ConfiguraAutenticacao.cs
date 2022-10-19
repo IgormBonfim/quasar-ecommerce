@@ -17,7 +17,8 @@ namespace Quasar.Ioc.Extensions
         public static void AddAutenticacao(this IServiceCollection services, IConfiguration configuration)
         {
             IConfigurationSection jwtAppSettingOptions = configuration.GetSection(nameof(JwtOptions));
-            SymmetricSecurityKey securityKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(configuration.GetSection("JwtOptions:SecurityKey").Value));
+            string secretKey = configuration.GetSection("JwtOptions:SecurityKey").Value;
+            SymmetricSecurityKey securityKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(secretKey));
 
             services.Configure<JwtOptions>(options =>
             {

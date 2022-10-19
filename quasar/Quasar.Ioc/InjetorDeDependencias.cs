@@ -18,6 +18,8 @@ using Quasar.Aplicacao.StatusVendas.Servicos;
 using Quasar.Aplicacao.StatusVendas.Servicos.Interfaces;
 using Quasar.Aplicacao.Ufs.Servicos;
 using Quasar.Aplicacao.Ufs.Servicos.Interfaces;
+using Quasar.Aplicacao.Usuarios.Servicos;
+using Quasar.Aplicacao.Usuarios.Servicos.Interfaces;
 using Quasar.Autenticacao.Data;
 using Quasar.Autenticacao.Servicos;
 using Quasar.Autenticacao.Servicos.Interfaces;
@@ -87,6 +89,7 @@ namespace Quasar.Ioc
 
             services.AddScoped<IAutenticacaoServico, AutenticacaoServico>();
             services.AddScoped<IJwtServico, JwtServico>();
+            services.AddScoped<IUsuariosAppServico, UsuariosAppServico>();
 
             services.AddSingleton<IProdutosRepositorio, ProdutosRepositorio>();
             services.AddSingleton<IProdutosServico, ProdutosServico>();
