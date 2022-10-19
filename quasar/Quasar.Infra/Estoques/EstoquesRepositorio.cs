@@ -5,40 +5,12 @@ using System.Threading.Tasks;
 using NHibernate;
 using Quasar.Dominio.Estoques.Entidades;
 using Quasar.Dominio.Estoques.Respositorios;
+using Quasar.Infra.Genericos;
 
 namespace Quasar.Infra.Estoques
 {
-    public class EstoquesRepositorio : IEstoquesRepositorio
+    public class EstoquesRepositorio : GenericosRepositorio<Estoque>, IEstoquesRepositorio
     {
-        private readonly ISession session;
-
-        public EstoquesRepositorio(ISession session)
-        {
-            this.session = session;
-        }
-
-        public Estoque Inserir(Estoque estoque)
-        {
-            int codigo = (int)session.Save(estoque);
-            estoque.SetCodigo(codigo);
-            return estoque;
-        }
-
-        public Estoque Editar(Estoque estoque)
-        {
-            session.Update(estoque);
-            return estoque;
-        }
-
-        public Estoque Recuperar(int codigo)
-        {
-            return session.Get<Estoque>(codigo);
-
-        }
-
-        public IQueryable<Estoque> Query()
-        {
-            return session.Query<Estoque>();;
-        }
+        public EstoquesRepositorio(ISession session) : base(session) {}
     }
 }
