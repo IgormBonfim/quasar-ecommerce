@@ -8,7 +8,6 @@ namespace Quasar.DataTransfer.Usuarios.Responses
     public class UsuarioCadastroResponse
     {
         public bool Sucesso { get; set; }
-        public string Codigo { get; set; }
         public List<string> Erros { get; set; }
 
         public UsuarioCadastroResponse() =>
