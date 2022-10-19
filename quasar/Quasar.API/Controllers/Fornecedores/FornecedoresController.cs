@@ -14,46 +14,46 @@ namespace Quasar.API.Controllers.Fornecedores
     [Route("api/fornecedores")]
     public class FornecedoresController : ControllerBase
     {
-        private readonly IFornecedoresAppServico fornecedoresAppServico;
+        private readonly IFornecedoresAppServico _fornecedoresAppServico;
 
-        public FornecedoresController(IFornecedoresAppServico FornecedoresAppServico)
+        public FornecedoresController(IFornecedoresAppServico fornecedoresAppServico)
         {
-            fornecedoresAppServico = FornecedoresAppServico;
+            _fornecedoresAppServico = fornecedoresAppServico;
         }
 
         [HttpPost]
         public IActionResult Inserir([FromBody]FornecedorInserirRequest inserirRequest)
         {
-            var retorno = fornecedoresAppServico.Inserir(inserirRequest);
+            var retorno = _fornecedoresAppServico.Inserir(inserirRequest);
             return Ok(retorno);
         }
 
-        [HttpPut("{id}")]
-        public IActionResult Editar(int id, FornecedorEditarRequest editarRequest)
+        [HttpPut("{codigo}")]
+        public IActionResult Editar(int codigo, FornecedorEditarRequest editarRequest)
         {
-            editarRequest.IdFornecedor = id;
-            var retorno = fornecedoresAppServico.Editar(editarRequest);
+            editarRequest.Codigo = codigo;
+            var retorno = _fornecedoresAppServico.Editar(editarRequest);
             return Ok(retorno);
         }
 
-        [HttpDelete("{id}")]
-        public IActionResult Deletar (int id)
+        [HttpDelete("{codigo}")]
+        public IActionResult Deletar (int codigo)
         {
-            fornecedoresAppServico.Deletar(id);
+            _fornecedoresAppServico.Deletar(codigo);
             return Ok();
         }
 
         [HttpGet]
         public IActionResult Listar([FromQuery]FornecedorListarRequest listarRequest)
         {
-            var retorno = fornecedoresAppServico.Listar(listarRequest);
+            var retorno = _fornecedoresAppServico.Listar(listarRequest);
             return Ok(retorno);
         }
 
-        [HttpGet("{Id}")]
-        public IActionResult Recuperar(int id)
+        [HttpGet("{codigo}")]
+        public IActionResult Recuperar(int codigo)
         {
-            var retorno = fornecedoresAppServico.Recuperar(id);
+            var retorno = _fornecedoresAppServico.Recuperar(codigo);
             return Ok(retorno);
         }
     }

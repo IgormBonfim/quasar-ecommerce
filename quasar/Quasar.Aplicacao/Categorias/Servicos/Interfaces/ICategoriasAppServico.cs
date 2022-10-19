@@ -11,8 +11,8 @@ namespace Quasar.Aplicacao.Categorias.Servicos.Interfaces
     {
         CategoriaInserirResponse Inserir(CategoriaInserirRequest inserirResquest);
         CategoriaEditarResponse Editar (CategoriaEditarRequest editarRequest);
-        CategoriaResponse Recuperar (int id);
-        void Deletar (int id);
+        CategoriaResponse Recuperar (int codigo);
+        void Deletar (int codigo);
         IList<CategoriaResponse> Buscar (CategoriaBuscarRequest buscarRequest);
     }
 }

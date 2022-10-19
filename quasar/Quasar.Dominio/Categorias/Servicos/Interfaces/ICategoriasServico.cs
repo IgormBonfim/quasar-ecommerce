@@ -8,11 +8,11 @@ namespace Quasar.Dominio.Categorias.Servicos.Interfaces
 {
     public interface ICategoriasServico
     {
-        Categoria Validar (int id);
+        Categoria Validar (int codigo);
         Categoria Inserir(Categoria categoria);
-        Categoria Instanciar(string nomeCategoria, string imgCategoria);
+        Categoria Instanciar(string nome, string imagem);
         Categoria Editar(Categoria categoria);
         IList<Categoria> Buscar(IQueryable<Categoria> query);
-        void Deletar(int idCategoria);
+        void Deletar(int codigo);
     }
 }
