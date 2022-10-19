@@ -9,10 +9,10 @@ namespace Quasar.Aplicacao.Fornecedores.Servicos.Interfaces
 {
     public interface IFornecedoresAppServico
     {
-        FornecedorResponse Recuperar(int id);
+        FornecedorResponse Recuperar(int codigo);
         FornecedorInserirResponse Inserir(FornecedorInserirRequest inserirRequest);
         FornecedorEditarResponse Editar(FornecedorEditarRequest editarRequest);
         IList<FornecedorResponse> Listar (FornecedorListarRequest BuscarRequest);
-        void Deletar (int id);
+        void Deletar (int codigo);
     }
 }

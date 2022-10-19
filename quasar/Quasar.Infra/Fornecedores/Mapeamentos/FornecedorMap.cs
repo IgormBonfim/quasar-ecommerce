@@ -13,11 +13,11 @@ namespace Quasar.Infra.Fornecedores.Mapeamentos
         {
             Schema("quasarecommerce");
             Table("fornecedor");
-            Id(f => f.IdFornecedor).Column("idFornecedor").GeneratedBy.Identity();
-            Map(f => f.NomeFornecedor).Column("nomefornecedor");
-            Map(f => f.RazaoSocialFornecedor).Column("razaoSocialFornecedor");
-            Map(f => f.CnpjFornecedor).Column("cnpjFornecedor");
-            Map(f => f.IeFornecedor).Column("ieFornecedor");
+            Id(f => f.Codigo).Column("codFornecedor").GeneratedBy.Identity();
+            Map(f => f.Nome).Column("nome");
+            Map(f => f.RazaoSocial).Column("razaoSocial");
+            Map(f => f.Cnpj).Column("cnpj");
+            Map(f => f.Ie).Column("ie");
         }
     }
 }

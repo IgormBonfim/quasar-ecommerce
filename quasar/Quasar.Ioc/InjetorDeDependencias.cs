@@ -7,6 +7,8 @@ using Microsoft.Extensions.DependencyInjection;
 using NHibernate;
 using Quasar.Aplicacao.Categorias.Servicos;
 using Quasar.Aplicacao.Categorias.Servicos.Interfaces;
+using Quasar.Aplicacao.Cidades.Servicos;
+using Quasar.Aplicacao.Cidades.Servicos.Interfaces;
 using Quasar.Aplicacao.FormasPagamento.Servicos;
 using Quasar.Aplicacao.FormasPagamento.Servicos.Interfaces;
 using Quasar.Aplicacao.Fornecedores.Servicos;
@@ -14,8 +16,8 @@ using Quasar.Aplicacao.Fornecedores.Servicos.Interfaces;
 using Quasar.Aplicacao.Produtos.Profiles;
 using Quasar.Aplicacao.Produtos.Servicos;
 using Quasar.Aplicacao.Produtos.Servicos.Interfaces;
-using Quasar.Aplicacao.StatusVendas.Servicos;
-using Quasar.Aplicacao.StatusVendas.Servicos.Interfaces;
+using Quasar.Aplicacao.Vendas.Servicos;
+using Quasar.Aplicacao.Vendas.Servicos.Interfaces;
 using Quasar.Aplicacao.Ufs.Servicos;
 using Quasar.Aplicacao.Ufs.Servicos.Interfaces;
 using Quasar.Aplicacao.Usuarios.Servicos;
@@ -26,6 +28,9 @@ using Quasar.Autenticacao.Servicos.Interfaces;
 using Quasar.Dominio.Categorias.Repositorios;
 using Quasar.Dominio.Categorias.Servicos;
 using Quasar.Dominio.Categorias.Servicos.Interfaces;
+using Quasar.Dominio.Cidades.Repositorios;
+using Quasar.Dominio.Cidades.Servicos;
+using Quasar.Dominio.Cidades.Servicos.Interfaces;
 using Quasar.Dominio.FormasPagamento.Repositorios;
 using Quasar.Dominio.FormasPagamento.Servicos;
 using Quasar.Dominio.FormasPagamento.Servicos.Interfaces;
@@ -35,18 +40,19 @@ using Quasar.Dominio.Fornecedores.Servicos.Interfaces;
 using Quasar.Dominio.Produtos.Repositorios;
 using Quasar.Dominio.Produtos.Servicos;
 using Quasar.Dominio.Produtos.Servicos.Interfaces;
-using Quasar.Dominio.StatusVendas.Repositorios;
-using Quasar.Dominio.StatusVendas.Servicos;
-using Quasar.Dominio.StatusVendas.Servicos.Interfaces;
+using Quasar.Dominio.Vendas.Repositorios;
+using Quasar.Dominio.Vendas.Servicos;
+using Quasar.Dominio.Vendas.Servicos.Interfaces;
 using Quasar.Dominio.Ufs.Repositorios;
 using Quasar.Dominio.Ufs.Servicos;
 using Quasar.Dominio.Ufs.Servicos.Interfaces;
 using Quasar.Infra.Categorias;
+using Quasar.Infra.Cidades;
 using Quasar.Infra.FormasPagamento;
 using Quasar.Infra.Fornecedores;
 using Quasar.Infra.Produtos;
 using Quasar.Infra.Produtos.Mapeamentos;
-using Quasar.Infra.StatusVendas;
+using Quasar.Infra.Vendas;
 using Quasar.Infra.Ufs;
 using Quasar.Ioc.Extensions;
 
@@ -73,7 +79,7 @@ namespace Quasar.Ioc
 
             services.AddAutenticacao(configuration);
             
-            services.AddSingleton<ISession>(factory => factory.GetService<ISessionFactory>().OpenSession());
+            services.AddScoped<ISession>(factory => factory.GetService<ISessionFactory>().OpenSession());
 
             services.AddDbContext<IdentityDataContext>(options =>
                 options.UseMySql(
@@ -91,30 +97,37 @@ namespace Quasar.Ioc
             services.AddScoped<IJwtServico, JwtServico>();
             services.AddScoped<IUsuariosAppServico, UsuariosAppServico>();
 
-            services.AddSingleton<IProdutosRepositorio, ProdutosRepositorio>();
-            services.AddSingleton<IProdutosServico, ProdutosServico>();
-            services.AddSingleton<IProdutosAppServico, ProdutosAppServico>();
+            services.AddScoped<IProdutosRepositorio, ProdutosRepositorio>();
+            services.AddScoped<IProdutosServico, ProdutosServico>();
+            services.AddScoped<IProdutosAppServico, ProdutosAppServico>();
 
-            services.AddSingleton<ICategoriasRepositorio, CategoriasRepositorio>();
-            services.AddSingleton<ICategoriasServico, CategoriasServico>();
-            services.AddSingleton<ICategoriasAppServico, CategoriasAppServico>();
+            services.AddScoped<IEspecificacoesRepositorio, EspecificacoesRepositorio>();
+            services.AddScoped<IEspecificacoesServico, EspecificacoesServico>();
 
-            services.AddSingleton<IStatusVendasRepositorio, StatusVendasRepositorio>();
-            services.AddSingleton<IStatusVendasServico, StatusVendasServico>();
-            services.AddSingleton<IStatusVendasAppServico, StatusVendasAppServico>();
+            services.AddScoped<ICategoriasRepositorio, CategoriasRepositorio>();
+            services.AddScoped<ICategoriasServico, CategoriasServico>();
+            services.AddScoped<ICategoriasAppServico, CategoriasAppServico>();
 
-            services.AddSingleton<IUfsAppServico, UfsAppServico>();
-            services.AddSingleton<IUfsRepositorio, UfsRepositorio>();
-            services.AddSingleton<IUfsServico, UfsServico>();
+            services.AddScoped<IStatusVendasRepositorio, StatusVendasRepositorio>();
+            services.AddScoped<IStatusVendasServico, StatusVendasServico>();
+            services.AddScoped<IStatusVendasAppServico, StatusVendasAppServico>();
 
-            services.AddSingleton<IFormasPagamentoRepositorio, FormasPagamentoRepositorio>();
-            services.AddSingleton<IFormasPagamentoServico, FormasPagamentoServico>();
-            services.AddSingleton<IFormasPagamentoAppServico, FormasPagamentoAppServico>();
+            services.AddScoped<IUfsAppServico, UfsAppServico>();
+            services.AddScoped<IUfsRepositorio, UfsRepositorio>();
+            services.AddScoped<IUfsServico, UfsServico>();
 
-            services.AddSingleton<IFornecedoresRepositorio, FornecedoresRepositorio>();
-            services.AddSingleton<IFornecedoresServico, FornecedoresServico>();
-            services.AddSingleton<IFornecedoresAppServico, FornecedoresAppServico>();
+            services.AddScoped<IFormasPagamentoRepositorio, FormasPagamentoRepositorio>();
+            services.AddScoped<IFormasPagamentoServico, FormasPagamentoServico>();
+            services.AddScoped<IFormasPagamentoAppServico, FormasPagamentoAppServico>();
 
+            services.AddScoped<IFornecedoresRepositorio, FornecedoresRepositorio>();
+            services.AddScoped<IFornecedoresServico, FornecedoresServico>();
+            services.AddScoped<IFornecedoresAppServico, FornecedoresAppServico>();
+
+            services.AddScoped<ICidadesRepositorio, CidadesRepositorio>();
+            services.AddScoped<ICidadesServico, CidadesServico>();
+            services.AddScoped<ICidadesAppServico, CidadesAppServico>();
+        
             services.AddAutoMapper(typeof(ProdutosProfile));
         }
     }

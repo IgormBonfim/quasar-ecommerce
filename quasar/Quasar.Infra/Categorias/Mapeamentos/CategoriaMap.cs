@@ -13,9 +13,9 @@ namespace Quasar.Infra.Categorias.Mapeamentos
         {
             Schema("quasarecommerce");
             Table("categoria");
-            Id(c => c.IdCategoria).Column("idCategoria").GeneratedBy.Identity();
-            Map(c => c.NomeCategoria).Column("nomeCategoria");
-            Map(c => c.ImgCategoria).Column("imgCategoria");
+            Id(c => c.Codigo).Column("codCategoria").GeneratedBy.Identity();
+            Map(c => c.Nome).Column("nome");
+            Map(c => c.Imagem).Column("imagem");
         }  
     }
 }
