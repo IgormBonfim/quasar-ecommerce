@@ -33,7 +33,7 @@ namespace Quasar.Dominio.Ufs.Entidades
         }
         public virtual void SetSigla(string sigla)
         {
-            if (sigla.Length < 1)
+            if (sigla.Length != 2 || sigla == null)
                 throw new Exception("A sigla da UF tem que ser obrigatório!");
             Sigla = sigla;
         }
