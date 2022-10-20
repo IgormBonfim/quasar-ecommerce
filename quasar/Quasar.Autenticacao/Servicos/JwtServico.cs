@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Options;
 using Quasar.Autenticacao.Configuracoes;
+using Quasar.Autenticacao.Entidades;
 using Quasar.Autenticacao.Servicos.Interfaces;
 using Quasar.DataTransfer.Usuarios.Responses;
 
@@ -14,15 +15,15 @@ namespace Quasar.Autenticacao.Servicos
 {
     public class JwtServico : IJwtServico
     {
-        private readonly UserManager<IdentityUser> userManager;
+        private readonly UserManager<Usuario> userManager;
         private readonly JwtOptions jwtOptions;
 
-        public JwtServico(UserManager<IdentityUser> userManager, IOptions<JwtOptions> jwtOptions)
+        public JwtServico(UserManager<Usuario> userManager, IOptions<JwtOptions> jwtOptions)
         {
             this.userManager = userManager;
             this.jwtOptions = jwtOptions.Value;
         }
-        public async Task<UsuarioLoginResponse> GerarToken(IdentityUser usuario)
+        public async Task<UsuarioLoginResponse> GerarToken(Usuario usuario)
         {
             IList<Claim> tokenClaims = await ObterClaims(usuario);
 
@@ -45,7 +46,7 @@ namespace Quasar.Autenticacao.Servicos
                 dataExpiracao: dataExpiracao
             );
         }
-        private async Task<IList<Claim>> ObterClaims(IdentityUser user)
+        private async Task<IList<Claim>> ObterClaims(Usuario user)
         {
             var claims = await userManager.GetClaimsAsync(user);
             var roles = await userManager.GetRolesAsync(user);
