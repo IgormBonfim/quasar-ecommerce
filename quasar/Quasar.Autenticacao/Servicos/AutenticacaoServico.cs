@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Options;
 using Quasar.Autenticacao.Configuracoes;
+using Quasar.Autenticacao.Entidades;
 using Quasar.Autenticacao.Servicos.Interfaces;
 using Quasar.DataTransfer.Usuarios.Requests;
 using Quasar.DataTransfer.Usuarios.Responses;
@@ -13,11 +14,11 @@ namespace Quasar.Autenticacao.Servicos
 {
     public class AutenticacaoServico : IAutenticacaoServico
     {
-        private readonly SignInManager<IdentityUser> signInManager;
-        private readonly UserManager<IdentityUser> userManager;
+        private readonly SignInManager<Usuario> signInManager;
+        private readonly UserManager<Usuario> userManager;
         private readonly IJwtServico jwtServico;
 
-        public AutenticacaoServico(SignInManager<IdentityUser> signInManager, UserManager<IdentityUser> userManager, IJwtServico jwtServico)
+        public AutenticacaoServico(SignInManager<Usuario> signInManager, UserManager<Usuario> userManager, IJwtServico jwtServico)
         {
             this.jwtServico = jwtServico;
             this.signInManager = signInManager;
@@ -25,11 +26,12 @@ namespace Quasar.Autenticacao.Servicos
         }
         public async Task<UsuarioCadastroResponse> Cadastrar(UsuarioCadastroRequest cadastroRequest)
         {
-            var identityUser = new IdentityUser
+            var identityUser = new Usuario
             {
                 UserName = cadastroRequest.Email,
                 Email = cadastroRequest.Email,
                 EmailConfirmed = true,
+                CodCliente = 1
             };
 
             var result = await userManager.CreateAsync(identityUser, cadastroRequest.Senha);
@@ -52,7 +54,7 @@ namespace Quasar.Autenticacao.Servicos
             var result = await signInManager.PasswordSignInAsync(loginRequest.Email, loginRequest.Senha, false, true);
             if (result.Succeeded)
             {
-                IdentityUser usuario = await userManager.FindByEmailAsync(loginRequest.Email);
+                Usuario usuario = await userManager.FindByEmailAsync(loginRequest.Email);
                 return await jwtServico.GerarToken(usuario);
             }
 
