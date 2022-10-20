@@ -5,10 +5,13 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using Quasar.Autenticacao.Configuracoes;
+using Quasar.Autenticacao.Data;
+using Quasar.Autenticacao.Entidades;
 
 namespace Quasar.Ioc.Extensions
 {
@@ -16,6 +19,19 @@ namespace Quasar.Ioc.Extensions
     {
         public static void AddAutenticacao(this IServiceCollection services, IConfiguration configuration)
         {
+
+            services.AddDbContext<IdentityDataContext>(options =>
+                options.UseMySql(
+                    configuration.GetConnectionString("MySql"),
+                    ServerVersion.Parse("8.0.28")
+                )
+            );
+
+            services.AddDefaultIdentity<Usuario>()
+                .AddRoles<IdentityRole>()
+                .AddEntityFrameworkStores<IdentityDataContext>()
+                .AddDefaultTokenProviders();
+
             IConfigurationSection jwtAppSettingOptions = configuration.GetSection(nameof(JwtOptions));
             string secretKey = configuration.GetSection("JwtOptions:SecurityKey").Value;
             SymmetricSecurityKey securityKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(secretKey));

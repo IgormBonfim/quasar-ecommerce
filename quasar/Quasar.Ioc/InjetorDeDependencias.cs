@@ -81,18 +81,6 @@ namespace Quasar.Ioc
             
             services.AddScoped<ISession>(factory => factory.GetService<ISessionFactory>().OpenSession());
 
-            services.AddDbContext<IdentityDataContext>(options =>
-                options.UseMySql(
-                    configuration.GetConnectionString("MySql"),
-                    ServerVersion.Parse("8.0.28")
-                )
-            );
-
-            services.AddDefaultIdentity<IdentityUser>()
-            .AddRoles<IdentityRole>()
-            .AddEntityFrameworkStores<IdentityDataContext>()
-            .AddDefaultTokenProviders();
-
             services.AddScoped<IAutenticacaoServico, AutenticacaoServico>();
             services.AddScoped<IJwtServico, JwtServico>();
             services.AddScoped<IUsuariosAppServico, UsuariosAppServico>();
