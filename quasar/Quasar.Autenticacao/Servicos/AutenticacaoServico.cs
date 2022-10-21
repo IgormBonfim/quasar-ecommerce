@@ -24,14 +24,14 @@ namespace Quasar.Autenticacao.Servicos
             this.signInManager = signInManager;
             this.userManager = userManager;
         }
-        public async Task<UsuarioCadastroResponse> Cadastrar(UsuarioCadastroRequest cadastroRequest)
+        public async Task<UsuarioCadastroResponse> Cadastrar(UsuarioCadastroRequest cadastroRequest, int codigoCliente)
         {
             var identityUser = new Usuario
             {
                 UserName = cadastroRequest.Email,
                 Email = cadastroRequest.Email,
                 EmailConfirmed = true,
-                CodCliente = 1
+                CodCliente = codigoCliente
             };
 
             var result = await userManager.CreateAsync(identityUser, cadastroRequest.Senha);
