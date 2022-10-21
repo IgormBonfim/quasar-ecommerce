@@ -9,6 +9,10 @@ namespace Quasar.DataTransfer.Usuarios.Requests
     {
         public string Nome { get; set; }
         public string Sobrenome { get; set; }
+        public string? NomeFantasia { get; set; }
         public string CpfCnpj { get; set; }
+        public string? InscricaoEstadual { get; set; }
+        public string? RazaoSocial { get; set; }
+        public int TipoCliente { get; set; }
     }
 }
