@@ -28,7 +28,7 @@ namespace Quasar.Autenticacao.Servicos
         {
             var identityUser = new Usuario
             {
-                UserName = cadastroRequest.Email,
+                UserName = cadastroRequest.Cliente.CpfCnpj,
                 Email = cadastroRequest.Email,
                 EmailConfirmed = true,
                 CodCliente = codigoCliente
