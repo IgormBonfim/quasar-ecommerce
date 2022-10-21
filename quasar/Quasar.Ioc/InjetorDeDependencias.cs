@@ -1,6 +1,5 @@
 using FluentNHibernate.Cfg;
 using FluentNHibernate.Cfg.Db;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -22,7 +21,6 @@ using Quasar.Aplicacao.Ufs.Servicos;
 using Quasar.Aplicacao.Ufs.Servicos.Interfaces;
 using Quasar.Aplicacao.Usuarios.Servicos;
 using Quasar.Aplicacao.Usuarios.Servicos.Interfaces;
-using Quasar.Autenticacao.Data;
 using Quasar.Autenticacao.Servicos;
 using Quasar.Autenticacao.Servicos.Interfaces;
 using Quasar.Dominio.Categorias.Repositorios;
@@ -55,6 +53,10 @@ using Quasar.Infra.Produtos.Mapeamentos;
 using Quasar.Infra.Vendas;
 using Quasar.Infra.Ufs;
 using Quasar.Ioc.Extensions;
+using Quasar.Dominio.Usuarios.Servicos;
+using Quasar.Dominio.Usuarios.Servicos.Interfaces;
+using Quasar.Infra.Usuarios;
+using Quasar.Dominio.Usuarios.Repositorios;
 
 namespace Quasar.Ioc
 {
@@ -84,6 +86,9 @@ namespace Quasar.Ioc
             services.AddScoped<IAutenticacaoServico, AutenticacaoServico>();
             services.AddScoped<IJwtServico, JwtServico>();
             services.AddScoped<IUsuariosAppServico, UsuariosAppServico>();
+
+            services.AddScoped<IClientesRepositorio, ClientesRepositorio>();
+            services.AddScoped<IClientesServico, ClientesServico>();
 
             services.AddScoped<IProdutosRepositorio, ProdutosRepositorio>();
             services.AddScoped<IProdutosServico, ProdutosServico>();
