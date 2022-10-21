@@ -6,8 +6,6 @@ using Microsoft.Extensions.DependencyInjection;
 using NHibernate;
 using Quasar.Aplicacao.Categorias.Servicos;
 using Quasar.Aplicacao.Categorias.Servicos.Interfaces;
-using Quasar.Aplicacao.Cidades.Servicos;
-using Quasar.Aplicacao.Cidades.Servicos.Interfaces;
 using Quasar.Aplicacao.FormasPagamento.Servicos;
 using Quasar.Aplicacao.FormasPagamento.Servicos.Interfaces;
 using Quasar.Aplicacao.Fornecedores.Servicos;
@@ -29,6 +27,9 @@ using Quasar.Dominio.Categorias.Servicos.Interfaces;
 using Quasar.Dominio.Cidades.Repositorios;
 using Quasar.Dominio.Cidades.Servicos;
 using Quasar.Dominio.Cidades.Servicos.Interfaces;
+using Quasar.Dominio.Estoques.Respositorios;
+using Quasar.Dominio.Estoques.Servicos;
+using Quasar.Dominio.Estoques.Servicos.Interfaces;
 using Quasar.Dominio.FormasPagamento.Repositorios;
 using Quasar.Dominio.FormasPagamento.Servicos;
 using Quasar.Dominio.FormasPagamento.Servicos.Interfaces;
@@ -46,6 +47,7 @@ using Quasar.Dominio.Ufs.Servicos;
 using Quasar.Dominio.Ufs.Servicos.Interfaces;
 using Quasar.Infra.Categorias;
 using Quasar.Infra.Cidades;
+using Quasar.Infra.Estoques;
 using Quasar.Infra.FormasPagamento;
 using Quasar.Infra.Fornecedores;
 using Quasar.Infra.Produtos;
@@ -57,6 +59,10 @@ using Quasar.Dominio.Usuarios.Servicos;
 using Quasar.Dominio.Usuarios.Servicos.Interfaces;
 using Quasar.Infra.Usuarios;
 using Quasar.Dominio.Usuarios.Repositorios;
+using Quasar.Aplicacao.Estoques.Servicos;
+using Quasar.Aplicacao.Estoques.Servicos.Interfaces;
+using Quasar.Aplicacao.Cidades.Servicos.Interfaces;
+using Quasar.Aplicacao.Cidades.Servicos;
 
 namespace Quasar.Ioc
 {
@@ -113,6 +119,10 @@ namespace Quasar.Ioc
             services.AddScoped<IFormasPagamentoServico, FormasPagamentoServico>();
             services.AddScoped<IFormasPagamentoAppServico, FormasPagamentoAppServico>();
 
+            services.AddScoped<IEstoquesAppServico, EstoquesAppServico>();
+            services.AddScoped<IEstoquesRepositorio, EstoquesRepositorio>();
+            services.AddScoped<IEstoquesServico, EstoquesServico>();
+            
             services.AddScoped<IFornecedoresRepositorio, FornecedoresRepositorio>();
             services.AddScoped<IFornecedoresServico, FornecedoresServico>();
             services.AddScoped<IFornecedoresAppServico, FornecedoresAppServico>();
