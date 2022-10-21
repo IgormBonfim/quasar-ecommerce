@@ -9,7 +9,7 @@ namespace Quasar.Autenticacao.Servicos.Interfaces
 {
     public interface IAutenticacaoServico
     {
-        Task<UsuarioCadastroResponse> Cadastrar(UsuarioCadastroRequest cadastroRequest);
+        Task<UsuarioCadastroResponse> Cadastrar(UsuarioCadastroRequest cadastroRequest, int codigoCliente);
         Task<UsuarioLoginResponse> Login(UsuarioLoginRequest loginRequest);
     }
 }
