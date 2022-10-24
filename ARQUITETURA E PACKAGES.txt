@@ -62,7 +62,13 @@ dotnet add package MySqlConnector
 
 -------
 
+dotnet tool install --global dotnet-ef --version 6.0.9
 
+cd .\xxxxxxxx.Autenticacao
+
+dotnet ef database update -s ..\Quasar.API\
+
+-------
 
 
 
