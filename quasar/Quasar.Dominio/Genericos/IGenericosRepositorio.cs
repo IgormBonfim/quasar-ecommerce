@@ -7,9 +7,9 @@ namespace Quasar.Dominio.Genericos
 {
     public interface IGenericosRepositorio<T> where T : class
     {
-        int Inserir(T fornecedor);
-        T Editar(T fornecedor);
-        void Deletar(T fornecedor);
+        int Inserir(T objeto);
+        T Editar(T objeto);
+        void Deletar(T objeto);
         T Recuperar(int codigo);
         IQueryable<T> Query();
         IList<T> Listar(IQueryable<T> query);
