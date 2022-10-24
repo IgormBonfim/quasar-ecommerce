@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using NHibernate;
 using Quasar.Dominio.Genericos;
+using Quasar.Dominio.Genericos.Entidades;
 
 namespace Quasar.Infra.Genericos
 {
@@ -32,7 +33,7 @@ namespace Quasar.Infra.Genericos
             return codigo;
         }
 
-        public IList<T> Listar(IQueryable<T> query, int qt, int pagina)
+        public ListaPaginada<T> Listar(IQueryable<T> query, int qt, int pagina)
         {
             int offset = (pagina * qt) - qt;
             IList<T> lista = query.Take(qt).Skip(offset).ToList();
