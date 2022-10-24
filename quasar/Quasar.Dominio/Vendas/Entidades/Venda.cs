@@ -14,13 +14,15 @@ namespace Quasar.Dominio.Vendas.Entidades
         public virtual FormaPagamento FormaPagamento {get; protected set;}
         public virtual Endereco Endereco {get; protected set;}
         public virtual Usuario Usuario {get; protected set;}
+        // lista item venda
+
         
         public Venda()
         {
             
         }
         
-        public Venda(int codigo, StatusVenda statusVenda, FormaPagamento formaPagamento, Endereco endereco, Usuario usuario)
+        public Venda(int codigo, StatusVenda statusVenda, FormaPagamento formaPagamento)
         {
             Codigo = codigo;
             StatusVenda = statusVenda;
