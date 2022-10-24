@@ -9,6 +9,10 @@ namespace Quasar.Dominio.Vendas.Entidades
 {
     public class Venda
     {
+        private int codStatusVenda;
+        private int codFormaPagamento;
+        private int codEndereco;
+        private int codUsuario;
 
         public virtual int Codigo {get; protected set;}
         public virtual StatusVenda StatusVenda {get; protected set;}
@@ -30,6 +34,14 @@ namespace Quasar.Dominio.Vendas.Entidades
             FormaPagamento = formaPagamento;
             Endereco = endereco;
             Usuario = usuario;
+        }
+
+        public Venda(int codStatusVenda, int codFormaPagamento, int codEndereco, int codUsuario)
+        {
+            this.codStatusVenda = codStatusVenda;
+            this.codFormaPagamento = codFormaPagamento;
+            this.codEndereco = codEndereco;
+            this.codUsuario = codUsuario;
         }
 
         public virtual void SetCodigo(int? codigo)
