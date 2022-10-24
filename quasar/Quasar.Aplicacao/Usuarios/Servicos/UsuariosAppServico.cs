@@ -26,7 +26,7 @@ namespace Quasar.Aplicacao.Usuarios.Servicos
         {
             try
             {
-                string nomeCompleto = cadastroRequest.Cliente.Nome + cadastroRequest.Cliente.Sobrenome;
+                string nomeCompleto = $"{cadastroRequest.Cliente.Nome} {cadastroRequest.Cliente.Sobrenome}";
 
                 Cliente cliente = clientesServico.Instanciar(
                     nomeCompleto,
