@@ -12,6 +12,6 @@ namespace Quasar.Dominio.Genericos
         void Deletar(T fornecedor);
         T Recuperar(int codigo);
         IQueryable<T> Query();
-        IList<T> Listar(IQueryable<T> query);
+        IList<T> Listar(IQueryable<T> query, int qt, int pagina);
     }
 }
