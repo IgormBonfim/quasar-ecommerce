@@ -127,6 +127,7 @@ CREATE TABLE IF NOT EXISTS quasarecommerce.carrinho (
   codCarrinho INT NOT NULL AUTO_INCREMENT,
   codUsuario INT NOT NULL,
   codProduto INT NOT NULL,
+  quantidade INT NOT NULL,
   PRIMARY KEY (codCarrinho),
   FOREIGN KEY (codUsuario) REFERENCES quasarecommerce.usuario (id),
   FOREIGN KEY (codProduto) REFERENCES quasarecommerce.produto (codProduto)
