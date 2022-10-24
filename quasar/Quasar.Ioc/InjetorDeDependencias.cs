@@ -47,6 +47,12 @@ using Quasar.Infra.Produtos;
 using Quasar.Infra.Produtos.Mapeamentos;
 using Quasar.Infra.Vendas;
 using Quasar.Infra.Ufs;
+using Quasar.Dominio.Enderecos.Repositorios;
+using Quasar.Dominio.Enderecos.Servicos.Interfaces;
+using Quasar.Aplicacao.Enderecos.Servicos.Interfaces;
+using Quasar.Dominio.Enderecos.Servicos;
+using Quasar.Infra.Enderecos;
+using Quasar.Aplicacao.Enderecos.Servicos;
 
 namespace Quasar.Ioc
 {
@@ -100,6 +106,10 @@ namespace Quasar.Ioc
             services.AddScoped<ICidadesRepositorio, CidadesRepositorio>();
             services.AddScoped<ICidadesServico, CidadesServico>();
             services.AddScoped<ICidadesAppServico, CidadesAppServico>();
+
+            services.AddScoped<IEnderecosRepositorio, EnderecosRepositorio>();
+            services.AddScoped<IEnderecosServico, EnderecosServico>();
+            services.AddScoped<IEnderecosAppServico, EnderecosAppServico>();
         
             services.AddAutoMapper(typeof(ProdutosProfile));
         }
