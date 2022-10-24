@@ -110,6 +110,10 @@ namespace Quasar.Ioc
             services.AddScoped<ICidadesRepositorio, CidadesRepositorio>();
             services.AddScoped<ICidadesServico, CidadesServico>();
             services.AddScoped<ICidadesAppServico, CidadesAppServico>();
+
+            services.AddScoped<IVendasRepositorio, VendasRepositorio>();
+            services.AddScoped<IVendasServico, VendasServico>();
+            services.AddScoped<IVendasAppServico, VendasAppServico>();
         
             services.AddAutoMapper(typeof(ProdutosProfile));
         }
