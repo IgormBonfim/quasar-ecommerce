@@ -9,6 +9,6 @@ namespace Quasar.Dominio.Usuarios.Repositorios
 {
     public interface IUsuariosRepositorio : IGenericosRepositorio<Usuario>
     {
-        
+        Usuario Recuperar(string codigo);
     }
 }

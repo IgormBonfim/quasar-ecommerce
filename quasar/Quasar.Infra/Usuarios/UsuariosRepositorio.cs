@@ -11,9 +11,15 @@ namespace Quasar.Infra.Usuarios
 {
     public class UsuariosRepositorio : GenericosRepositorio<Usuario>, IUsuariosRepositorio
     {
+        private readonly ISession session;
+
         public UsuariosRepositorio(ISession session) : base(session)
         {
-            
+            this.session = session;
+        }
+        public Usuario Recuperar(string codigo)
+        {
+            return session.Get<Usuario>(codigo);
         }
     }
 }

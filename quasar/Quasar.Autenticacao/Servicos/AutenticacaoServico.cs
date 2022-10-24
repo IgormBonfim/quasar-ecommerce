@@ -51,21 +51,33 @@ namespace Quasar.Autenticacao.Servicos
 
         public async Task<UsuarioLoginResponse> Login(UsuarioLoginRequest loginRequest)
         {
-            var result = await signInManager.PasswordSignInAsync(loginRequest.Email, loginRequest.Senha, false, true);
-            if (result.Succeeded)
+
+            var usuario = await userManager.FindByNameAsync(loginRequest.Email);
+            if(usuario == null)
             {
-                Usuario usuario = await userManager.FindByEmailAsync(loginRequest.Email);
+                usuario = await userManager.FindByEmailAsync(loginRequest.Email);
+                if (usuario == null)
+                {
+                    var response = new UsuarioLoginResponse(false);
+                    response.AdicionarErro("Usuário ou senha estão incorretos");
+                    return response;
+                }
+            }
+
+            var login = await signInManager.PasswordSignInAsync(usuario, loginRequest.Senha, false, true);
+            if (login.Succeeded)
+            {
                 return await jwtServico.GerarToken(usuario);
             }
 
-            var usuarioLoginResponse = new UsuarioLoginResponse(result.Succeeded);
-            if (!result.Succeeded)
+            var usuarioLoginResponse = new UsuarioLoginResponse(login.Succeeded);
+            if (!login.Succeeded)
             {
-                if (result.IsLockedOut)
+                if (login.IsLockedOut)
                     usuarioLoginResponse.AdicionarErro("Essa conta está bloqueada");
-                else if (result.IsNotAllowed)
+                else if (login.IsNotAllowed)
                     usuarioLoginResponse.AdicionarErro("Essa conta não tem permissão para fazer login");
-                else if (result.RequiresTwoFactor)
+                else if (login.RequiresTwoFactor)
                     usuarioLoginResponse.AdicionarErro("É necessário confirmar o login no seu segundo fator de autenticação");
                 else
                     usuarioLoginResponse.AdicionarErro("Usuário ou senha estão incorretos");
