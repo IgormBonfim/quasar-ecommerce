@@ -4,6 +4,7 @@
     <ProjectReference Include="..\Quasar.Dominio\Quasar.Dominio.csproj" />
     <ProjectReference Include="..\Quasar.Infra\Quasar.Infra.csproj" />
     <ProjectReference Include="..\Quasar.DataTransfer\Quasar.DataTransfer.csproj" />
+    <ProjectReference Include="..\Quasar.Autenticacao\Quasar.Autenticacao.csproj" />
   </ItemGroup>
 
   <ItemGroup>
