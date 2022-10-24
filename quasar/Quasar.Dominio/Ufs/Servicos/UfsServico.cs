@@ -23,9 +23,9 @@ namespace Quasar.Dominio.Ufs.Servicos
             return query.ToList();
         }
 
-        public Uf Validar (int idUf)
+        public Uf Validar (int codigo)
     {
-        Uf ufValidar = ufsRepositorio.Recuperar(idUf);
+        Uf ufValidar = ufsRepositorio.Recuperar(codigo);
         if(ufValidar == null)
         throw new Exception("UF não encontrada.");
         return ufValidar;

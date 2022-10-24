@@ -12,13 +12,19 @@ using Quasar.Aplicacao.Fornecedores.Servicos.Interfaces;
 using Quasar.Aplicacao.Produtos.Profiles;
 using Quasar.Aplicacao.Produtos.Servicos;
 using Quasar.Aplicacao.Produtos.Servicos.Interfaces;
-using Quasar.Aplicacao.StatusVendas.Servicos;
-using Quasar.Aplicacao.StatusVendas.Servicos.Interfaces;
+using Quasar.Aplicacao.Vendas.Servicos;
+using Quasar.Aplicacao.Vendas.Servicos.Interfaces;
 using Quasar.Aplicacao.Ufs.Servicos;
 using Quasar.Aplicacao.Ufs.Servicos.Interfaces;
 using Quasar.Dominio.Categorias.Repositorios;
 using Quasar.Dominio.Categorias.Servicos;
 using Quasar.Dominio.Categorias.Servicos.Interfaces;
+using Quasar.Dominio.Cidades.Repositorios;
+using Quasar.Dominio.Cidades.Servicos;
+using Quasar.Dominio.Cidades.Servicos.Interfaces;
+using Quasar.Dominio.Estoques.Respositorios;
+using Quasar.Dominio.Estoques.Servicos;
+using Quasar.Dominio.Estoques.Servicos.Interfaces;
 using Quasar.Dominio.FormasPagamento.Repositorios;
 using Quasar.Dominio.FormasPagamento.Servicos;
 using Quasar.Dominio.FormasPagamento.Servicos.Interfaces;
@@ -28,19 +34,25 @@ using Quasar.Dominio.Fornecedores.Servicos.Interfaces;
 using Quasar.Dominio.Produtos.Repositorios;
 using Quasar.Dominio.Produtos.Servicos;
 using Quasar.Dominio.Produtos.Servicos.Interfaces;
-using Quasar.Dominio.StatusVendas.Repositorios;
-using Quasar.Dominio.StatusVendas.Servicos;
-using Quasar.Dominio.StatusVendas.Servicos.Interfaces;
+using Quasar.Dominio.Vendas.Repositorios;
+using Quasar.Dominio.Vendas.Servicos;
+using Quasar.Dominio.Vendas.Servicos.Interfaces;
 using Quasar.Dominio.Ufs.Repositorios;
 using Quasar.Dominio.Ufs.Servicos;
 using Quasar.Dominio.Ufs.Servicos.Interfaces;
 using Quasar.Infra.Categorias;
+using Quasar.Infra.Cidades;
+using Quasar.Infra.Estoques;
 using Quasar.Infra.FormasPagamento;
 using Quasar.Infra.Fornecedores;
 using Quasar.Infra.Produtos;
 using Quasar.Infra.Produtos.Mapeamentos;
-using Quasar.Infra.StatusVendas;
+using Quasar.Infra.Vendas;
 using Quasar.Infra.Ufs;
+using Quasar.Aplicacao.Estoques.Servicos;
+using Quasar.Aplicacao.Estoques.Servicos.Interfaces;
+using Quasar.Aplicacao.Cidades.Servicos.Interfaces;
+using Quasar.Aplicacao.Cidades.Servicos;
 
 namespace Quasar.Ioc
 {
@@ -68,6 +80,9 @@ namespace Quasar.Ioc
             services.AddScoped<IProdutosServico, ProdutosServico>();
             services.AddScoped<IProdutosAppServico, ProdutosAppServico>();
 
+            services.AddScoped<IEspecificacoesRepositorio, EspecificacoesRepositorio>();
+            services.AddScoped<IEspecificacoesServico, EspecificacoesServico>();
+
             services.AddScoped<ICategoriasRepositorio, CategoriasRepositorio>();
             services.AddScoped<ICategoriasServico, CategoriasServico>();
             services.AddScoped<ICategoriasAppServico, CategoriasAppServico>();
@@ -84,10 +99,18 @@ namespace Quasar.Ioc
             services.AddScoped<IFormasPagamentoServico, FormasPagamentoServico>();
             services.AddScoped<IFormasPagamentoAppServico, FormasPagamentoAppServico>();
 
+            services.AddScoped<IEstoquesAppServico, EstoquesAppServico>();
+            services.AddScoped<IEstoquesRepositorio, EstoquesRepositorio>();
+            services.AddScoped<IEstoquesServico, EstoquesServico>();
+            
             services.AddScoped<IFornecedoresRepositorio, FornecedoresRepositorio>();
             services.AddScoped<IFornecedoresServico, FornecedoresServico>();
             services.AddScoped<IFornecedoresAppServico, FornecedoresAppServico>();
 
+            services.AddScoped<ICidadesRepositorio, CidadesRepositorio>();
+            services.AddScoped<ICidadesServico, CidadesServico>();
+            services.AddScoped<ICidadesAppServico, CidadesAppServico>();
+        
             services.AddAutoMapper(typeof(ProdutosProfile));
         }
     }
