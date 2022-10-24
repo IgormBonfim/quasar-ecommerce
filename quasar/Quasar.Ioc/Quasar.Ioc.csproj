@@ -16,11 +16,13 @@
 	  <PackageReference Include="MySql.data" Version="8.0.30" />
 	  <PackageReference Include="MySqlConnector" Version="2.1.13" />
   	  <PackageReference Include="NHibernate" Version="5.3.13" />
+	  <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="6.0.2" />
   	</ItemGroup>
 
   	<ItemGroup>
     <ProjectReference Include="..\Quasar.Aplicacao\Quasar.Aplicacao.csproj" />
     <ProjectReference Include="..\Quasar.Dominio\Quasar.Dominio.csproj" />
+	<ProjectReference Include="..\Quasar.Autenticacao\Quasar.Autenticacao.csproj" />
   </ItemGroup>
 
 </Project>
