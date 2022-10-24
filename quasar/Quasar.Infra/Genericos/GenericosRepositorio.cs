@@ -46,10 +46,5 @@ namespace Quasar.Infra.Genericos
         {
             return session.Get<T>(codigo);
         }
-
-        public T Recuperar(string codigo)
-        {
-            return session.Get<T>(codigo);
-        }
     }
 }
