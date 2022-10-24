@@ -46,8 +46,8 @@ namespace Quasar.Dominio.Usuarios.Entidades
 
         public virtual void SetNomeFantasia(string? nomeFantasia)
         {
-            if(!string.IsNullOrWhiteSpace(nomeFantasia) && nomeFantasia.Length <= 5)
-                throw new Exception("O campo nome fantasia deve contar no minímo 5 caracteres");
+            if(!string.IsNullOrWhiteSpace(nomeFantasia) && nomeFantasia.Length <= 2)
+                throw new Exception("O campo nome fantasia deve contar no minímo 3 caracteres");
             NomeFantasia = nomeFantasia;
         }
 
