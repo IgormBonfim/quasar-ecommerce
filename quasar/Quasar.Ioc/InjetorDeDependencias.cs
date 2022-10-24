@@ -1,5 +1,6 @@
 using FluentNHibernate.Cfg;
 using FluentNHibernate.Cfg.Db;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using NHibernate;
@@ -16,6 +17,10 @@ using Quasar.Aplicacao.Vendas.Servicos;
 using Quasar.Aplicacao.Vendas.Servicos.Interfaces;
 using Quasar.Aplicacao.Ufs.Servicos;
 using Quasar.Aplicacao.Ufs.Servicos.Interfaces;
+using Quasar.Aplicacao.Usuarios.Servicos;
+using Quasar.Aplicacao.Usuarios.Servicos.Interfaces;
+using Quasar.Autenticacao.Servicos;
+using Quasar.Autenticacao.Servicos.Interfaces;
 using Quasar.Dominio.Categorias.Repositorios;
 using Quasar.Dominio.Categorias.Servicos;
 using Quasar.Dominio.Categorias.Servicos.Interfaces;
@@ -49,6 +54,11 @@ using Quasar.Infra.Produtos;
 using Quasar.Infra.Produtos.Mapeamentos;
 using Quasar.Infra.Vendas;
 using Quasar.Infra.Ufs;
+using Quasar.Ioc.Extensions;
+using Quasar.Dominio.Usuarios.Servicos;
+using Quasar.Dominio.Usuarios.Servicos.Interfaces;
+using Quasar.Infra.Usuarios;
+using Quasar.Dominio.Usuarios.Repositorios;
 using Quasar.Aplicacao.Estoques.Servicos;
 using Quasar.Aplicacao.Estoques.Servicos.Interfaces;
 using Quasar.Aplicacao.Cidades.Servicos.Interfaces;
@@ -60,6 +70,7 @@ namespace Quasar.Ioc
     {
         public static void InjetarDependencias(this IServiceCollection services, IConfiguration configuration)
         {
+
             services.AddSingleton<ISessionFactory>(factory => 
             {
                 string connectionString = configuration.GetConnectionString("MySql");
@@ -74,7 +85,16 @@ namespace Quasar.Ioc
                                             .BuildSessionFactory();
             });
 
+            services.AddAutenticacao(configuration);
+            
             services.AddScoped<ISession>(factory => factory.GetService<ISessionFactory>().OpenSession());
+
+            services.AddScoped<IAutenticacaoServico, AutenticacaoServico>();
+            services.AddScoped<IJwtServico, JwtServico>();
+            services.AddScoped<IUsuariosAppServico, UsuariosAppServico>();
+
+            services.AddScoped<IClientesRepositorio, ClientesRepositorio>();
+            services.AddScoped<IClientesServico, ClientesServico>();
 
             services.AddScoped<IProdutosRepositorio, ProdutosRepositorio>();
             services.AddScoped<IProdutosServico, ProdutosServico>();
