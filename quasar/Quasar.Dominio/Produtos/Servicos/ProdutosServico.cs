@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Quasar.Dominio.Categorias.Entidades;
+using Quasar.Dominio.Categorias.Servicos.Interfaces;
 using Quasar.Dominio.Fornecedores.Entidades;
+using Quasar.Dominio.Fornecedores.Servicos.Interfaces;
 using Quasar.Dominio.Produtos.Entidades;
 using Quasar.Dominio.Produtos.Repositorios;
 using Quasar.Dominio.Produtos.Servicos.Interfaces;
@@ -15,19 +17,25 @@ namespace Quasar.Dominio.Produtos.Servicos
 
         //Campo que tem todos os metodos de ProdutosRepositorio
         private readonly IProdutosRepositorio produtosRepositorio;
+        private readonly IEspecificacoesServico especificacoesServico;
+        private readonly ICategoriasServico categoriasServico;
+        private readonly IFornecedoresServico fornecedoresServico;
 
         //Construtor que recebe um IProdutosRepositorio
-        public ProdutosServico(IProdutosRepositorio produtosRepositorio)
+        public ProdutosServico(IProdutosRepositorio produtosRepositorio, IEspecificacoesServico especificacoesServico, ICategoriasServico categoriasServico, IFornecedoresServico fornecedoresServico)
         {
+            this.fornecedoresServico = fornecedoresServico;
             this.produtosRepositorio = produtosRepositorio;
+            this.especificacoesServico = especificacoesServico;
+            this.categoriasServico = categoriasServico;
         }
 
         //Recebe o id do produto que será deletado e valida se esse produto existe no banco
         //Metodo que chama o metodo de deletar de ProdutosRepositorio
         //Não retorna nada
-        public void Deletar(int idProduto)
+        public void Deletar(int codigo)
         {
-            Produto produtoDeletar = Validar(idProduto);
+            Produto produtoDeletar = Validar(codigo);
             produtosRepositorio.Deletar(produtoDeletar);
         }
 
@@ -36,22 +44,22 @@ namespace Quasar.Dominio.Produtos.Servicos
         //Retorna o produto atualizado no banco
         public Produto Editar(Produto produto)
         {
-            Produto produtoEditar = Validar(produto.IdProduto);
+            Produto produtoEditar = Validar(produto.Codigo);
 
-            if (produto.NomeProduto != produtoEditar.NomeProduto)
-                produtoEditar.SetNomeProduto(produto.NomeProduto);
+            if (produto.Nome != produtoEditar.Nome)
+                produtoEditar.SetNome(produto.Nome);
 
-            if (produto.DescricaoProduto != produtoEditar.DescricaoProduto) 
-                produtoEditar.SetDescricaoProduto(produto.DescricaoProduto);
+            if (produto.Descricao != produtoEditar.Descricao) 
+                produtoEditar.SetDescricao(produto.Descricao);
 
-            if (produto.ImgProduto != produtoEditar.ImgProduto) 
-                produtoEditar.SetImgProduto(produto.ImgProduto);
+            if (produto.Imagem != produtoEditar.Imagem) 
+                produtoEditar.SetImagem(produto.Imagem);
 
             // if (produto.Categoria != produtoEditar.Categoria)
             //     produtoEditar.SetCategoria(produto.Categoria);
 
-            if (produto.Fornecedor != produtoEditar.Fornecedor)
-                produtoEditar.SetFornecedor(produto.Fornecedor);
+            // if (produto.Fornecedor != produtoEditar.Fornecedor)
+            //     produtoEditar.SetFornecedor(produto.Fornecedor);
 
             return produtosRepositorio.Editar(produtoEditar);
         }
@@ -61,24 +69,31 @@ namespace Quasar.Dominio.Produtos.Servicos
         //Retorna um Produto com o id do Produto inserido no banco de dados
         public Produto Inserir(Produto produto)
         {
-            return produtosRepositorio.Inserir(produto);
+            int codigo = produtosRepositorio.Inserir(produto);
+            produto.SetCodigo(codigo);
+            return produto;
         }
 
         //Metodo que Instancia um novo objeto do tipo Produto
         //Recebe as informações do produto
         //Retorna um Produto
-        public Produto Instanciar(string? descricaoProduto, string? nomeProduto, string? imgProduto)
+
+        public Produto Instanciar(string? descricao, string? nome, string? imagem, int codigoEspecificacao, int codFornecedor, int codCategoria)
         {
-            Produto produto = new Produto(descricaoProduto, nomeProduto, imgProduto);
+            Especificacao especificacaoBanco = especificacoesServico.Validar(codigoEspecificacao);
+            Fornecedor fornecedor = fornecedoresServico.Validar(codFornecedor);
+            Categoria categoria = categoriasServico.Validar(codCategoria);
+
+            Produto produto = new Produto(descricao, nome, imagem, especificacaoBanco, categoria, fornecedor);
             return produto;
         }
 
         //Metodo que valida se um produto existe no banco
         //Recebe o id do produto a ser validado
         //Retorna o produto caso exista no banco
-        public Produto Validar(int id)
+        public Produto Validar(int codigo)
         {
-            Produto produtoValidar = produtosRepositorio.Recuperar(id);
+            Produto produtoValidar = produtosRepositorio.Recuperar(codigo);
             if (produtoValidar == null)
                 throw new Exception("Produto não encontado.");
             return produtoValidar;

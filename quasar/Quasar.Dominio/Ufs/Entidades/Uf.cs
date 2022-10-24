@@ -7,38 +7,41 @@ namespace Quasar.Dominio.Ufs.Entidades
 {
     public class Uf
     {
-        
 
-        public virtual int IdUf { get; protected set; }
-        public virtual string SiglaUf { get; protected set; }
-        public virtual  string DescUf { get; protected set; }
 
-        public Uf(){
+        public virtual int Codigo { get; protected set; }
+        public virtual string Sigla { get; protected set; }
+        public virtual string Nome { get; protected set; }
 
-         }
-
-        public Uf(int idUf, string siglaUf, string descUf)
+        public Uf()
         {
-            SetIdUf(idUf);
-            SetSiglaUf(siglaUf);
-            SetDescUf(descUf);
+
         }
 
-        public virtual void SetIdUf(int? idUf)
+        public Uf(int codigo, string sigla, string nome)
         {
-            if(!idUf.HasValue)
-            throw new Exception("O código da UF tem que ser obrigatório!");
-            IdUf = idUf.Value;
+            SetCodigo(codigo);
+            SetSigla(sigla);
+            SetNome(nome);
         }
-        public virtual void SetSiglaUf(string siglaUf)
+
+        public virtual void SetCodigo(int? codigo)
         {
-            throw new Exception("A sigla da UF tem que ser obrigatório!");
-            SiglaUf = siglaUf;
+            if (!codigo.HasValue)
+                throw new Exception("O código da UF tem que ser obrigatório!");
+            Codigo = codigo.Value;
         }
-        public virtual void SetDescUf(string descUf)
+        public virtual void SetSigla(string sigla)
         {
-            throw new Exception("A descrição da UF tem que ser obrigatório!");
-            DescUf = descUf;
+            if (sigla.Length != 2 || sigla == null)
+                throw new Exception("A sigla da UF tem que ser obrigatório!");
+            Sigla = sigla;
+        }
+        public virtual void SetNome(string nome)
+        {
+            if (nome.Length <= 3)
+                throw new Exception("A descrição da UF tem que ser obrigatório!");
+            Nome = nome;
         }
     }
 }
