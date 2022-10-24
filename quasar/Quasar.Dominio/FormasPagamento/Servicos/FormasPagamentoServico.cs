@@ -20,12 +20,6 @@ namespace Quasar.Dominio.FormasPagamento.Servicos
         {
             return new FormaPagamento(descricao);
         }
-
-        public IList<FormaPagamento> Query(IQueryable<FormaPagamento> query)
-        {
-            return query.ToList();
-        }
-
         public FormaPagamento Validar(int codigo)
         {
             FormaPagamento formaPagamento = formasPagamentoRepositorio.Recuperar(codigo);
