@@ -13,6 +13,7 @@ namespace Quasar.Aplicacao.Produtos.Profiles
         public ProdutosProfile()
         {
             CreateMap<Produto, ProdutoInserirResponse>();
+            CreateMap<Produto, ProdutoResponse>();
         }
     }
 }
