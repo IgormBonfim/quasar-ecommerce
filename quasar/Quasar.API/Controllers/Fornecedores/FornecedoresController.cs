@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Quasar.Aplicacao.Fornecedores.Servicos.Interfaces;
 using Quasar.DataTransfer.Fornecedores.Requests;
@@ -9,6 +10,7 @@ using Quasar.DataTransfer.Fornecedores.Requests;
 namespace Quasar.API.Controllers.Fornecedores
 {
     [ApiController]
+    [Authorize]
     [Route("api/fornecedores")]
     public class FornecedoresController : ControllerBase
     {
