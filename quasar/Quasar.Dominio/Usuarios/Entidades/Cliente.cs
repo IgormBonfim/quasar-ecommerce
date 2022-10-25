@@ -16,7 +16,6 @@ namespace Quasar.Dominio.Usuarios.Entidades
         public virtual string? InscricaoEstadual { get; protected set; }
         public virtual string? RazaoSocial { get; protected set; }
         public virtual TipoClienteEnum TipoCliente { get; protected set; }
-        public virtual IList<Carrinho> carrinho { get; protected set; }
 
         public Cliente() { }
 
