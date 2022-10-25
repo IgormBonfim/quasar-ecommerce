@@ -14,9 +14,8 @@ namespace Quasar.Dominio.Carrinhos.Entidades
         public virtual Produto Produto { get; protected set; }
         public virtual Usuario Usuario { get; protected set; } 
         public Carrinho() {}
-        public Carrinho(int codigo, int quantidade, Produto produto, Usuario usuario)
+        public Carrinho(int quantidade, Produto produto, Usuario usuario)
         {
-            SetCodigo(codigo);
             SetQuantidade(quantidade);
             SetProduto(produto);
             SetUsuario(usuario);
@@ -36,11 +35,15 @@ namespace Quasar.Dominio.Carrinhos.Entidades
 
         public virtual void SetProduto(Produto produto)
         {
+            if(produto == null)
+                throw new Exception("O carrinho não possui produtos.");
             Produto = produto;
         }
 
         public virtual void SetUsuario(Usuario usuario)
         {
+            if(usuario == null)
+                throw new Exception("O carrinho não pode existir sem usuario.");
             Usuario = usuario;
         }
     }
