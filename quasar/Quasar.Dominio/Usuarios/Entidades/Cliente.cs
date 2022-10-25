@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Quasar.Dominio.Carrinhos.Entidades;
 using Quasar.Dominio.Usuarios.Enumeradores;
 
 namespace Quasar.Dominio.Usuarios.Entidades
@@ -15,6 +16,7 @@ namespace Quasar.Dominio.Usuarios.Entidades
         public virtual string? InscricaoEstadual { get; protected set; }
         public virtual string? RazaoSocial { get; protected set; }
         public virtual TipoClienteEnum TipoCliente { get; protected set; }
+        public virtual IList<Carrinho> carrinho { get; protected set; }
 
         public Cliente() { }
 
