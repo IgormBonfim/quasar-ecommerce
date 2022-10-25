@@ -32,7 +32,7 @@ namespace Quasar.Aplicacao.Vendas.Servicos
 
             try
             {
-                Venda vendaInserir = vendasServico.Instanciar(inserirRequest.CodEndereco, inserirRequest.CodFormaPagamento, inserirRequest.CodUsuario);
+                Venda vendaInserir = vendasServico.Instanciar(inserirRequest.CodStatusVenda, inserirRequest.CodEndereco, inserirRequest.CodFormaPagamento, inserirRequest.CodUsuario);
                 Venda vendaSalvo = vendasServico.Inserir(vendaInserir);
                 if(transacao.IsActive)
                     transacao.Commit();
@@ -52,13 +52,13 @@ namespace Quasar.Aplicacao.Vendas.Servicos
 
             try
             {
-                Venda vendaEditar = vendasServico.Instanciar(editarRequest.CodStatusVenda);
-                vendaEditar.SetCodigo(editarRequest.Codigo);
+                // Venda vendaEditar = vendasServico.Instanciar(editarRequest.CodStatusVenda);
+                // vendaEditar.SetCodigo(editarRequest.Codigo);
 
-                Venda vendaSalvo = vendasServico.Editar(vendaEditar);
+                // Venda vendaSalvo = vendasServico.Editar(vendaEditar);
                 if(transacao.IsActive)
                     transacao.Commit();
-                return mapper.Map<VendaEditarResponse>(vendaSalvo);
+                return mapper.Map<VendaEditarResponse>(Editar); //trocar parametro
             }
             catch
             {
@@ -67,5 +67,17 @@ namespace Quasar.Aplicacao.Vendas.Servicos
                     throw;
             }
         }
+        public VendaResponse Recuperar(int codigo)
+        {
+            try
+            {
+                Venda venda = vendasServico.Validar(codigo);
+                return mapper.Map<VendaResponse>(venda);
+            }
+            catch
+            {
+                throw;
+            }
+        }    
     }
 }
