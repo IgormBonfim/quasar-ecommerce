@@ -13,5 +13,6 @@ namespace Quasar.Dominio.Vendas.Servicos.Interfaces
         Venda Inserir(Venda venda);
         Venda Instanciar(int codStatusVenda, int codFormaPagamento, int codEndereco, int codUsuario);
         Venda Editar(Venda venda);
+        Venda Instanciar(object codStatusVenda, int codEndereco, int codFormaPagamento, string codUsuario);
     }
 }
