@@ -19,6 +19,8 @@ namespace Quasar.Infra.Vendas.Mapeamentos
             References(p => p.FormaPagamento).Column("codFormaPagamento");
             References(p => p.Endereco).Column("codEndereco");
             References(p => p.Usuario).Column("codUsuario");
+            HasMany(p => p.Itens).KeyColumn("codVenda").NotFound.Ignore();
+            
         }
     }
 }

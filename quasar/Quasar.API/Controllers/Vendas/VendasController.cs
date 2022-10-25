@@ -20,7 +20,7 @@ namespace Quasar.API.Controllers.Vendas
     [HttpGet("codigo")]
     public IActionResult Recuperar(int codigo)
     {
-        var retorno = vendasAppServico.Recuperar(codigo)
+        var retorno = vendasAppServico.Recuperar(codigo);
         return Ok(retorno);
     }
     [HttpPost]

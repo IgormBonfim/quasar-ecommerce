@@ -15,8 +15,7 @@ namespace Quasar.Dominio.Vendas.Entidades
         public virtual FormaPagamento FormaPagamento {get; protected set;}
         public virtual Endereco Endereco {get; protected set;}
         public virtual Usuario Usuario {get; protected set;}
-        // lista item venda
-
+        public virtual IList<ItemVenda> Itens {get; protected set;}
         
         public Venda()
         {
