@@ -12,16 +12,19 @@ namespace Quasar.Dominio.Vendas.Entidades
         public virtual int Quantidade {get; set;}
         public virtual Venda Venda { get; set; }
         public virtual Produto Produto {get; set;}
+        public virtual decimal PrecoUnitario {get; set;}
         public ItemVenda()
         { 
 
         }
-        public ItemVenda(int? quantidade, Venda? venda, Produto? produto)
+        public ItemVenda(int? quantidade, Venda? venda, Produto? produto, decimal precoUnitario)
         {
             SetQuantidade(quantidade);
             SetVenda(venda);
             SetProduto(produto);
+            SetPrecoUnitario(precoUnitario);
         }
+
         public virtual void SetCodigo(int? codigo)
         {
             if(!codigo.HasValue)
@@ -46,6 +49,13 @@ namespace Quasar.Dominio.Vendas.Entidades
         {
             if(produto == null)
             throw new Exception("O produto precisa ser informado.");
+        }
+        public virtual void SetPrecoUnitario(decimal? precoUnitario)
+        {
+            if(precoUnitario.HasValue)
+            throw new Exception("O preço do produto precisa ser informado.");
+            PrecoUnitario = precoUnitario.Value;
+
         }
     }
 }
