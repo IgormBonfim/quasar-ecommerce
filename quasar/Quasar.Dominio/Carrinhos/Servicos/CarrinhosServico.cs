@@ -6,17 +6,23 @@ using Quasar.Dominio.Carrinhos.Entidades;
 using Quasar.Dominio.Carrinhos.Repositorios;
 using Quasar.Dominio.Carrinhos.Servicos.Interfaces;
 using Quasar.Dominio.Produtos.Entidades;
+using Quasar.Dominio.Produtos.Servicos.Interfaces;
 using Quasar.Dominio.Usuarios.Entidades;
+using Quasar.Dominio.Usuarios.Servicos.Interfaces;
 
 namespace Quasar.Dominio.Carrinhos.Servicos
 {
     public class CarrinhosServico : ICarrinhosServico
     {
         private readonly ICarrinhosRepositorio carrinhosRepositorio;
+        private readonly IProdutosServico produtosServico;
+        private readonly IUsuariosServico usuarioServico;
 
-        public CarrinhosServico(ICarrinhosRepositorio carrinhosRepositorio)
+        public CarrinhosServico(ICarrinhosRepositorio carrinhosRepositorio, IProdutosServico produtosServico, IUsuariosServico usuarioServico)
         {
             this.carrinhosRepositorio = carrinhosRepositorio;
+            this.produtosServico = produtosServico;
+            this.usuarioServico = usuarioServico;
         }
         public void Deletar(int codigo)
         {
@@ -39,6 +45,7 @@ namespace Quasar.Dominio.Carrinhos.Servicos
 
             return carrinhoEditar;
         }
+    
 
         public Carrinho Inserir(Carrinho carrinho)
         {
@@ -47,9 +54,11 @@ namespace Quasar.Dominio.Carrinhos.Servicos
             return carrinho;
         }
 
-        public Carrinho Instanciar(int codigo, int quantidade, Produto produto, Usuario usuario)
+        public Carrinho Instanciar(int quantidade, int codProduto, string codUsuario)
         {
-            Carrinho carrinho = new Carrinho(codigo, quantidade, produto, usuario);
+            Produto produto = produtosServico.Validar(codProduto);
+            Usuario usuario = usuarioServico.Validar(codUsuario);
+            Carrinho carrinho = new Carrinho(quantidade, produto, usuario);
             return carrinho;
         }
 
