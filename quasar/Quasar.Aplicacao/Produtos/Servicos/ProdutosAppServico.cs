@@ -41,7 +41,7 @@ namespace Quasar.Aplicacao.Produtos.Servicos
                 Especificacao especificacaoInserir = especificacoesServico.Instanciar(inserirRequest.Especificacao.Posicao, inserirRequest.Especificacao.Cor, inserirRequest.Especificacao.Ano, inserirRequest.Especificacao.Veiculo);
                 Especificacao especificacaoSalva = especificacoesServico.Inserir(especificacaoInserir);
 
-                Produto produtoInserir = produtosServico.Instanciar(inserirRequest.Descricao, inserirRequest.Nome, inserirRequest.Imagem, especificacaoSalva.Codigo, inserirRequest.CodigoCategoria, inserirRequest.CodigoFornecedor);
+                Produto produtoInserir = produtosServico.Instanciar(inserirRequest.Descricao, inserirRequest.Nome, inserirRequest.Valor, inserirRequest.Imagem, especificacaoSalva.Codigo, inserirRequest.CodigoCategoria, inserirRequest.CodigoFornecedor);
                 Produto produtoSalvo = produtosServico.Inserir(produtoInserir);
 
                 if (transacao.IsActive)
