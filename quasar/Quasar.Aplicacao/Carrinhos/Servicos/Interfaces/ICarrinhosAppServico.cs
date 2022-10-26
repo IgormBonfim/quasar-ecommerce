@@ -9,8 +9,8 @@ namespace Quasar.Aplicacao.Carrinhos.Servicos.Interfaces
 {
     public interface ICarrinhosAppServico
     {
-        CarrinhoInserirResponse Inserir (CarrinhoInserirRequest carrinhoInserirRequest);
-        CarrinhoEditarResponse Editar(CarrinhoEditarRequest carrinhoEditarRequest);
+        void Inserir (CarrinhoInserirRequest carrinhoInserirRequest);
+        void Editar(CarrinhoEditarRequest carrinhoEditarRequest);
         void Deletar(int codigo);
     }
 }
