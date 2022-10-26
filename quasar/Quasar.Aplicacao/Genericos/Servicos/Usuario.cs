@@ -11,7 +11,7 @@ namespace Quasar.Aplicacao.Genericos.Servicos
     {
         public string UsuarioLogado(HttpContext context)
         {
-            string? id = context.User.FindFirst("codUsuario").Value;
+            string? id = context.User.FindFirst("codigoUsuario").Value;
 
             if (id == null)
                 throw new Exception("Nenhum usuario está logado");

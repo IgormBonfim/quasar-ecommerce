@@ -15,6 +15,6 @@ namespace Quasar.DataTransfer.Enderecos.Requests
         public string Complemento {get; set;}
         public string Cep {get; set;}
         public int CodigoCidade {get; set;}
-        public string CodigoUsuario {get; set;}
+        public string? CodigoUsuario {get; set;}
     }
 }
