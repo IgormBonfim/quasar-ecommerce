@@ -12,7 +12,6 @@ namespace Quasar.Dominio.Categorias.Servicos.Interfaces
         Categoria Inserir(Categoria categoria);
         Categoria Instanciar(string nome, string imagem);
         Categoria Editar(Categoria categoria);
-        IList<Categoria> Buscar(IQueryable<Categoria> query);
         void Deletar(int codigo);
     }
 }
