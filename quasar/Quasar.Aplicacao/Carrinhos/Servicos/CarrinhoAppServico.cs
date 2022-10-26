@@ -45,7 +45,7 @@ namespace Quasar.Aplicacao.Carrinhos.Servicos
             }
         }
 
-        public CarrinhoEditarResponse Editar(CarrinhoEditarRequest carrinhoEditarRequest)
+        public void Editar(CarrinhoEditarRequest carrinhoEditarRequest)
         {
             ITransaction transacao = session.BeginTransaction();
 
@@ -57,7 +57,6 @@ namespace Quasar.Aplicacao.Carrinhos.Servicos
                 if(transacao.IsActive)
                     transacao.Commit();
 
-                return mapper.Map<CarrinhoEditarResponse>(carrinhoEditado);
             }
             catch
             {
@@ -67,7 +66,7 @@ namespace Quasar.Aplicacao.Carrinhos.Servicos
             }
         }
 
-        public CarrinhoInserirResponse Inserir(CarrinhoInserirRequest carrinhoInserirRequest)
+        public void Inserir(CarrinhoInserirRequest carrinhoInserirRequest)
         {
             ITransaction transacao = session.BeginTransaction(); 
 
@@ -80,7 +79,6 @@ namespace Quasar.Aplicacao.Carrinhos.Servicos
                 if(transacao.IsActive)
                     transacao.Commit();
 
-                return mapper.Map<CarrinhoInserirResponse>(carrinhoSalvo);
             }
             catch
             {
