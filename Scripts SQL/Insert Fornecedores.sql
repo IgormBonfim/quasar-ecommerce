@@ -5,7 +5,7 @@ VALUES (
     07239512000154,
     509892477
   ),
-  #vidro
+  #vidro 
   (
     'ParaShock',
     'ParaShock Industrias e Serviços LTDA',
