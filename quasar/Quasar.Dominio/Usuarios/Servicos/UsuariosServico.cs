@@ -16,9 +16,17 @@ namespace Quasar.Dominio.Usuarios.Servicos
             this.usuariosRepositorio = usuariosRepositorio;
             
         }
+
+        public Usuario Editar(Usuario usuario)
+        {
+            return usuariosRepositorio.Editar(usuario);
+        }
+
         public Usuario Validar(string codigo)
         {
             return usuariosRepositorio.Recuperar(codigo);
         }
+
+        
     }
 }
