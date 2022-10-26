@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Quasar.Aplicacao.Enderecos.Servicos;
 using Quasar.Aplicacao.Enderecos.Servicos.Interfaces;
+using Quasar.Aplicacao.Genericos.Servicos.Interfaces;
 using Quasar.DataTransfer.Enderecos.Requests;
 
 namespace Quasar.API.Controllers.Enderecos
@@ -14,14 +15,17 @@ namespace Quasar.API.Controllers.Enderecos
     public class EnderecosController : ControllerBase
     {
         private readonly IEnderecosAppServico enderecosAppServico;
+        private readonly IUsuario usuario;
 
-        public EnderecosController(IEnderecosAppServico enderecosAppServico)
+        public EnderecosController(IEnderecosAppServico enderecosAppServico, IUsuario usuario)
         {
             this.enderecosAppServico = enderecosAppServico;
+            this.usuario = usuario;
         }
         [HttpPost]
         public IActionResult Inserir ([FromBody] EnderecoInserirRequest inserirResquest)
         {
+            inserirResquest.CodigoUsuario = usuario.UsuarioLogado(HttpContext);
             var retorno = enderecosAppServico.Inserir(inserirResquest);
             return Ok(retorno);
         }
