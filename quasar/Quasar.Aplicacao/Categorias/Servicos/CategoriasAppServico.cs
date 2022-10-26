@@ -7,9 +7,11 @@ using NHibernate;
 using Quasar.Aplicacao.Categorias.Servicos.Interfaces;
 using Quasar.DataTransfer.Categorias.Requests;
 using Quasar.DataTransfer.Categorias.Responses;
+using Quasar.DataTransfer.Genericos.Responses;
 using Quasar.Dominio.Categorias.Entidades;
 using Quasar.Dominio.Categorias.Repositorios;
 using Quasar.Dominio.Categorias.Servicos.Interfaces;
+using Quasar.Dominio.Genericos.Entidades;
 
 namespace Quasar.Aplicacao.Categorias.Servicos
 {
@@ -81,7 +83,7 @@ namespace Quasar.Aplicacao.Categorias.Servicos
             }
         }
 
-        public IList<CategoriaResponse> Buscar(CategoriaBuscarRequest buscarRequest)
+        public ListaPaginadaResponse<CategoriaResponse> Buscar(CategoriaBuscarRequest buscarRequest)
         {
             try
             {
@@ -93,9 +95,9 @@ namespace Quasar.Aplicacao.Categorias.Servicos
                 if (buscarRequest.Nome != null)
                     query = query.Where(c => c.Nome.Contains(buscarRequest.Nome));
 
-                IList<Categoria> listaCategorias = categoriasServico.Buscar(query);
+                ListaPaginada<Categoria> listaCategorias = categoriasRepositorio.Listar(query, buscarRequest.Quantidade, buscarRequest.Pagina);
 
-                return mapper.Map<IList<CategoriaResponse>>(listaCategorias);
+                return mapper.Map<ListaPaginadaResponse<CategoriaResponse>>(listaCategorias);
             }
             catch
             {

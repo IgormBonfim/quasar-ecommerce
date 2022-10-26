@@ -92,6 +92,7 @@ CREATE TABLE IF NOT EXISTS quasarecommerce.itemVenda (
   codVenda INT NOT NULL,
   codProduto INT NOT NULL,
   quantidade INT NOT NULL,
+  valorUnitario DECIMAL (7,2) NOT NULL,
   PRIMARY KEY (codItemVenda),
   FOREIGN KEY (codVenda) REFERENCES quasarecommerce.venda (codVenda),
   FOREIGN KEY (codProduto) REFERENCES quasarecommerce.produto (codProduto)
