@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Quasar.Dominio.Enderecos.Entidades;
 using Quasar.Dominio.FormasPagamento.Entidades;
 using Quasar.Dominio.Usuarios.Entidades;
 
@@ -21,7 +22,7 @@ namespace Quasar.Dominio.Vendas.Entidades
         {
             
         }
-        public Venda(int codigo, StatusVenda statusVenda, FormaPagamento formaPagamento, Endereco endereco, Usuario usuario)
+        public Venda(StatusVenda statusVenda, FormaPagamento formaPagamento, Endereco endereco, Usuario usuario)
         {
             SetStatusVenda(statusVenda);
             SetFormaPagamento(formaPagamento);

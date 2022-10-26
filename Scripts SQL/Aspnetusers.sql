@@ -1,3 +1,6 @@
+CREATE SCHEMA IF NOT EXISTS quasarecommerce;
+USE quasarecommerce;
+
 CREATE TABLE IF NOT EXISTS CLIENTE (
 	CodCliente INT AUTO_INCREMENT,
     Nome VARCHAR(100) NOT NULL,
