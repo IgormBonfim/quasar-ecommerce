@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Quasar.Dominio.Enderecos.Entidades;
 using Quasar.Dominio.FormasPagamento.Entidades;
 using Quasar.Dominio.Usuarios.Entidades;
 
@@ -27,22 +28,6 @@ namespace Quasar.Dominio.Vendas.Entidades
             
         }
         
-        public Venda(int codigo, StatusVenda statusVenda, FormaPagamento formaPagamento, Usuario usuario, Endereco endereco)
-        {
-            Codigo = codigo;
-            StatusVenda = statusVenda;
-            FormaPagamento = formaPagamento;
-            Endereco = endereco;
-            Usuario = usuario;
-        }
-
-        public Venda(int codStatusVenda, int codFormaPagamento, int codEndereco, int codUsuario)
-        {
-            this.codStatusVenda = codStatusVenda;
-            this.codFormaPagamento = codFormaPagamento;
-            this.codEndereco = codEndereco;
-            this.codUsuario = codUsuario;
-        }
 
         public virtual void SetCodigo(int? codigo)
         {
