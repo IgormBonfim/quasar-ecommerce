@@ -36,12 +36,6 @@ namespace Quasar.Dominio.Carrinhos.Servicos
             
             if(carrinho.Quantidade != carrinhoEditar.Quantidade)
                 carrinhoEditar.SetQuantidade(carrinho.Quantidade);
-            
-            if(carrinho.Usuario != carrinhoEditar.Usuario)
-                carrinhoEditar.SetUsuario(carrinho.Usuario);
-            
-            if(carrinho.Produto != carrinhoEditar.Produto)
-                carrinhoEditar.SetProduto(carrinho.Produto);
 
             return carrinhoEditar;
         }
@@ -49,6 +43,14 @@ namespace Quasar.Dominio.Carrinhos.Servicos
 
         public Carrinho Inserir(Carrinho carrinho)
         {
+            var query = carrinhosRepositorio.Query()
+                                            .Where(u => u.Usuario.Codigo == carrinho.Usuario.Codigo)
+                                            .Where(p => p.Produto.Codigo == carrinho.Produto.Codigo)
+                                            .FirstOrDefault();
+
+            if(query != null)
+                throw new Exception("O produto ja esta no carrinho");
+
             int codigo = carrinhosRepositorio.Inserir(carrinho);
             carrinho.SetCodigo(codigo);
             return carrinho;
