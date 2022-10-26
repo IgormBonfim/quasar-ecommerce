@@ -3,7 +3,7 @@ VALUES
   (
     'Vidro Parabrisa aplicável nos veículos Citroen C4 Picasso Hatch 4 portas , anos 2021 a 2022 .',
     'Parabrisa Citroen C4 Picasso',
-     1608.00,
+     1600.00,
     'https://raw.githubusercontent.com/IgormBonfim/quasar-media/main/Produtos/Parabrisa%20Citroen%20C4%20Picasso.png',
     1,
     1,
