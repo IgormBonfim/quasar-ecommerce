@@ -9,8 +9,8 @@ namespace Quasar.DataTransfer.Vendas.Request
     {
         public int CodEndereco {get; set;}
         public int CodFormaPagamento {get; set;}
-        public string CodUsuario {get; set;}
-        public string CodStatusVenda {get; set;}
+        public string? CodUsuario {get; set;}
+        public int CodStatusVenda {get; set;}
 
         // passar uma lista de codigos de produtos
         // lista de item venda
