@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Quasar.DataTransfer.Categorias.Requests;
 using Quasar.DataTransfer.Categorias.Responses;
+using Quasar.DataTransfer.Genericos.Responses;
 
 namespace Quasar.Aplicacao.Categorias.Servicos.Interfaces
 {
@@ -13,6 +14,6 @@ namespace Quasar.Aplicacao.Categorias.Servicos.Interfaces
         CategoriaEditarResponse Editar (CategoriaEditarRequest editarRequest);
         CategoriaResponse Recuperar (int codigo);
         void Deletar (int codigo);
-        IList<CategoriaResponse> Buscar (CategoriaBuscarRequest buscarRequest);
+        ListaPaginadaResponse<CategoriaResponse> Buscar (CategoriaBuscarRequest buscarRequest);
     }
 }

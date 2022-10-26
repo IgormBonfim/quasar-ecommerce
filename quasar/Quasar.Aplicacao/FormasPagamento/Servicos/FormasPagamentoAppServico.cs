@@ -5,9 +5,11 @@ using System.Threading.Tasks;
 using AutoMapper;
 using Quasar.Aplicacao.FormasPagamento.Servicos.Interfaces;
 using Quasar.DataTransfer.FormasPagamento.Responses;
+using Quasar.DataTransfer.Genericos.Responses;
 using Quasar.Dominio.FormasPagamento.Entidades;
 using Quasar.Dominio.FormasPagamento.Repositorios;
 using Quasar.Dominio.FormasPagamento.Servicos.Interfaces;
+using Quasar.Dominio.Genericos.Entidades;
 
 namespace Quasar.Aplicacao.FormasPagamento.Servicos
 {
@@ -23,13 +25,13 @@ namespace Quasar.Aplicacao.FormasPagamento.Servicos
             this.formasPagamentoRepositorio = formasPagamentoRepositorio;
             this.mapper = mapper;
         }
-        public IList<FormaPagamentoResponse> Listar()
+        public ListaPaginadaResponse<FormaPagamentoResponse> Listar()
         {
             try
             {
                 IQueryable<FormaPagamento> query = formasPagamentoRepositorio.Query();
-                IList<FormaPagamento> listaFormasPagamento = formasPagamentoServico.Query(query);
-                return mapper.Map<IList<FormaPagamentoResponse>>(listaFormasPagamento);
+                ListaPaginada<FormaPagamento> listaFormasPagamento = formasPagamentoRepositorio.Listar(query, 10, 1);
+                return mapper.Map<ListaPaginadaResponse<FormaPagamentoResponse>>(listaFormasPagamento);
             }
             catch
             {
