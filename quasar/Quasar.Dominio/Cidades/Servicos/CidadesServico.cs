@@ -16,11 +16,6 @@ namespace Quasar.Dominio.Cidades.Servicos
             this.cidadesRepositorio = cidadesRepositorio;
         }
 
-        public IList<Cidade> Listar(IQueryable<Cidade> query)
-        {
-            return query.ToList();
-        }
-
         public Cidade Validar(int codigo)
         {
             Cidade cidadeValidar = cidadesRepositorio.Recuperar(codigo);

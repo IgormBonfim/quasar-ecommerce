@@ -17,11 +17,6 @@ namespace Quasar.Dominio.Categorias.Servicos
             this.categoriasRepositorio = categoriasRepositorio;
         }
 
-        public IList<Categoria> Buscar(IQueryable<Categoria> query)
-        {
-            return query.ToList();
-        }
-
         public void Deletar(int codigo)
         {
             Categoria categoriaDeletar = Validar(codigo);
