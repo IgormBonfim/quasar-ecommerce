@@ -63,6 +63,7 @@ using Quasar.Aplicacao.Estoques.Servicos;
 using Quasar.Aplicacao.Estoques.Servicos.Interfaces;
 using Quasar.Aplicacao.Cidades.Servicos.Interfaces;
 using Quasar.Aplicacao.Cidades.Servicos;
+using Quasar.Aplicacao.Usuarios;
 
 namespace Quasar.Ioc
 {
@@ -92,6 +93,9 @@ namespace Quasar.Ioc
             services.AddScoped<IAutenticacaoServico, AutenticacaoServico>();
             services.AddScoped<IJwtServico, JwtServico>();
             services.AddScoped<IUsuariosAppServico, UsuariosAppServico>();
+
+            services.AddScoped<IFavoritosAppServico, FavoritosAppServico>();
+            services.AddScoped<IFavoritosServico, FavoritosServico>();
 
             services.AddScoped<IClientesRepositorio, ClientesRepositorio>();
             services.AddScoped<IClientesServico, ClientesServico>();
