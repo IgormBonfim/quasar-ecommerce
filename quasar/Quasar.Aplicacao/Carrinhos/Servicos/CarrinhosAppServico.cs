@@ -13,14 +13,14 @@ using Quasar.Dominio.Carrinhos.Servicos.Interfaces;
 
 namespace Quasar.Aplicacao.Carrinhos.Servicos
 {
-    public class CarrinhoAppServico : ICarrinhosAppServico
+    public class CarrinhosAppServico : ICarrinhosAppServico
     {
         private readonly ISession session;
         private readonly IMapper mapper;
         private readonly ICarrinhosServico carrinhosServico;
         private readonly ICarrinhosRepositorio carrinhosRepositorio;
 
-        public CarrinhoAppServico(ISession session, IMapper mapper, ICarrinhosServico carrinhosServico, ICarrinhosRepositorio carrinhosRepositorio)
+        public CarrinhosAppServico(ISession session, IMapper mapper, ICarrinhosServico carrinhosServico, ICarrinhosRepositorio carrinhosRepositorio)
         {
             this.session = session;
             this.mapper = mapper;
