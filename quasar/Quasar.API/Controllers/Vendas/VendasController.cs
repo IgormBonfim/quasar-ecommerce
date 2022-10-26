@@ -9,7 +9,7 @@ using Quasar.DataTransfer.Vendas.Request;
 namespace Quasar.API.Controllers.Vendas
 {
     [ApiController]
-    [Route("api/[venda]")]
+    [Route("api/vendas")]
     public class VendasController : ControllerBase
     {
         private readonly IVendasAppServico vendasAppServico;
@@ -17,7 +17,7 @@ namespace Quasar.API.Controllers.Vendas
         {
             this.vendasAppServico = vendasAppServico;
         }
-    [HttpGet("codigo")]
+    [HttpGet("{codigo}")]
     public IActionResult Recuperar(int codigo)
     {
         var retorno = vendasAppServico.Recuperar(codigo);
@@ -29,5 +29,11 @@ namespace Quasar.API.Controllers.Vendas
         var retorno = vendasAppServico.Inserir(inserirRequest);
         return Ok(retorno);
     }
+    [HttpGet]
+        public IActionResult Listar([FromQuery] VendaListarRequest vendaRequest)
+        {
+            var retorno = vendasAppServico.Listar(vendaRequest);
+            return Ok(retorno);
+        }
     }
 }
