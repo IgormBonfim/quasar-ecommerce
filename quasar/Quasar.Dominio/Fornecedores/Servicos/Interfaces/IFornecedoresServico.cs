@@ -12,7 +12,6 @@ namespace Quasar.Dominio.Fornecedores.Servicos.Interfaces
         Fornecedor Inserir(Fornecedor fornecedor);
         Fornecedor Instanciar(string? nome, string? razaoSocial, string? cnpj, string? ie);
         Fornecedor Editar(Fornecedor fornecedor);
-        IList<Fornecedor> Listar(IQueryable<Fornecedor> query);
         void Deletar(int codigo);
     }
 }

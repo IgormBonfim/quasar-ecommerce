@@ -54,6 +54,12 @@ using Quasar.Infra.Produtos;
 using Quasar.Infra.Produtos.Mapeamentos;
 using Quasar.Infra.Vendas;
 using Quasar.Infra.Ufs;
+using Quasar.Dominio.Enderecos.Repositorios;
+using Quasar.Dominio.Enderecos.Servicos.Interfaces;
+using Quasar.Aplicacao.Enderecos.Servicos.Interfaces;
+using Quasar.Dominio.Enderecos.Servicos;
+using Quasar.Infra.Enderecos;
+using Quasar.Aplicacao.Enderecos.Servicos;
 using Quasar.Ioc.Extensions;
 using Quasar.Dominio.Usuarios.Servicos;
 using Quasar.Dominio.Usuarios.Servicos.Interfaces;
@@ -92,6 +98,7 @@ namespace Quasar.Ioc
 
             services.AddScoped<IAutenticacaoServico, AutenticacaoServico>();
             services.AddScoped<IJwtServico, JwtServico>();
+
             services.AddScoped<IUsuariosRepositorio, UsuariosRepositorio>();
             services.AddScoped<IUsuariosServico, UsuariosServico>();
             services.AddScoped<IUsuariosAppServico, UsuariosAppServico>();
@@ -136,6 +143,10 @@ namespace Quasar.Ioc
             services.AddScoped<ICidadesRepositorio, CidadesRepositorio>();
             services.AddScoped<ICidadesServico, CidadesServico>();
             services.AddScoped<ICidadesAppServico, CidadesAppServico>();
+
+            services.AddScoped<IEnderecosRepositorio, EnderecosRepositorio>();
+            services.AddScoped<IEnderecosServico, EnderecosServico>();
+            services.AddScoped<IEnderecosAppServico, EnderecosAppServico>();
         
             services.AddAutoMapper(typeof(ProdutosProfile));
         }
