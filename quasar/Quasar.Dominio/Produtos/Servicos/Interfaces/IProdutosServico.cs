@@ -15,6 +15,5 @@ namespace Quasar.Dominio.Produtos.Servicos.Interfaces
         Produto Instanciar(string? descricao, string? nome, decimal? valor, string? imagem, int codigoEspecificacao, int codFornecedor, int codCategoria);
         Produto Editar(Produto produto);
         void Deletar(int codigo);
-        Produto Instanciar(string descricao, string nome, object valor, string imagem, int codigo, int codigoCategoria, int codigoFornecedor);
     }
 }
