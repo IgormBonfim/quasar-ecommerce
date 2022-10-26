@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using NHibernate;
+using Quasar.Aplicacao.Vendas.Servicos.Interfaces;
 using Quasar.DataTransfer.Vendas.Request;
 using Quasar.DataTransfer.Vendas.Responses;
 using Quasar.Dominio.Vendas.Entidades;
@@ -12,7 +13,7 @@ using Quasar.Dominio.Vendas.Servicos.Interfaces;
 
 namespace Quasar.Aplicacao.Vendas.Servicos
 {
-    public class VendasAppServico
+    public class VendasAppServico : IVendasAppServico
     {
         private readonly ISession session;
         private readonly IVendasServico vendasServico;
