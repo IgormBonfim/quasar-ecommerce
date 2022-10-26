@@ -7,9 +7,11 @@ using NHibernate;
 using Quasar.Aplicacao.Fornecedores.Servicos.Interfaces;
 using Quasar.DataTransfer.Fornecedores.Requests;
 using Quasar.DataTransfer.Fornecedores.Responses;
+using Quasar.DataTransfer.Genericos.Responses;
 using Quasar.Dominio.Fornecedores.Entidades;
 using Quasar.Dominio.Fornecedores.Repositorios;
 using Quasar.Dominio.Fornecedores.Servicos.Interfaces;
+using Quasar.Dominio.Genericos.Entidades;
 
 namespace Quasar.Aplicacao.Fornecedores.Servicos
 {
@@ -27,7 +29,7 @@ namespace Quasar.Aplicacao.Fornecedores.Servicos
             this.fornecedoresServico = fornecedoresServico;
             this.fornecedoresRepositorio = fornecedoresRepositorio;
         }
-        public IList<FornecedorResponse> Listar(FornecedorListarRequest listarRequest)
+        public ListaPaginadaResponse<FornecedorResponse> Listar(FornecedorListarRequest listarRequest)
         {
             try
             {
@@ -48,9 +50,9 @@ namespace Quasar.Aplicacao.Fornecedores.Servicos
                     query = query.Where(f => f.Cnpj.Contains(listarRequest.Cnpj));
                 }
 
-                IList<Fornecedor> listaFornecedores = fornecedoresServico.Listar(query);
+                ListaPaginada<Fornecedor> listaFornecedores = fornecedoresRepositorio.Listar(query, listarRequest.Quantidade, listarRequest.Pagina);
 
-                return mapper.Map<IList<FornecedorResponse>>(listaFornecedores);
+                return mapper.Map<ListaPaginadaResponse<FornecedorResponse>>(listaFornecedores);
             }
             catch
             {   

@@ -9,6 +9,5 @@ namespace Quasar.Dominio.Cidades.Servicos.Interfaces
     public interface ICidadesServico
     {
         Cidade Validar (int codigo);
-        IList<Cidade> Listar(IQueryable<Cidade> query);
     }
 }

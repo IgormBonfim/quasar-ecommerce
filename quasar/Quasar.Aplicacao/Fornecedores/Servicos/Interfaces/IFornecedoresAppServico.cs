@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Quasar.DataTransfer.Fornecedores.Requests;
 using Quasar.DataTransfer.Fornecedores.Responses;
+using Quasar.DataTransfer.Genericos.Responses;
 
 namespace Quasar.Aplicacao.Fornecedores.Servicos.Interfaces
 {
@@ -12,7 +13,7 @@ namespace Quasar.Aplicacao.Fornecedores.Servicos.Interfaces
         FornecedorResponse Recuperar(int codigo);
         FornecedorInserirResponse Inserir(FornecedorInserirRequest inserirRequest);
         FornecedorEditarResponse Editar(FornecedorEditarRequest editarRequest);
-        IList<FornecedorResponse> Listar (FornecedorListarRequest BuscarRequest);
+        ListaPaginadaResponse<FornecedorResponse> Listar (FornecedorListarRequest BuscarRequest);
         void Deletar (int codigo);
     }
 }
