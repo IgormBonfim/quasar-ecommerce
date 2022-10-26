@@ -25,6 +25,28 @@ CREATE TABLE IF NOT EXISTS quasarecommerce.cidade (
   PRIMARY KEY (codCidade),
   FOREIGN KEY (codUf) REFERENCES quasarecommerce.uf (codUf)
 );
+CREATE TABLE IF NOT EXISTS quasarecommerce.categoria (
+  codCategoria INT NOT NULL AUTO_INCREMENT,
+  nome VARCHAR(100) NOT NULL,
+  imagem VARCHAR(255) NOT NULL,
+  PRIMARY KEY (codCategoria)
+);
+CREATE TABLE IF NOT EXISTS quasarecommerce.fornecedor (
+  codFornecedor INT NOT NULL AUTO_INCREMENT,
+  nome VARCHAR(100) NOT NULL,
+  razaoSocial VARCHAR(100) NOT NULL,
+  cnpj VARCHAR(14) NOT NULL,
+  ie VARCHAR(14) NULL,
+  PRIMARY KEY (codFornecedor)
+);
+CREATE TABLE IF NOT EXISTS quasarecommerce.especificacao (
+  codEspecificacao INT NOT NULL AUTO_INCREMENT,
+  posicao VARCHAR(50) NOT NULL,
+  cor VARCHAR(20) NOT NULL,
+  ano DATE NOT NULL,
+  veiculo VARCHAR(45) NOT NULL,
+  PRIMARY KEY (codEspecificacao)
+);
 CREATE TABLE IF NOT EXISTS quasarecommerce.endereco (
   codEndereco INT NOT NULL AUTO_INCREMENT,
   numero INT NOT NULL,
@@ -51,32 +73,11 @@ CREATE TABLE IF NOT EXISTS quasarecommerce.venda (
   FOREIGN KEY (codEndereco) REFERENCES quasarecommerce.endereco (codEndereco),
   FOREIGN KEY (codUsuario) REFERENCES quasarecommerce.aspnetusers (id)
 );
-CREATE TABLE IF NOT EXISTS quasarecommerce.categoria (
-  codCategoria INT NOT NULL AUTO_INCREMENT,
-  nome VARCHAR(100) NOT NULL,
-  imagem VARCHAR(255) NOT NULL,
-  PRIMARY KEY (codCategoria)
-);
-CREATE TABLE IF NOT EXISTS quasarecommerce.fornecedor (
-  codFornecedor INT NOT NULL AUTO_INCREMENT,
-  nome VARCHAR(100) NOT NULL,
-  razaoSocial VARCHAR(100) NOT NULL,
-  cnpj VARCHAR(14) NOT NULL,
-  ie VARCHAR(14) NULL,
-  PRIMARY KEY (codFornecedor)
-);
-CREATE TABLE IF NOT EXISTS quasarecommerce.especificacao (
-  codEspecificacao INT NOT NULL AUTO_INCREMENT,
-  posicao VARCHAR(50) NOT NULL,
-  cor VARCHAR(20) NOT NULL,
-  ano DATE NOT NULL,
-  veiculo VARCHAR(45) NOT NULL,
-  PRIMARY KEY (codEspecificacao)
-);
 CREATE TABLE IF NOT EXISTS quasarecommerce.produto (
   codProduto INT NOT NULL AUTO_INCREMENT,
   descricao VARCHAR(255) NOT NULL,
   nome VARCHAR(100) NOT NULL,
+  valor DECIMAL(7,2) NOT NULL,
   codCategoria INT NOT NULL,
   codFornecedor INT NOT NULL,
   codEspecificacao INT NOT NULL,
