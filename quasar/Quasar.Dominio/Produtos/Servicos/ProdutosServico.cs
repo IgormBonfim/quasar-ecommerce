@@ -21,9 +21,6 @@ namespace Quasar.Dominio.Produtos.Servicos
         private readonly ICategoriasServico categoriasServico;
         private readonly IFornecedoresServico fornecedoresServico;
 
-        public ProdutosServico()
-        {
-        }
 
         //Construtor que recebe um IProdutosRepositorio
         public ProdutosServico(IProdutosRepositorio produtosRepositorio, IEspecificacoesServico especificacoesServico, ICategoriasServico categoriasServico, IFornecedoresServico fornecedoresServico)
