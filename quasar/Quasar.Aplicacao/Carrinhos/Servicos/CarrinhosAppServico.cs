@@ -45,13 +45,16 @@ namespace Quasar.Aplicacao.Carrinhos.Servicos
             }
         }
 
-        public void Editar(CarrinhoEditarRequest carrinhoEditarRequest)
+        public void Editar(CarrinhoEditarRequest editarRequest)
         {
             ITransaction transacao = session.BeginTransaction();
 
             try
             {
-                Carrinho carrinhoEditar = carrinhosServico.Instanciar(carrinhoEditarRequest.Quantidade, carrinhoEditarRequest.CodProduto, carrinhoEditarRequest.CodUsuario);
+                Carrinho carrinhoEditar = carrinhosServico.Instanciar(editarRequest.Quantidade, editarRequest.CodProduto, editarRequest.CodUsuario);
+
+                carrinhoEditar.SetCodigo(editarRequest.Codigo);
+
                 Carrinho carrinhoEditado = carrinhosServico.Editar(carrinhoEditar); 
 
                 if(transacao.IsActive)
@@ -72,6 +75,7 @@ namespace Quasar.Aplicacao.Carrinhos.Servicos
 
             try
             {
+
                 Carrinho carrinhoInserir = carrinhosServico.Instanciar(carrinhoInserirRequest.Quantidade, carrinhoInserirRequest.CodProduto, carrinhoInserirRequest.CodUsuario);
 
                 Carrinho carrinhoSalvo = carrinhosServico.Inserir(carrinhoInserir);
