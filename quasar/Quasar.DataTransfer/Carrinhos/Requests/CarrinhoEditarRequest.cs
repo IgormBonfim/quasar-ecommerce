@@ -7,8 +7,9 @@ namespace Quasar.DataTransfer.Carrinhos.Requests
 {
     public class CarrinhoEditarRequest
     {
+        public int? Codigo { get; set; }
         public int Quantidade { get; set; }
-        public int CodProduto { get; set; }
         public string? CodUsuario { get; set; }
+        public int CodProduto { get; set; }
     }
 }
