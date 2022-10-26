@@ -97,9 +97,6 @@ namespace Quasar.Ioc
 
             services.AddScoped<IAutenticacaoServico, AutenticacaoServico>();
             services.AddScoped<IJwtServico, JwtServico>();
-            
-            services.AddScoped<IUsuariosRepositorio, UsuariosRepositorio>();
-            services.AddScoped<IUsuariosServico, UsuariosServico>();
             services.AddScoped<IUsuariosAppServico, UsuariosAppServico>();
 
             services.AddScoped<IClientesRepositorio, ClientesRepositorio>();
