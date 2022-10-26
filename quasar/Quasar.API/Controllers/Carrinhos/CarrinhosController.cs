@@ -28,7 +28,7 @@ namespace Quasar.API.Controllers.Carrinhos
             return Ok();
         }
 
-        [HttpDelete]
+        [HttpDelete("{codigo}")]
         public IActionResult Deletar(int codigo)
         {
             carrinhosAppServico.Deletar(codigo);
