@@ -5,11 +5,14 @@ using System.Threading.Tasks;
 using AutoMapper;
 using NHibernate;
 using Quasar.Aplicacao.Vendas.Servicos.Interfaces;
+using Quasar.DataTransfer.Genericos.Responses;
 using Quasar.DataTransfer.Vendas.Request;
 using Quasar.DataTransfer.Vendas.Responses;
+using Quasar.Dominio.Genericos.Entidades;
 using Quasar.Dominio.Vendas.Entidades;
 using Quasar.Dominio.Vendas.Repositorios;
 using Quasar.Dominio.Vendas.Servicos.Interfaces;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace Quasar.Aplicacao.Vendas.Servicos
 {
@@ -53,13 +56,13 @@ namespace Quasar.Aplicacao.Vendas.Servicos
 
             try
             {
-                // Venda vendaEditar = vendasServico.Instanciar(editarRequest.CodStatusVenda);
-                // vendaEditar.SetCodigo(editarRequest.Codigo);
+                Venda vendaEditar = vendasServico.Instanciar(editarRequest.CodStatusVenda, editarRequest.CodFormaPagamento, editarRequest.CodEndereco, editarRequest.CodUsuario);
+                vendaEditar.SetCodigo(editarRequest.Codigo);
 
-                // Venda vendaSalvo = vendasServico.Editar(vendaEditar);
+                Venda vendaSalvo = vendasServico.Editar(vendaEditar);
                 if(transacao.IsActive)
                     transacao.Commit();
-                return mapper.Map<VendaEditarResponse>(Editar); //trocar parametro
+                return mapper.Map<VendaEditarResponse>(vendaEditar);
             }
             catch
             {
@@ -79,6 +82,25 @@ namespace Quasar.Aplicacao.Vendas.Servicos
             {
                 throw;
             }
-        }    
+        }
+
+        public ListaPaginadaResponse<VendaResponse> Listar(VendaListarRequest listarRequest)
+        {
+          try
+          {  
+            IQueryable<Venda> query = vendasRepositorio.Query();
+
+            if (listarRequest.CodUsuario != null)
+                {
+                    query = query.Where(f => f.Usuario.Codigo == listarRequest.CodUsuario);
+                }
+            ListaPaginada<Venda> listaVenda = vendasRepositorio.Listar(query, listarRequest.Quantidade, listarRequest.Pagina);
+            return mapper.Map<ListaPaginadaResponse<VendaResponse>>(listaVenda);
+          }
+          catch
+          {
+            throw;
+          }
+        }
     }
 }
