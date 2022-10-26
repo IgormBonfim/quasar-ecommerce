@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Quasar.Dominio.Genericos.Entidades;
 
 namespace Quasar.Dominio.Genericos
 {
@@ -12,6 +13,6 @@ namespace Quasar.Dominio.Genericos
         void Deletar(T fornecedor);
         T Recuperar(int codigo);
         IQueryable<T> Query();
-        IList<T> Listar(IQueryable<T> query);
+        ListaPaginada<T> Listar(IQueryable<T> query, int qt, int pagina);
     }
 }

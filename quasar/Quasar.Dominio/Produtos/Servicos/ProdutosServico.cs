@@ -21,6 +21,7 @@ namespace Quasar.Dominio.Produtos.Servicos
         private readonly ICategoriasServico categoriasServico;
         private readonly IFornecedoresServico fornecedoresServico;
 
+
         //Construtor que recebe um IProdutosRepositorio
         public ProdutosServico(IProdutosRepositorio produtosRepositorio, IEspecificacoesServico especificacoesServico, ICategoriasServico categoriasServico, IFornecedoresServico fornecedoresServico)
         {
@@ -52,6 +53,9 @@ namespace Quasar.Dominio.Produtos.Servicos
             if (produto.Descricao != produtoEditar.Descricao) 
                 produtoEditar.SetDescricao(produto.Descricao);
 
+            if (produto.Valor != produtoEditar.Valor) 
+                produtoEditar.SetValor(produto.Valor);
+
             if (produto.Imagem != produtoEditar.Imagem) 
                 produtoEditar.SetImagem(produto.Imagem);
 
@@ -78,14 +82,19 @@ namespace Quasar.Dominio.Produtos.Servicos
         //Recebe as informações do produto
         //Retorna um Produto
 
-        public Produto Instanciar(string? descricao, string? nome, string? imagem, int codigoEspecificacao, int codFornecedor, int codCategoria)
+        public Produto Instanciar(string? descricao, string? nome, decimal? valor, string? imagem, int codigoEspecificacao, int codFornecedor, int codCategoria)
         {
             Especificacao especificacaoBanco = especificacoesServico.Validar(codigoEspecificacao);
             Fornecedor fornecedor = fornecedoresServico.Validar(codFornecedor);
             Categoria categoria = categoriasServico.Validar(codCategoria);
 
-            Produto produto = new Produto(descricao, nome, imagem, especificacaoBanco, categoria, fornecedor);
+            Produto produto = new Produto(descricao, nome, valor, imagem, especificacaoBanco, categoria, fornecedor);
             return produto;
+        }
+
+        public Produto Instanciar(string descricao, string nome, object valor, string imagem, int codigo, int codigoCategoria, int codigoFornecedor)
+        {
+            throw new NotImplementedException();
         }
 
         //Metodo que valida se um produto existe no banco

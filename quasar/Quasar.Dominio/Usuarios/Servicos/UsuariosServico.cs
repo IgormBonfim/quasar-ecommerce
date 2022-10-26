@@ -27,7 +27,7 @@ namespace Quasar.Dominio.Usuarios.Servicos
             Usuario usuario = usuariosRepositorio.Recuperar(codigo);
             if (usuario == null)
                 throw new Exception("Usuario não encontrado");
-            return usuario; //eu sou um merda
+            return usuario;
         }
 
         

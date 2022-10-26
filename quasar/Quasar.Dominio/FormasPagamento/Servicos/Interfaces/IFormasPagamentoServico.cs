@@ -10,6 +10,5 @@ namespace Quasar.Dominio.FormasPagamento.Servicos.Interfaces
     {
         FormaPagamento Validar(int codigo);
         FormaPagamento Instanciar(string? descricao);
-        IList<FormaPagamento> Query(IQueryable<FormaPagamento> query);
     }
 }

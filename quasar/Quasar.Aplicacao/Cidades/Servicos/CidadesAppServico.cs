@@ -7,9 +7,11 @@ using NHibernate;
 using Quasar.Aplicacao.Cidades.Servicos.Interfaces;
 using Quasar.DataTransfer.Cidades.Requests;
 using Quasar.DataTransfer.Cidades.Responses;
+using Quasar.DataTransfer.Genericos.Responses;
 using Quasar.Dominio.Cidades.Entidades;
 using Quasar.Dominio.Cidades.Repositorios;
 using Quasar.Dominio.Cidades.Servicos.Interfaces;
+using Quasar.Dominio.Genericos.Entidades;
 using Quasar.Infra.Cidades;
 
 namespace Quasar.Aplicacao.Cidades.Servicos
@@ -30,7 +32,7 @@ namespace Quasar.Aplicacao.Cidades.Servicos
             this.mapper = mapper;
         }
 
-        public IList<CidadeResponse> Listar(CidadeBuscarRequest buscarRequest)
+        public ListaPaginadaResponse<CidadeResponse> Listar(CidadeBuscarRequest buscarRequest)
         {
             try
             {
@@ -46,9 +48,9 @@ namespace Quasar.Aplicacao.Cidades.Servicos
                     query = query.Where(f => f.Nome.Contains(buscarRequest.Nome));
                 }
 
-                IList<Cidade> listarCidades = cidadesServico.Listar(query);
+                ListaPaginada<Cidade> listarCidades = cidadesRepositorio.Listar(query, buscarRequest.Quantidade, buscarRequest.Pagina);
 
-                return mapper.Map<IList<CidadeResponse>>(listarCidades);
+                return mapper.Map<ListaPaginadaResponse<CidadeResponse>>(listarCidades);
             }
             catch 
             {
