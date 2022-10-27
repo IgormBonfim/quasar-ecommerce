@@ -75,6 +75,8 @@ using Quasar.Dominio.Carrinhos.Servicos.Interfaces;
 using Quasar.Dominio.Carrinhos.Servicos;
 using Quasar.Aplicacao.Carrinhos.Servicos.Interfaces;
 using Quasar.Aplicacao.Carrinhos.Servicos;
+using Quasar.Aplicacao.Genericos.Servicos;
+using Quasar.Aplicacao.Genericos.Servicos.Interfaces;
 using Quasar.Aplicacao.Usuarios;
 
 namespace Quasar.Ioc
@@ -104,6 +106,7 @@ namespace Quasar.Ioc
 
             services.AddScoped<IAutenticacaoServico, AutenticacaoServico>();
             services.AddScoped<IJwtServico, JwtServico>();
+            services.AddScoped<IUsuario, Usuario>();
 
             services.AddScoped<IUsuariosRepositorio, UsuariosRepositorio>();
             services.AddScoped<IUsuariosServico, UsuariosServico>();
