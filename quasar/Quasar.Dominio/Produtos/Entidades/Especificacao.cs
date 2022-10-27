@@ -49,8 +49,8 @@ namespace Quasar.Dominio.Produtos.Entidades
         }
         public virtual void SetAno(string? ano)
         {
-            if(string.IsNullOrWhiteSpace(ano) || ano.Length < 2)
-                throw new Exception ("O campo ano deve possuir no mínimo 2 caracteres!");
+            if(string.IsNullOrWhiteSpace(ano) || ano.Length < 4)
+                throw new Exception ("O campo ano deve possuir no mínimo 4 caracteres!");
             if(ano.Length > 100)
                 throw new Exception ("O campo ano deve possuir no máximo 100 caracteres!");
             Ano = ano;

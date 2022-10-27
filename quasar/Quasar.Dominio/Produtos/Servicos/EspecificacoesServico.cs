@@ -48,15 +48,10 @@ namespace Quasar.Dominio.Produtos.Servicos
             return especificacao;
         }
 
-        public Especificacao Instanciar(string? posicao, string? cor, string ano, string? veiculo)
+        public Especificacao Instanciar(string? posicao, string? cor, string? ano, string? veiculo)
         {
             Especificacao especificacao = new Especificacao(posicao, cor, ano, veiculo);
             return especificacao;
-        }
-
-        public Especificacao Instanciar(string? posicao, string? cor, DateTime? ano, string? veiculo)
-        {
-            throw new NotImplementedException();
         }
 
         public Especificacao Validar(int cod)
