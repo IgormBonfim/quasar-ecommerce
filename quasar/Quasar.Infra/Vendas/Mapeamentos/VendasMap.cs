@@ -14,13 +14,13 @@ namespace Quasar.Infra.Vendas.Mapeamentos
             Schema("quasarecommerce");
             Table("venda");
             Id(p => p.Codigo).Column("codVenda").GeneratedBy.Identity();
-
             References(p => p.StatusVenda).Column("codStatusVenda");
             References(p => p.FormaPagamento).Column("codFormaPagamento");
             References(p => p.Endereco).Column("codEndereco");
             References(p => p.Usuario).Column("codUsuario");
-            HasMany(p => p.Itens).KeyColumn("codVenda").NotFound.Ignore();
-            
+            HasMany(p => p.Itens).KeyColumn("codVenda")
+                .Cascade.All().Inverse()
+                .NotFound.Ignore();
         }
     }
 }

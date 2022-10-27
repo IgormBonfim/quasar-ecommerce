@@ -9,7 +9,7 @@ namespace Quasar.Dominio.Vendas.Servicos.Interfaces
 {
     public interface IItensVendasServico
     {
-        ItemVenda Inserir(Produto produto, ItemVenda itemVenda);
-        ItemVenda Instanciar(int quantidade, int codVenda, int codProduto, decimal valorUnitario);
+        ItemVenda Inserir(ItemVenda itemVenda);
+        ItemVenda Instanciar(int quantidade, int codVenda, int codProduto);
     }
 }
