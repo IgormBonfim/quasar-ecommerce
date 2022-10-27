@@ -69,6 +69,12 @@ using Quasar.Aplicacao.Estoques.Servicos;
 using Quasar.Aplicacao.Estoques.Servicos.Interfaces;
 using Quasar.Aplicacao.Cidades.Servicos.Interfaces;
 using Quasar.Aplicacao.Cidades.Servicos;
+using Quasar.Infra.Carrinhos;
+using Quasar.Dominio.Carrinhos.Repositorios;
+using Quasar.Dominio.Carrinhos.Servicos.Interfaces;
+using Quasar.Dominio.Carrinhos.Servicos;
+using Quasar.Aplicacao.Carrinhos.Servicos.Interfaces;
+using Quasar.Aplicacao.Carrinhos.Servicos;
 using Quasar.Aplicacao.Usuarios;
 
 namespace Quasar.Ioc
@@ -123,6 +129,10 @@ namespace Quasar.Ioc
             services.AddScoped<IStatusVendasRepositorio, StatusVendasRepositorio>();
             services.AddScoped<IStatusVendasServico, StatusVendasServico>();
             services.AddScoped<IStatusVendasAppServico, StatusVendasAppServico>();
+
+            services.AddScoped<ICarrinhosRepositorio, CarrinhosRepositorio>();
+            services.AddScoped<ICarrinhosServico, CarrinhosServico>();
+            services.AddScoped<ICarrinhosAppServico, CarrinhosAppServico>();
 
             services.AddScoped<IUfsAppServico, UfsAppServico>();
             services.AddScoped<IUfsRepositorio, UfsRepositorio>();

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Quasar.Dominio.Carrinhos.Entidades;
 using Quasar.Dominio.Usuarios.Enumeradores;
 
 namespace Quasar.Dominio.Usuarios.Entidades
