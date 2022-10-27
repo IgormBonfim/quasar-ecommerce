@@ -16,6 +16,12 @@ namespace Quasar.Dominio.Usuarios.Servicos
             this.usuariosRepositorio = usuariosRepositorio;
             
         }
+
+        public Usuario Editar(Usuario usuario)
+        {
+            return usuariosRepositorio.Editar(usuario);
+        }
+
         public Usuario Validar(string codigo)
         {
             Usuario usuario = usuariosRepositorio.Recuperar(codigo);
@@ -23,5 +29,7 @@ namespace Quasar.Dominio.Usuarios.Servicos
                 throw new Exception("Usuario não encontrado");
             return usuario;
         }
+
+        
     }
 }

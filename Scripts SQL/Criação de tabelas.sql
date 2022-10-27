@@ -43,7 +43,7 @@ CREATE TABLE IF NOT EXISTS quasarecommerce.especificacao (
   codEspecificacao INT NOT NULL AUTO_INCREMENT,
   posicao VARCHAR(50) NOT NULL,
   cor VARCHAR(20) NOT NULL,
-  ano VARCHAR(255) NOT NULL,
+  ano VARCHAR(100) NOT NULL,
   veiculo VARCHAR(45) NOT NULL,
   PRIMARY KEY (codEspecificacao)
 );
