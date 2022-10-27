@@ -12,16 +12,18 @@ namespace Quasar.Dominio.Produtos.Entidades
         public virtual int Codigo { get; protected set; }
         public virtual string Descricao { get; protected set; }
         public virtual string Nome { get; protected set; }
+        public virtual decimal Valor { get; protected set; }
         public virtual string Imagem { get; protected set; }
         public virtual Categoria Categoria { get; protected set; }
         public virtual Fornecedor Fornecedor { get; protected set; }
         public virtual Especificacao Especificacao { get; protected set; }   
         
         public Produto() { }
-        public Produto(string? descricao, string? nome, string? imagem, Especificacao especificacao, Categoria categoria, Fornecedor fornecedor)
+        public Produto(string? descricao, string? nome, decimal? valor, string? imagem, Especificacao especificacao, Categoria categoria, Fornecedor fornecedor)
         {
             SetDescricao(descricao);
             SetNome(nome);
+            SetValor(valor);
             SetCategoria(categoria);
             SetFornecedor(fornecedor);
             SetEspecificacao(especificacao);
@@ -56,6 +58,12 @@ namespace Quasar.Dominio.Produtos.Entidades
             if(nome.Length > 100)
                 throw new Exception("O campo nome deve possuir até 100 caracteres!");
             Nome = nome;
+        }
+        public virtual void SetValor(decimal? valor)
+        {
+            if(!valor.HasValue)
+                throw new Exception("Valor do produto é obrigatório!");
+            Valor = valor.Value;
         }
         public virtual void SetCategoria(Categoria categoria)
         {
