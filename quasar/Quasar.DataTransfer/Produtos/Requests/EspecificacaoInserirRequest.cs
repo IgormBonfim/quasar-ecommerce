@@ -9,7 +9,7 @@ namespace Quasar.DataTransfer.Produtos.Requests
     {
         public string Posicao { get; set; }
         public string Cor { get; set; }
-        public DateTime Ano { get; set; }
+        public string Ano { get; set; }
         public string Veiculo { get; set; }
     }
 }

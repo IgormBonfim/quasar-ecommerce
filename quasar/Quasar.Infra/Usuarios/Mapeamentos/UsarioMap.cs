@@ -17,6 +17,11 @@ namespace Quasar.Infra.Usuarios.Mapeamentos
             Map(c => c.Email).Column("Email");
             Map(c => c.UserName).Column("UserName");
             References(c => c.Cliente).Column("CodCliente");
+            HasManyToMany(x => x.Favoritos)
+            .Table("favorito")
+            .ParentKeyColumn("codUsuario")
+            .ChildKeyColumn("codProduto")
+            .NotFound.Ignore();
         }
     }
 }
