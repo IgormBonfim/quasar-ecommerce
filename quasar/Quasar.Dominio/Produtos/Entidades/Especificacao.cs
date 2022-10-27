@@ -10,11 +10,11 @@ namespace Quasar.Dominio.Produtos.Entidades
         public virtual int Codigo { get; protected set; }
         public virtual string Posicao { get; protected set; }
         public virtual string Cor { get; protected set; }
-        public virtual DateTime Ano { get; protected set; }
+        public virtual string Ano { get; protected set; }
         public virtual string Veiculo { get; protected set; }
 
         public Especificacao() { }
-        public Especificacao(string? posicao, string? cor, DateTime? ano, string? veiculo)
+        public Especificacao(string? posicao, string? cor, string? ano, string? veiculo)
         {
             SetPosicao(posicao);
             SetCor(cor);
@@ -47,15 +47,13 @@ namespace Quasar.Dominio.Produtos.Entidades
             
             Cor = cor;
         }
-        public virtual void SetAno(DateTime? ano)
+        public virtual void SetAno(string? ano)
         {
-            if(!ano.HasValue)
-                throw new Exception("O ano é obrigatório!");
-            if(ano.Value.Year > DateTime.Now.Year)
-                throw new Exception("O ano é inválido!");
-            if(ano.Value.Year < 1886)
-                throw new Exception("O campo ano deve possuir no mínimo 1886");
-            Ano = ano.Value;
+            if(string.IsNullOrWhiteSpace(ano) || ano.Length < 4)
+                throw new Exception ("O campo ano deve possuir no mínimo 4 caracteres!");
+            if(ano.Length > 100)
+                throw new Exception ("O campo ano deve possuir no máximo 100 caracteres!");
+            Ano = ano;
         }
         public virtual void SetVeiculo(string? veiculo)
         {
