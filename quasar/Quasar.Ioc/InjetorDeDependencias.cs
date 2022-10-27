@@ -75,6 +75,7 @@ using Quasar.Dominio.Carrinhos.Servicos.Interfaces;
 using Quasar.Dominio.Carrinhos.Servicos;
 using Quasar.Aplicacao.Carrinhos.Servicos.Interfaces;
 using Quasar.Aplicacao.Carrinhos.Servicos;
+using Quasar.Aplicacao.Usuarios;
 
 namespace Quasar.Ioc
 {
@@ -107,6 +108,9 @@ namespace Quasar.Ioc
             services.AddScoped<IUsuariosRepositorio, UsuariosRepositorio>();
             services.AddScoped<IUsuariosServico, UsuariosServico>();
             services.AddScoped<IUsuariosAppServico, UsuariosAppServico>();
+
+            services.AddScoped<IFavoritosAppServico, FavoritosAppServico>();
+            services.AddScoped<IFavoritosServico, FavoritosServico>();
 
             services.AddScoped<IClientesRepositorio, ClientesRepositorio>();
             services.AddScoped<IClientesServico, ClientesServico>();
