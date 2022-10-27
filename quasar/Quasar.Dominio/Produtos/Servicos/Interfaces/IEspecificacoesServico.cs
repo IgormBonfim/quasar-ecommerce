@@ -10,7 +10,7 @@ namespace Quasar.Dominio.Produtos.Servicos.Interfaces
     {
         Especificacao Validar (int codigo);
         Especificacao Inserir (Especificacao especificacao);
-        Especificacao Instanciar (string? posicao, string? cor, DateTime? ano, string? veiculo);
+        Especificacao Instanciar (string? posicao, string? cor, string? ano, string? veiculo);
         Especificacao Editar (Especificacao especificacao);
         void Deletar (int codigo);
     }
