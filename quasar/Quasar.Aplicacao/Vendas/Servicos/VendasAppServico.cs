@@ -20,13 +20,20 @@ namespace Quasar.Aplicacao.Vendas.Servicos
     {
         private readonly ISession session;
         private readonly IVendasServico vendasServico;
+        private readonly IItensVendasServico itensVendasServico;
         private readonly IVendasRepositorio vendasRepositorio;
         private readonly IMapper mapper;
 
-        public VendasAppServico(ISession session, IVendasServico vendasServico, IVendasRepositorio vendasRepositorio, IMapper mapper)
+        public VendasAppServico(
+            ISession session,
+            IVendasServico vendasServico,
+            IItensVendasServico itensVendasServico,
+            IVendasRepositorio vendasRepositorio,
+            IMapper mapper)
         {
             this.session = session;
             this.vendasServico = vendasServico;
+            this.itensVendasServico = itensVendasServico;
             this.vendasRepositorio = vendasRepositorio;
             this.mapper = mapper;
         }
@@ -38,6 +45,13 @@ namespace Quasar.Aplicacao.Vendas.Servicos
             {
                 Venda vendaInserir = vendasServico.Instanciar(inserirRequest.CodStatusVenda, inserirRequest.CodEndereco, inserirRequest.CodFormaPagamento, inserirRequest.CodUsuario);
                 Venda vendaSalvo = vendasServico.Inserir(vendaInserir);
+
+                foreach(var item in inserirRequest.Itens)
+                {
+                    var itemVenda = itensVendasServico.Instanciar(item.Quantidade, vendaSalvo.Codigo, item.CodProduto);
+                    itensVendasServico.Inserir(itemVenda);
+                }
+
                 if(transacao.IsActive)
                     transacao.Commit();
                 return mapper.Map<VendaInserirResponse>(vendaSalvo);
@@ -46,7 +60,7 @@ namespace Quasar.Aplicacao.Vendas.Servicos
             catch
             {
                 if(transacao.IsActive)
-                transacao.Rollback();
+                    transacao.Rollback();
                 throw;
             }
         }

@@ -23,18 +23,18 @@ namespace Quasar.Dominio.Vendas.Servicos
             this.produtoServico = produtoServico;
         }
 
-        public ItemVenda Inserir(Produto produto, ItemVenda itemVenda)
+        public ItemVenda Inserir(ItemVenda itemVenda)
         {
             int codigo = itensVendasRepositorio.Inserir(itemVenda);
             itemVenda.SetCodigo(codigo);
             return itemVenda;
         }
-        public ItemVenda Instanciar(int quantidade, int codVenda, int codProduto, decimal valorUnitario)
+        public ItemVenda Instanciar(int quantidade, int codVenda, int codProduto)
         {
             Venda venda = vendasServico.Validar(codVenda);
             Produto produto = produtoServico.Validar(codProduto);
 
-            ItemVenda itemVenda = new ItemVenda(quantidade, venda, produto, valorUnitario);
+            ItemVenda itemVenda = new ItemVenda(quantidade, venda, produto);
             return itemVenda;
         }
     }

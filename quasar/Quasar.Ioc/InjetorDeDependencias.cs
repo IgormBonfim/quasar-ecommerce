@@ -147,6 +147,9 @@ namespace Quasar.Ioc
             services.AddScoped<IVendasRepositorio, VendasRepositorio>();
             services.AddScoped<IVendasServico, VendasServico>();
             services.AddScoped<IVendasAppServico, VendasAppServico>();
+            services.AddScoped<IItensVendasServico, ItensVendasServico>();
+            services.AddScoped<IItensVendasRepositorio, ItensVendaRepositorio>();
+
         
             services.AddAutoMapper(typeof(ProdutosProfile));
         }
