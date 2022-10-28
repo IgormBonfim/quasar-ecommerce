@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Quasar.Aplicacao.Enderecos.Servicos;
 using Quasar.Aplicacao.Enderecos.Servicos.Interfaces;
@@ -10,6 +11,7 @@ using Quasar.DataTransfer.Enderecos.Requests;
 
 namespace Quasar.API.Controllers.Enderecos
 {
+    [Authorize]
     [ApiController]
     [Route("api/enderecos")]
     public class EnderecosController : ControllerBase
