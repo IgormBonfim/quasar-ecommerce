@@ -29,7 +29,7 @@ namespace Quasar.Aplicacao.Fornecedores.Servicos
             this.fornecedoresServico = fornecedoresServico;
             this.fornecedoresRepositorio = fornecedoresRepositorio;
         }
-        public ListaPaginadaResponse<FornecedorResponse> Listar(FornecedorListarRequest listarRequest)
+        public ListaPaginadaResponse<FornecedorResponse> Listar(FornecedorListarRequest? listarRequest)
         {
             try
             {
