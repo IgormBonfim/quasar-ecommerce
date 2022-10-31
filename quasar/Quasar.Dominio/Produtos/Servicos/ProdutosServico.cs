@@ -82,11 +82,11 @@ namespace Quasar.Dominio.Produtos.Servicos
         //Recebe as informações do produto
         //Retorna um Produto
 
-        public Produto Instanciar(string? descricao, string? nome, decimal? valor, string? imagem, int codigoEspecificacao, int codFornecedor, int codCategoria)
+        public Produto Instanciar(string? descricao, string? nome, decimal? valor, string? imagem, int? codigoEspecificacao, int? codFornecedor, int? codCategoria)
         {
-            Especificacao especificacaoBanco = especificacoesServico.Validar(codigoEspecificacao);
-            Fornecedor fornecedor = fornecedoresServico.Validar(codFornecedor);
-            Categoria categoria = categoriasServico.Validar(codCategoria);
+            Especificacao especificacaoBanco = especificacoesServico.Validar(codigoEspecificacao.Value);
+            Fornecedor fornecedor = fornecedoresServico.Validar(codFornecedor.Value);
+            Categoria categoria = categoriasServico.Validar(codCategoria.Value);
 
             Produto produto = new Produto(descricao, nome, valor, imagem, especificacaoBanco, categoria, fornecedor);
             return produto;
