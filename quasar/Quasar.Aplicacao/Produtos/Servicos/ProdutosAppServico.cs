@@ -32,6 +32,57 @@ namespace Quasar.Aplicacao.Produtos.Servicos
             this.mapper = mapper;
         }
 
+        public void Deletar(int codigoProduto)
+        {
+            ITransaction transacao = session.BeginTransaction();
+
+            try
+            {
+                produtosServico.Deletar(codigoProduto);
+
+                if(transacao.IsActive)
+                    transacao.Commit();
+
+                return;
+            }
+            catch
+            {
+                if(transacao.IsActive)
+                    transacao.Rollback();
+                throw;
+            }
+        }
+
+        public ProdutoResponse Editar(ProdutoEditarRequest editarRequest)
+        {
+            ITransaction transacao = session.BeginTransaction();
+
+            try
+            {
+                Produto produtoEditar = produtosServico.Instanciar(
+                    editarRequest.Descricao,
+                    editarRequest.Nome,
+                    editarRequest.Valor,
+                    editarRequest.Imagem,
+                    editarRequest.Especificacao.Codigo,
+                    editarRequest.CodigoFornecedor,
+                    editarRequest.CodigoCategoria);
+
+                Produto produtoEditado = produtosServico.Editar(produtoEditar);
+
+                if(transacao.IsActive)
+                    transacao.Commit();
+
+                return mapper.Map<ProdutoResponse>(produtoEditado);
+            }
+            catch
+            {
+                if(transacao.IsActive)
+                    transacao.Rollback();
+                throw;
+            }
+        }
+
         public ProdutoInserirResponse Inserir(ProdutoInserirRequest inserirRequest)
         {
             ITransaction transacao = session.BeginTransaction();
@@ -73,6 +124,13 @@ namespace Quasar.Aplicacao.Produtos.Servicos
             ListaPaginada<Produto> produtos = produtosRepositorio.Listar(query, buscarRequest.Quantidade, buscarRequest.Pagina);
 
             return mapper.Map<ListaPaginadaResponse<ProdutoResponse>>(produtos);
+        }
+
+        public ProdutoResponse Recuperar(int codigoProduto)
+        {
+            Produto produto = produtosServico.Validar(codigoProduto);
+
+            return mapper.Map<ProdutoResponse>(produto);
         }
     }
 }
