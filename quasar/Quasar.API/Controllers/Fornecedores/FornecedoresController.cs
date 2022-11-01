@@ -22,7 +22,7 @@ namespace Quasar.API.Controllers.Fornecedores
         }
 
         [HttpPost]
-        public IActionResult Inserir([FromBody]FornecedorInserirRequest inserirRequest)
+        public IActionResult Inserir([FromBody] FornecedorInserirRequest inserirRequest)
         {
             var retorno = fornecedoresAppServico.Inserir(inserirRequest);
             return Ok(retorno);
@@ -37,14 +37,14 @@ namespace Quasar.API.Controllers.Fornecedores
         }
 
         [HttpDelete("{codigo}")]
-        public IActionResult Deletar (int codigo)
+        public IActionResult Deletar(int codigo)
         {
             fornecedoresAppServico.Deletar(codigo);
             return Ok();
         }
 
         [HttpGet]
-        public IActionResult Listar([FromQuery]FornecedorListarRequest listarRequest)
+        public IActionResult Listar([FromQuery] FornecedorListarRequest listarRequest)
         {
             var retorno = fornecedoresAppServico.Listar(listarRequest);
             return Ok(retorno);
