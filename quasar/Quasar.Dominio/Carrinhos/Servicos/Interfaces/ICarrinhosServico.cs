@@ -12,7 +12,7 @@ namespace Quasar.Dominio.Carrinhos.Servicos.Interfaces
     {
         Carrinho Validar(int codigo);
         Carrinho Inserir(Carrinho carrinho);
-        Carrinho Instanciar(int quantidade, int codProduto, string codUsuario);
+        Carrinho Instanciar(int? quantidade, int? codProduto, string? codUsuario);
         Carrinho Editar(Carrinho carrinho);
         void Deletar(int codigo);
     }
