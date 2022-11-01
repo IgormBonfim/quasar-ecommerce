@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Quasar.Aplicacao.Carrinhos.Servicos.Interfaces;
+using Quasar.Aplicacao.Genericos.Servicos.Interfaces;
 using Quasar.DataTransfer.Carrinhos.Requests;
 
 namespace Quasar.API.Controllers.Carrinhos
@@ -15,15 +16,18 @@ namespace Quasar.API.Controllers.Carrinhos
     public class CarrinhosController : ControllerBase
     {
         private readonly ICarrinhosAppServico carrinhosAppServico;
+        private readonly IUsuario usuario;
 
-        public CarrinhosController(ICarrinhosAppServico carrinhosAppServico)
+        public CarrinhosController(ICarrinhosAppServico carrinhosAppServico, IUsuario usuario)
         {
             this.carrinhosAppServico = carrinhosAppServico;
+            this.usuario = usuario;
         }
 
         [HttpPost]
         public IActionResult Inserir([FromBody]CarrinhoInserirRequest inserirRequest)
         {
+            inserirRequest.CodUsuario = usuario.UsuarioLogado(HttpContext);
             carrinhosAppServico.Inserir(inserirRequest);
             return Ok();
         }
