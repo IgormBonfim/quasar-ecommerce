@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Quasar.Aplicacao.Carrinhos.Servicos.Interfaces;
+using Quasar.Aplicacao.Genericos.Servicos.Interfaces;
 using Quasar.DataTransfer.Carrinhos.Requests;
 using Quasar.DataTransfer.Carrinhos.Responses;
 using Quasar.DataTransfer.Genericos.Responses;
@@ -17,10 +18,12 @@ namespace Quasar.API.Controllers.Carrinhos
     public class CarrinhosController : ControllerBase
     {
         private readonly ICarrinhosAppServico carrinhosAppServico;
+        private readonly IUsuario usuario;
 
-        public CarrinhosController(ICarrinhosAppServico carrinhosAppServico)
+        public CarrinhosController(ICarrinhosAppServico carrinhosAppServico, IUsuario usuario)
         {
             this.carrinhosAppServico = carrinhosAppServico;
+            this.usuario = usuario;
         }
 
         [HttpPost]
@@ -47,6 +50,7 @@ namespace Quasar.API.Controllers.Carrinhos
         [HttpGet]
         public ActionResult<ListaPaginadaResponse<CarrinhoResponse>> Listar([FromQuery]CarrinhoListarRequest carrinhoListar)
         {
+            carrinhoListar.CodUsuario = usuario.UsuarioLogado(HttpContext);
             var retorno = carrinhosAppServico.Listar(carrinhoListar);
             return Ok(retorno);
         }
