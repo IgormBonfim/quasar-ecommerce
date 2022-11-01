@@ -8,6 +8,6 @@ namespace Quasar.DataTransfer.Carrinhos.Requests
 {
     public class CarrinhoListarRequest : PaginacaoRequest
     {
-        public int? Codigo { get; set; }
+        public string? CodUsuario { get; set; }
     }
 }
