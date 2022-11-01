@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Quasar.Aplicacao.Carrinhos.Servicos.Interfaces;
 using Quasar.DataTransfer.Carrinhos.Requests;
+using Quasar.DataTransfer.Carrinhos.Responses;
+using Quasar.DataTransfer.Genericos.Responses;
 
 namespace Quasar.API.Controllers.Carrinhos
 {
@@ -40,6 +42,13 @@ namespace Quasar.API.Controllers.Carrinhos
         {
             carrinhosAppServico.Editar(carrinhoEditar);
             return Ok();
+        }
+
+        [HttpGet]
+        public ActionResult<ListaPaginadaResponse<CarrinhoResponse>> Listar([FromQuery]CarrinhoListarRequest carrinhoListar)
+        {
+            var retorno = carrinhosAppServico.Listar(carrinhoListar);
+            return Ok(retorno);
         }
     }
 }
