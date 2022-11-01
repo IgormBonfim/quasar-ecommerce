@@ -56,11 +56,11 @@ namespace Quasar.Dominio.Carrinhos.Servicos
             return carrinho;
         }
 
-        public Carrinho Instanciar(int? quantidade, int? codProduto, string? codUsuario)
+        public Carrinho Instanciar(int quantidade, int codProduto, string codUsuario)
         {
-            Produto produto = produtosServico.Validar(codProduto.Value);
+            Produto produto = produtosServico.Validar(codProduto);
             Usuario usuario = usuarioServico.Validar(codUsuario);
-            Carrinho carrinho = new Carrinho(quantidade.Value, produto, usuario);
+            Carrinho carrinho = new Carrinho(quantidade, produto, usuario);
             return carrinho;
         }
 
