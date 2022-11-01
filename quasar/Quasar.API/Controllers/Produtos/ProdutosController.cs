@@ -11,7 +11,6 @@ using Quasar.DataTransfer.Produtos.Responses;
 
 namespace Quasar.API.Controllers.Produtos
 {
-    [Authorize]
     [ApiController]
     [Route("api/produtos")]
     public class ProdutosController : ControllerBase
@@ -23,6 +22,7 @@ namespace Quasar.API.Controllers.Produtos
             this.produtosAppServico = produtosAppServico;
         }
         
+        [Authorize]
         [HttpPost]
         public IActionResult Inserir([FromBody] ProdutoInserirRequest inserirRequest)
         {
@@ -30,7 +30,6 @@ namespace Quasar.API.Controllers.Produtos
             return Ok(retorno);
         }
 
-        [AllowAnonymous]
         [HttpGet]
         public ActionResult<ListaPaginadaResponse<ProdutoResponse>> Listar([FromQuery] ProdutoBuscarRequest buscarRequest)
         {
@@ -38,7 +37,6 @@ namespace Quasar.API.Controllers.Produtos
             return Ok(retorno);
         }
 
-        [AllowAnonymous]
         [HttpGet("{codigo}")]
         public ActionResult<ProdutoResponse> Recuperar(int codigo)
         {
@@ -46,6 +44,7 @@ namespace Quasar.API.Controllers.Produtos
             return Ok(retorno);
         }
 
+        [Authorize]
         [HttpDelete("{codigo}")]
         public IActionResult Deletar(int codigo)
         {
@@ -53,6 +52,7 @@ namespace Quasar.API.Controllers.Produtos
             return Ok();
         }
 
+        [Authorize]
         [HttpPut("{codigo}")]
         public ActionResult<ProdutoResponse> Editar(int codigo, [FromBody] ProdutoEditarRequest editarRequest)
         {

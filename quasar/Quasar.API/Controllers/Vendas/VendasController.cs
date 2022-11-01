@@ -23,20 +23,20 @@ namespace Quasar.API.Controllers.Vendas
             this.vendasAppServico = vendasAppServico;
             this.usuario = usuario;
         }
-    [HttpGet("{codigo}")]
-    public IActionResult Recuperar(int codigo)
-    {
-        var retorno = vendasAppServico.Recuperar(codigo);
-        return Ok(retorno);
-    }
-    [HttpPost]
-    public IActionResult Inserir([FromBody]VendaInserirRequest inserirRequest)
-    {
-        inserirRequest.CodUsuario = usuario.UsuarioLogado(HttpContext);
-        var retorno = vendasAppServico.Inserir(inserirRequest);
-        return Ok(retorno);
-    }
-    [HttpGet]
+        [HttpGet("{codigo}")]
+        public IActionResult Recuperar(int codigo)
+        {
+            var retorno = vendasAppServico.Recuperar(codigo);
+            return Ok(retorno);
+        }
+        [HttpPost]
+        public IActionResult Inserir([FromBody] VendaInserirRequest inserirRequest)
+        {
+            inserirRequest.CodUsuario = usuario.UsuarioLogado(HttpContext);
+            var retorno = vendasAppServico.Inserir(inserirRequest);
+            return Ok(retorno);
+        }
+        [HttpGet]
         public IActionResult Listar([FromQuery] VendaListarRequest vendaRequest)
         {
             var retorno = vendasAppServico.Listar(vendaRequest);
