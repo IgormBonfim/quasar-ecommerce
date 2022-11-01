@@ -7,9 +7,11 @@ using NHibernate;
 using Quasar.Aplicacao.Carrinhos.Servicos.Interfaces;
 using Quasar.DataTransfer.Carrinhos.Requests;
 using Quasar.DataTransfer.Carrinhos.Responses;
+using Quasar.DataTransfer.Genericos.Responses;
 using Quasar.Dominio.Carrinhos.Entidades;
 using Quasar.Dominio.Carrinhos.Repositorios;
 using Quasar.Dominio.Carrinhos.Servicos.Interfaces;
+using Quasar.Dominio.Genericos.Entidades;
 
 namespace Quasar.Aplicacao.Carrinhos.Servicos
 {
@@ -90,8 +92,22 @@ namespace Quasar.Aplicacao.Carrinhos.Servicos
                     transacao.Rollback();
                 throw;
             }
-
+            
         }
 
+        ListaPaginadaResponse<CarrinhoResponse> ICarrinhosAppServico.Listar(CarrinhoListarRequest carrinhoListarRequest)
+        {
+            var query = carrinhosRepositorio.Query();
+
+            if (carrinhoListarRequest.Codigo != null)
+            {
+                query = query.Where(x => x.Codigo == carrinhoListarRequest.Codigo);
+            }
+
+            ListaPaginada<Carrinho> carrinhos = carrinhosRepositorio.Listar(query, carrinhoListarRequest.
+            Quantidade, carrinhoListarRequest.Pagina);
+
+            return mapper.Map<ListaPaginadaResponse<CarrinhoResponse>>(carrinhos);
+        }
     }
 }
