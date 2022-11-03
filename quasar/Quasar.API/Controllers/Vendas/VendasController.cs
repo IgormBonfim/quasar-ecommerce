@@ -39,6 +39,7 @@ namespace Quasar.API.Controllers.Vendas
         [HttpGet]
         public IActionResult Listar([FromQuery] VendaListarRequest vendaRequest)
         {
+            vendaRequest.CodUsuario = usuario.UsuarioLogado(HttpContext);
             var retorno = vendasAppServico.Listar(vendaRequest);
             return Ok(retorno);
         }
