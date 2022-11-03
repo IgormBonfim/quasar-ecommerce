@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Quasar.Aplicacao.Estoques.Servicos;
 using Quasar.Aplicacao.Estoques.Servicos.Interfaces;
@@ -20,6 +21,7 @@ namespace Quasar.API.Controllers.Estoques
             this.estoquesAppServico = estoquesAppServico;
         }
 
+        [Authorize]
         [HttpPost]
         public IActionResult Inserir([FromBody]EstoqueInserirRequest inserirRequest)
         {
@@ -27,6 +29,7 @@ namespace Quasar.API.Controllers.Estoques
             return Ok(retorno);
         }
 
+        [Authorize]
         [HttpPut("{codigo}")]
         public ActionResult Editar(int codigo, EstoqueEditarRequest editarRequest)
         {
