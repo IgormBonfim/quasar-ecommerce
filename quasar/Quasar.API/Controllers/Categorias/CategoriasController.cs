@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Quasar.Aplicacao.Categorias.Servicos.Interfaces;
 using Quasar.DataTransfer.Categorias.Requests;
@@ -18,12 +19,16 @@ namespace Quasar.API.Controllers.Categorias
         {
             this.categoriasAppServico = categoriasAppServico;
         }
+
+        [Authorize]
         [HttpPost]
         public IActionResult Inserir ([FromBody]CategoriaInserirRequest inserirRequest)
         {
             var retorno = categoriasAppServico.Inserir(inserirRequest);
             return Ok(retorno);
         }
+
+        [Authorize]
         [HttpPut("{codigo}")]
         public IActionResult Editar (int codigo, [FromBody] CategoriaEditarRequest editarRequest)
         {
@@ -33,6 +38,7 @@ namespace Quasar.API.Controllers.Categorias
             return Ok(retorno);
         }
 
+        [Authorize]
         [HttpDelete("{codigo}")]
         public IActionResult Deletar (int codigo)
         {
