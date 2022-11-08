@@ -29,6 +29,7 @@ namespace Quasar.API.Controllers.Carrinhos
         [HttpPost]
         public IActionResult Inserir([FromBody]CarrinhoInserirRequest inserirRequest)
         {
+            inserirRequest.CodUsuario = usuario.UsuarioLogado(HttpContext);
             carrinhosAppServico.Inserir(inserirRequest);
             return Ok();
         }
