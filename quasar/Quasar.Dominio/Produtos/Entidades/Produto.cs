@@ -67,6 +67,8 @@ namespace Quasar.Dominio.Produtos.Entidades
         }
         public virtual void SetCategoria(Categoria categoria)
         {
+            if(categoria == null)
+                throw new Exception("O campo categoria é obrigatório.");
             Categoria = categoria;
         }
         public virtual void SetFornecedor(Fornecedor fornecedor)
