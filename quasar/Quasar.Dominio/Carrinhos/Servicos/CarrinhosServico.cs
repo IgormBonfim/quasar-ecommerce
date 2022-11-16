@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 using Quasar.Dominio.Carrinhos.Entidades;
 using Quasar.Dominio.Carrinhos.Repositorios;
 using Quasar.Dominio.Carrinhos.Servicos.Interfaces;
+using Quasar.Dominio.Estoques.Entidades;
+using Quasar.Dominio.Estoques.Servicos.Interfaces;
 using Quasar.Dominio.Produtos.Entidades;
 using Quasar.Dominio.Produtos.Servicos.Interfaces;
 using Quasar.Dominio.Usuarios.Entidades;
@@ -17,12 +19,14 @@ namespace Quasar.Dominio.Carrinhos.Servicos
         private readonly ICarrinhosRepositorio carrinhosRepositorio;
         private readonly IProdutosServico produtosServico;
         private readonly IUsuariosServico usuarioServico;
+        private readonly IEstoquesServico estoqueServico;
 
-        public CarrinhosServico(ICarrinhosRepositorio carrinhosRepositorio, IProdutosServico produtosServico, IUsuariosServico usuarioServico)
+        public CarrinhosServico(ICarrinhosRepositorio carrinhosRepositorio, IProdutosServico produtosServico, IUsuariosServico usuarioServico, IEstoquesServico estoqueServico)
         {
             this.carrinhosRepositorio = carrinhosRepositorio;
             this.produtosServico = produtosServico;
             this.usuarioServico = usuarioServico;
+            this.estoqueServico = estoqueServico;
         }
         public void Deletar(int codigo)
         {
@@ -30,11 +34,13 @@ namespace Quasar.Dominio.Carrinhos.Servicos
             carrinhosRepositorio.Deletar(carrinhoDeletar);
         }
 
-        public Carrinho Editar(Carrinho carrinho)
+        public Carrinho Editar(Carrinho carrinho, int codEstoque)
         {
             Carrinho carrinhoEditar = Validar(carrinho.Codigo);
+
+            Estoque estoque = estoqueServico.Validar(codEstoque);
             
-            if(carrinho.Quantidade != carrinhoEditar.Quantidade)
+            if(carrinho.Quantidade != carrinhoEditar.Quantidade && carrinho.Quantidade <= estoque.Quantidade)
                 carrinhoEditar.SetQuantidade(carrinho.Quantidade);
 
             return carrinhoEditar;
