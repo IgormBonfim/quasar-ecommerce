@@ -11,5 +11,6 @@ namespace Quasar.DataTransfer.Carrinhos.Requests
         public int Quantidade { get; set; }
         public string? CodUsuario { get; set; }
         public int CodProduto { get; set; }
+        public int CodEstoque { get; set; }
     }
 }
