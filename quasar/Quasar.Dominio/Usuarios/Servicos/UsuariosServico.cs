@@ -11,15 +11,30 @@ namespace Quasar.Dominio.Usuarios.Servicos
     public class UsuariosServico : IUsuariosServico
     {
         private readonly IUsuariosRepositorio usuariosRepositorio;
-        public UsuariosServico(IUsuariosRepositorio usuariosRepositorio)
+        private readonly IClientesServico clientesServico;
+
+        public UsuariosServico(IUsuariosRepositorio usuariosRepositorio, IClientesServico clientesServico)
         {
             this.usuariosRepositorio = usuariosRepositorio;
-            
+            this.clientesServico = clientesServico;
+        }
+
+        public async Task<bool> Cadastrar(Usuario usuario, string senha)
+        {
+            var result = await usuariosRepositorio.Inserir(usuario, senha);
+            return result.Succeeded;
         }
 
         public Usuario Editar(Usuario usuario)
         {
             return usuariosRepositorio.Editar(usuario);
+        }
+
+        public Usuario Instanciar(string email, int codCliente)
+        {
+            Cliente cliente = clientesServico.Validar(codCliente);
+
+            return new Usuario(email, cliente);
         }
 
         public Usuario Validar(string codigo)

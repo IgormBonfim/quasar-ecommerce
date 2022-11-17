@@ -78,6 +78,7 @@ using Quasar.Aplicacao.Carrinhos.Servicos;
 using Quasar.Aplicacao.Genericos.Servicos;
 using Quasar.Aplicacao.Genericos.Servicos.Interfaces;
 using Quasar.Aplicacao.Usuarios;
+using FluentNHibernate.AspNetCore.Identity.Mappings;
 
 namespace Quasar.Ioc
 {
@@ -95,17 +96,17 @@ namespace Quasar.Ioc
                                             .ShowSql())
                                             .Mappings(x => 
                                             {
-                                                x.FluentMappings.AddFromAssemblyOf<ProdutoMap>();
+                                                x.FluentMappings.AddFromAssemblyOf<ProdutoMap>()
+                                                .Add<IdentityRoleClaimMap>()
+                                                .Add<IdentityUserLoginMap>();
                                             })
                                             .BuildSessionFactory();
             });
 
             services.AddAutenticacao(configuration);
             
-            services.AddScoped<ISession>(factory => factory.GetService<ISessionFactory>().OpenSession());
+            services.AddScoped<ISession>(factory => factory.GetService<ISessionFactory>()!.OpenSession());
 
-            services.AddScoped<IAutenticacaoServico, AutenticacaoServico>();
-            services.AddScoped<IJwtServico, JwtServico>();
             services.AddScoped<IUsuario, Usuario>();
 
             services.AddScoped<IUsuariosRepositorio, UsuariosRepositorio>();
