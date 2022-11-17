@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using NHibernate;
 using Quasar.Aplicacao.Usuarios.Servicos.Interfaces;
 using Quasar.Autenticacao.Servicos.Interfaces;
 using Quasar.DataTransfer.Usuarios.Requests;
@@ -14,16 +15,20 @@ namespace Quasar.Aplicacao.Usuarios.Servicos
 {
     public class UsuariosAppServico : IUsuariosAppServico
     {
-        private readonly IAutenticacaoServico autenticacaoServico;
+        private readonly IUsuariosServico usuariosServico;
         private readonly IClientesServico clientesServico;
-        public UsuariosAppServico(IAutenticacaoServico autenticacaoServico, IClientesServico clientesServico)
+        private readonly ISession session;
+
+        public UsuariosAppServico(IUsuariosServico usuariosServico, IClientesServico clientesServico, ISession session)
         {
             this.clientesServico = clientesServico;
-            this.autenticacaoServico = autenticacaoServico;
+            this.session = session;
+            this.usuariosServico = usuariosServico;
         }
 
         public UsuarioCadastroResponse Cadastrar(UsuarioCadastroRequest cadastroRequest)
         {
+            ITransaction transacao = session.BeginTransaction();
             try
             {
                 string nomeCompleto = $"{cadastroRequest.Cliente.Nome} {cadastroRequest.Cliente.Sobrenome}";
@@ -38,11 +43,18 @@ namespace Quasar.Aplicacao.Usuarios.Servicos
 
                 cliente = clientesServico.Inserir(cliente);
 
-                UsuarioCadastroResponse usuarioCadastroResponse = autenticacaoServico.Cadastrar(cadastroRequest, cliente.Codigo).Result;
-                return usuarioCadastroResponse;
+                Usuario usuario = usuariosServico.Instanciar(cadastroRequest.Email, cliente.Codigo);
+
+                UsuarioCadastroResponse response = new UsuarioCadastroResponse(usuariosServico.Cadastrar(usuario, cadastroRequest.Senha).Result);
+
+                if(transacao.IsActive)
+                    transacao.Commit();
+                return response;
             }
             catch
             {
+                if(transacao.IsActive)
+                    transacao.Rollback();
                 throw;
             }
         }
@@ -51,7 +63,7 @@ namespace Quasar.Aplicacao.Usuarios.Servicos
         {
             try
             {
-                return autenticacaoServico.Login(loginRequest).Result;
+                throw new NotImplementedException();
             }
             catch
             {
