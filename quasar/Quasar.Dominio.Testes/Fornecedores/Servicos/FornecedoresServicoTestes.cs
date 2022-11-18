@@ -96,5 +96,15 @@ namespace Quasar.Dominio.Testes.Fornecedores.Servicos
                 fornecedoreditado.Ie.Should().Be("785955070");
             }
         }
+
+        public void Dado_FornecedorDeletado_Espero_Vazio()
+        {
+            fornecedoresRepositorio.Deletar(Arg.Any<Fornecedor>());
+            fornecedoresRepositorio.Recuperar(Arg.Any<int>()).Returns(fornecedorValido);
+
+            var fornecedorDeletar = sut.Deletar();
+
+            fornecedorDeletar.Should().BeNull();
+        }
     }
 }
