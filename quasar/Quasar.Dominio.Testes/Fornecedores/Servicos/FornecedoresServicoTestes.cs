@@ -72,25 +72,29 @@ namespace Quasar.Dominio.Testes.Fornecedores.Servicos
             }
         }
 
-        // public class EditarMetodo : FornecedoresServicoTestes
-        // {
-        //     [Fact]
-        //     public void Dado_ParametrosParaEditarFornecedor_Espero_FornecedorEditado()
-        //     {
-        //         fornecedoresRepositorio.Recuperar(Arg.Any<int>()).Returns(fornecedorValido);
-        //         var fornecedorNovo = new Fornecedor(
-        //                             "Nome de um fornecedor editado",
-        //                             "578330008",
-        //                             "48567902000130",
-        //                             "785955070");
+        public class EditarMetodo : FornecedoresServicoTestes
+        {
+            [Fact]
+            public void Dado_ParametrosParaEditarFornecedor_Espero_FornecedorEditado()
+            {
+                //Arrange
+                fornecedoresRepositorio.Recuperar(Arg.Any<int>()).Returns(fornecedorValido);
+                fornecedoresRepositorio.Editar(Arg.Any<Fornecedor>()).Returns(fornecedorValido);
+                var fornecedorNovo = new Fornecedor(
+                                    "Nome de um fornecedor editado",
+                                    "578330008",
+                                    "48567902000130",
+                                    "785955070");
 
-        //         var fornecedor = sut.Editar(fornecedorNovo);
+                //Act 
+                var fornecedoreditado = sut.Editar(fornecedorNovo);
 
-        //         fornecedor.Nome.Should().Be("Nome de um fornecedor editado");
-        //         fornecedor.RazaoSocial.Should().Be("578330008");
-        //         fornecedor.Cnpj.Should().Be("48567902000130");
-        //         fornecedor.Ie.Should().Be("785955070");
-        //     }
-        // }
+                //Assert 
+                fornecedoreditado.Nome.Should().Be("Nome de um fornecedor editado");
+                fornecedoreditado.RazaoSocial.Should().Be("578330008");
+                fornecedoreditado.Cnpj.Should().Be("48567902000130");
+                fornecedoreditado.Ie.Should().Be("785955070");
+            }
+        }
     }
 }
