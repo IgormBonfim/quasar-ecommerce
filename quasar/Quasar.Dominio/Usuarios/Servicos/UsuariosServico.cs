@@ -78,7 +78,7 @@ namespace Quasar.Dominio.Usuarios.Servicos
                     }
                 }
             }
-            throw new Exception("Login ou senha estão incorretos.");
+            throw new LoginInvalidoExcecao("Login ou senha estão incorretos.");
         }
 
         public Usuario Validar(string codigo)

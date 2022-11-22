@@ -16,7 +16,7 @@ namespace Quasar.DataTransfer.Usuarios.Responses
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         public string? Erro { get; set; }
 
-        public UsuarioLoginResponse(bool sucesso = false)
+        public UsuarioLoginResponse(bool sucesso = true)
         {
             Sucesso = sucesso;
         }

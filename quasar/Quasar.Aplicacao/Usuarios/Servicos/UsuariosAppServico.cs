@@ -4,11 +4,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using NHibernate;
 using Quasar.Aplicacao.Usuarios.Servicos.Interfaces;
-using Quasar.Autenticacao.Servicos.Interfaces;
 using Quasar.DataTransfer.Usuarios.Requests;
 using Quasar.DataTransfer.Usuarios.Responses;
 using Quasar.Dominio.Usuarios.Entidades;
 using Quasar.Dominio.Usuarios.Enumeradores;
+using Quasar.Dominio.Usuarios.Excecoes;
 using Quasar.Dominio.Usuarios.Servicos.Interfaces;
 
 namespace Quasar.Aplicacao.Usuarios.Servicos
@@ -26,8 +26,10 @@ namespace Quasar.Aplicacao.Usuarios.Servicos
             this.usuariosServico = usuariosServico;
         }
 
-        public UsuarioCadastroResponse Cadastrar(UsuarioCadastroRequest cadastroRequest)
+        public async Task<UsuarioCadastroResponse> Cadastrar(UsuarioCadastroRequest cadastroRequest)
         {
+            var response = new UsuarioCadastroResponse();
+
             ITransaction transacao = session.BeginTransaction();
             try
             {
@@ -45,29 +47,34 @@ namespace Quasar.Aplicacao.Usuarios.Servicos
 
                 Usuario usuario = usuariosServico.Instanciar(cadastroRequest.Email, cliente.Codigo);
 
-                UsuarioCadastroResponse response = new UsuarioCadastroResponse(usuariosServico.Cadastrar(usuario, cadastroRequest.Senha).Result);
+                response.Sucesso = await usuariosServico.Cadastrar(usuario, cadastroRequest.Senha);
 
                 if(transacao.IsActive)
                     transacao.Commit();
-                return response;
             }
-            catch
+            catch (UsuarioInvalidoExcecao e)
             {
                 if(transacao.IsActive)
                     transacao.Rollback();
-                throw;
+                response.Erro = e.Message;
             }
+            return response;
         }
 
-        public UsuarioLoginResponse Login(UsuarioLoginRequest loginRequest)
+        public async Task<UsuarioLoginResponse> Login(UsuarioLoginRequest loginRequest)
         {
+            var response = new UsuarioLoginResponse();
             try
             {
-                throw new NotImplementedException();
+                response.Token = await usuariosServico.Login(loginRequest.Login, loginRequest.Senha);
+
+                return response;
             }
-            catch
+            catch (LoginInvalidoExcecao e)
             {
-                throw;
+                response.Sucesso = false;
+                response.Erro = e.Message;
+                return response;
             }
         }
     }
