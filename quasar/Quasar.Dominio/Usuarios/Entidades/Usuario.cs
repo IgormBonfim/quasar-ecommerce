@@ -10,11 +10,8 @@ namespace Quasar.Dominio.Usuarios.Entidades
 {
     public class Usuario : IdentityUser<string>
     {
-        public virtual string Codigo { get; protected set; }
-        public virtual bool EmailConfirmed { get; protected set; }
         public virtual Cliente Cliente { get; protected set; }
         public virtual IList<Produto> Favoritos { get; protected set; }
-
         public Usuario() { }
 
         public Usuario(string? email, Cliente? cliente) 
