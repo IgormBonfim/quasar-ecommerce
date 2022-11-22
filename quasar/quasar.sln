@@ -15,8 +15,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Quasar.Infra", "Quasar.Infr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Quasar.Ioc", "Quasar.Ioc\Quasar.Ioc.csproj", "{1384BCE1-80F2-4CDA-8A9C-83E246E0EBFD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Quasar.Autenticacao", "Quasar.Autenticacao\Quasar.Autenticacao.csproj", "{70537D23-3670-41FC-93D0-DAB1C277AA92}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Quasar.Dominio.Testes", "Quasar.Dominio.Testes\Quasar.Dominio.Testes.csproj", "{0459D4D7-EE53-4B8A-8087-6DEA1619C43D}"
 EndProject
 Global
@@ -52,10 +50,6 @@ Global
 		{1384BCE1-80F2-4CDA-8A9C-83E246E0EBFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1384BCE1-80F2-4CDA-8A9C-83E246E0EBFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1384BCE1-80F2-4CDA-8A9C-83E246E0EBFD}.Release|Any CPU.Build.0 = Release|Any CPU
-		{70537D23-3670-41FC-93D0-DAB1C277AA92}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{70537D23-3670-41FC-93D0-DAB1C277AA92}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{70537D23-3670-41FC-93D0-DAB1C277AA92}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{70537D23-3670-41FC-93D0-DAB1C277AA92}.Release|Any CPU.Build.0 = Release|Any CPU
 		{0459D4D7-EE53-4B8A-8087-6DEA1619C43D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{0459D4D7-EE53-4B8A-8087-6DEA1619C43D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0459D4D7-EE53-4B8A-8087-6DEA1619C43D}.Release|Any CPU.ActiveCfg = Release|Any CPU
