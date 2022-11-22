@@ -9,9 +9,9 @@ namespace Quasar.Infra.Usuarios.Mapeamentos
 {
     public class RoleMap : IdentityRoleMapBase<Role, string>
     {
-        public RoleMap() : base(t => t.Column("id"))
+        public RoleMap() : base(t => t.Column("Id"))
         {
-            Schema("Quasar");
+            Schema("quasarecommerce");
         }
     }
 }

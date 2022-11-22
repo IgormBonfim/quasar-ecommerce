@@ -23,7 +23,6 @@
   	<ItemGroup>
     <ProjectReference Include="..\Quasar.Aplicacao\Quasar.Aplicacao.csproj" />
     <ProjectReference Include="..\Quasar.Dominio\Quasar.Dominio.csproj" />
-	<ProjectReference Include="..\Quasar.Autenticacao\Quasar.Autenticacao.csproj" />
   </ItemGroup>
 
 </Project>
