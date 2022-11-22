@@ -19,8 +19,6 @@ using Quasar.Aplicacao.Ufs.Servicos;
 using Quasar.Aplicacao.Ufs.Servicos.Interfaces;
 using Quasar.Aplicacao.Usuarios.Servicos;
 using Quasar.Aplicacao.Usuarios.Servicos.Interfaces;
-using Quasar.Autenticacao.Servicos;
-using Quasar.Autenticacao.Servicos.Interfaces;
 using Quasar.Dominio.Categorias.Repositorios;
 using Quasar.Dominio.Categorias.Servicos;
 using Quasar.Dominio.Categorias.Servicos.Interfaces;
@@ -79,6 +77,8 @@ using Quasar.Aplicacao.Genericos.Servicos;
 using Quasar.Aplicacao.Genericos.Servicos.Interfaces;
 using Quasar.Aplicacao.Usuarios;
 using FluentNHibernate.AspNetCore.Identity.Mappings;
+using Quasar.Dominio.Tokens.Servicos;
+using Quasar.Dominio.Tokens.Servicos.Interfaces;
 
 namespace Quasar.Ioc
 {
@@ -87,14 +87,14 @@ namespace Quasar.Ioc
         public static void InjetarDependencias(this IServiceCollection services, IConfiguration configuration)
         {
 
-            services.AddSingleton<ISessionFactory>(factory => 
+            services.AddSingleton<ISessionFactory>(factory =>
             {
                 string connectionString = configuration.GetConnectionString("MySql");
                 return Fluently.Configure().Database(MySQLConfiguration.Standard
                                             .ConnectionString(connectionString)
                                             .FormatSql()
                                             .ShowSql())
-                                            .Mappings(x => 
+                                            .Mappings(x =>
                                             {
                                                 x.FluentMappings.AddFromAssemblyOf<ProdutoMap>()
                                                 .Add<IdentityRoleClaimMap>()
@@ -104,7 +104,7 @@ namespace Quasar.Ioc
             });
 
             services.AddAutenticacao(configuration);
-            
+
             services.AddScoped<ISession>(factory => factory.GetService<ISessionFactory>()!.OpenSession());
 
             services.AddScoped<IUsuario, Usuario>();
@@ -112,6 +112,7 @@ namespace Quasar.Ioc
             services.AddScoped<IUsuariosRepositorio, UsuariosRepositorio>();
             services.AddScoped<IUsuariosServico, UsuariosServico>();
             services.AddScoped<IUsuariosAppServico, UsuariosAppServico>();
+            services.AddScoped<ITokensServico, TokensServico>();
 
             services.AddScoped<IFavoritosAppServico, FavoritosAppServico>();
             services.AddScoped<IFavoritosServico, FavoritosServico>();
@@ -149,7 +150,7 @@ namespace Quasar.Ioc
             services.AddScoped<IEstoquesAppServico, EstoquesAppServico>();
             services.AddScoped<IEstoquesRepositorio, EstoquesRepositorio>();
             services.AddScoped<IEstoquesServico, EstoquesServico>();
-            
+
             services.AddScoped<IFornecedoresRepositorio, FornecedoresRepositorio>();
             services.AddScoped<IFornecedoresServico, FornecedoresServico>();
             services.AddScoped<IFornecedoresAppServico, FornecedoresAppServico>();
@@ -168,7 +169,7 @@ namespace Quasar.Ioc
             services.AddScoped<IItensVendasServico, ItensVendasServico>();
             services.AddScoped<IItensVendasRepositorio, ItensVendaRepositorio>();
 
-        
+
             services.AddAutoMapper(typeof(ProdutosProfile));
         }
     }
