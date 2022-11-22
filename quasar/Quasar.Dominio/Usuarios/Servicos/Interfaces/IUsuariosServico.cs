@@ -12,5 +12,6 @@ namespace Quasar.Dominio.Usuarios.Servicos.Interfaces
         Usuario Editar(Usuario usuario);
         Usuario Instanciar(string email, int codCliente);
         Task<bool> Cadastrar(Usuario usuario, string senha);
+        Task<string> Login(string login, string senha);
     }
 }
