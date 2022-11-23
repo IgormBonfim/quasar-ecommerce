@@ -43,7 +43,7 @@ namespace Quasar.Aplicacao.Vendas.Servicos
 
             try
             {
-                Venda vendaInserir = vendasServico.Instanciar(inserirRequest.CodStatusVenda, inserirRequest.CodEndereco, inserirRequest.CodFormaPagamento, inserirRequest.CodUsuario);
+                Venda vendaInserir = vendasServico.Instanciar(inserirRequest.CodStatusVenda, inserirRequest.CodFormaPagamento, inserirRequest.CodEndereco, inserirRequest.CodUsuario);
                 Venda vendaSalvo = vendasServico.Inserir(vendaInserir);
 
                 foreach(var item in inserirRequest.Itens)
