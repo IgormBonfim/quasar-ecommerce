@@ -5,7 +5,9 @@ using System.Threading.Tasks;
 using AutoMapper;
 using NHibernate;
 using Quasar.Aplicacao.Usuarios.Servicos.Interfaces;
+using Quasar.DataTransfer.Produtos.Responses;
 using Quasar.DataTransfer.Usuarios.Requests;
+using Quasar.DataTransfer.Usuarios.Responses;
 using Quasar.Dominio.Produtos.Entidades;
 using Quasar.Dominio.Produtos.Servicos.Interfaces;
 using Quasar.Dominio.Usuarios.Servicos.Interfaces;
@@ -52,6 +54,24 @@ namespace Quasar.Aplicacao.Usuarios
             catch 
             {
                 
+                throw;
+            }
+        }
+
+        public FavoritoListarResponse Listar(FavoritoListarRequest favoritoListarRequest)
+        {
+            try
+            {
+                IList<Produto> listaProduto = FavoritosServico.Listar(favoritoListarRequest.codUsuario);
+
+                FavoritoListarResponse response = new FavoritoListarResponse();
+
+                response.Favoritos = mapper.Map<IList<ProdutoResponse>>(listaProduto);
+
+                return response;
+            }
+            catch 
+            {
                 throw;
             }
         }
