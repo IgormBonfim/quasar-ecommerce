@@ -44,5 +44,12 @@ namespace Quasar.Dominio.Usuarios.Servicos
             usuariosServico.Editar(usuario);
             return produto;
         }
+
+        public IList<Produto> Listar(string codUsuario)
+        {
+            Usuario usuario = usuariosServico.Validar(codUsuario);
+     
+            return usuario.Favoritos;
+        }
     }
 }
