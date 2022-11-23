@@ -65,7 +65,7 @@ namespace Quasar.Dominio.Testes.Produtos.Servicos
         public class InserirMetodo : EspecificacoesServicoTestes
         {
             [Fact]
-            public void Dado_EspecificacaoValido_Espero_EspecificacaoCalido()
+            public void Dado_EspecificacaoValido_Espero_EspecificacaoValido()
             {
                 sut.Inserir(especificacaoValido);
                 especificacoesRepositorio.Received(1).Inserir(especificacaoValido);
