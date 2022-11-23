@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Quasar.Dominio.Tokens.Servicos.Interfaces;
@@ -57,27 +58,24 @@ namespace Quasar.Dominio.Usuarios.Servicos
 
         public async Task<string> Login(string login, string senha)
         {
-            SignInResult loginCpf = await signInManager.PasswordSignInAsync(login, senha, false, true);
+            bool loginCpfCnpj = await LoginPorCpfCnpj(login, senha);
 
-            if(loginCpf.Succeeded)
+            if (loginCpfCnpj)
             {
                 Usuario usuario = await userManager.FindByNameAsync(login);
+
                 return await tokensServico.GerarToken(usuario);
             }
-            else
+
+            bool loginEmail = await LoginPorEmail(login, senha);
+
+            if (loginEmail)
             {
-                Usuario? usuario = UsuarioPorEmail(login);
-
-                if(usuario != null)
-                {
-                    SignInResult loginEmail = await signInManager.PasswordSignInAsync(usuario, senha, false, true);
-
-                    if(loginEmail.Succeeded)
-                    {
-                        return await tokensServico.GerarToken(usuario);
-                    }
-                }
-            }
+                Usuario usuario = UsuarioPorEmail(login)!;
+                
+                return await tokensServico.GerarToken(usuario);
+            } 
+            
             throw new LoginInvalidoExcecao("Login ou senha estão incorretos.");
         }
 
@@ -94,6 +92,64 @@ namespace Quasar.Dominio.Usuarios.Servicos
             return userManager.FindByEmailAsync(email).Result;
         }
 
+        private async Task<bool> LoginPorCpfCnpj(string login, string senha)
+        {
+            Regex verificarCpfCnpj = new Regex(@"([0-9]{2}[\.]?[0-9]{3}[\.]?[0-9]{3}[\/]?[0-9]{4}[-]?[0-9]{2})|([0-9]{3}[\.]?[0-9]{3}[\.]?[0-9]{3}[-]?[0-9]{2})");
+
+            bool cpfCnpjValido = verificarCpfCnpj.IsMatch(login);
+
+            if (cpfCnpjValido)
+            {
+                var loginSucedido = await signInManager.PasswordSignInAsync(login, senha, false, true);
+
+                if(loginSucedido.Succeeded)
+                    return true;
+
+                if (!loginSucedido.Succeeded)
+                    {
+                        if(loginSucedido.IsLockedOut)
+                            throw new LoginInvalidoExcecao("Essa conta está bloqueada.");
+                        if(loginSucedido.IsNotAllowed)
+                            throw new LoginInvalidoExcecao("Essa conta não tem permissão para fazer login.");
+                        if(loginSucedido.RequiresTwoFactor)
+                            throw new LoginInvalidoExcecao("Necessário confirmar a autenticação de dois fatores.");
+                    }
+            }
+
+            return false;
+        }
+
+        private async Task<bool> LoginPorEmail(string login, string senha)
+        {
+            Regex verificarEmail = new Regex(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$");
+
+            bool emailValido = verificarEmail.IsMatch(login);
+
+            if (emailValido)
+            {
+                Usuario? usuario = UsuarioPorEmail(login);
+
+                if (usuario != null)
+                {
+                    var loginSucedido = await signInManager.PasswordSignInAsync(usuario, senha, false, true);
+
+                    if(loginSucedido.Succeeded)
+                        return true;
+                    
+                    if (!loginSucedido.Succeeded)
+                    {
+                        if(loginSucedido.IsLockedOut)
+                            throw new LoginInvalidoExcecao("Essa conta está bloqueada.");
+                        if(loginSucedido.IsNotAllowed)
+                            throw new LoginInvalidoExcecao("Essa conta não tem permissão para fazer login.");
+                        if(loginSucedido.RequiresTwoFactor)
+                            throw new LoginInvalidoExcecao("Necessário confirmar a autenticação de dois fatores.");
+                    }
+                }
+            }
+
+            return false;
+        }
         
     }
 }
