@@ -87,13 +87,13 @@ namespace Quasar.Dominio.Testes.Fornecedores.Servicos
                                     "785955070");
 
                 //Act 
-                var fornecedoreditado = sut.Editar(fornecedorNovo);
+                var fornecedorEditado = sut.Editar(fornecedorNovo);
 
                 //Assert 
-                fornecedoreditado.Nome.Should().Be("Nome de um fornecedor editado");
-                fornecedoreditado.RazaoSocial.Should().Be("578330008");
-                fornecedoreditado.Cnpj.Should().Be("48567902000130");
-                fornecedoreditado.Ie.Should().Be("785955070");
+                fornecedorEditado.Nome.Should().Be("Nome de um fornecedor editado");
+                fornecedorEditado.RazaoSocial.Should().Be("578330008");
+                fornecedorEditado.Cnpj.Should().Be("48567902000130");
+                fornecedorEditado.Ie.Should().Be("785955070");
             }
         }
     }
