@@ -20,16 +20,16 @@ namespace Quasar.API.Controllers.Usuarios
         }
 
         [HttpPost("cadastrar")]
-        public ActionResult<UsuarioCadastroResponse> Cadastrar([FromBody] UsuarioCadastroRequest cadastroRequest)
+        public async Task<ActionResult<UsuarioCadastroResponse>> Cadastrar([FromBody] UsuarioCadastroRequest cadastroRequest)
         {
-            var retorno = usuariosAppServico.Cadastrar(cadastroRequest);
+            var retorno = await usuariosAppServico.Cadastrar(cadastroRequest);
             return Ok(retorno);
         }
 
         [HttpPost("login")]
-        public ActionResult<UsuarioLoginResponse> Login([FromBody] UsuarioLoginRequest loginRequest)
+        public async Task<ActionResult<UsuarioLoginResponse>> Login([FromBody] UsuarioLoginRequest loginRequest)
         {
-            var retorno = usuariosAppServico.Login(loginRequest);
+            var retorno = await usuariosAppServico.Login(loginRequest);
             return Ok(retorno);
         }
     }

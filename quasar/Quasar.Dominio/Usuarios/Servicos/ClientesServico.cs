@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Quasar.Dominio.Usuarios.Entidades;
 using Quasar.Dominio.Usuarios.Enumeradores;
+using Quasar.Dominio.Usuarios.Excecoes;
 using Quasar.Dominio.Usuarios.Repositorios;
 using Quasar.Dominio.Usuarios.Servicos.Interfaces;
 
@@ -44,6 +45,11 @@ namespace Quasar.Dominio.Usuarios.Servicos
 
         public Cliente Inserir(Cliente cliente)
         {
+            Cliente? validarCliente = clientesRepositorio.Query().Where(c => c.CpfCnpj == cliente.CpfCnpj).FirstOrDefault();
+
+            if(validarCliente != null)
+                throw new UsuarioInvalidoExcecao("Esse CPF/CNPJ já está em uso.");
+
             int codigo = clientesRepositorio.Inserir(cliente);
             cliente.SetCodigo(codigo);
             return cliente;

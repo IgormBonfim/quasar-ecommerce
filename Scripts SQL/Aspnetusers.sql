@@ -28,6 +28,7 @@ CREATE TABLE `aspnetusers` (
   `TwoFactorEnabled` tinyint(1) NOT NULL,
   `LockoutEnd` datetime(6) DEFAULT NULL,
   `LockoutEnabled` tinyint(1) NOT NULL,
+  `LockoutEndUnixTimeSeconds` bigint NULL,
   `AccessFailedCount` int(11) NOT NULL,
   PRIMARY KEY (`Id`),
   UNIQUE KEY `UserNameIndex` (`NormalizedUserName`),
