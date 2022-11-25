@@ -21,34 +21,44 @@ namespace Quasar.Dominio.Estoques.Servicos
             this.produtosServico = produtosServico;
         }
 
-    public Estoque Editar(Estoque estoque)
-    {
-        Estoque estoqueEditar = Validar(estoque.Codigo);
+        public Estoque Editar(Estoque estoque)
+        {
+            Estoque estoqueEditar = Validar(estoque.Codigo);
 
-        if (estoque.Quantidade != estoqueEditar.Quantidade)
+            if (estoque.Quantidade != estoqueEditar.Quantidade)
                 estoqueEditar.SetQuantidade(estoque.Quantidade);
-        return estoquesRepositorio.Editar(estoqueEditar);
-    }
+            return estoquesRepositorio.Editar(estoqueEditar);
+        }
 
-    public Estoque Inserir(Estoque estoque)
-    { 
-        int codigo = estoquesRepositorio.Inserir(estoque);
-        estoque.SetCodigo(codigo);
-        return estoque;
-    }
-    public Estoque Instanciar(int quantidade, int CodProduto)
-    {
-        Produto produto = produtosServico.Validar(CodProduto);
-        Estoque estoque = new Estoque(quantidade, produto);
-        return estoque;
-    }
-    public Estoque Validar(int codigo)
-    {
-        Estoque estoqueValidar = estoquesRepositorio.Recuperar(codigo);
-        if(estoqueValidar == null)
-            throw new Exception("Produto não encontrado.");
+        public Estoque Inserir(Estoque estoque)
+        {
+            int codigo = estoquesRepositorio.Inserir(estoque);
+            estoque.SetCodigo(codigo);
+            return estoque;
+        }
+        public Estoque Instanciar(int quantidade, int CodProduto)
+        {
+            Produto produto = produtosServico.Validar(CodProduto);
+            Estoque estoque = new Estoque(quantidade, produto);
+            return estoque;
+        }
+        public Estoque Validar(int codigo)
+        {
+            Estoque estoqueValidar = estoquesRepositorio.Recuperar(codigo);
+            if (estoqueValidar == null)
+                throw new Exception("Produto não encontrado.");
             return estoqueValidar;
 
-    }
+        }
+
+        private Estoque RetornarEstoquePeloProduto(int codProduto)
+        {
+            Estoque? estoqueProduto = estoquesRepositorio.Query().Where(e => e.Produto.Codigo == codProduto).FirstOrDefault();
+
+            if (estoqueProduto == null)
+                throw new Exception("Produto não encontrado no estoque");
+
+            return estoqueProduto;
+        }
     }
 }
