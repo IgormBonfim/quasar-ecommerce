@@ -38,8 +38,10 @@ namespace Quasar.Dominio.Cidades.Entidades
                 throw new Exception("O campo nome deve possuir até 100 caracteres!");
             Nome = nome;
         }
-        public virtual void SetUf(Uf uf)
+        public virtual void SetUf(Uf? uf)
         {
+            if (uf == null)
+             throw new Exception("O campo Uf não pode ser nulo!");
             Uf = uf;
         }
     }
