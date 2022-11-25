@@ -45,6 +45,7 @@ namespace Quasar.Dominio.Testes.StatusVendaServicos.Servicos
 
                 sut.Validar(1).Should().BeSameAs(statusVendaValido);
             }
+            
         }
     }
 }
