@@ -10,5 +10,6 @@ namespace Quasar.Dominio.Usuarios.Servicos.Interfaces
     {
         Produto Remover (int codProduto, string codUsuario);
         Produto Adicionar (int codProduto, string codUsuario);
+        IList<Produto> Listar (string codUsuario);
     }
 }
