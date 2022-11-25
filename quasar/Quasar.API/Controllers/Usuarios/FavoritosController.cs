@@ -40,5 +40,13 @@ namespace Quasar.API.Controllers.Usuarios
             return Ok();
         }
 
+        [HttpGet]
+        public IActionResult Listar()
+        {
+            FavoritoListarRequest favoritoListarRequest = new FavoritoListarRequest();
+            favoritoListarRequest.codUsuario = usuario.UsuarioLogado(HttpContext);
+            var retorno = favoritosAppServico.Listar(favoritoListarRequest);
+            return Ok(retorno);
+        }
     }
 }
