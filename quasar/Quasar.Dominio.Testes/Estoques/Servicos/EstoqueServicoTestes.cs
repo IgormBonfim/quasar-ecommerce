@@ -51,8 +51,39 @@ namespace Quasar.Dominio.Testes.Estoques.Servicos
         }
         public class EditarMetodo : EstoqueServicoTestes
         {
-            
-        }
+            [Fact]
+            public void Dado_ParametrosParaEditarEstoque_Espero_EstoqueEditado()
+            {   
+                //Arrange
+               estoquesRepositorio.Recuperar(Arg.Any<int>()).Returns(estoqueValido);
+               estoquesRepositorio.Editar(Arg.Any<Estoque>()).Returns(estoqueValido);
 
+               var estoqueNovo = new Estoque(2, produtoValido);
+
+                //Act
+               var estoqueEditado = sut.Editar(estoqueNovo); 
+
+                //Assert
+               estoqueEditado.Quantidade.Should().Be(2);
+            }
+        }
+        public class InserirMetodo : EstoqueServicoTestes
+        {
+            [Fact]
+            public void Dado_EstoqueValido_Espero_EstoqueValido()
+            {
+                sut.Inserir(estoqueValido);
+                estoquesRepositorio.Received(1).Inserir(estoqueValido);
+            }
+        }
+        public class InstanciarMetodo : EstoqueServicoTestes
+        {
+            [Fact]
+            public void Dado_ParametrosParaCriarEstoque_Espero_EstoqueInstanciado()
+            {
+                var estoque = sut.Instanciar(1,1);
+                estoque.Should().NotBeNull();
+            }
+        }
     }
 }
