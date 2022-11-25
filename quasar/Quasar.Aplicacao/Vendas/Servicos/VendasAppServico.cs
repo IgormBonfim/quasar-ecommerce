@@ -12,7 +12,6 @@ using Quasar.Dominio.Genericos.Entidades;
 using Quasar.Dominio.Vendas.Entidades;
 using Quasar.Dominio.Vendas.Repositorios;
 using Quasar.Dominio.Vendas.Servicos.Interfaces;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace Quasar.Aplicacao.Vendas.Servicos
 {
@@ -106,7 +105,7 @@ namespace Quasar.Aplicacao.Vendas.Servicos
 
             if (listarRequest.CodUsuario != null)
                 {
-                    query = query.Where(f => f.Usuario.Codigo == listarRequest.CodUsuario);
+                    query = query.Where(f => f.Usuario.Id == listarRequest.CodUsuario);
                 }
             ListaPaginada<Venda> listaVenda = vendasRepositorio.Listar(query, listarRequest.Quantidade, listarRequest.Pagina);
             return mapper.Map<ListaPaginadaResponse<VendaResponse>>(listaVenda);

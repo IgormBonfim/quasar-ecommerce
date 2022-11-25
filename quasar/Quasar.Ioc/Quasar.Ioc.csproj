@@ -12,6 +12,7 @@
 
   	<ItemGroup>
 	  <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
+	  <PackageReference Include="Fluent.NHibernate.AspNetCore.Identity" Version="1.0.0" />
 	  <PackageReference Include="FluentNHibernate" Version="3.1.0" />
 	  <PackageReference Include="MySql.data" Version="8.0.30" />
 	  <PackageReference Include="MySqlConnector" Version="2.1.13" />
@@ -22,7 +23,6 @@
   	<ItemGroup>
     <ProjectReference Include="..\Quasar.Aplicacao\Quasar.Aplicacao.csproj" />
     <ProjectReference Include="..\Quasar.Dominio\Quasar.Dominio.csproj" />
-	<ProjectReference Include="..\Quasar.Autenticacao\Quasar.Autenticacao.csproj" />
   </ItemGroup>
 
 </Project>
