@@ -55,7 +55,7 @@ namespace Quasar.Dominio.Testes.Produtos.Entidades
                 sut.Invoking(x => x.SetPosicao(new string('*', 1))).Should().Throw<Exception>();
             }
             [Fact]
-            public void Dado_PosicaoComMaisDeCincoentaCaracteres_Espero_Exception()
+            public void Dado_PosicaoComMaisDeCinquentaCaracteres_Espero_Exception()
             {
                 sut.Invoking(x => x.SetPosicao(new string('*', 51))).Should().Throw<Exception>();
             }    
