@@ -34,6 +34,7 @@ namespace Quasar.Dominio.Testes.Categorias.Entidades
         }
         public class SetNomeMetodo : CategoriaTestes
         {
+            [Theory]
             [InlineData(null)]
             [InlineData("")]
             [InlineData(" ")]
@@ -41,11 +42,14 @@ namespace Quasar.Dominio.Testes.Categorias.Entidades
             {
                 sut.Invoking(x => x.SetNome(nome)).Should().Throw<Exception>();
             }
+            
             [Fact]
             public void Dado_NomeComMenosDeDoisCaracteres_Espero_Exception()
             {
                 sut.Invoking(x => x.SetNome(new string('*', 1))).Should().Throw<Exception>();
             }
+
+            [Fact]
             public void Dado_PosicaoComMaisDeTrintaCaracteres_Espero_Exception()
             {
                 sut.Invoking(x => x.SetNome(new string('*', 31))).Should().Throw<Exception>();
@@ -53,15 +57,20 @@ namespace Quasar.Dominio.Testes.Categorias.Entidades
         }
         public class SetImagemMetodo : CategoriaTestes
         {
+            [Theory]
+            [InlineData(null)]
             public void Dado_ImagemNuloOuEspacoEmBranco_Espero_Exception(string imagem)
             {
                 sut.Invoking(x => x.SetImagem(imagem)).Should().Throw<Exception>();
             }
+
             [Fact]
             public void Dado_ImagemComMenosDeDoisCaracteres_Espero_Exception()
             {
                 sut.Invoking(x => x.SetImagem(new string('*', 1))).Should().Throw<Exception>();
             }
+
+            [Fact]
             public void Dado_PosicaoComMaisDeDuzentosECinquentaESeisCaracteres_Espero_Exception()
             {
                 sut.Invoking(x => x.SetImagem(new string('*', 256))).Should().Throw<Exception>();
