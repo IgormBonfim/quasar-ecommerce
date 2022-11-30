@@ -4,9 +4,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.IdentityModel.Tokens;
 
-namespace Quasar.Autenticacao.Configuracoes
+namespace Quasar.Dominio.Tokens.Entidades
 {
-    public class JwtOptions
+    public class Jwt
     {
         public string Issuer { get; set; }
         public string Audience { get; set; }

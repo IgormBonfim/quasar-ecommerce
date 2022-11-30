@@ -9,7 +9,7 @@ namespace Quasar.Aplicacao.Usuarios.Servicos.Interfaces
 {
     public interface IUsuariosAppServico
     {
-        UsuarioCadastroResponse Cadastrar(UsuarioCadastroRequest cadastroRequest);
-        UsuarioLoginResponse Login(UsuarioLoginRequest loginRequest);
+        Task<UsuarioCadastroResponse> Cadastrar(UsuarioCadastroRequest cadastroRequest);
+        Task<UsuarioLoginResponse> Login(UsuarioLoginRequest loginRequest);
     }
 }

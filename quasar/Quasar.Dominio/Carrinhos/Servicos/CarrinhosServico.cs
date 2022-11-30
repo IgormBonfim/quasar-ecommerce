@@ -50,7 +50,7 @@ namespace Quasar.Dominio.Carrinhos.Servicos
         public Carrinho Inserir(Carrinho carrinho)
         {
             var query = carrinhosRepositorio.Query()
-                                            .Where(u => u.Usuario.Codigo == carrinho.Usuario.Codigo)
+                                            .Where(u => u.Usuario.Id == carrinho.Usuario.Id)
                                             .Where(p => p.Produto.Codigo == carrinho.Produto.Codigo)
                                             .FirstOrDefault();
 

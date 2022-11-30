@@ -15,7 +15,6 @@ namespace Quasar.DataTransfer.Enderecos.Responses
         public string PontoReferencia {get; set;}
         public string Complemento {get; set;}
         public string Cep {get; set;}
-        public CidadeResponse Cidade {get; set;}
-        public string CodigoUsuario {get; set;}        
+        public CidadeResponse Cidade {get; set;}     
     }
 }

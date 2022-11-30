@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace Quasar.DataTransfer.Usuarios.Responses
@@ -8,13 +9,18 @@ namespace Quasar.DataTransfer.Usuarios.Responses
     public class UsuarioCadastroResponse
     {
         public bool Sucesso { get; set; }
-        public List<string> Erros { get; set; }
+        
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        public string? Erro { get; set; }
 
-        public UsuarioCadastroResponse() =>
-            Erros = new List<string>();
-        public UsuarioCadastroResponse(bool sucesso = true) :this() =>
+        public UsuarioCadastroResponse(bool sucesso = true)
+        {
             Sucesso = sucesso;
-        public void AdicionarErros(IEnumerable<string> erros) =>
-            Erros.AddRange(erros);
+        }
+
+        public void AdicionarErro(string erro)
+        {
+            Erro = erro;
+        }
     }
 }
