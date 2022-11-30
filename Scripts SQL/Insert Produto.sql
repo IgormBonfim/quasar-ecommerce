@@ -1,6 +1,7 @@
-INSERT INTO Produto(descricao, nome, valor, imagem, codCategoria, codFornecedor, codEspecificacao) 
+INSERT INTO Produto(codProduto, descricao, nome, valor, imagem, codCategoria, codFornecedor, codEspecificacao) 
 VALUES
   (
+	1,
     'Vidro Parabrisa aplicável nos veículos Citroen C4 Picasso Hatch 4 portas , anos 2021 a 2022 .',
     'Parabrisa Citroen C4 Picasso',
      1608.00,
@@ -11,6 +12,7 @@ VALUES
   ),
 #vidro parabrisa
   (
+	2,
     'Parachoque Dianteiro aplicável nos veículos Volkswagen Saveiro G7 Cross Cabine Dupla e Cabine Estendida , anos 2018 a 2019 .',
     'Parachoque Volkswagen Saveiro G7 Cross Dianteiro',
     588.00,
@@ -21,6 +23,7 @@ VALUES
   ),
 #parachoque
   (
+	3,
     'Capa Superior do Retrovisor Lado Esquerdo, do Motorista, aplicável nos veículos Mitsubishi Outlander , anos 2020 a 2021 .',
     'Capa Retrovisor Mitsubishi Outlander',
     885.51,
@@ -31,6 +34,7 @@ VALUES
   ),
 #retrovisor
   (
+	4,
     'Lanterna Traseira Lado Direito, do Passageiro, aplicável nos veículos Toyota Hilux Srx Cabine Dupla , anos 2021 a 2022 .',
     'Lanterna Toyota Hilux Srx Direito',
     2408.00,
@@ -41,6 +45,7 @@ VALUES
   ),
 #lanternas
   (
+	5,
     'Farol Auxiliar Lado Direito, do Passageiro, aplicável nos veículos Honda Fit Hatch 4 portas , anos 2005 a 2006 .',
     'Farol Milha Honda Fit Direito',
     2100.00,
@@ -51,6 +56,7 @@ VALUES
   ),
 #farol
   (
+	6,
     'Vidro Janela Lado Direito, do Passageiro, aplicável nos veículos Ford Escort Hatch 2 portas , anos 2002 a 2003 .',
     'Vidro Janela Ford Escort',
     1412.00,
@@ -61,6 +67,7 @@ VALUES
   ),
 #vidro janela
   (
+	7,
     'Grade Central do Parachoque aplicável nos veículos Volkswagen Crossfox Hatch 4 portas , anos 2013 a 2014 .',
     'Grade Parachoque Volkswagen Crossfox',
     720.00,
@@ -71,6 +78,7 @@ VALUES
   ),
 #parachoque grade
   (
+	8,
     'Capa Superior do Retrovisor Lado Direito, do Passageiro, aplicável nos veículos Mitsubishi Outlander , anos 2014 a 2015 .',
     'Capa Retrovisor Mitsubishi Outlander',
     901.20,
@@ -81,6 +89,7 @@ VALUES
   ),
 #retrovisor
   (
+	9,
     'Lanterna Traseira Lado Esquerdo, do Motorista, aplicável nos veículos Mitsubishi Airtrek , anos 2005 a 2006 .',
     'Lanterna Mitsubishi Airtrek Esquerdo',
     1800.00,
@@ -91,6 +100,7 @@ VALUES
   ),
 #lanternas
   (
+	10,
     'Farol Diurno Lado Direito, do passageiro aplicável nos veículos Jeep Compass , anos 2020 a 2021 , compatível com os modelos Compass',
     'Farol Diurno Jeep',
     1230.00,
@@ -100,3 +110,4 @@ VALUES
     10
   );
 #farol diurno
+
