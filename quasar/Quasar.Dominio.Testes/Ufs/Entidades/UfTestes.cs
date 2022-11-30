@@ -32,7 +32,7 @@ namespace Quasar.Dominio.Testes.Ufs.Entidades
             }
         }
 
-        public class SeSiglaMetodo : UfTestes
+        public class SetSiglaMetodo : UfTestes
         {
             [Theory]
             [InlineData(null)]
