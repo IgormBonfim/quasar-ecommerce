@@ -38,6 +38,23 @@ namespace Quasar.Dominio.Testes.Produtos.Entidades
                 especificacao.Veiculo.Should().Be("Teste de Veiculo");
             }
         }
+        public class SetCodigoMetodo : EspecificacaoTestes
+        {
+            [Theory]
+            [InlineData(null)]
+            [InlineData(-1)]
+            [InlineData(0)]
+            public void Dado_ValorNulloOuMenorQueUm_Espero_Exception(int codigo)
+            {
+                sut.Invoking(x => x.SetCodigo(codigo)).Should().Throw<Exception>();
+            }
+            [Fact]
+            public void Dado_ValorValido_Espero_PropriedadesPreenchidas()
+            {
+                sut.SetCodigo(1);
+                sut.Codigo.Should().Be(1);
+            }
+        }
         public class SetPosicaoMetodo : EspecificacaoTestes
         {
             [Theory]

@@ -68,6 +68,8 @@ namespace Quasar.Dominio.Testes.Produtos.Servicos
             [Fact]
             public void Dado_EspecificacaoValido_Espero_EspecificacaoValido()
             {
+                especificacoesRepositorio.Inserir(Arg.Any<Especificacao>()).Returns(1);
+                
                 sut.Inserir(especificacaoValido);
                 especificacoesRepositorio.Received(1).Inserir(especificacaoValido);
             }
