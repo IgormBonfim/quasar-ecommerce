@@ -23,6 +23,7 @@ namespace Quasar.Dominio.Testes.Produtos.Servicos
         {
             especificacaoValido = Builder<Especificacao>.CreateNew().Build();
             especificacoesRepositorio = Substitute.For<IEspecificacoesRepositorio>();
+            sut = new EspecificacoesServico(especificacoesRepositorio);
         }
         public class ValidarMetodo : EspecificacoesServicoTestes
         {
@@ -50,14 +51,14 @@ namespace Quasar.Dominio.Testes.Produtos.Servicos
             especificacoesRepositorio.Editar(Arg.Any<Especificacao>()).Returns(especificacaoValido);
             var especificacaoNovo = new Especificacao(
                                     "Teste de Posição",
-                                    "Teste de Cor do produto",
+                                    "Teste de Cor",
                                     "2021, 2022",
                                     "Teste de Veiculo");
              //Arc
              var especificacaoEditado = sut.Editar(especificacaoNovo);
              //Assert
              especificacaoEditado.Posicao.Should().Be("Teste de Posição");
-             especificacaoEditado.Cor.Should().Be("Teste de Cor do produto");
+             especificacaoEditado.Cor.Should().Be("Teste de Cor");
              especificacaoEditado.Ano.Should().Be("2021, 2022");
              especificacaoEditado.Veiculo.Should().Be("Teste de Veiculo");
             }
@@ -78,7 +79,7 @@ namespace Quasar.Dominio.Testes.Produtos.Servicos
             {
                 var especificacao = sut.Instanciar(
                                     "Teste de Posição",
-                                    "Teste de Cor do produto",
+                                    "Teste de Cor",
                                     "2021, 2022",
                                     "Teste de Veiculo");
                 especificacao.Should().NotBeNull();

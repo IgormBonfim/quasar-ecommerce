@@ -27,13 +27,13 @@ namespace Quasar.Dominio.Testes.Produtos.Entidades
                 //Act
                 var especificacao = new Especificacao(
                     "Teste de Posição",
-                    "Teste de Cor do produto",
+                    "Teste de Cor",
                     "2021, 2022",
                     "Teste de Veiculo"
                     );
                 //Assert 
                 especificacao.Posicao.Should().Be("Teste de Posição");
-                especificacao.Cor.Should().Be("Teste de Cor do produto");
+                especificacao.Cor.Should().Be("Teste de Cor");
                 especificacao.Ano.Should().Be("2021, 2022");
                 especificacao.Veiculo.Should().Be("Teste de Veiculo");
             }
