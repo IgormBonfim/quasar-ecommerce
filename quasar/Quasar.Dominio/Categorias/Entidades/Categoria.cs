@@ -19,7 +19,7 @@ namespace Quasar.Dominio.Categorias.Entidades
         
         public virtual void SetCodigo(int? codigo)
         {
-            if(!codigo.HasValue)
+            if(!codigo.HasValue || codigo <= 0)
             {
                 throw new Exception("Código da categoria é obrigatório!");
             }
