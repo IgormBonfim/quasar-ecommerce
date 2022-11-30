@@ -20,7 +20,7 @@ namespace Quasar.Dominio.Cidades.Entidades
             SetUf(uf);
         }
 
-        public virtual void SetCodCidade(int? codigo)
+        public virtual void SetCodigo(int? codigo)
         {
             if(!codigo.HasValue)
             {

@@ -46,12 +46,12 @@ namespace Quasar.Dominio.Testes.Cidades.Entidades
             [InlineData(0)]
             public void Dado_ValorNulloOuMenorQueUm_Espero_Exception(int valor)
             {
-                sut.Invoking(x => x.SetCodCidade(valor)).Should().Throw<Exception>();
+                sut.Invoking(x => x.SetCodigo(valor)).Should().Throw<Exception>();
             }
             [Fact]
             public void Dado_ValorValido_Espero_PropriedadesPreenchidas()
             {
-                sut.SetCodCidade(1);
+                sut.SetCodigo(1);
                 sut.Codigo.Should().Be(1);
             }
         }
