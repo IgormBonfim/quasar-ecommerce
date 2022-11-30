@@ -26,7 +26,7 @@ namespace Quasar.Dominio.Ufs.Entidades
 
         public virtual void SetCodigo(int? codigo)
         {
-            if (!codigo.HasValue)
+            if (!codigo.HasValue || codigo <= 0)
                 throw new Exception("O código da UF tem que ser obrigatório!");
             Codigo = codigo.Value;
         }

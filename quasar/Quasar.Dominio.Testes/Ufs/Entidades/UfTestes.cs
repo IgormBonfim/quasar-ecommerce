@@ -25,10 +25,10 @@ namespace Quasar.Dominio.Testes.Ufs.Entidades
             {
                 // Act
                 var uf = new Uf("TS",
-                                "Testes");    
+                                "Testes");
                 //Assert
                 uf.Sigla.Should().Be("TS");
-                uf.Nome.Should().Be("Testes");       
+                uf.Nome.Should().Be("Testes");
             }
         }
 
@@ -54,6 +54,23 @@ namespace Quasar.Dominio.Testes.Ufs.Entidades
             }
         }
 
+        public class SetCodigoMetodo : UfTestes
+        {
+            [Theory]
+            [InlineData(null)]
+            [InlineData(-1)]
+            [InlineData(0)]
+            public void Dado_ValorNulloOuMenorQueUm_Espero_Exception(int codigo)
+            {
+                sut.Invoking(x => x.SetCodigo(codigo)).Should().Throw<Exception>();
+            }
+            [Fact]
+            public void Dado_ValorValido_Espero_PropriedadesPreenchidas()
+            {
+                sut.SetCodigo(1);
+                sut.Codigo.Should().Be(1);
+            }
+        }
         public class SetNomeMetodo : UfTestes
         {
             [Theory]
