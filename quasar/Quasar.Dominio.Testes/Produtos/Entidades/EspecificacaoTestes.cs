@@ -75,7 +75,12 @@ namespace Quasar.Dominio.Testes.Produtos.Entidades
             public void Dado_PosicaoComMaisDeCinquentaCaracteres_Espero_Exception()
             {
                 sut.Invoking(x => x.SetPosicao(new string('*', 51))).Should().Throw<Exception>();
-            }    
+            }   
+            public void Dado_ValorValido_Espero_PropriedadesPreenchidas()
+            {
+                sut.SetPosicao("Teste de Posição");
+                sut.Posicao.Should().Be("Teste de Posição");
+            } 
         }
         public class SetCorMetodo : EspecificacaoTestes
         {
@@ -97,7 +102,12 @@ namespace Quasar.Dominio.Testes.Produtos.Entidades
             public void Dado_CorComMaisDeVinteCaracteres_Espero_Exception()
             {
                 sut.Invoking(x => x.SetCor(new string('*', 21))).Should().Throw<Exception>();
-            }                
+            }      
+            public void Dado_ValorValido_Espero_PropriedadesPreenchidas()
+            {
+                sut.SetCor("Teste de Cor");
+                sut.Cor.Should().Be("Teste de Cor");
+            }          
         }
         public class SetAnoMetodo : EspecificacaoTestes
         {
@@ -119,6 +129,11 @@ namespace Quasar.Dominio.Testes.Produtos.Entidades
             public void Dado_AnoComMaisDeCemCaracteres_Espero_Exception()
             {
                 sut.Invoking(x => x.SetAno(new string('*', 101))).Should().Throw<Exception>();
+            }
+            public void Dado_ValorValido_Espero_PropriedadesPreenchidas()
+            {
+                sut.SetAno("Teste de Ano");
+                sut.Ano.Should().Be("Teste de Ano");
             }                
         }
         public class SetVeiculoMetodo : EspecificacaoTestes
@@ -141,7 +156,12 @@ namespace Quasar.Dominio.Testes.Produtos.Entidades
             public void Dado_VeiculoComMaisDeQuarentaECinco_Espero_Exception()
             {
                 sut.Invoking(x => x.SetVeiculo(new string('*', 46))).Should().Throw<Exception>();
-            }                
+            }
+            public void Dado_ValorValido_Espero_PropriedadesPreenchidas()
+            {
+                sut.SetVeiculo("Teste de Veiculo");
+                sut.Veiculo.Should().Be("Teste de Veiculo");
+            }                  
         }
     }
 }
