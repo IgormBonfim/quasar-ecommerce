@@ -74,6 +74,7 @@ namespace Quasar.Dominio.Testes.Produtos.Servicos
                 especificacoesRepositorio.Received(1).Inserir(especificacaoValido);
             }
         }
+
         public class InstanciarMetodo : EspecificacoesServicoTestes
         {
             [Fact]
