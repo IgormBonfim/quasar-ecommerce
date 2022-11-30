@@ -36,7 +36,23 @@ namespace Quasar.Dominio.Testes.Estoques.Entidades
                 estoque.Produto.Should().BeSameAs(produto);
             }
         }
-        
+        public class SetCodigoMetodo : EstoqueTestes
+        {
+            [Theory]
+            [InlineData(null)]
+            [InlineData(-1)]
+            [InlineData(0)]
+            public void Dado_ValorNulloOuMenorQueUm_Espero_Exception(int codigo)
+            {
+                sut.Invoking(x => x.SetCodigo(codigo)).Should().Throw<Exception>();
+            }
+            [Fact]
+            public void Dado_ValorValido_Espero_PropriedadesPreenchidas()
+            {
+                sut.SetCodigo(1);
+                sut.Codigo.Should().Be(1);
+            }
+        }
         public class SetQuantidadeMetodo : EstoqueTestes
         {
             [Fact]

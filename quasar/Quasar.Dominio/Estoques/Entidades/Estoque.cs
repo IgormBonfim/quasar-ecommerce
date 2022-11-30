@@ -24,8 +24,8 @@ namespace Quasar.Dominio.Estoques.Entidades
 
         public virtual void SetCodigo(int? codigo)
         {
-            if(!codigo.HasValue)
-            throw new Exception("O código do estoque é obirgatório!");
+            if(!codigo.HasValue || codigo <= 0)
+                throw new Exception("O código do estoque é obirgatório!");
             Codigo = codigo.Value;
         }
 
