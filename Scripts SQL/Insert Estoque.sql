@@ -1,6 +1,10 @@
 INSERT INTO ESTOQUE(CODESTOQUE, QUANTIDADE, CODPRODUTO)
 VALUES
-
+	(
+    1,
+    556,
+    1
+),
 	(
     2,
     564,
@@ -47,5 +51,4 @@ VALUES
     10
 );
 
-SELECT * FROM ESTOQUE;
 
