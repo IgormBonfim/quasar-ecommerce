@@ -32,6 +32,23 @@ namespace Quasar.Dominio.Testes.StatusVendaTestes.Entidades
             }   
         }
 
+        public class SetCodigoMetodo : StatusVendaTestes
+        {
+            [Theory]
+            [InlineData(null)]
+            [InlineData(-1)]
+            [InlineData(0)]
+            public void Dado_ValorNulloOuMenorQueUm_Espero_Exception(int valor)
+            {
+                sut.Invoking(x => x.SetCodigo(valor)).Should().Throw<Exception>();
+            }
+            [Fact]
+            public void Dado_ValorValido_Espero_PropriedadesPreenchidas()
+            {
+                sut.SetCodigo(1);
+                sut.Codigo.Should().Be(1);
+            }
+        }
         public class SetDescricaoMetodo : StatusVendaTestes
         {
             [Theory]
