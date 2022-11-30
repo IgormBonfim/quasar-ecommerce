@@ -12,13 +12,13 @@ using Xunit;
 
 namespace Quasar.Dominio.Testes.Ufs.Servicos
 {
-    public class UfServicoTestes
+    public class UfsServicoTestes
     {
         private readonly UfsServico sut;
         private readonly IUfsRepositorio ufsRepositorio;
         private readonly Uf ufValido;
 
-        public UfServicoTestes()
+        public UfsServicoTestes()
         {
             ufValido = Builder<Uf>.CreateNew().Build();
             ufsRepositorio = Substitute.For<IUfsRepositorio>();
@@ -26,7 +26,7 @@ namespace Quasar.Dominio.Testes.Ufs.Servicos
             sut = new UfsServico(ufsRepositorio);
 
         }
-        public class ValidarMetodo : UfServicoTestes
+        public class ValidarMetodo : UfsServicoTestes
         {
             [Fact]
             public void Quando_UfNaoForEncontrado_Espero_Exception()
