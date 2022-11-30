@@ -38,6 +38,24 @@ namespace Quasar.Dominio.Testes.Cidades.Entidades
             }
         }
 
+        public class SetCodigoMetodo : CidadeTestes
+        {
+            [Theory]
+            [InlineData(null)]
+            [InlineData(-1)]
+            [InlineData(0)]
+            public void Dado_ValorNulloOuMenorQueUm_Espero_Exception(int valor)
+            {
+                sut.Invoking(x => x.SetCodCidade(valor)).Should().Throw<Exception>();
+            }
+            [Fact]
+            public void Dado_ValorValido_Espero_PropriedadesPreenchidas()
+            {
+                sut.SetCodCidade(1);
+                sut.Codigo.Should().Be(1);
+            }
+        }
+
         public class SetNomeMetodo : CidadeTestes
         {
             [Theory]
