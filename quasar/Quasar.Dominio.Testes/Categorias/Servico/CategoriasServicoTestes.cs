@@ -64,7 +64,9 @@ namespace Quasar.Dominio.Testes.Categorias.Servico
         {
             [Fact]
             public void Dado_CategoriaValida_Espero_CategoriaValido()
-            {
+            {   
+                categoriasRepositorio.Inserir(Arg.Any<Categoria>()).Returns(1);
+                
                 sut.Inserir(categoriaValida);
                 categoriasRepositorio.Received(1).Inserir(categoriaValida);
             }
