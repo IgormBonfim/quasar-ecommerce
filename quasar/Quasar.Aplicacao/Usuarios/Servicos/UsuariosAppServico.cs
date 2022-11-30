@@ -2,28 +2,35 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using NHibernate;
 using Quasar.Aplicacao.Usuarios.Servicos.Interfaces;
-using Quasar.Autenticacao.Servicos.Interfaces;
 using Quasar.DataTransfer.Usuarios.Requests;
 using Quasar.DataTransfer.Usuarios.Responses;
 using Quasar.Dominio.Usuarios.Entidades;
 using Quasar.Dominio.Usuarios.Enumeradores;
+using Quasar.Dominio.Usuarios.Excecoes;
 using Quasar.Dominio.Usuarios.Servicos.Interfaces;
 
 namespace Quasar.Aplicacao.Usuarios.Servicos
 {
     public class UsuariosAppServico : IUsuariosAppServico
     {
-        private readonly IAutenticacaoServico autenticacaoServico;
+        private readonly IUsuariosServico usuariosServico;
         private readonly IClientesServico clientesServico;
-        public UsuariosAppServico(IAutenticacaoServico autenticacaoServico, IClientesServico clientesServico)
+        private readonly ISession session;
+
+        public UsuariosAppServico(IUsuariosServico usuariosServico, IClientesServico clientesServico, ISession session)
         {
             this.clientesServico = clientesServico;
-            this.autenticacaoServico = autenticacaoServico;
+            this.session = session;
+            this.usuariosServico = usuariosServico;
         }
 
-        public UsuarioCadastroResponse Cadastrar(UsuarioCadastroRequest cadastroRequest)
+        public async Task<UsuarioCadastroResponse> Cadastrar(UsuarioCadastroRequest cadastroRequest)
         {
+            var response = new UsuarioCadastroResponse();
+
+            ITransaction transacao = session.BeginTransaction();
             try
             {
                 string nomeCompleto = $"{cadastroRequest.Cliente.Nome} {cadastroRequest.Cliente.Sobrenome}";
@@ -38,24 +45,36 @@ namespace Quasar.Aplicacao.Usuarios.Servicos
 
                 cliente = clientesServico.Inserir(cliente);
 
-                UsuarioCadastroResponse usuarioCadastroResponse = autenticacaoServico.Cadastrar(cadastroRequest, cliente.Codigo).Result;
-                return usuarioCadastroResponse;
+                Usuario usuario = usuariosServico.Instanciar(cadastroRequest.Email, cliente.Codigo);
+
+                response.Sucesso = await usuariosServico.Cadastrar(usuario, cadastroRequest.Senha);
+
+                if(transacao.IsActive)
+                    transacao.Commit();
             }
-            catch
+            catch (UsuarioInvalidoExcecao e)
             {
-                throw;
+                if(transacao.IsActive)
+                    transacao.Rollback();
+                response.Erro = e.Message;
             }
+            return response;
         }
 
-        public UsuarioLoginResponse Login(UsuarioLoginRequest loginRequest)
+        public async Task<UsuarioLoginResponse> Login(UsuarioLoginRequest loginRequest)
         {
+            var response = new UsuarioLoginResponse();
             try
             {
-                return autenticacaoServico.Login(loginRequest).Result;
+                response.Token = await usuariosServico.Login(loginRequest.Login, loginRequest.Senha);
+
+                return response;
             }
-            catch
+            catch (LoginInvalidoExcecao e)
             {
-                throw;
+                response.Sucesso = false;
+                response.Erro = e.Message;
+                return response;
             }
         }
     }

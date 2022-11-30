@@ -101,7 +101,7 @@ namespace Quasar.Aplicacao.Carrinhos.Servicos
 
             if (carrinhoListarRequest.CodUsuario != null)
             {
-                query = query.Where(x => x.Usuario.Codigo == carrinhoListarRequest.CodUsuario);
+                query = query.Where(x => x.Usuario.Id == carrinhoListarRequest.CodUsuario);
             }
 
             ListaPaginada<Carrinho> carrinhos = carrinhosRepositorio.Listar(query, carrinhoListarRequest.

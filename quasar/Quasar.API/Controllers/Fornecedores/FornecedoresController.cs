@@ -18,7 +18,7 @@ namespace Quasar.API.Controllers.Fornecedores
 
         public FornecedoresController(IFornecedoresAppServico fornecedoresAppServico)
         {
-            fornecedoresAppServico = fornecedoresAppServico;
+            this.fornecedoresAppServico = fornecedoresAppServico;
         }
 
         [HttpPost]
@@ -44,14 +44,14 @@ namespace Quasar.API.Controllers.Fornecedores
         }
 
         [HttpGet]
-        public IActionResult Listar([FromQuery] FornecedorListarRequest listarRequest)
+        public ActionResult Listar([FromQuery] FornecedorListarRequest listarRequest)
         {
             var retorno = fornecedoresAppServico.Listar(listarRequest);
             return Ok(retorno);
         }
 
         [HttpGet("{codigo}")]
-        public IActionResult Recuperar(int codigo)
+        public ActionResult Recuperar(int codigo)
         {
             var retorno = fornecedoresAppServico.Recuperar(codigo);
             return Ok(retorno);
