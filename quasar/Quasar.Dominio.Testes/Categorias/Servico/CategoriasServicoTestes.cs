@@ -23,7 +23,10 @@ namespace Quasar.Dominio.Testes.Categorias.Servico
         public CategoriasServicoTestes()
         {
             categoriaValida = Builder<Categoria>.CreateNew().Build();
-            categoriaServico = Substitute.For<ICategoriasServico>(); 
+            categoriaServico = Substitute.For<ICategoriasServico>();
+            categoriasRepositorio = Substitute.For<ICategoriasRepositorio>();
+
+            sut = new CategoriasServico(categoriasRepositorio);
         }
         public class ValidarMetodo : CategoriasServicoTestes
         {
@@ -31,7 +34,7 @@ namespace Quasar.Dominio.Testes.Categorias.Servico
             public void Quando_CategoriaNaoForEncontrado_Espero_Exception()
             {
                 categoriasRepositorio.Recuperar(Arg.Any<int>()).Returns(Xunit => null);
-                sut.Invoking(Xunit => Xunit.Validar(1)).Should().Throw<Exception>();
+                sut.Invoking(x => x.Validar(1)).Should().Throw<Exception>();
             }
             [Fact]
             public void Quando_CategoriaForEncontrado_Espero_CategoriaValido()
