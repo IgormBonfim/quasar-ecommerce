@@ -70,7 +70,15 @@ namespace Quasar.Dominio.Testes.Categorias.Entidades
             public void Dado_PosicaoComMaisDeTrintaCaracteres_Espero_Exception()
             {
                 sut.Invoking(x => x.SetNome(new string('*', 31))).Should().Throw<Exception>();
-            } 
+            }
+            
+            [Fact]
+            public void Dado_ValorValido_Espero_PropriedadesPreenchidas()
+            {
+                sut.SetNome("Teste de Nome da Categoria");
+                sut.Nome.Should().Be("Teste de Nome da Categoria");
+            }
+
         }
         public class SetImagemMetodo : CategoriaTestes
         {
@@ -92,6 +100,12 @@ namespace Quasar.Dominio.Testes.Categorias.Entidades
             {
                 sut.Invoking(x => x.SetImagem(new string('*', 256))).Should().Throw<Exception>();
             } 
+            [Fact]
+            public void Dado_ValorValido_Espero_PropriedadesPreenchidas()
+            {
+                sut.SetImagem("Teste de Imagem da Categoria");
+                sut.Imagem.Should().Be("Teste de Imagem da Categoria");
+            }
         }
     }
 }
