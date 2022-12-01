@@ -38,7 +38,7 @@ namespace Quasar.Dominio.Testes.Ufs.Entidades
             [InlineData(null)]
             [InlineData("")]
             [InlineData(" ")]
-            public void Dado_UfNegativa_Espero_Exception(string sigla)
+            public void Dado_SiglaNulaOuVazia_Espero_Exception(string sigla)
             {
                 sut.Invoking(x => x.SetSigla(sigla)).Should().Throw<Exception>();
             }
@@ -51,6 +51,12 @@ namespace Quasar.Dominio.Testes.Ufs.Entidades
             public void Dado_UfComTresLetras_Espero_Exception()
             {
                 sut.Invoking(x => x.SetSigla(new string('*', 3))).Should().Throw<Exception>();
+            }
+            [Fact]
+            public void Dado_NomeValido_Espero_PropriedadesPreenchidas()
+            {
+                sut.SetSigla("ES");
+                sut.Sigla.Should().Be("ES");
             }
         }
 
