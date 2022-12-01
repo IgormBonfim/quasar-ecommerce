@@ -50,6 +50,7 @@ namespace Quasar.Dominio.Testes.Produtos.Entidades
                 produto.Fornecedor.Should().BeSameAs(fornecedor);
             }
         }
+        
         public class SetNomeMetodo : ProdutoTestes
         {
             [Theory]

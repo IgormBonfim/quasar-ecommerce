@@ -17,7 +17,7 @@ namespace Quasar.Dominio.Testes.Fornecedores.Entidades
             sut = Builder<Fornecedor>.CreateNew().Build();
         }
 
-        public class construtor
+        public class Construtor
         {
             [Fact]
             public void Quando_ParametrosForemValidos_Espero_ObjetoIntegro()
