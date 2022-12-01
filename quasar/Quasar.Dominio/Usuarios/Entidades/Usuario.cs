@@ -54,5 +54,10 @@ namespace Quasar.Dominio.Usuarios.Entidades
             EmailConfirmed = emailConfirmed;
         }
 
+        public virtual void SetFavoritos(IList<Produto> produtos)
+        {
+            this.Favoritos = produtos;
+        }
+
     }
 }
