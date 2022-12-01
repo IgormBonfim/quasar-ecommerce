@@ -23,7 +23,8 @@ namespace Quasar.Dominio.FormasPagamento.Entidades
         public virtual void SetCodigo(int? codigo)
         {
             if(!codigo.HasValue || codigo.Value <= 0)
-                throw new Exception("O campo Id não pode ter um valor inferior a 0!");
+                throw new Exception("O campo codigo não pode ter um valor inferior a 0!");
+            Codigo = codigo.Value;
         }
 
         public virtual void SetDescricao(string? descricao)
