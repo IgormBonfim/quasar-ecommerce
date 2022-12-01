@@ -40,6 +40,9 @@ namespace Quasar.Dominio.Carrinhos.Servicos
 
             Estoque estoque = estoqueServico.Validar(codEstoque);
             
+            if(carrinho.Quantidade > estoque.Quantidade)
+                throw new Exception("Não temos essa quantidade em estoque no momento.");
+
             if(carrinho.Quantidade != carrinhoEditar.Quantidade && carrinho.Quantidade <= estoque.Quantidade)
                 carrinhoEditar.SetQuantidade(carrinho.Quantidade);
 
