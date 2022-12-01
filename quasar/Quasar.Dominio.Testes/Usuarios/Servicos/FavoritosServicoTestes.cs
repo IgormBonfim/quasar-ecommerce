@@ -35,7 +35,7 @@ namespace Quasar.Dominio.Testes.Usuarios.Servicos
         public class AdicionarMetodo : FavoritosServicoTestes
         {
             [Fact]
-            public void Quando_FavoritoForEncontrado_Espero_ProdutoValido()
+            public void Quando_FavoritoForAdicionado_Espero_ProdutoAdicionado()
             {
                 IList<Produto> favoritos = new List<Produto>();
                 favoritos.Add(produtoValido);
@@ -44,7 +44,7 @@ namespace Quasar.Dominio.Testes.Usuarios.Servicos
                 sut.Invoking(x => x.Adicionar(1, "").Should().BeSameAs(produtoValido));
             }
             [Fact]
-            public void Quando_FavoritoNaoForEncontrado_Espero_Exception()
+            public void Quando_FavoritoForEncontrado_Espero_Exception()
             {
                 this.usuariosServico.Validar(Arg.Any<string>()).Returns(usuarioValido);
                 sut.Invoking(x => x.Adicionar(1, "")).Should().Throw<Exception>();
@@ -54,7 +54,7 @@ namespace Quasar.Dominio.Testes.Usuarios.Servicos
         public class RemoverMetodo : FavoritosServicoTestes
         {
             [Fact]
-            public void Quando_FavoritoForRemovido_Espero_Exception()
+            public void Quando_FavoritoForRemovido_Espero_ProdutoRemovido()
             {
                 sut.Invoking(x => x.Remover(1, "").Should().BeSameAs(produtoValido));
             }
@@ -63,7 +63,7 @@ namespace Quasar.Dominio.Testes.Usuarios.Servicos
         public class ListarMetodo : FavoritosServicoTestes
         {
             [Fact]
-            public void Quando_FavoritoForListado_Espero_Excepcion()
+            public void Quando_FavoritoForListado_Espero_ProdutosFavoritados()
             {
                 IList<Produto> favoritos = new List<Produto>();                
                 sut.Invoking(x => x.Listar("").Should().BeSameAs(favoritos));
