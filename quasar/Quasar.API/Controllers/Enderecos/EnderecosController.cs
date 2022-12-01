@@ -50,8 +50,8 @@ namespace Quasar.API.Controllers.Enderecos
             var retorno = enderecosAppServico.Recuperar(codigo);
             return Ok(retorno);
         }
-
-        public IActionResult Listar([FromQuery] EnderecoListarRequest Request)
+        [HttpGet("{codigo}")]
+        public IActionResult Listar([FromQuery] EnderecoListarRequest enderecoRequest)
         {
             enderecoRequest.CodUsuario = usuario.UsuarioLogado(HttpContext);
             var retorno = enderecosAppServico.Listar(enderecoRequest);

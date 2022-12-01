@@ -115,8 +115,8 @@ namespace Quasar.Aplicacao.Enderecos.Servicos
                 {
                     query = query.Where(f => f.Usuario.Id == listarRequest.CodUsuario);
                 }
-            ListaPaginada<Endereco> listaVenda = enderecosRepositorio.Listar(query, listarRequest.Quantidade, listarRequest.Pagina);
-            return mapper.Map<ListaPaginadaResponse<EnderecoResponse>>(listaVenda);
+            ListaPaginada<Endereco> listaEndereco = enderecosRepositorio.Listar(query, listarRequest.Quantidade, listarRequest.Pagina);
+            return mapper.Map<ListaPaginadaResponse<EnderecoResponse>>(listaEndereco);
           }
           catch
           {
