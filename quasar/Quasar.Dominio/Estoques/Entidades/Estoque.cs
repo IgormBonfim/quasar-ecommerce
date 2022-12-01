@@ -24,16 +24,16 @@ namespace Quasar.Dominio.Estoques.Entidades
 
         public virtual void SetCodigo(int? codigo)
         {
-            if(!codigo.HasValue)
-            throw new Exception("O código do estoque é obirgatório!");
+            if(!codigo.HasValue || codigo <= 0)
+                throw new Exception("O código do estoque é obirgatório!");
             Codigo = codigo.Value;
         }
 
-        public virtual void SetQuantidade(int quantidade)
+        public virtual void SetQuantidade(int? quantidade)
         {
-            if(quantidade < 0)
+            if(!quantidade.HasValue || quantidade < 0 )
             throw new Exception("A quantidade em estoque do produto não pode ser negativo");
-            Quantidade = quantidade;
+            Quantidade = quantidade.Value;
         }
 
         public virtual void SetProduto(Produto produto)
