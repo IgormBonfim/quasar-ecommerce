@@ -69,13 +69,10 @@ namespace Quasar.Aplicacao.Vendas.Servicos
 
             try
             {
-                Venda vendaEditar = vendasServico.Instanciar(editarRequest.CodStatusVenda, editarRequest.CodFormaPagamento, editarRequest.CodEndereco, editarRequest.CodUsuario);
-                vendaEditar.SetCodigo(editarRequest.Codigo);
-
-                Venda vendaSalvo = vendasServico.Editar(vendaEditar);
+                Venda vendaSalvo = vendasServico.Editar(editarRequest.Codigo.Value, editarRequest.CodStatusVenda);
                 if(transacao.IsActive)
                     transacao.Commit();
-                return mapper.Map<VendaEditarResponse>(vendaEditar);
+                return mapper.Map<VendaEditarResponse>(vendaSalvo);
             }
             catch
             {
