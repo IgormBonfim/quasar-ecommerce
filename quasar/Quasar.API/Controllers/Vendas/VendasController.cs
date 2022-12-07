@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Quasar.Aplicacao.Genericos.Servicos.Interfaces;
+using Quasar.Aplicacao.Vendas.Servicos;
 using Quasar.Aplicacao.Vendas.Servicos.Interfaces;
 using Quasar.DataTransfer.Vendas.Request;
 
@@ -36,12 +37,22 @@ namespace Quasar.API.Controllers.Vendas
             var retorno = vendasAppServico.Inserir(inserirRequest);
             return Ok(retorno);
         }
+
         [HttpGet]
         public IActionResult Listar([FromQuery] VendaListarRequest vendaRequest)
         {
             vendaRequest.CodUsuario = usuario.UsuarioLogado(HttpContext);
             var retorno = vendasAppServico.Listar(vendaRequest);
             return Ok(retorno);
+        }
+
+        [HttpPut("{codigo}")]
+        public IActionResult Editar (int codigo, [FromBody] VendaEditarRequest editarRequest)
+        {
+            editarRequest.Codigo = codigo;
+            editarRequest.CodUsuario = usuario.UsuarioLogado(HttpContext);
+            var retorno = vendasAppServico.Editar(editarRequest);
+            return Ok(retorno);            
         }
     }
 }
