@@ -34,11 +34,11 @@ namespace Quasar.Dominio.Carrinhos.Servicos
             carrinhosRepositorio.Deletar(carrinhoDeletar);
         }
 
-        public Carrinho Editar(Carrinho carrinho, int codEstoque)
+        public Carrinho Editar(Carrinho carrinho)
         {
             Carrinho carrinhoEditar = Validar(carrinho.Codigo);
 
-            Estoque estoque = estoqueServico.Validar(codEstoque);
+            Estoque estoque = estoqueServico.RetornarEstoquePeloProduto(carrinho.Produto.Codigo);
             
             if(carrinho.Quantidade > estoque.Quantidade)
                 throw new Exception("Não temos essa quantidade em estoque no momento.");
@@ -60,16 +60,21 @@ namespace Quasar.Dominio.Carrinhos.Servicos
             if(query != null)
                 throw new Exception("O produto ja esta no carrinho");
 
+            Estoque estoque = estoqueServico.RetornarEstoquePeloProduto(carrinho.Produto.Codigo);
+
+            if(carrinho.Quantidade > estoque.Quantidade)
+                throw new Exception("Não temos essa quantidade em estoque no momento.");         
+
             int codigo = carrinhosRepositorio.Inserir(carrinho);
             carrinho.SetCodigo(codigo);
             return carrinho;
         }
 
-        public Carrinho Instanciar(int? quantidade, int? codProduto, string? codUsuario)
+        public Carrinho Instanciar(int quantidade, int codProduto, string codUsuario)
         {
-            Produto produto = produtosServico.Validar(codProduto.Value);
+            Produto produto = produtosServico.Validar(codProduto);
             Usuario usuario = usuarioServico.Validar(codUsuario);
-            Carrinho carrinho = new Carrinho(quantidade.Value, produto, usuario);
+            Carrinho carrinho = new Carrinho(quantidade, produto, usuario);
             return carrinho;
         }
 
