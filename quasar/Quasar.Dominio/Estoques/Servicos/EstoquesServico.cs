@@ -51,7 +51,7 @@ namespace Quasar.Dominio.Estoques.Servicos
 
         }
 
-        private Estoque RetornarEstoquePeloProduto(int codProduto)
+        public Estoque RetornarEstoquePeloProduto(int codProduto)
         {
             Estoque? estoqueProduto = estoquesRepositorio.Query().Where(e => e.Produto.Codigo == codProduto).FirstOrDefault();
 
