@@ -123,7 +123,7 @@ namespace Quasar.Dominio.Testes.Produtos.Entidades
             [Fact]
             public void Dado_AnoComMenosDeTresCaracteres_Espero_Exception()
             {
-                sut.Invoking(x => x.SetAno(new string('*', 3))).Should().Throw<Exception>();
+                sut.Invoking(x => x.SetAno(new string('*', 2))).Should().Throw<Exception>();
             }
             [Fact]
             public void Dado_AnoComMaisDeCemCaracteres_Espero_Exception()
