@@ -19,7 +19,7 @@ namespace Quasar.Dominio.Categorias.Entidades
         
         public virtual void SetCodigo(int? codigo)
         {
-            if(!codigo.HasValue)
+            if(!codigo.HasValue || codigo <= 0)
             {
                 throw new Exception("Código da categoria é obrigatório!");
             }
@@ -28,7 +28,7 @@ namespace Quasar.Dominio.Categorias.Entidades
 
         public virtual void SetNome(string nome)
         {
-            if(string.IsNullOrWhiteSpace(nome) && nome.Length < 2)
+            if(string.IsNullOrWhiteSpace(nome) || nome.Length < 2)
                 throw new Exception ("o campo nome deve possuir minimo 2 caracteres");
             if(nome.Length > 30)
                 throw new Exception("o campo nome deve possuir maximo 30 caracteres");
@@ -37,6 +37,10 @@ namespace Quasar.Dominio.Categorias.Entidades
 
         public virtual void SetImagem(string imagem)
         {
+            if(string.IsNullOrWhiteSpace(imagem) || imagem.Length < 2)
+                throw new Exception ("o campo imagem deve possuir minimo 2 caracteres");
+            if(imagem.Length > 255)
+                throw new Exception("o campo imagem deve possuir maximo 255 caracteres");
             Imagem = imagem;
         }
 
