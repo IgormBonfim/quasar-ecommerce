@@ -1,0 +1,17 @@
+<header class="fundo-primario p-2">
+  <div class="container-fluid container-xxl d-flex justify-content-around align-items-center">
+    <i class="pi pi-bars header__icone__hamburguer"></i>
+    <a [routerLink]="['/home']" ><img class="header__logo" src="/assets/logo.png" alt="Logo Quasar"></a>
+
+    <div class="form-group has-search w-50 mt-3">
+      <span class="pi pi-search form-control-feedback"></span>
+      <input type="text" class="form-control border-5" placeholder="Buscando aqui...">
+    </div>
+
+    <nav>
+      <a [routerLink]="['/carrinho']"><img class="header__icones p-3" src="/assets/icone-carrinho.png" alt="Icone de carrinho"></a>
+      <a [routerLink]="['/favoritos']"><img class="header__icones p-3" src="/assets/icone-coracao.png" alt="Icone de favoritos"></a>
+      <a [routerLink]="['/perfil']"><img class="header__icones p-3" src="/assets/icone-usuario.png" alt="Icone do usuario"></a>
+    </nav>
+  </div>
+</header>
