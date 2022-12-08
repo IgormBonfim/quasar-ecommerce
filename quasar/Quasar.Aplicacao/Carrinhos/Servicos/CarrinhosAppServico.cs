@@ -57,7 +57,7 @@ namespace Quasar.Aplicacao.Carrinhos.Servicos
 
                 carrinhoEditar.SetCodigo(editarRequest.Codigo);
 
-                Carrinho carrinhoEditado = carrinhosServico.Editar(carrinhoEditar, editarRequest.CodEstoque); 
+                Carrinho carrinhoEditado = carrinhosServico.Editar(carrinhoEditar); 
 
                 if(transacao.IsActive)
                     transacao.Commit();
