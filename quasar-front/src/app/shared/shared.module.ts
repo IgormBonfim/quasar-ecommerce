@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 
 import { InputTextModule } from 'primeng/inputtext'
 import { HeaderComponent } from './components/header/header.component';
+import { HttpClientModule } from '@angular/common/http'
 
 @NgModule({
   declarations: [
@@ -12,7 +13,8 @@ import { HeaderComponent } from './components/header/header.component';
   imports: [
     CommonModule,
     InputTextModule,
-    RouterModule
+    RouterModule,
+    HttpClientModule
   ],
   exports: [
     HeaderComponent

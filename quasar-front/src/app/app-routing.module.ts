@@ -13,10 +13,7 @@ const routes: Routes = [
     path: "home",
     component: HomeComponent
   },
-  {
-    path: "teste",
-    component: AppComponent
-  }
+  { path: 'produtos', loadChildren: () =>import('./produtos/produtos.module').then((m) => m.ProdutosModule) },
 ];
 
 @NgModule({
