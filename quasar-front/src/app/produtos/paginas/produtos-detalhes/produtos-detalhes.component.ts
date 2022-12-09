@@ -27,9 +27,11 @@ export class ProdutosDetalhesComponent implements OnInit {
 
   private recuperarProduto(codigo: number) {
     this.produtosService.recuperarProduto(codigo).subscribe(
-      res => this.produtoDetalhe = res
+      (res: ProdutoResponse) => {
+        this.produtoDetalhe = res
+        console.log(this.produtoDetalhe);
+      }
     )
-    console.log(this.produtoDetalhe);
 
   }
 

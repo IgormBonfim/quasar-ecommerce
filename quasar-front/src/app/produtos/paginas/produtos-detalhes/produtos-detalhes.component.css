@@ -1,0 +1,17 @@
+.principal {
+  margin-top: 5rem;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.fundo-imagem {
+  width: 415px;
+  height: 415px;
+  display: flex;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.imagem-produto {
+  margin: auto;
+  width: 350px;
+}

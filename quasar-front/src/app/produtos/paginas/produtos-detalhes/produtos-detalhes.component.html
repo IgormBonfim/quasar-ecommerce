@@ -1,6 +1,17 @@
 <app-header></app-header>
 
-<main class="container-xl">
+<main class="container-xl mt-5">
 
+  <div class="principal">
+    <div class="fundo-imagem card">
+      <img class="imagem-produto p-4 card-img-top" [src]="produtoDetalhe.imagem" alt="imagem do produto">
+    </div>
+    <div class="produto-info">
+      <div>
+        <h1> {{ produtoDetalhe.nome }} </h1>
+        <img src="assets/icone-coracao.png" alt="">
+      </div>
+    </div>
+  </div>
 
 </main>
