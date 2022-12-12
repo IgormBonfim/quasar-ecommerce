@@ -24,7 +24,7 @@ namespace Quasar.Dominio.Produtos.Entidades
 
         public virtual void SetCodigo(int? codigo)
         {
-            if(!codigo.HasValue)
+            if(!codigo.HasValue || codigo <= 0)
             {
                 throw new Exception("Código da especificacao é obrigatório!");
             }
