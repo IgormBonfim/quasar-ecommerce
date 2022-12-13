@@ -14,8 +14,8 @@ const routes: Routes = [
     component: HomeComponent
   },
   {
-    path: "teste",
-    component: AppComponent
+    path: "produtos",
+    loadChildren: () =>import('./produtos/produtos.module').then((m) => m.ProdutosModule)
   }
 ];
 
