@@ -18,17 +18,12 @@ namespace Quasar.Dominio.Ufs.Servicos
             this.ufsRepositorio = ufsRepositorio;
         }
 
-        public IList<Uf> Listar(IQueryable<Uf> query)
+        public Uf Validar(int codigo)
         {
-            return query.ToList();
+            Uf ufValidar = ufsRepositorio.Recuperar(codigo);
+            if (ufValidar == null)
+                throw new Exception("UF não encontrada.");
+            return ufValidar;
         }
-
-        public Uf Validar (int codigo)
-    {
-        Uf ufValidar = ufsRepositorio.Recuperar(codigo);
-        if(ufValidar == null)
-        throw new Exception("UF não encontrada.");
-        return ufValidar;
-    }
     }
 }
