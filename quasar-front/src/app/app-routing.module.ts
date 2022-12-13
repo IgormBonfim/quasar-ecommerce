@@ -16,7 +16,13 @@ const routes: Routes = [
   {
     path: "teste",
     component: AppComponent
-  }
+  },
+  {
+    path: 'carrinho',
+    loadChildren: () =>
+
+    import('../app/carrinho/carrinho.module').then((m) => m.CarrinhoModule),
+  },
 ];
 
 @NgModule({
