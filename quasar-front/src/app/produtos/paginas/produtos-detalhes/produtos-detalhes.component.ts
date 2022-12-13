@@ -10,6 +10,9 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ProdutosDetalhesComponent implements OnInit {
   public produtoDetalhe!: ProdutoResponse;
+  public produtoDisponivel!: boolean;
+  public quantidadeProduto = 1;
+  
 
   constructor(
     private produtosService: ProdutosService,
@@ -21,6 +24,7 @@ export class ProdutosDetalhesComponent implements OnInit {
       (params: any) => {
         const codProduto = params.codigo;
         this.recuperarProduto(codProduto);
+        this.produtoDisponivel = true;
       }
     )
   }
@@ -32,7 +36,12 @@ export class ProdutosDetalhesComponent implements OnInit {
         console.log(this.produtoDetalhe);
       }
     )
+  }
 
+  public diminuirQuantidade() {
+    if(this.quantidadeProduto > 0) {
+      this.quantidadeProduto--;
+    }
   }
 
 
