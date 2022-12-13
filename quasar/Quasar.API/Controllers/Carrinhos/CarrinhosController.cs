@@ -41,9 +41,10 @@ namespace Quasar.API.Controllers.Carrinhos
             return Ok();
         }
 
-        [HttpPut]
-        public IActionResult Editar([FromBody]CarrinhoEditarRequest carrinhoEditar)
+        [HttpPut("{codigo}")]
+        public IActionResult Editar(int codigo, [FromBody]CarrinhoEditarRequest carrinhoEditar)
         {
+            carrinhoEditar.Codigo = codigo; 
             carrinhosAppServico.Editar(carrinhoEditar);
             return Ok();
         }
