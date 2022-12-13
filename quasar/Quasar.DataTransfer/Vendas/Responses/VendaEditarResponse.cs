@@ -8,6 +8,6 @@ namespace Quasar.DataTransfer.Vendas.Responses
     public class VendaEditarResponse
     {
         public int? Codigo {get; set;}
-        public int CodStatusVenda { get; set; }
+        public StatusVendaResponse StatusVenda { get; set; }
     }
 }

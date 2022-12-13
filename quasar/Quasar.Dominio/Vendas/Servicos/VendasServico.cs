@@ -33,14 +33,15 @@ namespace Quasar.Dominio.Vendas.Servicos
             this.enderecosServico = enderecosServico;
         }
 
-        public Venda Editar(Venda venda)
+        public Venda Editar(int codigo, int codStatusVenda)
         {   
-            Venda statusVendaEditar = Validar(venda.Codigo);
+            StatusVenda statusVenda = statusVendaServico.Validar(codStatusVenda);
+            Venda statusVendaEditar = Validar(codigo);
 
-            if (venda.StatusVenda != statusVendaEditar.StatusVenda)
-                statusVendaEditar.SetStatusVenda(venda.StatusVenda);
+            if (statusVenda != statusVendaEditar.StatusVenda)
+                statusVendaEditar.SetStatusVenda(statusVenda);
 
-            return vendasRepositorio.Editar(venda);
+            return vendasRepositorio.Editar(statusVendaEditar);
         }
 
         public Venda Inserir(Venda venda)
