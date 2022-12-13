@@ -1,3 +1,5 @@
+import { registerLocaleData } from '@angular/common';
+import ptBr from '@angular/common/locales/pt';
 import { DEFAULT_CURRENCY_CODE, LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -7,6 +9,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
+
+registerLocaleData(ptBr)
 
 @NgModule({
   declarations: [
