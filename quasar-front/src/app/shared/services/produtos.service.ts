@@ -15,7 +15,7 @@ export class ProdutosService {
   ) { }
 
   public recuperarProduto(codigo: number): Observable<ProdutoResponse>  {
-    return this.httpClient.get<ProdutoResponse>(`${this.baseUrl}/produtos/${codigo}`)
+    return this.httpClient.get<ProdutoResponse>(`${this.baseUrl}produtos/${codigo}`)
   }
 }
 
