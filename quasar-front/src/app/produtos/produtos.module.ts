@@ -4,6 +4,8 @@ import { NgModule } from '@angular/core';
 import { SharedModule } from './../shared/shared.module';
 import { ProdutosDetalhesComponent } from './paginas/produtos-detalhes/produtos-detalhes.component';
 import { ProdutosRoutingModule } from './produtos-routing.module';
+import { InputNumberModule } from 'primeng/inputnumber';
+
 
 
 @NgModule({
@@ -13,7 +15,8 @@ import { ProdutosRoutingModule } from './produtos-routing.module';
   imports: [
     CommonModule,
     ProdutosRoutingModule,
-    SharedModule
+    SharedModule,
+    InputNumberModule
   ]
 })
 export class ProdutosModule { }

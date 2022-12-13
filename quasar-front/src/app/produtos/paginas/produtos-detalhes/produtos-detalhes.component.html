@@ -7,10 +7,36 @@
       <img class="imagem-produto p-4 card-img-top" [src]="produtoDetalhe.imagem" alt="imagem do produto">
     </div>
     <div class="produto-info">
-      <div>
-        <h1> {{ produtoDetalhe.nome }} </h1>
-        <img src="assets/icone-coracao.png" alt="">
-      </div>
+        <div class="produto-info__titulo borda-inferior">
+          <h1 class="produto-info__titulo__nome"> {{ produtoDetalhe.nome }} </h1>
+          <img class="produto-info__titulo__coracao" src="assets/icone-coracao-azul.png" alt="">
+        </div>
+        <div class="produto-info__estoque borda-inferior">
+          <h2 *ngIf="produtoDisponivel">Produto : Disponível</h2>
+          <h2 *ngIf="!produtoDisponivel">Produto : Indisponível</h2>
+        </div>
+        <div class="produtos-info__pagamento mt-3">
+          <div class="produtos-info__pagamentos produtos-info__pagamentos__total">
+            <img class="produtos-info__pagamentos-icone" src="assets/icone-dinheiro.png" alt="">
+            <span class="produtos-info__pagamentos-valor"> {{ produtoDetalhe.valor | currency }} </span>
+          </div>
+          <div class="produtos-info__pagamentos produtos-info__pagamentos__cartao">
+            <img class="produtos-info__pagamentos-icone" src="assets/icone-cartao.png" alt="">
+            <span class="produtos-info__pagamentos-valor"> 10x de {{ produtoDetalhe.valor/10 | currency }} </span>
+          </div>
+        </div>
+        <div class="mt-3 d-flex">
+          <div class="produtos-info__quantidad">
+
+            <p-inputNumber  [showButtons]="true" buttonLayout="horizontal" spinnerMode="vertical" [min]="0"
+    decrementButtonClass="p-button-secondary" incrementButtonClass="p-button-secondary" incrementButtonIcon="pi pi-plus" decrementButtonIcon="pi pi-minus"></p-inputNumber>
+
+            <!-- <span class="produtos-info__quantidade__menos" (click)="diminuirQuantidade()"> - </span>
+            <span class="produtos-info__quantidade__numero"> {{quantidadeProduto}} </span>
+            <span class="produtos-info__quantidade__mais"> + </span> -->
+          </div>
+          <!-- <h3>Frete: Grátis para sua região</h3> -->
+        </div>
     </div>
   </div>
 
