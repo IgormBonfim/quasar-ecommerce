@@ -81,5 +81,17 @@ namespace Quasar.Aplicacao.Estoques.Servicos
                 throw;
             }
         }
+        public EstoqueResponse RecuperarEstoquePeloCodProduto(int codProduto)
+        {
+            try
+            {
+                Estoque estoque = estoquesServico.RetornarEstoquePeloProduto(codProduto);
+                return mapper.Map<EstoqueResponse>(estoque);
+            }
+            catch
+            {
+                throw;
+            }
+        }
     }
 }
