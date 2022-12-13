@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Quasar.Aplicacao.Estoques.Servicos;
 using Quasar.Aplicacao.Estoques.Servicos.Interfaces;
 using Quasar.DataTransfer.Estoques.Requests;
+using Quasar.DataTransfer.Estoques.Responses;
 
 namespace Quasar.API.Controllers.Estoques
 {
@@ -23,7 +24,7 @@ namespace Quasar.API.Controllers.Estoques
 
         [Authorize]
         [HttpPost]
-        public IActionResult Inserir([FromBody]EstoqueInserirRequest inserirRequest)
+        public IActionResult Inserir([FromBody] EstoqueInserirRequest inserirRequest)
         {
             var retorno = estoquesAppServico.Inserir(inserirRequest);
             return Ok(retorno);
@@ -42,6 +43,13 @@ namespace Quasar.API.Controllers.Estoques
         public IActionResult Recuperar(int codigo)
         {
             var retorno = estoquesAppServico.Recuperar(codigo);
+            return Ok(retorno);
+        }
+        
+        [HttpGet("{codProduto}/produtos")]
+        public ActionResult<EstoqueResponse> RecuperarEstoquePeloCodProduto(int codProduto)
+        {
+            var retorno = estoquesAppServico.RecuperarEstoquePeloCodProduto(codProduto);
             return Ok(retorno);
         }
     }
