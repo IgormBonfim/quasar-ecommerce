@@ -32,7 +32,7 @@ namespace Quasar.Aplicacao.Ufs.Servicos
             try
             {
                 IQueryable<Uf> query = ufsRepositorio.Query();
-                IList<Uf> listaUf = ufsServico.Listar(query);
+                IList<Uf> listaUf = query.ToList();
                 return mapper.Map<IList<UfResponse>>(listaUf);
             }
             catch 

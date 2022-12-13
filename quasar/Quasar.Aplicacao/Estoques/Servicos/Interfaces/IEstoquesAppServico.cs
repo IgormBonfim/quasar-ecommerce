@@ -12,5 +12,6 @@ namespace Quasar.Aplicacao.Estoques.Servicos.Interfaces
         EstoqueInserirResponse Inserir(EstoqueInserirRequest inserirRequest);
         EstoqueEditarResponse Editar(EstoqueEditarRequest editarRequest);
         EstoqueResponse Recuperar(int codigo);
+        EstoqueResponse RecuperarEstoquePeloCodProduto(int codProduto);
     }
 }
