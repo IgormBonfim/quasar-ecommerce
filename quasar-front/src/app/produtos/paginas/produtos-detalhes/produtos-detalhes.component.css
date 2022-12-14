@@ -4,10 +4,15 @@
   justify-content: space-evenly;
 }
 
+.produto-card {
+  min-height: 415px;
+  min-width: 415px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
 .fundo-imagem {
   width: 415px;
   height: 415px;
-  display: flex;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
@@ -24,6 +29,10 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
+}
+
+.produto-info__titulo__nome {
+  font-size: 2rem;
 }
 
 .borda-inferior {
