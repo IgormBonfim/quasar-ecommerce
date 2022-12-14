@@ -18,16 +18,15 @@ namespace Quasar.Dominio.Ufs.Entidades
 
         }
 
-        public Uf(int codigo, string sigla, string nome)
+        public Uf(string sigla, string nome)
         {
-            SetCodigo(codigo);
             SetSigla(sigla);
             SetNome(nome);
         }
 
         public virtual void SetCodigo(int? codigo)
         {
-            if (!codigo.HasValue)
+            if (!codigo.HasValue || codigo <= 0)
                 throw new Exception("O código da UF tem que ser obrigatório!");
             Codigo = codigo.Value;
         }
@@ -39,7 +38,7 @@ namespace Quasar.Dominio.Ufs.Entidades
         }
         public virtual void SetNome(string nome)
         {
-            if (nome.Length <= 3)
+            if (String.IsNullOrWhiteSpace(nome) || nome.Length <= 3)
                 throw new Exception("A descrição da UF tem que ser obrigatório!");
             Nome = nome;
         }
