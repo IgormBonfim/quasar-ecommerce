@@ -6,10 +6,12 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { InputTextModule } from 'primeng/inputtext'
 import { HeaderComponent } from './components/header/header.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
     HeaderComponent,
+    FooterComponent,
   ],
   imports: [
     CommonModule,
@@ -18,7 +20,8 @@ import { HeaderComponent } from './components/header/header.component';
     FontAwesomeModule
   ],
   exports: [
-    HeaderComponent
+    HeaderComponent,
+    FooterComponent
   ]
 })
 export class SharedModule { }
