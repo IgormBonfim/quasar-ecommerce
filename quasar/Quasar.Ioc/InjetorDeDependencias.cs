@@ -105,6 +105,8 @@ namespace Quasar.Ioc
 
             services.AddAutenticacao(configuration);
 
+            services.ConfiguracoesCors();
+
             services.AddScoped<ISession>(factory => factory.GetService<ISessionFactory>()!.OpenSession());
 
             services.AddScoped<IUsuario, Usuario>();
