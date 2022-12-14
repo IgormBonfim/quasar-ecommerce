@@ -1,9 +1,24 @@
 <main class="container-xl mt-5">
 
+  <div class="row">
+    <div class="col-md-5">
+      <div class="shadow card">
+        <img class="card-img-top" height="315px" width="315px" [src]="produtoDetalhe.imagem" alt="imagem do produto">
+      </div>
+    </div>
+    <div class="col-md-7">
+      <div>
+        <h1> {{ produtoDetalhe.nome }} </h1>
+      </div>
+    </div>
+  </div>
+
   <div class="principal">
+
     <div class="fundo-imagem card">
       <img class="imagem-produto p-4 card-img-top" [src]="produtoDetalhe.imagem" alt="imagem do produto">
     </div>
+
     <div class="produto-info">
         <div class="produto-info__titulo borda-inferior">
           <h1 class="produto-info__titulo__nome"> {{ produtoDetalhe.nome }} </h1>
