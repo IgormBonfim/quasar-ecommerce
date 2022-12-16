@@ -12,7 +12,7 @@ export class ProdutosDetalhesComponent implements OnInit {
   public produtoDetalhe!: ProdutoResponse;
   public produtoDisponivel!: boolean;
   public quantidadeProduto = 1;
-  
+
 
   constructor(
     private produtosService: ProdutosService,
@@ -37,12 +37,4 @@ export class ProdutosDetalhesComponent implements OnInit {
       }
     )
   }
-
-  public diminuirQuantidade() {
-    if(this.quantidadeProduto > 0) {
-      this.quantidadeProduto--;
-    }
-  }
-
-
 }
