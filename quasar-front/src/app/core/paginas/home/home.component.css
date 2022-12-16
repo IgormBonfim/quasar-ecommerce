@@ -1,8 +1,17 @@
-.carousel-item
+.textCategoria
 {
-  width: 1480px;
+  color: #000A61;
+  font-size: 36px;
+  font-weight: 600;
 }
-.d-block w-100
+.PrincipalCategoria
 {
-    border-radius:50cm;
+  margin-top: 60px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--cor-primaria) ;
+
+}
+.categoriaExterna
+{
+  margin: 50px 10px 0 10px;
 }
