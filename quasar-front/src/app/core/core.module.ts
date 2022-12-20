@@ -1,3 +1,4 @@
+import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
@@ -16,7 +17,8 @@ import { CarouselModule } from 'ngx-bootstrap/carousel';
   imports: [
     CommonModule,
     SharedModule,
-    CarouselModule
+    CarouselModule,
+    RouterModule
   ],
   exports: [
     HomeComponent
