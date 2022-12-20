@@ -24,7 +24,7 @@ namespace Quasar.Aplicacao.Enderecos.Servicos
         private readonly IEnderecosRepositorio enderecosRepositorio;
         private readonly IMapper mapper;
 
-        public EnderecosAppServico(ISession session, IEnderecosServico enderecosServico, IEnderecosRepositorio enderecosRepopsitorio, IMapper mapper)
+        public EnderecosAppServico(ISession session, IEnderecosServico enderecosServico, IEnderecosRepositorio enderecosRepositorio, IMapper mapper)
         {
             this.session = session;
             this.enderecosServico = enderecosServico;
