@@ -4,9 +4,9 @@
   font-size: 36px;
   font-weight: 600;
 }
-.PrincipalCategoria
+.Titulo
 {
-  margin-top: 60px;
+  margin-top: 5%;
   padding-bottom: 10px;
   border-bottom: 1px solid var(--cor-primaria) ;
 
@@ -14,4 +14,27 @@
 .categoriaExterna
 {
   margin: 50px 10px 0 10px;
+}
+.verTodas
+{
+  font-size: 22px;
+  color: #000A61;
+}
+.verTodasExterno
+{
+  margin-top: 5%;
+  text-align: center;
+}
+.banner
+{
+  width: 150px;
+  height: 160px;
+}
+.banner1
+{
+  margin-left: 24%;
+}
+.banner2
+{
+  margin-right: 24%;
 }
