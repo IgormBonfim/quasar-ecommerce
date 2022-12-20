@@ -1,18 +1,23 @@
-<div class="card-produto d-flex flex-column">
-  <app-icone-coracao class="icone-coracao" *ngIf="!favorito" (click)="favoritar()"></app-icone-coracao>
-  <fa-icon class="icone-coracao" *ngIf="favorito" [icon]="iconeCoracaoCheio" (click)="favoritar()"></fa-icon>
+<div *ngIf="produto" class="card-produto d-flex flex-column">
+  <app-icone-coracao class="icone-coracao" *ngIf="!favorito" (click)="favoritar(produto.codigo)"></app-icone-coracao>
+  <fa-icon class="icone-coracao" *ngIf="favorito" [icon]="iconeCoracaoCheio" (click)="favoritar(produto.codigo)"></fa-icon>
   <div class="img">
-    <a [routerLink]="['/produtos']">
-      <img  class="img-fluid p-3" src="https://raw.githubusercontent.com/IgormBonfim/quasar-media/main/Produtos/Parabrisa%20Citroen%20C4%20Picasso.png" alt="Imagem do produto">
+    <a [routerLink]="['/produtos/' + produto.codigo]">
+      <img  class="img-fluid p-3" [src]="produto.imagem" alt="Imagem do produto">
     </a>
   </div>
-  <p class="nome-produto">Nome do Produto Nome do p produto</p>
+  <p class="nome-produto"> {{ produto.nome }} </p>
   <div class="info-valor">
-    <p class="valor"> {{ 209.90 | currency }} </p>
+    <p class="valor"> {{ produto.valor| currency }} </p>
     <p class="vista mt-2">A vista</p>
   </div>
-  <button class="btn btn-carrinho font-weight-bold">
-    <fa-icon class="icone-carrinho" [icon]="iconeCarrinho"></fa-icon>
-    Adicionar ao carrinho
+  <button class="btn btn-carrinho font-weight-bold" (click)="adicionarAoCarrinho(produto.codigo)">
+    <div *ngIf="!carregando" class="carrinho d-flex">
+      <fa-icon class="icone-carrinho" [icon]="iconeCarrinho"></fa-icon>
+      <p>Adicionar ao carrinho</p>
+    </div>
+    <div *ngIf="carregando" class="spinner-border spinner-border-sm" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
   </button>
 </div>
