@@ -1,3 +1,4 @@
+import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
@@ -19,7 +20,8 @@ import { IconeCoracaoComponent } from './components/icone-coracao/icone-coracao.
     CommonModule,
     InputTextModule,
     RouterModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    HttpClientModule
   ],
   exports: [
     HeaderComponent,

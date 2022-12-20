@@ -1,3 +1,4 @@
+import { ProdutoResponse } from './../../../shared/models/responses/produto.response';
 import { Component, OnInit } from '@angular/core';
 import { faCoffee } from '@fortawesome/free-solid-svg-icons';
 
@@ -8,6 +9,7 @@ import { faCoffee } from '@fortawesome/free-solid-svg-icons';
 })
 export class HomeComponent implements OnInit {
   public faCoffee = faCoffee;
+  public produto = new ProdutoResponse();
 
   constructor() { }
 
