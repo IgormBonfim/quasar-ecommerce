@@ -8,3 +8,7 @@
 .linha{
     border-bottom: 1px solid var(--cor-primaria);
 }
+
+.filtro{
+    font-size: 20px;
+}
