@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { faUserCircle } from '@fortawesome/free-solid-svg-icons';
 import { UsuarioLoginRequest } from '../../models/requests/usuarioLogin.request';
+import { UsuarioLoginResponse } from '../../models/responses/usuarioLogin.response';
 import { LoginService } from '../../services/login.service';
 
 @Component({
@@ -16,7 +18,8 @@ export class LoginComponent implements OnInit {
   formulario!: FormGroup;
 
   constructor(private formBuilder: FormBuilder,
-    private loginService: LoginService
+    private loginService: LoginService,
+    private Router: Router
     ) { }
 
   ngOnInit(): void {
@@ -33,10 +36,16 @@ export class LoginComponent implements OnInit {
     )
 
     this.loginService.login(request).subscribe({
-      next: response => {
-        console.log(response);
-        
-      }
+      next: (response: UsuarioLoginResponse) => {
+        if(response.sucesso) {
+          let token = response.token;
+          localStorage.setItem("token", token)
+          this.Router.navigate(["home"])
+        }
+        if(!response.sucesso) {
+          console.log(response.erro)
+        }
+      },
     })
   }
 
