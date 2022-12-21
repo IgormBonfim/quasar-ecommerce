@@ -16,12 +16,8 @@ export class ProdutoCardComponent implements OnInit {
   public produto! : ProdutoResponse;
 
   public iconeCoracaoCheio = faHeart;
-  public iconeCarrinho = faCartShopping;
   public favorito = false;
-  public carregando!: boolean;
-  constructor(
-    private carrinhosService: CarrinhosService
-  ) { }
+  constructor() { }
 
   ngOnInit(): void {
   }
@@ -29,22 +25,4 @@ export class ProdutoCardComponent implements OnInit {
   favoritar(codigo: number) {
     this.favorito = !this.favorito;
   }
-
-  adicionarAoCarrinho(codigo: number) {
-    this.carregando = true;
-
-    let body = new CarrinhoInserirRequest(1, codigo);
-
-    this.carrinhosService.adicionar(body).subscribe({
-      next: response => {
-        this.carregando = false;
-      },
-      error: (reason) => {
-        console.error(reason);
-        this.carregando = false;
-      }
-    })
-
-  }
-
 }

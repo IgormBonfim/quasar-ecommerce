@@ -3,7 +3,6 @@
   height: 410px;
   padding: 0 16px;
   border-radius: 5px;
-  box-sizing: border-box;
   background-color: white;
   justify-content: space-evenly;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -39,20 +38,4 @@
 .vista {
   font-size: 12px;
   color: #AAA5A5;
-}
-
-.btn-carrinho {
-  background-color: var(--cor-primaria);
-  color: #ffffff;
-  padding: 10px;
-}
-
-.carrinho {
-  font-size: 12px;
-  align-items: center;
-  justify-content: space-evenly;
-}
-
-.icone-carrinho {
-  font-size: 24px;
 }

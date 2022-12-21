@@ -11,13 +11,5 @@
     <p class="valor"> {{ produto.valor| currency }} </p>
     <p class="vista mt-2">A vista</p>
   </div>
-  <button class="btn btn-carrinho font-weight-bold" (click)="adicionarAoCarrinho(produto.codigo)">
-    <div *ngIf="!carregando" class="carrinho d-flex">
-      <fa-icon class="icone-carrinho" [icon]="iconeCarrinho"></fa-icon>
-      <p>Adicionar ao carrinho</p>
-    </div>
-    <div *ngIf="carregando" class="spinner-border spinner-border-sm" role="status">
-      <span class="visually-hidden">Loading...</span>
-    </div>
-  </button>
+  <app-botao-adicionar-carrinho [codigo]="produto.codigo"></app-botao-adicionar-carrinho>
 </div>
