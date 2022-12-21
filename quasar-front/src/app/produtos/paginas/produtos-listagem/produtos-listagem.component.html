@@ -1,9 +1,104 @@
-<div class="container mt-5 linha">
-  <div>
-    <p class="resultados">Resultados</p>
+<div class="container mt-5">
+  <div class="linha">
+    <div>
+      <p class="resultados">Resultados</p>
+    </div>
   </div>
-</div>
-<div class="produtos row">
-  <div class="col"></div>
-  <div class="col"></div>
+
+  <div class="produtos row justify-content-around mt-5">
+    <div class="col-sm-2">
+      <form name="filtro">
+        <fieldset class="d-inline ml-2">
+          <div class="font-weight-bold d-flex">
+            <fa-icon class="mr-2" [icon]="filtro"></fa-icon>
+            <p class="filtro">Filtrar por:</p>
+          </div>
+          <div class="border px-3 py-2">
+            <span class="font-weight-bold">Categoria</span>
+            <div class="mb-2 mt-1 ml-2">
+              <div>
+                <input
+                  class="mr-2"
+                  type="checkbox"
+                  id="retrovisor"
+                  name="retrovisor"
+                />
+                <label for="retrovisor">Retrovisor</label>
+              </div>
+              <div>
+                <input
+                  class="mr-2"
+                  type="checkbox"
+                  id="retrovisor"
+                  name="retrovisor"
+                />
+                <label for="retrovisor">Retrovisor</label>
+              </div>
+              <div>
+                <input
+                  class="mr-2"
+                  type="checkbox"
+                  id="retrovisor"
+                  name="retrovisor"
+                />
+                <label for="retrovisor">Retrovisor</label>
+              </div>
+              <div>
+                <input
+                  class="mr-2"
+                  type="checkbox"
+                  id="retrovisor"
+                  name="retrovisor"
+                />
+                <label for="retrovisor">Retrovisor</label>
+              </div>
+              <div>
+                <input
+                  class="mr-2"
+                  type="checkbox"
+                  id="retrovisor"
+                  name="retrovisor"
+                />
+                <label for="retrovisor">Retrovisor</label>
+              </div>
+            </div>
+            <span class="font-weight-bold">Cor</span>
+            <div class="mt-2 ml-2">
+              <div>
+                <input
+                  class="mr-2"
+                  type="checkbox"
+                  id="retrovisor"
+                  name="retrovisor"
+                />
+                <label for="retrovisor">Vermelho</label>
+              </div>
+              <div>
+                <input
+                  class="mr-2"
+                  type="checkbox"
+                  id="retrovisor"
+                  name="retrovisor"
+                />
+                <label for="retrovisor">Vermelho</label>
+              </div>
+              <div>
+                <input
+                  class="mr-2"
+                  type="checkbox"
+                  id="retrovisor"
+                  name="retrovisor"
+                />
+                <label for="retrovisor">Vermelho</label>
+              </div>
+            </div>
+          </div>
+        </fieldset>
+      </form>
+    </div>
+    <div class="col-sm-2"><app-header></app-header></div>
+    <div class="col-sm-2"><app-header></app-header></div>
+    <div class="col-sm-2"><app-header></app-header></div>
+    <div class="col-sm-2"><app-header></app-header></div>
+  </div>
 </div>
