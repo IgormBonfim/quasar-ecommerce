@@ -8,6 +8,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import { HeaderComponent } from './components/header/header.component';
 import { ProdutoCardComponent } from './components/produto-card/produto-card.component';
 import { IconeCoracaoComponent } from './components/icone-coracao/icone-coracao.component';
+import { BotaoAdicionarCarrinhoComponent } from './components/botao-adicionar-carrinho/botao-adicionar-carrinho.component';
 
 
 @NgModule({
@@ -15,6 +16,7 @@ import { IconeCoracaoComponent } from './components/icone-coracao/icone-coracao.
     HeaderComponent,
     ProdutoCardComponent,
     IconeCoracaoComponent,
+    BotaoAdicionarCarrinhoComponent,
   ],
   imports: [
     CommonModule,

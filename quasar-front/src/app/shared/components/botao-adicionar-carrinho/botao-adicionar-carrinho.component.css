@@ -1,0 +1,15 @@
+.btn-carrinho {
+  background-color: var(--cor-primaria);
+  color: #ffffff;
+  padding: 10px;
+}
+
+.carrinho {
+  font-size: 12px;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.icone-carrinho {
+  font-size: 24px;
+}
