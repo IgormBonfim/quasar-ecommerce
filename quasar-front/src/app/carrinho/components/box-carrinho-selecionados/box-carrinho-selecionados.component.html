@@ -12,15 +12,15 @@
     <div class="card-menor-carrinho">
       <img
         class="img-fluid rounded"
-        src="../../../../assets/0_i1v1In2Tn4Stnwnl.jpg"
-        alt="Teste"
+        [src]="produto.imagem"
+        alt="Imagem do produto"
       />
     </div>
     <div class="container-fluid flex-column ml-4">
-      <p class="fonte-produto my-2">Parabrisa Vw Gol 95/14  Parati Saveiro Fanavid</p>
-      <p class="fonte-diponibilidade my-2">Produto: Indisponível</p>
-      <p class="fonte-diponibilidade my-2">Produto: Diponível</p>
-      <p class="fonte-preco my-2">R$: 123,45</p>
+      <p class="fonte-produto my-2">{{ produto.nome }}</p>
+      <p *ngIf="!disponivel" class="fonte-diponibilidade text-danger my-2">Produto: Indisponível</p>
+      <p *ngIf="disponivel" class="fonte-diponibilidade my-2 text-success">Produto: Diponível</p>
+      <p class="fonte-preco my-2">{{ produto.valor | currency }}</p>
 
       <div class="mt-3 fas fa-code fa-2x d-flex align-items-center">
         <app-input-quantidade></app-input-quantidade>

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { ProdutoResponse } from './../../../shared/models/responses/produto.response';
+import { Component, Input, OnInit } from '@angular/core';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
@@ -9,7 +10,12 @@ import { faTrash } from '@fortawesome/free-solid-svg-icons';
 export class BoxCarrinhoSelecionadosComponent implements OnInit {
 
   iconeLixo = faTrash
-  
+
+  disponivel: boolean = true;
+
+  @Input()
+  produto!: ProdutoResponse;
+
   constructor() { }
 
   ngOnInit(): void {
