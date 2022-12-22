@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { faTrash } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-box-carrinho-selecionados',
@@ -7,6 +8,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BoxCarrinhoSelecionadosComponent implements OnInit {
 
+  iconeLixo = faTrash
+  
   constructor() { }
 
   ngOnInit(): void {

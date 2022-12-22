@@ -1,0 +1,70 @@
+.card-carrinho {
+  width: 902px;
+  height: autopx;
+  box-shadow: 0 5px 5px rgb(187, 184, 184);
+  border-radius: 5px;
+  padding: 50px;
+  background-color: white;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.checkbox-carrinho {
+  height: 35px;
+  width: 35px;
+  vertical-align: middle;
+  border-radius: 50%;
+  border: 10px solid #ddd;
+  display: flex;
+  color: #010340;
+
+}
+
+.card-menor-carrinho {
+  max-width: 150px ;
+  max-height: 150px ;
+  display: flex;
+  align-items:  center;
+  box-shadow: 0 5px 5px rgb(187, 184, 184);
+  flex-flow: column wrap;
+}
+
+.fonte-produto {
+  font-size: 28px;
+}
+
+.fonte-disponibilidade {
+  font-size: 14px;
+}
+
+.fonte-preco {
+  font-size: 32px;
+}
+
+.vr {
+  color: #010340;
+  height: 15px;
+}
+
+
+.input-group{
+
+  width: 109px;
+}
+
+
+.bottom{
+  padding: 10px;
+  background: white;
+}
+
+.form-control:focus {
+  color: white;
+  background-color: white;
+  border-color: #010340;
+  outline: 0;
+  box-shadow: none;
+}
+
