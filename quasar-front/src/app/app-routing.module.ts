@@ -17,7 +17,12 @@ const routes: Routes = [
   {
     path: "login",
     component: LoginComponent
+  },
+  {
+    path: "vendas",
+    loadChildren: () => import("./vendas/vendas.module").then((m) => m.VendasModule)
   }
+
 ];
 
 @NgModule({
