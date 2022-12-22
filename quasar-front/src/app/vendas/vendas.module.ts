@@ -6,7 +6,7 @@ import { FinalizarVendaComponent } from './paginas/finalizar-venda/finalizar-ven
 import { VendasEnderecoComponent } from './components/vendas-endereco/vendas-endereco.component';
 import { VendasDadosComponent } from './components/vendas-dados/vendas-dados.component';
 import { VendasPagamentoComponent } from './components/vendas-pagamento/vendas-pagamento.component';
-import { VendasIconesComponent } from './components/vendas-icones/vendas-icones.component';
+import { VendasEtapasComponent } from './components/vendas-etapas/vendas-etapas.component';
 
 
 @NgModule({
@@ -15,7 +15,7 @@ import { VendasIconesComponent } from './components/vendas-icones/vendas-icones.
     VendasEnderecoComponent,
     VendasDadosComponent,
     VendasPagamentoComponent,
-    VendasIconesComponent
+    VendasEtapasComponent,
   ],
   imports: [
     CommonModule,
