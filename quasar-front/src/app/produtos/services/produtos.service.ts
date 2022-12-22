@@ -2,6 +2,7 @@ import { environment } from './../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { ProdutoResponse } from 'src/app/shared/models/responses/produto.response';
 
 @Injectable({
   providedIn: 'root',
