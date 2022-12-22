@@ -5,7 +5,7 @@
     </div>
   </div>
 
-  <div class="produtos row justify-content-around mt-5">
+  <div class="produtos row justify-content-between mt-5 mr-2 w-auto">
     <div class="col-sm-2">
       <form name="filtro">
         <fieldset class="d-inline ml-2">
@@ -26,13 +26,8 @@
                 <label for="retrovisor">Retrovisor</label>
               </div>
               <div>
-                <input
-                  class="mr-2"
-                  type="checkbox"
-                  id="retrovisor"
-                  name="retrovisor"
-                />
-                <label for="retrovisor">Retrovisor</label>
+                <input class="mr-2" type="checkbox" id="vidro" name="vidro" />
+                <label for="vidro">Vidro</label>
               </div>
               <div>
                 <input
@@ -41,7 +36,7 @@
                   id="retrovisor"
                   name="retrovisor"
                 />
-                <label for="retrovisor">Retrovisor</label>
+                <label for="retrovisor">Parachoque</label>
               </div>
               <div>
                 <input
@@ -50,7 +45,7 @@
                   id="retrovisor"
                   name="retrovisor"
                 />
-                <label for="retrovisor">Retrovisor</label>
+                <label for="retrovisor">Lanterna</label>
               </div>
               <div>
                 <input
@@ -59,7 +54,7 @@
                   id="retrovisor"
                   name="retrovisor"
                 />
-                <label for="retrovisor">Retrovisor</label>
+                <label for="retrovisor">Farol</label>
               </div>
             </div>
             <span class="font-weight-bold">Cor</span>
@@ -68,10 +63,10 @@
                 <input
                   class="mr-2"
                   type="checkbox"
-                  id="retrovisor"
-                  name="retrovisor"
+                  id="vermelho"
+                  name="vermelho"
                 />
-                <label for="retrovisor">Vermelho</label>
+                <label for="vermelho">Vermelho</label>
               </div>
               <div>
                 <input
@@ -80,7 +75,7 @@
                   id="retrovisor"
                   name="retrovisor"
                 />
-                <label for="retrovisor">Vermelho</label>
+                <label for="retrovisor">Verde</label>
               </div>
               <div>
                 <input
@@ -89,16 +84,24 @@
                   id="retrovisor"
                   name="retrovisor"
                 />
-                <label for="retrovisor">Vermelho</label>
+                <label for="retrovisor">Amarelo</label>
               </div>
             </div>
           </div>
         </fieldset>
       </form>
     </div>
-    <div class="col-sm-2"><app-header></app-header></div>
-    <div class="col-sm-2"><app-header></app-header></div>
-    <div class="col-sm-2"><app-header></app-header></div>
-    <div class="col-sm-2"><app-header></app-header></div>
+    <div class="col-sm-2">
+      <app-produto-card [produto]="produtoCard"></app-produto-card>
+    </div>
+    <div class="col-sm-2">
+      <app-produto-card [produto]="produtoCard"></app-produto-card>
+    </div>
+    <div class="col-sm-2">
+      <app-produto-card [produto]="produtoCard"></app-produto-card>
+    </div>
+    <div class="col-sm-2">
+      <app-produto-card [produto]="produtoCard"></app-produto-card>
+    </div>
   </div>
 </div>
