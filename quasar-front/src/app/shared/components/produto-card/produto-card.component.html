@@ -1,6 +1,6 @@
 <div *ngIf="produto" class="card-produto d-flex flex-column">
-  <app-icone-coracao class="icone-coracao" *ngIf="!favorito" (click)="favoritar(produto.codigo)"></app-icone-coracao>
-  <fa-icon class="icone-coracao" *ngIf="favorito" [icon]="iconeCoracaoCheio" (click)="favoritar(produto.codigo)"></fa-icon>
+  <app-icone-coracao class="icone-coracao" *ngIf="favorito" (click)="removerFavorito(produto.codigo)"></app-icone-coracao>
+  <fa-icon class="icone-coracao" *ngIf="!favorito" [icon]="iconeCoracaoVazio" (click)="adicionarFavorito(produto.codigo)"></fa-icon>
   <div class="img">
     <a [routerLink]="['/produtos/' + produto.codigo]">
       <img  class="img-fluid p-3" [src]="produto.imagem" alt="Imagem do produto">
