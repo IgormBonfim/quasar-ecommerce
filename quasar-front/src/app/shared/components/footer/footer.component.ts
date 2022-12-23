@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { faHelicopter } from '@fortawesome/free-solid-svg-icons';
+import { faTwitter, faFacebook, faInstagram } from '@fortawesome/free-brands-svg-icons';
 
 @Component({
   selector: 'app-footer',
@@ -7,7 +7,9 @@ import { faHelicopter } from '@fortawesome/free-solid-svg-icons';
   styleUrls: ['./footer.component.css']
 })
 export class FooterComponent implements OnInit {
-  iconeTwitter = faHelicopter
+  iconeTwitter = faTwitter;
+  iconeFacebook = faFacebook;
+  iconeInstagram = faInstagram;
 
   constructor() { }
 
