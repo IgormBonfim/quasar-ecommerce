@@ -81,17 +81,12 @@
         </fieldset>
       </form>
     </div>
-    <div class="col-sm-2">
-      <app-produto-card [produto]="produtoCard"></app-produto-card>
-    </div>
-    <div class="col-sm-2">
-      <app-produto-card [produto]="produtoCard"></app-produto-card>
-    </div>
-    <div class="col-sm-2">
-      <app-produto-card [produto]="produtoCard"></app-produto-card>
-    </div>
-    <div class="col-sm-2">
-      <app-produto-card [produto]="produtoCard"></app-produto-card>
+    <div class="row col-sm-10">
+      <app-produto-card
+        class="col-sm-3 mb-3"
+        *ngFor="let produto of produtos.lista"
+        [produto]="produto"
+      ></app-produto-card>
     </div>
   </div>
 </div>
