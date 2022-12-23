@@ -1,3 +1,4 @@
+import { AuthGuard } from './shared/guards/auth.guard';
 import { HomeComponent } from './core/paginas/home/home.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -16,6 +17,11 @@ const routes: Routes = [
   {
     path: "login",
     component: LoginComponent
+  },
+  {
+    path: "perfil",
+    component: HomeComponent, // TROCAR QUANDO FOR FEITO A PAGINA DO PERFIL
+    canActivate: [AuthGuard]
   }
 ];
 
