@@ -1,3 +1,5 @@
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { VendasEtapasComponent } from './components/vendas-etapas/vendas-etapas.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -6,7 +8,6 @@ import { FinalizarVendaComponent } from './paginas/finalizar-venda/finalizar-ven
 import { VendasEnderecoComponent } from './components/vendas-endereco/vendas-endereco.component';
 import { VendasDadosComponent } from './components/vendas-dados/vendas-dados.component';
 import { VendasPagamentoComponent } from './components/vendas-pagamento/vendas-pagamento.component';
-import { VendasEtapasComponent } from './components/vendas-etapas/vendas-etapas.component';
 
 
 @NgModule({
@@ -15,11 +16,15 @@ import { VendasEtapasComponent } from './components/vendas-etapas/vendas-etapas.
     VendasEnderecoComponent,
     VendasDadosComponent,
     VendasPagamentoComponent,
-    VendasEtapasComponent,
+    VendasEtapasComponent
   ],
   imports: [
     CommonModule,
-    VendasRoutingModule
+    VendasRoutingModule,
+    FontAwesomeModule
+  ],
+  exports: [
+    FinalizarVendaComponent
   ]
 })
 export class VendasModule { }

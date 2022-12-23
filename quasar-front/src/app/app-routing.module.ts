@@ -2,6 +2,7 @@ import { HomeComponent } from './core/paginas/home/home.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './core/paginas/login/login.component';
+import { FinalizarVendaComponent } from './vendas/paginas/finalizar-venda/finalizar-venda.component';
 
 const routes: Routes = [
   {
@@ -19,6 +20,7 @@ const routes: Routes = [
   },
   {
     path: "vendas",
+    component: FinalizarVendaComponent,
     loadChildren: () => import("./vendas/vendas.module").then((m) => m.VendasModule)
   }
 
