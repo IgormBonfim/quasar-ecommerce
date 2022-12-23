@@ -2,7 +2,7 @@ import { ProdutoResponse } from './../../../shared/models/responses/produto.resp
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { faSlidersH } from '@fortawesome/free-solid-svg-icons';
-import { PaginacaoResponse } from 'src/app/shared/models/responses/paginacao.response';
+// import { PaginacaoResponse } from 'src/app/shared/models/responses/paginacao.response';
 @Component({
   selector: 'app-produtos-listagem',
   templateUrl: './produtos-listagem.component.html',
@@ -11,7 +11,7 @@ import { PaginacaoResponse } from 'src/app/shared/models/responses/paginacao.res
 export class ProdutosListagemComponent implements OnInit {
   public filtro = faSlidersH;
 
-  public produto!: PaginacaoResponse<ProdutoResponse>;
+  // public produto!: PaginacaoResponse<ProdutoResponse>;
 
   produtoCard = new ProdutoResponse();
 
