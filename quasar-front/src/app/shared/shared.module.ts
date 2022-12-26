@@ -9,6 +9,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { ProdutoCardComponent } from './components/produto-card/produto-card.component';
 import { IconeCoracaoComponent } from './components/icone-coracao/icone-coracao.component';
 import { BotaoAdicionarCarrinhoComponent } from './components/botao-adicionar-carrinho/botao-adicionar-carrinho.component';
+import { LoadingSpinnerComponent } from './components/loading-spinner/loading-spinner.component';
 
 
 @NgModule({
@@ -17,6 +18,7 @@ import { BotaoAdicionarCarrinhoComponent } from './components/botao-adicionar-ca
     ProdutoCardComponent,
     IconeCoracaoComponent,
     BotaoAdicionarCarrinhoComponent,
+    LoadingSpinnerComponent,
   ],
   imports: [
     CommonModule,
@@ -28,7 +30,8 @@ import { BotaoAdicionarCarrinhoComponent } from './components/botao-adicionar-ca
   exports: [
     HeaderComponent,
     ProdutoCardComponent,
-    IconeCoracaoComponent
+    IconeCoracaoComponent,
+    LoadingSpinnerComponent
   ]
 })
 export class SharedModule { }
