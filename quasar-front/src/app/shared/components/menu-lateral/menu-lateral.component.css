@@ -1,13 +1,14 @@
 
 .estilo{
 	background-color: #010340!important;
-  max-width: 320px;
+  max-width: 275px;
   position: fixed;
   top: 0;
   left: 0;
   bottom: 0;
   right: 0;
   z-index: -1;
+  flex-direction: column;
 }
 
 .sidebar-logo {
@@ -19,15 +20,17 @@
   margin-top: 20px;
 }
 
-.sidebar-text {
-  margin-left: 20px;
-  margin-bottom: 20px;
-  margin-top: 20px;
+.sidebar-a {
+  display: flex;
+  flex-direction: column;
   font-size: 18px;
   color: #FFFFFF;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  margin-left: 20px;
 }
 
-.wrapper {
-  display: grid;
-  grid-template-rows: 100px 100px 100px;
+a:hover {
+  outline:invert;
+  margin-left: 15px;
 }
