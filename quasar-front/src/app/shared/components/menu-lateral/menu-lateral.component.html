@@ -7,18 +7,15 @@
     <div class="estilo">
       <img class="sidebar-logo" src="assets/logo.png" alt="Logo da página" />
       <div class="text-left">
-        <a class="sidebar-a a:hover" [routerLink]="['/home']">Página Principal</a>
-        <a class="sidebar-a a:hover" href="['/categorias']">Categorias</a>
-        <a class="sidebar-a a:hover" href="['/produtos']">Produtos</a>
-        <a class="sidebar-a a:hover" href="['/carrinho']">Carrinho</a>
-        <a class="sidebar-a a:hover" href="['/favoritos']">Favoritos</a>
-        <a class="sidebar-a a:hover" href="['/meuPerfil']">Meu Perfil</a>
-        <a class="sidebar-a a:hover" href="['faq']">FAQ</a>
-        <a class="sidebar-a a:hover" href="#">WIP</a>
+        <a (click)="visibilidade = !visibilidade" class="sidebar-a a:hover" [routerLink]="['/home']">Página Principal</a>
+        <a (click)="visibilidade = !visibilidade" class="sidebar-a a:hover" [routerLink]="['/categorias']">Categorias</a>
+        <a (click)="visibilidade = !visibilidade" class="sidebar-a a:hover" [routerLink]="['/produtos']">Produtos</a>
+        <a (click)="visibilidade = !visibilidade" class="sidebar-a a:hover" [routerLink]="['/carrinho']">Carrinho</a>
+        <a (click)="visibilidade = !visibilidade" class="sidebar-a a:hover" [routerLink]="['/favoritos']">Favoritos</a>
+        <a (click)="visibilidade = !visibilidade" class="sidebar-a a:hover" [routerLink]="['/perfil']">Meu Perfil</a>
+        <a (click)="visibilidade = !visibilidade" class="sidebar-a a:hover" [routerLink]="['/faq']">FAQ</a>
+        <a (click)="visibilidade = !visibilidade" class="sidebar-a a:hover" >WIP</a>
       </div>
     </div>
   </p-sidebar>
-  <button (click)="visibilidade = !visibilidade" class="btn btn-primary">
-    Toggle Sidebar
-  </button>
 </div>
