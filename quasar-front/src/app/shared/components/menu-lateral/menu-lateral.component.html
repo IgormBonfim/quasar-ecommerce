@@ -1,14 +1,24 @@
-  <div id="sidebar">
-    <p-sidebar [(visible)]="visibilidade" [position]="'left'">
-      <div class="estilo wrapper">
-        <img class="sidebar-logo" src="assets/logo.png" alt="Logo da página">
-        <div class="sidebar-text">
-          <div class="" href="#">Página Principal</div>
-          <div class="" href="#">HPágina Principal</div>
-        </div>
+<div id="sidebar">
+  <p-sidebar
+    [style]="{ width: '275px' }"
+    [(visible)]="visibilidade"
+    [position]="'left'"
+  >
+    <div class="estilo">
+      <img class="sidebar-logo" src="assets/logo.png" alt="Logo da página" />
+      <div class="text-left">
+        <a class="sidebar-a a:hover" [routerLink]="['/home']">Página Principal</a>
+        <a class="sidebar-a a:hover" href="['/categorias']">Categorias</a>
+        <a class="sidebar-a a:hover" href="['/produtos']">Produtos</a>
+        <a class="sidebar-a a:hover" href="['/carrinho']">Carrinho</a>
+        <a class="sidebar-a a:hover" href="['/favoritos']">Favoritos</a>
+        <a class="sidebar-a a:hover" href="['/meuPerfil']">Meu Perfil</a>
+        <a class="sidebar-a a:hover" href="['faq']">FAQ</a>
+        <a class="sidebar-a a:hover" href="#">WIP</a>
       </div>
+    </div>
   </p-sidebar>
-  <button (click)="visibilidade = !visibilidade" class="btn btn-primary">Toggle Sidebar</button>
-  </div>
-
-
+  <button (click)="visibilidade = !visibilidade" class="btn btn-primary">
+    Toggle Sidebar
+  </button>
+</div>
