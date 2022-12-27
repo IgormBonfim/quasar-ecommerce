@@ -18,7 +18,7 @@ import { BotaoAdicionarCarrinhoComponent } from './components/botao-adicionar-ca
     FooterComponent,
     ProdutoCardComponent,
     IconeCoracaoComponent,
-    BotaoAdicionarCarrinhoComponent,
+    BotaoAdicionarCarrinhoComponent
   ],
   imports: [
     CommonModule,
