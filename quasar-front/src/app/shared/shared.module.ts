@@ -11,11 +11,9 @@ import { FooterComponent } from './components/footer/footer.component';
 import { ProdutoCardComponent } from './components/produto-card/produto-card.component';
 import { IconeCoracaoComponent } from './components/icone-coracao/icone-coracao.component';
 import { MenuLateralComponent } from './components/menu-lateral/menu-lateral.component';
-import { ProdutoCardComponent } from './components/produto-card/produto-card.component';
-import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { BotaoAdicionarCarrinhoComponent } from './components/botao-adicionar-carrinho/botao-adicionar-carrinho.component';
 
 import { LoadingSpinnerComponent } from './components/loading-spinner/loading-spinner.component';
-
 
 @NgModule({
   declarations: [
@@ -34,7 +32,6 @@ import { LoadingSpinnerComponent } from './components/loading-spinner/loading-sp
     FontAwesomeModule,
     HttpClientModule,
     SidebarModule,
-    BrowserAnimationsModule
   ],
   exports: [
     HeaderComponent,
@@ -42,7 +39,7 @@ import { LoadingSpinnerComponent } from './components/loading-spinner/loading-sp
     ProdutoCardComponent,
     IconeCoracaoComponent,
     LoadingSpinnerComponent,
-    MenuLateralComponent
-  ]
+    MenuLateralComponent,
+  ],
 })
- export class SharedModule{};
+export class SharedModule {}
