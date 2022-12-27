@@ -6,27 +6,32 @@ import { LoginComponent } from './core/paginas/login/login.component';
 
 const routes: Routes = [
   {
-    path: "",
-    pathMatch: "full",
-    redirectTo: "home"
+    path: '',
+    pathMatch: 'full',
+    redirectTo: 'home',
   },
   {
-    path: "home",
-    component: HomeComponent
+    path: 'home',
+    component: HomeComponent,
   },
   {
-    path: "login",
-    component: LoginComponent
+    path: 'produtos',
+    loadChildren: () =>
+      import('./produtos/produtos.module').then((m) => m.ProdutosModule),
   },
   {
-    path: "perfil",
+    path: 'login',
+    component: LoginComponent,
+  },
+  {
+    path: 'perfil',
     component: HomeComponent, // TROCAR QUANDO FOR FEITO A PAGINA DO PERFIL
-    canActivate: [AuthGuard]
-  }
+    canActivate: [AuthGuard],
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

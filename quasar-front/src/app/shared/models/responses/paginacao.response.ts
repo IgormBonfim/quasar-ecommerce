@@ -1,13 +1,13 @@
 export class PaginacaoResponse<T> {
-  Pagina: number;
-  Quantidade: number; // Total de itens cadastrados
-  TotalPaginas: number; // Total de paginas que foram formadas
-  Lista: Array<T>; // Lista de itens da página atual
+  pagina: number;
+  quantidade: number; // Total de itens cadastrados
+  totalPaginas: number; // Total de paginas que foram formadas
+  lista: Array<T>; // Lista de itens da página atual
 
   constructor(params: Partial<PaginacaoResponse<T>>) {
-    this.Pagina = params.Pagina || 0;
-    this.Quantidade = params.Quantidade || 0;
-    this.TotalPaginas = params.TotalPaginas || 0;
-    this.Lista = params.Lista || [];
+    this.pagina = params.pagina || 0;
+    this.quantidade = params.quantidade || 0;
+    this.totalPaginas = params.totalPaginas || 0;
+    this.lista = params.lista || [];
   }
 }
