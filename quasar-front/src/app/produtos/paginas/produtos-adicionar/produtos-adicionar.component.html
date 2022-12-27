@@ -1,0 +1,28 @@
+<main class="container">
+  <div class="my-5 topo">
+    <h1 class="p-3 titulo">Adicionar novo produto</h1>
+  </div>
+
+  <form [formGroup]="produtoForm" (submit)="botaoEnviar()" class="my-5 d-flex flex-column form-group">
+
+    <div class="p-3 d-flex flex-column">
+      <label class="mb-1">Nome do produto</label>
+      <input class="form-control w-25" type="text" formControlName="nome">
+    </div>
+    <div class="p-3 d-flex flex-column">
+      <label class="mb-1">Descrição do produto</label>
+      <input class="form-control w-25" type="text" formControlName="descricao">
+    </div>
+    <div class="p-3 d-flex flex-column">
+      <label class="mb-1">Valor do produto</label>
+      <input class="form-control w-25" type="number" formControlName="valor">
+    </div>
+    <div class="p-3 d-flex flex-column">
+      <label class="mb-1">Categorias do produto</label>
+      <p-dropdown></p-dropdown>
+    </div>
+
+    <button class="btn btn-primary" [disabled]="produtoForm.invalid" type="submit">Enviar</button>
+
+  </form>
+</main>
