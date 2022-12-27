@@ -7,6 +7,7 @@ import { VendasEnderecoComponent } from './components/vendas-endereco/vendas-end
 import { VendasDadosComponent } from './components/vendas-dados/vendas-dados.component';
 import { VendasPagamentoComponent } from './components/vendas-pagamento/vendas-pagamento.component';
 import { VendasIconesComponent } from './components/vendas-icones/vendas-icones.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { VendasIconesComponent } from './components/vendas-icones/vendas-icones.
   ],
   imports: [
     CommonModule,
-    VendasRoutingModule
+    VendasRoutingModule,
+    FontAwesomeModule
   ]
 })
 export class VendasModule { }

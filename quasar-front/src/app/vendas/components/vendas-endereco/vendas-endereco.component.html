@@ -4,21 +4,24 @@
       <div class="col-12 col-md-8 col-lg-6 col-xl-10">
         <div class="card shadow-2-strong" style="border-radius: 5px">
           <div class="card-body p-5 text-center">
+            <div class="d-flex">
+            <fa-icon class="house-icon-endereco mr-3" [icon]="houseIcon"></fa-icon>
             <h1 class="endereco-top mb-5 my-4" style="font-weight: bold">
               ENDEREÇO
             </h1>
+            </div>
               <div
                 class="form-outline mb-4 text-left"
                 style="font-weight: bold"
               >
-                <label class="login form-label my-1" for="typeEmailX-2"
-                id=""
+                <label class="cep form-label my-1" for="typeNumberX-2"
+                id="CEP"
                   >CEP</label
                 >
                 <input
-                  type="email"
-                  id="typeEmailX-2"
-                  class="form-control form-control-lg" formControlName="login" autocomplete="off"
+                  type="number"
+                  id="typeNumberX-2"
+                  class="form-control form-control-lg w-25 mr-1" formControlName="cep" autocomplete="off"
                 />
               </div>
               <div class="form-row">
@@ -26,26 +29,26 @@
                 class="form-outline mb-4 text-left"
                 style="font-weight: bold"
               >
-                <label class="login form-label my-1" for="typeEmailX-2"
+                <label class="endereco form-label my-1" for="typeEnderecoX-2"
                   >Endereço de Entrega</label
                 >
                 <input
-                  type="email"
-                  id="typeEmailX-2"
-                  class="form-control form-control-lg" formControlName="login" autocomplete="off"
+                  type="endereco"
+                  id="typeEnderecoX-2"
+                  class="form-control form-control-lg" formControlName="endereco" autocomplete="off"
                 />
               </div>
               <div
-                class="form-outline mb-4 text-left"
+                class="form-outline mb-4 text-left ml-5"
                 style="font-weight: bold"
               >
-                <label class="senha form-label my-1" for="text"
+                <label class="numero form-label my-1" for="text"
                   >Nº</label
                 >
                 <input
                   type="text"
-                  id="typetextX-2"
-                  class="form-control form-control-lg" formControlName="senha"
+                  id="typeTextX-2"
+                  class="form-control form-control-lg" formControlName="numero"
                 />
                 </div>
               </div>
@@ -54,26 +57,26 @@
                 class="form-outline mb-4 text-left"
                 style="font-weight: bold"
               >
-                <label class="login form-label my-1" for="typeEmailX-2"
+                <label class="bairro form-label my-1" for="typeTextX-2"
                   >Bairro</label
                 >
                 <input
                   type="email"
-                  id="typeEmailX-2"
-                  class="form-control form-control-lg" formControlName="login" autocomplete="off"
+                  id="typeTextX-2"
+                  class="form-control form-control-lg" formControlName="bairro" autocomplete="off"
                 />
               </div>
               <div
-                class="form-outline mb-4 text-left"
+                class="form-outline mb-4 text-left ml-5"
                 style="font-weight: bold"
               >
-                <label class="senha form-label my-1" for="text"
+                <label class="uf form-label my-1" for="text"
                   >UF</label
                 >
                 <input
                   type="text"
                   id="typetextX-2"
-                  class="form-control form-control-lg" formControlName="senha"
+                  class="form-control form-control-lg" formControlName="uf"
                 />
               </div>
               </div>
@@ -81,39 +84,26 @@
                 class="form-outline mb-4 text-left"
                 style="font-weight: bold"
               >
-                <label class="senha form-label my-1" for="text"
+                <label class="cidade form-label my-1" for="text"
                   >Cidade</label
                 >
                 <input
                   type="text"
                   id="typetextX-2"
-                  class="form-control form-control-lg" formControlName="senha"
+                  class="form-control form-control-lg w-50" formControlName="cidade"
                 />
               </div>
               <div
                 class="form-outline mb-4 text-left"
                 style="font-weight: bold"
               >
-                <label class="senha form-label my-1" for="text"
+                <label class="ref form-label my-1" for="text"
                   >Complemento e Referência</label
                 >
                 <input
-                  type="text"
+                  type="text" 
                   id="typetextX-2"
-                  class="form-control form-control-lg" formControlName="senha"
-                />
-              </div>
-              <div
-                class="form-outline mb-4 text-left"
-                style="font-weight: bold"
-              >
-                <label class="senha form-label my-1" for="text"
-                  >Destinatário</label
-                >
-                <input
-                  type="text"
-                  id="typetextX-2"
-                  class="form-control form-control-lg" formControlName="senha"
+                  class="form-control form-control-lg w-50" formControlName="ref"
                 />
               </div>
               <button

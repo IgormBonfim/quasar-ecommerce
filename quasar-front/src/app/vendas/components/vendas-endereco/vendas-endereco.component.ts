@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { faHouse } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-vendas-endereco',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./vendas-endereco.component.css']
 })
 export class VendasEnderecoComponent implements OnInit {
+
+  public houseIcon = faHouse;
 
   constructor() { }
 

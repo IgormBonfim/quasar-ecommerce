@@ -1,7 +1,13 @@
 .endereco-top {
     font-size: 32px;
     text-align: left;
+    color: var(--cor-primaria);
 }
 .container {
     box-shadow: 5 5 5 #f0f0f0;
+}
+
+.house-icon-endereco {
+    font-size: 60px;
+    color: var(--cor-primaria);
 }

@@ -9,6 +9,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { ProdutoCardComponent } from './components/produto-card/produto-card.component';
 import { IconeCoracaoComponent } from './components/icone-coracao/icone-coracao.component';
 import { BotaoAdicionarCarrinhoComponent } from './components/botao-adicionar-carrinho/botao-adicionar-carrinho.component';
+import { MessageAlertComponent } from './components/message-alert/message-alert.component';
 
 
 @NgModule({
@@ -17,6 +18,7 @@ import { BotaoAdicionarCarrinhoComponent } from './components/botao-adicionar-ca
     ProdutoCardComponent,
     IconeCoracaoComponent,
     BotaoAdicionarCarrinhoComponent,
+    MessageAlertComponent,
   ],
   imports: [
     CommonModule,
