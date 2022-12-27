@@ -1,0 +1,9 @@
+.topo {
+  border-bottom: 1px solid var(--cor-primaria);
+}
+
+.titulo {
+  font-size: 32px;
+  font-weight: bold;
+  color: var(--cor-primaria);
+}
