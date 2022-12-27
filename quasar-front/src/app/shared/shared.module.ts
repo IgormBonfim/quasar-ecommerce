@@ -19,12 +19,8 @@ import { LoadingSpinnerComponent } from './components/loading-spinner/loading-sp
     FooterComponent,
     ProdutoCardComponent,
     IconeCoracaoComponent,
-<<<<<<< HEAD
-    BotaoAdicionarCarrinhoComponent
-=======
     BotaoAdicionarCarrinhoComponent,
-    LoadingSpinnerComponent,
->>>>>>> 52dcc0d57ca2fa3b02809ba30e5fc147fee37dec
+    LoadingSpinnerComponent
   ],
   imports: [
     CommonModule,
@@ -35,14 +31,10 @@ import { LoadingSpinnerComponent } from './components/loading-spinner/loading-sp
   ],
   exports: [
     HeaderComponent,
-<<<<<<< HEAD
     FooterComponent,
-    IconeCoracaoComponent
-=======
     ProdutoCardComponent,
     IconeCoracaoComponent,
     LoadingSpinnerComponent
->>>>>>> 52dcc0d57ca2fa3b02809ba30e5fc147fee37dec
   ]
 })
  export class SharedModule{};
