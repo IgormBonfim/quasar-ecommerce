@@ -1,9 +1,9 @@
-export class PaginacaoRequest<T> {
-  Pagina: number; // página atual
-  Quantidade: number; // número de itens por página
+export class PaginacaoRequest {
+  pagina: number; // página atual
+  quantidade: number; // número de itens por página
 
-  constructor(params: Partial<PaginacaoRequest<T>>) {
-    this.Pagina = params.Pagina || 1;
-    this.Quantidade = params.Quantidade || 20;
+  constructor(params: Partial<PaginacaoRequest>) {
+    this.pagina = params.pagina || 1;
+    this.quantidade = params.quantidade || 20;
   }
 }
