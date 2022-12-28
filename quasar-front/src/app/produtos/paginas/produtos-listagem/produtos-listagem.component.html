@@ -1,0 +1,92 @@
+<div class="container mt-5">
+  <div class="linha">
+    <div>
+      <p class="resultados">Resultados</p>
+    </div>
+  </div>
+
+  <div class="produtos row justify-content-between mt-5 mr-1 w-auto">
+    <div class="col-sm-2">
+      <form name="filtro">
+        <fieldset class="d-inline ml-2">
+          <div class="font-weight-bold d-flex">
+            <fa-icon class="mr-2" [icon]="filtro"></fa-icon>
+            <p class="filtro mb-2">Filtrar por:</p>
+          </div>
+          <div class="border px-3 py-2">
+            <span class="font-weight-bold">Categoria</span>
+            <div class="mb-2 mt-1 ml-2">
+              <div>
+                <input
+                  class="mr-2"
+                  type="checkbox"
+                  id="retrovisor"
+                  name="retrovisor"
+                />
+                <label for="retrovisor">Retrovisor</label>
+              </div>
+              <div>
+                <input class="mr-2" type="checkbox" id="vidro" name="vidro" />
+                <label for="vidro">Vidro</label>
+              </div>
+              <div>
+                <input
+                  class="mr-2"
+                  type="checkbox"
+                  id="parachoque"
+                  name="parachoque"
+                />
+                <label for="parachoque">Parachoque</label>
+              </div>
+              <div>
+                <input
+                  class="mr-2"
+                  type="checkbox"
+                  id="lanterna"
+                  name="lanterna"
+                />
+                <label for="lanterna">Lanterna</label>
+              </div>
+              <div>
+                <input class="mr-2" type="checkbox" id="farol" name="farol" />
+                <label for="farol">Farol</label>
+              </div>
+            </div>
+            <span class="font-weight-bold">Cor</span>
+            <div class="mt-2 ml-2">
+              <div>
+                <input
+                  class="mr-2"
+                  type="checkbox"
+                  id="vermelho"
+                  name="vermelho"
+                />
+                <label for="vermelho">Vermelho</label>
+              </div>
+              <div>
+                <input class="mr-2" type="checkbox" id="verde" name="verde" />
+                <label for="verde">Verde</label>
+              </div>
+              <div>
+                <input
+                  class="mr-2"
+                  type="checkbox"
+                  id="amarelo"
+                  name="amarelo"
+                />
+                <label for="amarelo">Amarelo</label>
+              </div>
+            </div>
+          </div>
+        </fieldset>
+      </form>
+    </div>
+    <div class="row col-sm-10">
+      <app-produto-card
+        class="col-sm-3 mb-3"
+        *ngFor="let produto of produtos.lista"
+        [produto]="produto"
+      ></app-produto-card>
+    </div>
+  </div>
+</div>

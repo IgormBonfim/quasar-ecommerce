@@ -1,0 +1,41 @@
+.card-produto {
+  width: 215px;
+  height: 410px;
+  padding: 0 16px;
+  border-radius: 5px;
+  background-color: white;
+  justify-content: space-evenly;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.icone-coracao {
+  font-size: 1.5rem;
+  cursor: pointer;
+  align-self: flex-end;
+  color: var(--cor-primaria);
+}
+
+.img {
+  width: 150px;
+  height: 150px;
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.nome-produto {
+  font-size: 14px;
+  color: #000000;
+}
+
+.valor {
+  font-size: 24px;
+  font-weight: bold;
+  color: var(--cor-primaria);
+}
+
+.vista {
+  font-size: 12px;
+  color: #AAA5A5;
+}

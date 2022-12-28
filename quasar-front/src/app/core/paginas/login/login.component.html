@@ -1,0 +1,65 @@
+<section class="vh-100">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+        <div class="card shadow-2-strong" style="border-radius: 5px">
+          <div class="card-body p-5 text-center">
+            <fa-icon class="logo-icon-login" [icon]="userIcon"></fa-icon>
+            <h1 class="iniciar-sessao mb-5 my-4" style="font-weight: bold">
+              Iniciar sessão
+            </h1>
+
+            <form (submit)="logarUsuario()" [formGroup]="formulario">
+              <div
+                class="form-outline mb-4 text-left"
+                style="font-weight: bold"
+              >
+                <label class="login form-label my-1" for="typeEmailX-2"
+                  >Login</label
+                >
+                <input
+                  type="email"
+                  id="typeEmailX-2"
+                  class="form-control form-control-lg" formControlName="login" autocomplete="off"
+                />
+                <span class="alerta text-danger" *ngIf="formulario.get('login')?.errors?.['required'] && (formulario.get('login')?.touched || formulario.get('login')?.dirty)">*Este campo é obrigatório!*</span>
+              </div>
+              
+
+              <div
+                class="form-outline mb-4 text-left"
+                style="font-weight: bold"
+              >
+                <label class="senha form-label my-1" for="typePasswordX-2"
+                  >Senha</label
+                >
+                <input
+                  type="password"
+                  id="typePasswordX-2"
+                  class="form-control form-control-lg" formControlName="senha"
+                />
+                <span *ngIf="formulario.get('senha')?.errors?.['required'] && (formulario.get('senha')?.touched || formulario.get('senha')?.dirty)" class="alerta text-danger">*Este campo é obrigatório!*</span>
+              </div>
+              <button
+                class="btn btn-primary btn-lg btn-block"
+                type="submit"
+                style="background-color: #000a61"
+                [disabled]="formulario.invalid"
+              >
+                Entrar
+              </button>
+            </form>
+            <hr class="my-4" />
+
+            <div class="esqueceu-nao-tem">
+              <a href="" style="color: var(--cor-primaria)"
+                ><u>Cadastrar-se</u></a
+              >
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
