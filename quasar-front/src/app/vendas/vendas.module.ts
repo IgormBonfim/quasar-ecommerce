@@ -8,6 +8,9 @@ import { VendasDadosComponent } from './components/vendas-dados/vendas-dados.com
 import { VendasPagamentoComponent } from './components/vendas-pagamento/vendas-pagamento.component';
 import { VendasIconesComponent } from './components/vendas-icones/vendas-icones.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { SharedModule } from '../shared/shared.module';
+import { DropdownModule } from 'primeng/dropdown';
+
 
 
 @NgModule({
@@ -21,7 +24,9 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
   imports: [
     CommonModule,
     VendasRoutingModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    SharedModule,
+    DropdownModule
   ]
 })
 export class VendasModule { }
