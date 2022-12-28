@@ -1,15 +1,12 @@
 
-  <div class="container">
-    <p-carousel [value]="produtos.lista" [numVisible]="4" [responsiveOptions]="responsiveOptions">
+<div>
+  <p-carousel [value]="produtos.lista" [numVisible]="4" [responsiveOptions]="responsiveOptions" [circular]="true">
       <ng-template let-produto pTemplate="item">
-        <div class="">
+        <div class="py-4 px-3">
           <app-produto-card [produto]="produto"></app-produto-card>
         </div>
       </ng-template>
-    </p-carousel>
-  </div>
-  <!-- py-4 px-2 -->
-<div></div>
-<app-produto-card [produto]="produtos.lista[0]"></app-produto-card>
+  </p-carousel>
+</div>
 
 
