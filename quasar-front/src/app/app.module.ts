@@ -2,6 +2,7 @@ import { registerLocaleData } from '@angular/common';
 import ptBr from '@angular/common/locales/pt';
 import { DEFAULT_CURRENCY_CODE, LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AccordionModule } from 'primeng/accordion';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -21,6 +22,7 @@ registerLocaleData(ptBr)
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AccordionModule,
     AppRoutingModule,
     SharedModule,

@@ -8,6 +8,9 @@ import { SharedModule } from './../shared/shared.module';
 import { ProdutosAdicionarComponent } from './paginas/produtos-adicionar/produtos-adicionar.component';
 import { ProdutosListagemComponent } from './paginas/produtos-listagem/produtos-listagem.component';
 import { ProdutosRoutingModule } from './produtos-routing.module';
+import { InputTextareaModule } from 'primeng/inputtextarea';
+import { InputNumberModule } from 'primeng/inputnumber';
+
 
 
 @NgModule({
@@ -18,7 +21,9 @@ import { ProdutosRoutingModule } from './produtos-routing.module';
     SharedModule,
     FontAwesomeModule,
     DropdownModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    InputTextareaModule,
+    InputNumberModule
   ],
 })
 export class ProdutosModule {}

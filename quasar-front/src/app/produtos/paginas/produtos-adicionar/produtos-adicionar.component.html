@@ -1,28 +1,113 @@
 <main class="container">
   <div class="my-5 topo">
-    <h1 class="p-3 titulo">Adicionar novo produto</h1>
+    <h1 class="titulo">Adicionar novo produto</h1>
   </div>
 
-  <form [formGroup]="produtoForm" (submit)="botaoEnviar()" class="my-5 d-flex flex-column form-group">
+  <form class="row tela form-group d-flex">
 
-    <div class="p-3 d-flex flex-column">
-      <label class="mb-1">Nome do produto</label>
-      <input class="form-control w-25" type="text" formControlName="nome">
-    </div>
-    <div class="p-3 d-flex flex-column">
-      <label class="mb-1">Descrição do produto</label>
-      <input class="form-control w-25" type="text" formControlName="descricao">
-    </div>
-    <div class="p-3 d-flex flex-column">
-      <label class="mb-1">Valor do produto</label>
-      <input class="form-control w-25" type="number" formControlName="valor">
-    </div>
-    <div class="p-3 d-flex flex-column">
-      <label class="mb-1">Categorias do produto</label>
-      <p-dropdown></p-dropdown>
+    <div class="col-md-5">
+      <div class="mb-4 p-4 box linha1 d-flex flex-column align-items-center justify-content-between">
+        <div class="imagem my-4 p-4">
+          <img class="img-fluid" src="/assets/sem-imagem.png" alt="Imagem do produto">
+        </div>
+
+        <div class="w-100">
+          <label class="label-input mb-1">Imagem do produto*</label>
+          <input class="form-control" placeholder="Insira a URL da imagem aqui" type="text">
+        </div>
+      </div>
     </div>
 
-    <button class="btn btn-primary" [disabled]="produtoForm.invalid" type="submit">Enviar</button>
+    <div class="col-md-7">
+      <div class="mb-4 p-4 box linha1 d-flex flex-column justify-content-between">
+
+        <div class="w-100">
+          <label class="label-input mb-1">Nome do produto*</label>
+          <input class="form-control" placeholder="Digite o nome do produto aqui"  type="text">
+        </div>
+
+        <div class="w-100">
+          <label class="label-input mb-1">Descrição do produto*</label>
+          <textarea [rows]="8" class="form-control" pInputTextarea [autoResize]="true" placeholder="Digite a descrição do produto aqui"></textarea>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="col-md-5">
+      <div class="mb-4 p-4 box linha2">
+        <h2 class="box-titulo">Especificações do produto</h2>
+        
+        <div class="w-100 my-4 py-2">
+          <label class="label-input mb-1">Posição do produto*</label>
+          <input class="form-control" placeholder="Digite a posição do produto aqui"  type="text">
+        </div>
+
+        <div class="w-100 my-4 py-2">
+          <label class="label-input mb-1">Cor do produto*</label>
+          <input class="form-control" placeholder="Digite a cor do produto aqui"  type="text">
+        </div>
+
+        <div class="w-100 my-4 py-2">
+          <label class="label-input mb-1">Ano do produto*</label>
+          <input class="form-control" placeholder="Digite o ano do produto aqui"  type="text">
+        </div>
+
+        <div class="w-100 my-4 py-2">
+          <label class="label-input mb-1">Modelo do veículo*</label>
+          <input class="form-control" placeholder="Digite do modelo do veículo aqui"  type="text">
+        </div>
+
+      </div>
+    </div>
+
+    <div class="col-md-7">
+      <div class="mb-4 p-4 box linha2">
+        <h2 class="box-titulo">Detalhes do produto</h2>
+        <div class="d-flex my-4">
+          <div class="w-50 p-2">
+            <label class="label-input mb-1">Valor do produto*</label>
+            <p-inputNumber [size]="26" [min]="0" [maxlength]="15" placeholder="R$ 1.500,00" mode="currency" currency="BRL" locale="pt-BR" [minFractionDigits]="2"></p-inputNumber>
+          </div>
+
+          <div class="w-50 p-2">
+            <label class="label-input mb-1">Quantidade em estoque</label>
+            <p-inputNumber [size]="26" [min]="0" [maxlength]="15" placeholder="Quantidade disponível" [minFractionDigits]="0"></p-inputNumber>
+          </div>
+        </div>
+
+        <div class="d-flex my-4">
+          <div class="w-50 p-2">
+            <label class="label-input mb-1">Categoria do produto*</label>
+            <p-dropdown [options]="teste" optionLabel="name" placeholder="Selecione uma categoria"></p-dropdown>
+          </div>
+
+          <div class="w-50 p-2">
+            <label class="label-input mb-1">Valor do produto*</label>
+            <p-dropdown placeholder="Selecione um fornecedor"></p-dropdown>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="col-md-5">
+      <div class="mb-4">
+        <div class="w-100">
+          <button class="w-100 btn btn-danger">Cancelar</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-7">
+      <div class="mb-4">
+        <div class="w-100">
+          <button class="w-100 btn btn-salvar">Adicionar produto</button>
+        </div>
+      </div>
+    </div>
+
 
   </form>
 </main>
