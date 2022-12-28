@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Quasar.DataTransfer.Enderecos.Requests;
 using Quasar.DataTransfer.Enderecos.Responses;
+using Quasar.DataTransfer.Genericos.Responses;
 
 namespace Quasar.Aplicacao.Enderecos.Servicos.Interfaces
 {
@@ -13,5 +14,6 @@ namespace Quasar.Aplicacao.Enderecos.Servicos.Interfaces
         EnderecoResponse Editar (EnderecoEditarRequest editarRequest);
         EnderecoResponse Recuperar (int codigo);
         void Deletar (int codigo);
+        ListaPaginadaResponse<EnderecoResponse>  Listar(EnderecoListarRequest enderecoRequest);
     }
 }

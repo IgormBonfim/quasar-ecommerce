@@ -1,0 +1,35 @@
+footer {
+  color: white;
+  height: 320px;
+}
+.footer
+{
+  justify-content: space-around;
+}
+h4
+{
+  font-size: 23px;
+  font-weight: 500;
+  margin-bottom: 20%;
+}
+.textoQuasar
+{
+  max-width: 340px;
+  margin-top: 10%;
+}
+p
+{
+  margin-bottom: 10%;
+}
+.textoAlinhar
+{
+  margin-top: 6%;
+}
+.logoAlinhar
+{
+  margin-top: 3%;
+}
+.icon
+{
+  margin-right: 7%;
+}
