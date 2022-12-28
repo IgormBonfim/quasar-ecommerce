@@ -24,10 +24,4 @@ export class ProdutosService {
       }
     );
   }
-
-  recuperar(CodigoProduto: number): Observable<ProdutoResponse> {
-    return this.httpService.get<ProdutoResponse>(
-      `${this.baseUrl}/${CodigoProduto}`
-    );
-  }
 }

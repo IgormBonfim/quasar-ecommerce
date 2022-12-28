@@ -1,10 +1,11 @@
-import { ProdutosService } from './../../services/produtos.service';
-import { ProdutoResponse } from './../../../shared/models/responses/produto.response';
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { faSlidersH } from '@fortawesome/free-solid-svg-icons';
 import { PaginacaoRequest } from 'src/app/shared/models/requests/paginacao.request';
 import { PaginacaoResponse } from 'src/app/shared/models/responses/paginacao.response';
+import { ProdutosService } from 'src/app/shared/services/produtos.service';
+
+import { ProdutoResponse } from './../../../shared/models/responses/produto.response';
+
 @Component({
   selector: 'app-produtos-listagem',
   templateUrl: './produtos-listagem.component.html',
