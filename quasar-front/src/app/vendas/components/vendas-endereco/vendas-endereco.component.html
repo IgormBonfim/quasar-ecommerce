@@ -71,13 +71,12 @@
                 style="font-weight: bold"
               >
                 <label class="uf form-label my-1" for="text"
+                
                   >UF</label
                 >
-                <input
-                  type="text"
-                  id="typetextX-2"
-                  class="form-control form-control-lg" formControlName="uf"
-                />
+                <div>
+                <p-dropdown [options]="estados" placeholder="Selecione o Estado" optionLabel="sigla" [showClear]="true"></p-dropdown>
+                </div>
               </div>
               </div>
               <div
