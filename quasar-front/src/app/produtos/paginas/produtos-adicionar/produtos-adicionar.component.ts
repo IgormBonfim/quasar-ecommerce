@@ -14,6 +14,21 @@ import { EspecificacaoInserirRequest } from '../../models/requests/especificacao
 export class ProdutosAdicionarComponent implements OnInit {
 
   produtoForm!: FormGroup;
+  teste = [
+    { name: "vidros", value: 1},
+    { name: "vidros", value: 1},
+    { name: "vidros", value: 1},
+    { name: "vidros", value: 1},
+    { name: "vidros", value: 1},
+    { name: "vidros", value: 1},
+    { name: "vidros", value: 1},
+    { name: "vidros", value: 1},
+    { name: "vidros", value: 1},
+    { name: "vidros", value: 1},
+    { name: "vidros", value: 1},
+    { name: "vidros", value: 1},
+    { name: "farois", value: 2}
+  ]
 
   constructor(
     private formBuilder: FormBuilder,
