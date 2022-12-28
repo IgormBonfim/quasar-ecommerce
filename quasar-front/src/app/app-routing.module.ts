@@ -1,3 +1,4 @@
+import { AuthGuard } from './shared/guards/auth.guard';
 import { HomeComponent } from './core/paginas/home/home.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -6,28 +7,38 @@ import { FinalizarVendaComponent } from './vendas/paginas/finalizar-venda/finali
 
 const routes: Routes = [
   {
-    path: "",
-    pathMatch: "full",
-    redirectTo: "home"
+    path: '',
+    pathMatch: 'full',
+    redirectTo: 'home',
   },
   {
-    path: "home",
-    component: HomeComponent
+    path: 'home',
+    component: HomeComponent,
   },
   {
-    path: "login",
-    component: LoginComponent
+    path: 'produtos',
+    loadChildren: () =>
+      import('./produtos/produtos.module').then((m) => m.ProdutosModule),
+  },
+  {
+    path: 'login',
+    component: LoginComponent,
+  },
+  {
+    path: 'perfil',
+    component: HomeComponent, // TROCAR QUANDO FOR FEITO A PAGINA DO PERFIL
+    canActivate: [AuthGuard],
   },
   {
     path: "vendas",
     component: FinalizarVendaComponent,
     loadChildren: () => import("./vendas/vendas.module").then((m) => m.VendasModule)
-  }
+  },
 
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
