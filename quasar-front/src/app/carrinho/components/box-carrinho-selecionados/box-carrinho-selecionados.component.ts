@@ -1,4 +1,4 @@
-import { ProdutoResponse } from './../../../shared/models/responses/produto.response';
+import { CarrinhoResponse } from './../../../shared/models/responses/carrinho.response';
 import { Component, Input, OnInit } from '@angular/core';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
 
@@ -14,7 +14,7 @@ export class BoxCarrinhoSelecionadosComponent implements OnInit {
   disponivel: boolean = true;
 
   @Input()
-  produto!: ProdutoResponse;
+  carrinho!: CarrinhoResponse;
 
   constructor() { }
 

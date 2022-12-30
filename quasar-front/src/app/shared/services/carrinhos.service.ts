@@ -1,3 +1,4 @@
+import { PaginacaoRequest } from './../models/requests/paginacao.request';
 import { CarrinhoResponse } from './../models/responses/carrinho.response';
 import { CarrinhoInserirRequest } from './../models/requests/carrinhoInserir.request';
 import { Observable } from 'rxjs';
@@ -24,7 +25,9 @@ export class CarrinhosService {
     return this.httpClient.post(this.baseUrl, params);
   }
 
-  listar() : Observable<PaginacaoResponse<CarrinhoResponse>> {
-    return this.httpClient.get<PaginacaoResponse<CarrinhoResponse>>(this.baseUrl);
+  listar(params: PaginacaoRequest) : Observable<PaginacaoResponse<CarrinhoResponse>> {
+    return this.httpClient.get<PaginacaoResponse<CarrinhoResponse>>(this.baseUrl, {
+      params: params as any,
+    });
   }
 }

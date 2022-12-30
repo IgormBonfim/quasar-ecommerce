@@ -1,12 +1,15 @@
-<div class="background">
-  <div class= "container-fluid p-0 mt-0 d-flex flex-column align-items-stretch ">
-    <h2 class="font ml-5" > Carrinho de Compras</h2>
-    <hr class="hr1 ">
+<div class="background mb-5">
+  <div class="container-fluid p-0 mt-0 d-flex flex-column align-items-stretch">
+    <h2 class="font ml-5">Carrinho de Compras</h2>
+    <hr/>
   </div>
   <div class="container-organizacao">
-  <app-box-carrinho-selecionados></app-box-carrinho-selecionados>
-  <app-finalizacao-outros></app-finalizacao-outros>
+    <div class="row justify-content-around">
+      <app-box-carrinho-selecionados
+        *ngFor="let carrinho of produtosCarrinho.lista"
+        [carrinho]="carrinho"
+      ></app-box-carrinho-selecionados>
+    </div>
+    <app-finalizacao-outros [carrinhos]="produtosCarrinho.lista"></app-finalizacao-outros>
+  </div>
 </div>
-</div>
-
-
