@@ -1,10 +1,16 @@
-import { ProdutoInserirRequest } from './../../models/requests/produtoInserir.request';
+import { PaginacaoRequest } from './../../../shared/models/requests/paginacao.request';
+import { FornecedoresService } from './../../../shared/services/fornecedores.service';
 import { HttpErrorResponse } from '@angular/common/http';
-import { ProdutoInserirResponse } from './../../models/responses/produtoInserir.response';
-import { ProdutosService } from './../../services/produtos.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { CategoriaResponse } from 'src/app/shared/models/responses/categoria.response';
+import { FornecedorResponse } from 'src/app/shared/models/responses/fornecedor.response';
+
 import { EspecificacaoInserirRequest } from '../../models/requests/especificacaoInserir.request';
+import { ProdutoInserirRequest } from './../../models/requests/produtoInserir.request';
+import { ProdutosService } from './../../services/produtos.service';
+import { PaginacaoResponse } from 'src/app/shared/models/responses/paginacao.response';
+import { CategoriasService } from 'src/app/shared/services/categorias.service';
 
 @Component({
   selector: 'app-produtos-adicionar',
@@ -14,28 +20,19 @@ import { EspecificacaoInserirRequest } from '../../models/requests/especificacao
 export class ProdutosAdicionarComponent implements OnInit {
 
   produtoForm!: FormGroup;
-  teste = [
-    { name: "vidros", value: 1},
-    { name: "vidros", value: 1},
-    { name: "vidros", value: 1},
-    { name: "vidros", value: 1},
-    { name: "vidros", value: 1},
-    { name: "vidros", value: 1},
-    { name: "vidros", value: 1},
-    { name: "vidros", value: 1},
-    { name: "vidros", value: 1},
-    { name: "vidros", value: 1},
-    { name: "vidros", value: 1},
-    { name: "vidros", value: 1},
-    { name: "farois", value: 2}
-  ]
+  categorias!: CategoriaResponse[];
+  fornecedores!: FornecedorResponse[];
 
   constructor(
     private formBuilder: FormBuilder,
-    private produtosService: ProdutosService
+    private produtosService: ProdutosService,
+    private fornecedoresService: FornecedoresService,
+    private categoriasService: CategoriasService
     ) { }
 
   ngOnInit(): void {
+    this.listarFornecedores();
+    this.listarCategorias();
     this.produtoForm = this.formBuilder.group({
       nome: ['', [Validators.required]],
       descricao: ['', [Validators.required]],
@@ -45,9 +42,35 @@ export class ProdutosAdicionarComponent implements OnInit {
       ano: ['', [Validators.required]],
       modelo: ['', [Validators.required]],
       quantidade: [0, [Validators.required]],
-      valor: ['', [Validators.required]],
+      valor: [0, [Validators.required]],
       categoria: [0, [Validators.required]],
       fornecedor: [0, [Validators.required]],
+    })
+  }
+
+  listarFornecedores() {
+    let params = new PaginacaoRequest({
+      quantidade: 2
+    })
+
+    this.fornecedoresService.listarFornecedores(params).subscribe({
+      next: (res: PaginacaoResponse<FornecedorResponse>) => {
+        this.fornecedores = res.lista;
+        console.log(res);
+
+      }
+    })
+  }
+
+  listarCategorias() {
+    let params = new PaginacaoRequest({
+      quantidade: 999
+    })
+
+    this.categoriasService.listarCategorias(params).subscribe({
+      next: (res: PaginacaoResponse<CategoriaResponse>) => {
+        this.categorias = res.lista;
+      }
     })
   }
 
@@ -67,8 +90,8 @@ export class ProdutosAdicionarComponent implements OnInit {
     produto.nome = formulario.nome;
     produto.descricao = formulario.descricao;
     produto.imagem = formulario.imagem;
-    produto.codigoCategoria = formulario.categoria;
-    produto.codigoFornecedor = formulario.fornecedor;
+    produto.codigoCategoria = formulario.categoria.codigo;
+    produto.codigoFornecedor = formulario.fornecedor.codigo;
     produto.especificacao = especificacao;
 
     this.produtosService.adicionar(produto).subscribe({
