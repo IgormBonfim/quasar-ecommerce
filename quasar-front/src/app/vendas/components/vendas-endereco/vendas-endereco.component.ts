@@ -29,7 +29,6 @@ export class VendasEnderecoComponent implements OnInit {
         this.estados = res;
       }
     })
-
   }
 
 }
