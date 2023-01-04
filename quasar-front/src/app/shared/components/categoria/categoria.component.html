@@ -1,0 +1,10 @@
+<div>
+  <div class="categoriaInterna d-flex flex-column align-items-center">
+    <p class="nomeCategoria"> {{ categoria.nome }}</p>
+    <div class="imgCategoria">
+      <img class="img-fluid"  [src]="categoria.imagem" alt="imagem da categoria">
+    </div>
+    <a [routerLink]="['/produtos']"><button class="btn buttonCategoria">Ver produtos</button></a>
+  </div>
+</div>
+
