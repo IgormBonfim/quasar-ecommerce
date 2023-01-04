@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { faSlidersH } from '@fortawesome/free-solid-svg-icons';
 import { PaginacaoRequest } from 'src/app/shared/models/requests/paginacao.request';
 import { PaginacaoResponse } from 'src/app/shared/models/responses/paginacao.response';
@@ -14,7 +14,7 @@ import { ProdutoResponse } from './../../../shared/models/responses/produto.resp
 export class ProdutosListagemComponent implements OnInit {
   public filtro = faSlidersH;
 
-  public request = new PaginacaoRequest({});
+  public request = new PaginacaoRequest<ProdutoResponse>({});
   public produtos!: PaginacaoResponse<ProdutoResponse>;
 
   produtoCard = new ProdutoResponse();
@@ -32,7 +32,7 @@ export class ProdutosListagemComponent implements OnInit {
 
   trocarPagina(pagina: number) {
     this.request.pagina = pagina;
-    this.recuperarProdutos();
+    this.recuperarProdutos;
   }
 
   trocarQuantidade(quantidade: number) {
