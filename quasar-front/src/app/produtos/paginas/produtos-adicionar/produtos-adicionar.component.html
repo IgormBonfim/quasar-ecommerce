@@ -26,6 +26,7 @@
           <label class="label-input mb-1">Nome do produto*</label>
           <input class="form-control" formControlName="nome" placeholder="Digite o nome do produto aqui"  type="text">
           <span class="text-danger py-1" *ngIf="produtoForm.get('nome')?.errors && (produtoForm.get('nome')?.touched || produtoForm.get('nome')?.dirty)">Campo obrigatório*</span>
+          <span class="text-danger py-1" *ngIf="produtoForm.get('nome')?.errors && (produtoForm.get('nome')?.touched || produtoForm.get('nome')?.dirty)">Campo obrigatório*</span>
         </div>
 
         <div class="w-100">
