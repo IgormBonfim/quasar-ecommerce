@@ -1,16 +1,17 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { faLessThanEqual } from '@fortawesome/free-solid-svg-icons';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EtapasService {
   etapaDados: boolean = true;
-  etapaEndereco: boolean = false;
+  etapaEndereco: boolean = true;
   etapaPagamento: boolean = false;
   etapaConcluido: boolean = false;
 
-  dadosConcluido: boolean = false;
+  dadosConcluido: boolean = true;
   enderecoConcluido: boolean = false;
   pagamentoConcluido: boolean = false;
 
@@ -20,9 +21,9 @@ export class EtapasService {
     this.etapaDados = false;
     this.dadosConcluido = true;
     this.etapaEndereco = true;
-    this.router.navigate(['/vendas/endereco'])    
+    this.router.navigate(['/vendas/endereco'])
   }
-  
+
   irParaPagamento() {
     this.etapaEndereco = false;
     this.enderecoConcluido = true;

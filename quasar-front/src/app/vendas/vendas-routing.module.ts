@@ -10,7 +10,7 @@ const routes: Routes = [
   {
     path: "",
     pathMatch: "full",
-    redirectTo: "dados"
+    redirectTo: "endereco"
   },
   {
     path: "dados",
@@ -19,7 +19,6 @@ const routes: Routes = [
   {
     path: "endereco",
     component: VendasEnderecoComponent,
-    canActivate: [EtapasGuard]
   },
   {
     path: "pagamento",
