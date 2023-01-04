@@ -89,4 +89,19 @@
       ></app-produto-card>
     </div>
   </div>
+  <div class="d-flex justify-content-center my-4">
+    <pagination
+      [boundaryLinks]="true"
+      [totalItems]="produtos.quantidade"
+      [itemsPerPage]="request.quantidade"
+      [rotate]="true"
+      [maxSize]="5"
+      previousText="&lsaquo;"
+      nextText="&rsaquo;"
+      firstText="&laquo;"
+      lastText="&raquo;"
+      (numPages)="(produtos.totalPaginas)"
+      (pageChanged)="trocarPagina(produtos.pagina)"
+    ></pagination>
+  </div>
 </div>
