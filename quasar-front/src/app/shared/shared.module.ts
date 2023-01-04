@@ -15,7 +15,6 @@ import { IconeCoracaoComponent } from './components/icone-coracao/icone-coracao.
 import { LoadingSpinnerComponent } from './components/loading-spinner/loading-spinner.component';
 import { MenuLateralComponent } from './components/menu-lateral/menu-lateral.component';
 import { ProdutoCardComponent } from './components/produto-card/produto-card.component';
-import { BotaoAdicionarCarrinhoComponent } from './components/botao-adicionar-carrinho/botao-adicionar-carrinho.component';
 
 
 @NgModule({
