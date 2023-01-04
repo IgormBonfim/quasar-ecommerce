@@ -1,3 +1,4 @@
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
@@ -15,7 +16,6 @@ import { IconeCoracaoComponent } from './components/icone-coracao/icone-coracao.
 import { LoadingSpinnerComponent } from './components/loading-spinner/loading-spinner.component';
 import { MenuLateralComponent } from './components/menu-lateral/menu-lateral.component';
 import { ProdutoCardComponent } from './components/produto-card/produto-card.component';
-
 
 @NgModule({
   declarations: [
@@ -35,7 +35,8 @@ import { ProdutoCardComponent } from './components/produto-card/produto-card.com
     FontAwesomeModule,
     HttpClientModule,
     SidebarModule,
-    CarouselModule
+    CarouselModule,
+    BsDropdownModule,
   ],
   exports: [
     HeaderComponent,
@@ -44,7 +45,7 @@ import { ProdutoCardComponent } from './components/produto-card/produto-card.com
     IconeCoracaoComponent,
     LoadingSpinnerComponent,
     MenuLateralComponent,
-    CarroselDeProdutoComponent
+    CarroselDeProdutoComponent,
   ],
 })
 export class SharedModule {}
