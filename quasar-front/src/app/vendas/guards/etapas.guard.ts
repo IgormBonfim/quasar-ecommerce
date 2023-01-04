@@ -13,17 +13,11 @@ export class EtapasGuard implements CanActivate {
     private router: Router
     ) {}
 
-  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {    
+  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
     const rota = this.router.url;
-    
-    if (rota == "/vendas/dados") {
-      if(this.etapasService.dadosConcluido){
-        return true;
-      }
-    }
 
     if (rota == "/vendas/endereco") {
-      if(this.etapasService.enderecoConcluido){
+      if(this.etapasService.dadosConcluido){
         return true;
       }
     }
