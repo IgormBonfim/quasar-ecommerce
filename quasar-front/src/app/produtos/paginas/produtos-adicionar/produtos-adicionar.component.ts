@@ -34,13 +34,13 @@ export class ProdutosAdicionarComponent implements OnInit {
     this.listarFornecedores();
     this.listarCategorias();
     this.produtoForm = this.formBuilder.group({
-      nome: ['', [Validators.required]],
-      descricao: ['', [Validators.required]],
+      nome: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(100)]],
+      descricao: ['', [Validators.required, Validators.minLength(20), Validators.maxLength(255)]],
       imagem: ['', [Validators.required]],
-      posicao: ['', [Validators.required]],
-      cor: ['', [Validators.required]],
-      ano: ['', [Validators.required]],
-      modelo: ['', [Validators.required]],
+      posicao: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(50)]],
+      cor: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(20)]],
+      ano: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(100)]],
+      modelo: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(45)]],
       quantidade: [0, [Validators.required]],
       valor: [0, [Validators.required]],
       categoria: [0, [Validators.required]],
@@ -50,7 +50,7 @@ export class ProdutosAdicionarComponent implements OnInit {
 
   listarFornecedores() {
     let params = new PaginacaoRequest({
-      quantidade: 2
+      quantidade: 999
     })
 
     this.fornecedoresService.listarFornecedores(params).subscribe({
