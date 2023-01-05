@@ -1,9 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 import { PaginacaoRequest } from '../../models/requests/paginacao.request';
-import { PaginacaoResponse } from './../../models/responses/paginacao.response';
 import { ProdutoResponse } from './../../models/responses/produto.response';
-import { ProdutosService } from './../../services/produtos.service';
 
 @Component({
   selector: 'app-carrosel-de-produto',
@@ -15,6 +13,8 @@ export class CarroselDeProdutoComponent implements OnInit {
   request = new PaginacaoRequest({
     quantidade: 10
   });
+
+  @Input()
   produtos!: ProdutoResponse[];
 
   responsiveOptions = [
@@ -36,14 +36,9 @@ export class CarroselDeProdutoComponent implements OnInit {
     }
 ];
 
-  constructor(private readonly produtosService: ProdutosService) { }
+  constructor() { }
 
   ngOnInit(): void {
-    this.produtosService.listarProdutos(this.request).subscribe({
-      next: (res: PaginacaoResponse<ProdutoResponse>) => {
-        this.produtos = res.lista.reverse();
-      }
-    })
   }
 
 }
