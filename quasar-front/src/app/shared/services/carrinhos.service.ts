@@ -21,7 +21,7 @@ export class CarrinhosService {
   }
 
   listar(
-    params: PaginacaoRequest
+    params: PaginacaoRequest<CarrinhoResponse>
   ): Observable<PaginacaoResponse<CarrinhoResponse>> {
     return this.httpClient.get<PaginacaoResponse<CarrinhoResponse>>(
       this.baseUrl,
