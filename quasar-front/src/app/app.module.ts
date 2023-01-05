@@ -1,3 +1,4 @@
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { registerLocaleData } from '@angular/common';
 import ptBr from '@angular/common/locales/pt';
 import { DEFAULT_CURRENCY_CODE, LOCALE_ID, NgModule } from '@angular/core';
@@ -28,6 +29,7 @@ registerLocaleData(ptBr);
     CoreModule,
     FontAwesomeModule,
     RouterModule,
+    BrowserAnimationsModule,
     PaginationModule.forRoot(),
     BsDropdownModule.forRoot(),
   ],
