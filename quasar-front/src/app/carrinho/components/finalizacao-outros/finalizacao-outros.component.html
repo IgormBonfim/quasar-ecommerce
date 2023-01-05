@@ -13,7 +13,11 @@
         Total: {{ calcularValorTotal() | currency }}
       </p>
     </div>
-    <button [routerLink]="['/vendas']" type="button" class="btn d-flex finaliza mb-n3 mt-3">
+    <button
+      [routerLink]="['/vendas']"
+      type="button"
+      class="btn d-flex finaliza mb-n3 mt-3"
+    >
       Finalizar o pedido
     </button>
   </div>
@@ -28,9 +32,7 @@
           class="form-control mt-2 estilo w-75"
           placeholder="CEP"
         />
-        <button type="button" class="btn buscar mt-2 ml-2 mb-n3">
-          Buscar
-        </button>
+        <button type="button" class="btn buscar mt-2 ml-2 mb-n3">Buscar</button>
       </div>
     </form>
     <h5 class="localiza">Não sei o meu CEP</h5>
@@ -73,7 +75,11 @@
               {{ produto.nome }}
             </p>
             <p class="outros-preco">{{ produto.valor | currency }}</p>
-            <button type="button" class="btn outros-comprar mt-4">
+            <button
+              (click)="colocarCarrinho(produto.codigo)"
+              type="button"
+              class="btn outros-comprar mt-4"
+            >
               <img
                 class="adicionar-carrinho img-fluid mx-1"
                 src="assets/icone-adicionar-carrinho.svg"

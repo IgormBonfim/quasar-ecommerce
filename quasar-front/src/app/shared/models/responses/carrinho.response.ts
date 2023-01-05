@@ -1,7 +1,7 @@
 import { ProdutoResponse } from './produto.response';
 
 export class CarrinhoResponse {
-  codigo! : number;
-  quantidade!: number;
-  produto!: ProdutoResponse
+  public codigo!: number;
+  public quantidade!: number;
+  public produto!: ProdutoResponse;
 }

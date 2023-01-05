@@ -11,6 +11,6 @@
         (lixo)="recuperarCarrinhos()"
       ></app-box-carrinho-selecionados>
     </div>
-    <app-finalizacao-outros [carrinhos]="produtosCarrinho.lista" [produtosRelacionados]="produtosRelacionados"></app-finalizacao-outros>
+    <app-finalizacao-outros (produtoAdicionado)="recuperarCarrinhos()" [carrinhos]="produtosCarrinho.lista" [produtosRelacionados]="produtosRelacionados"></app-finalizacao-outros>
   </div>
 </div>
