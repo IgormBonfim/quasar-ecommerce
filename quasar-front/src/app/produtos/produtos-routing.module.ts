@@ -1,10 +1,19 @@
-import { ProdutosDetalhesComponent } from './paginas/produtos-detalhes/produtos-detalhes.component';
+import { ProdutosListagemComponent } from './paginas/produtos-listagem/produtos-listagem.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
-  { path: "", component: ProdutosDetalhesComponent},
-  { path: ":codigo", component: ProdutosDetalhesComponent}
+  {
+    path: "",
+    pathMatch: 'full',
+    component: ProdutosListagemComponent,
+  },
+  {
+    path: ":codigo",
+    component: ProdutosDetalhesComponent
+  },
+
+
 ];
 
 @NgModule({

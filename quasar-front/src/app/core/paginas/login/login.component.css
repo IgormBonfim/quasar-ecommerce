@@ -1,0 +1,15 @@
+.logo-icon-login {
+    font-size: 50px;
+    color: var(--cor-primaria) 
+}
+.iniciar-sessao, .login, .senha {
+    color: #000954;
+}
+.iniciar-sessao {
+    font-size: 2rem;
+}
+
+.alerta {
+    font-size: 12px;
+    padding: 2px    ;
+}
