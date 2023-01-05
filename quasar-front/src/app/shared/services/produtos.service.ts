@@ -15,7 +15,7 @@ export class ProdutosService {
   constructor(private readonly httpService: HttpClient) {}
 
   listarProdutos(
-    params: PaginacaoRequest
+    params: PaginacaoRequest<ProdutoResponse>
   ): Observable<PaginacaoResponse<ProdutoResponse>> {
     return this.httpService.get<PaginacaoResponse<ProdutoResponse>>(
       this.baseUrl,

@@ -1,3 +1,4 @@
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { registerLocaleData } from '@angular/common';
 import ptBr from '@angular/common/locales/pt';
 import { DEFAULT_CURRENCY_CODE, LOCALE_ID, NgModule } from '@angular/core';
@@ -12,7 +13,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { RouterModule } from '@angular/router';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './shared/interceptors/auth';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { PaginationModule } from 'ngx-bootstrap/pagination';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 
 registerLocaleData(ptBr);
 
@@ -28,6 +30,8 @@ registerLocaleData(ptBr);
     FontAwesomeModule,
     RouterModule,
     BrowserAnimationsModule,
+    PaginationModule.forRoot(),
+    BsDropdownModule.forRoot(),
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'pt' },
