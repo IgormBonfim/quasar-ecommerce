@@ -1,3 +1,5 @@
+import { VendasPagamentoPixComponent } from './components/vendas-pagamento-pix/vendas-pagamento-pix.component';
+import { VendasPagamentoBoletoComponent } from './components/vendas-pagamento-boleto/vendas-pagamento-boleto.component';
 import { VendasPagamentoComponent } from './components/vendas-pagamento/vendas-pagamento.component';
 import { VendasEnderecoComponent } from './components/vendas-endereco/vendas-endereco.component';
 import { VendasEtapasComponent } from './components/vendas-etapas/vendas-etapas.component';
