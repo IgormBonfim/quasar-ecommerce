@@ -1,0 +1,30 @@
+.icone-cinza
+{
+  color: #BFBBBB;
+}
+
+
+.icones
+{
+  display: flex;
+  justify-content: center;
+  margin-top: 5%;
+}
+.between
+{
+ margin-left: 10%;
+ margin-right: 10%;
+}
+/* .icon
+{
+  margin-left: 10%;
+} */
+.icone-concluido
+{
+  color: #05FE00;
+}
+
+.icone-ativo
+{
+  color: #000A61;
+}
