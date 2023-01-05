@@ -1,14 +1,6 @@
-.principal {
-  margin-top: 5rem;
-  display: flex;
-  justify-content: space-evenly;
-}
 
-.produto-card {
-  min-height: 415px;
-  min-width: 415px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-}
+
+
 
 .fundo-imagem {
   width: 415px;
@@ -21,13 +13,6 @@
   width: 350px;
 }
 
-
-.produto-info__titulo {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-}
-
 .produto-info__titulo__nome {
   font-size: 2rem;
 }
@@ -36,17 +21,18 @@
   border-bottom: 1px solid var(--cor-primaria);
 }
 
-.produto-info__titulo__coracao {
-  width: 35px;
-  height: 35px;
-}
-
-.produto-info__estoque {
-  padding-top: 15px;
-}
-
 .produto-info__estoque h2 {
   font-size: 1.5rem;
+}
+
+.icone-pagamento {
+  color: #109E27;
+  font-size: 35px;
+}
+
+.icone-cartao {
+  color: var(--cor-primaria);
+  font-size: 30px;
 }
 
 .produtos-info__pagamento {
@@ -91,4 +77,9 @@
 .produtos-info__quantidade__numero {
   border-left: 1px solid;
   border-right: 1px solid;
+}
+
+.icone-titulo {
+  font-size: 35px;
+  color: var(--cor-primaria);
 }

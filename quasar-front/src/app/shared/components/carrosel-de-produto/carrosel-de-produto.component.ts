@@ -15,7 +15,7 @@ export class CarroselDeProdutoComponent implements OnInit {
   request = new PaginacaoRequest({
     quantidade: 10
   });
-  produtos!: PaginacaoResponse<ProdutoResponse>;
+  produtos!: ProdutoResponse[];
 
   responsiveOptions = [
 
@@ -41,7 +41,7 @@ export class CarroselDeProdutoComponent implements OnInit {
   ngOnInit(): void {
     this.produtosService.listarProdutos(this.request).subscribe({
       next: (res: PaginacaoResponse<ProdutoResponse>) => {
-        this.produtos = res;
+        this.produtos = res.lista.reverse();
       }
     })
   }

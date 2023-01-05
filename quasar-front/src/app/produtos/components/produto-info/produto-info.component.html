@@ -8,21 +8,24 @@
     </div>
     <div class="col-md-7 my-4">
       <div class="produto-info">
-        <div class="produto-info__titulo borda-inferior">
+        <div class="d-flex borda-inferior justify-content-between">
           <h1 class="produto-info__titulo__nome"> {{ produtoDetalhe.nome }} </h1>
-          <img class="produto-info__titulo__coracao" src="assets/icone-coracao-azul.png" alt="">
+          <div>
+            <fa-icon class="px-2 icone-titulo" [icon]="iconeCoracao"></fa-icon>
+            <fa-icon class="px-2 icone-titulo" [icon]="iconeShare"></fa-icon>
+          </div>
         </div>
         <div class="produto-info__estoque borda-inferior">
-          <h2 *ngIf="produtoDisponivel">Produto : Disponível</h2>
-          <h2 *ngIf="!produtoDisponivel">Produto : Indisponível</h2>
+          <h2 class="py-2" *ngIf="produtoDisponivel">Produto : Disponível</h2>
+          <h2 class="py-2" *ngIf="!produtoDisponivel">Produto : Indisponível</h2>
         </div>
         <div class="produtos-info__pagamento mt-3">
           <div class="produtos-info__pagamentos produtos-info__pagamentos__total">
-            <img class="produtos-info__pagamentos-icone" src="assets/icone-dinheiro.png" alt="">
+            <fa-icon class="px-2 icone-pagamento" [icon]="iconeDinheiro"></fa-icon>
             <span class="produtos-info__pagamentos-valor"> {{ produtoDetalhe.valor | currency }} </span>
           </div>
           <div class="produtos-info__pagamentos produtos-info__pagamentos__cartao">
-            <img class="produtos-info__pagamentos-icone" src="assets/icone-cartao.png" alt="">
+            <fa-icon class="px-2 icone-cartao" [icon]="iconeCartao"></fa-icon>
             <span class="produtos-info__pagamentos-valor"> 10x de {{ produtoDetalhe.valor/10 | currency }} </span>
           </div>
         </div>
