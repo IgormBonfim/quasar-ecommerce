@@ -1,5 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { faSlidersH } from '@fortawesome/free-solid-svg-icons';
+import { PageChangedEvent } from 'ngx-bootstrap/pagination';
 import { PaginacaoRequest } from 'src/app/shared/models/requests/paginacao.request';
 import { PaginacaoResponse } from 'src/app/shared/models/responses/paginacao.response';
 import { ProdutosService } from 'src/app/shared/services/produtos.service';
@@ -27,12 +28,14 @@ export class ProdutosListagemComponent implements OnInit {
   recuperarProdutos() {
     this.produtosService.listarProdutos(this.request).subscribe((produtos) => {
       this.produtos = produtos;
+      console.log({ produtos });
     });
+    console.log(this.produtos.lista);
   }
 
-  trocarPagina(pagina: number) {
-    this.request.pagina = pagina;
-    this.recuperarProdutos;
+  trocarPagina(pagina: PageChangedEvent) {
+    this.request.pagina = pagina.page;
+    this.recuperarProdutos();
   }
 
   trocarQuantidade(quantidade: number) {
