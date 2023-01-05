@@ -22,6 +22,7 @@ export class ProdutosListagemComponent implements OnInit {
   ngOnInit(): void {
     this.recuperarProdutos();
   }
+  
   recuperarProdutos() {
     this.produtosService.listarProdutos(this.request).subscribe((produtos) => {
       this.produtos = produtos;
