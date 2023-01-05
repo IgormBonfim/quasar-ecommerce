@@ -1,10 +1,9 @@
 import { PaginacaoRequest } from './paginacao.request';
 
-export class ProdutoBuscarRequest extends PaginacaoRequest {
-
-  codigo: ( number | string ) ;
+export class ProdutoBuscarRequest extends PaginacaoRequest<ProdutoBuscarRequest> {
+  codigo: number | string;
   nome: string;
-  codCategoria: ( number | string );
+  codCategoria: number | string;
 
   constructor(params: Partial<ProdutoBuscarRequest>) {
     super(params);
