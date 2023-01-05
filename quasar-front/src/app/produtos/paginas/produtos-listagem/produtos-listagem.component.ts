@@ -17,8 +17,6 @@ export class ProdutosListagemComponent implements OnInit {
   public request = new PaginacaoRequest({});
   public produtos!: PaginacaoResponse<ProdutoResponse>;
 
-  produtoCard = new ProdutoResponse();
-
   constructor(private readonly produtosService: ProdutosService) {}
 
   ngOnInit(): void {
