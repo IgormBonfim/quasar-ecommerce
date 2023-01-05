@@ -1,63 +1,116 @@
 <main class="container">
 
-  <form class="row tela form-group d-flex">
+  <div class="row tela form-group d-flex">
 
     <div class="col-md-8">
 
       <div class="col-md-12">
         <div class="box mb-4 linha1">
-          <div>
-            <p>pagamento</p>
+
+          <div class="header px-4 d-flex inline-flex">
+            <fa-icon [icon]="cartao" class="fa-2x icon"></fa-icon>
+            <p class="pagamento h4 m-0">PAGAMENTO</p>
           </div>
 
-          <div class="p-4 w-100">
-            <div class="w-100">
-              <label>label</label>
-              <input type="text">
+          <div class="row">
+
+            <div class="col-md-6">
+                <div class="p-4 w-100">
+                  <p class="text">Selecione sua forma de pagamento:</p>
+                  <div class="d-flex flex-column">
+                    <button (click)="trocarParaCartao()" class="botao w-100 py-3">Cartão de Crédito</button>
+                    <button (click)="trocarParaBoleto()" class="botao w-100 py-3">Boleto</button>
+                    <button (click)="trocarParaPix()" class="botao w-100 py-3">Pix</button>
+                  </div>
+                </div>
             </div>
+
+            <div class="col-md-6">
+              <app-vendas-pagamento-cartao *ngIf="pagamentoCartao"></app-vendas-pagamento-cartao>
+              <app-vendas-pagamento-boleto *ngIf="pagamentoBoleto"></app-vendas-pagamento-boleto>
+              <app-vendas-pagamento-pix *ngIf="pagamentoPix"></app-vendas-pagamento-pix>
+            </div>
+
           </div>
 
         </div>
-
       </div>
 
       <div class="row">
         <div class="col-md-6">
-          <div class="minibox1 mb-4 p-4">
-            <div class="w-100">
-              <label>label</label>
-              <input type="text">
+          <div class="minibox1">
+
+            <div class="header px-4 d-flex inline-flex">
+              <fa-icon [icon]="usuario" class="fa-2x icon"></fa-icon>
+              <p class="pagamento h4 m-0">DADOS PESSOAIS</p>
             </div>
+
+            <div class="w-100 my-3 mx-4">
+              <p class="my-2 h5">Nome: {{"Nome.seila"}}</p>
+              <p class="my-2 h5">Telefone: {{"Telefone.seila"}}</p>
+              <p class="my-2 h5">Email: {{"Email.seila"}}</p>
+            </div>
+
           </div>
         </div>
 
         <div class="col-md-6">
-          <div class="minibox2 mb-4 p-4">
-            <div class="w-100">
-              <label>label</label>
-              <input type="text">
+          <div class="minibox2">
+
+            <div class="header px-4 d-flex inline-flex">
+              <fa-icon [icon]="casa" class="fa-2x icon"></fa-icon>
+              <p class="pagamento h4 m-0">ENTREGA</p>
             </div>
+
+            <div class="w-100 my-3 mx-4">
+              <p class="my-2 h5">Rua: {{"Rua.seila"}}</p>
+              <p class="my-2 h5">N°: {{"Numero.seila"}}</p>
+              <p class="my-2 h5">Bairro: {{"Bairro.seila"}}</p>
+              <p class="my-2 h5">Cidade: {{"Cidade.seila"}}</p>
+            </div>
+
           </div>
         </div>
+
       </div>
     </div>
 
     <div class="col-md-4">
       <div class="col-md-12">
-        <div class="box mb-4 p-4 linha">
-          <div class="w-100">
-            <label>label</label>
-            <input type="text">
+        <div class="box linha2">
+
+          <div class="header1">
+            <p class="pagamento h4 m-0">RESUMO</p>
           </div>
+
+          <div class="w-100">
+            <div class="d-flex inline-flex">
+              <fa-icon [icon]="bag" class="fa-2x icon mx-2"></fa-icon>
+              <p class="texto-produtos">PRODUTOS</p>
+            </div>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <div class="b d-flex inline-flex">
+              <p class="textofinal">SUBTOTAL:</p>
+              <p class="margin1">R$: uns valor</p>
+            </div>
+            <div class="b d-flex inline-flex">
+              <p class="textofinal">FRETE:</p>
+              <p class="margin">Grátis</p>
+            </div>
+            <div class="b d-flex inline-flex">
+              <p class="textofinal">TOTAL:</p>
+              <p class="margin">R$: uns valor</p>
+            </div>
+          </div>
+
         </div>
       </div>
     </div>
 
-
-
-
-
-
-  </form>
+  </div>
 
 </main>
