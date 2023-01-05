@@ -7,11 +7,13 @@ using NHibernate;
 using Quasar.Aplicacao.Enderecos.Servicos.Interfaces;
 using Quasar.DataTransfer.Enderecos.Requests;
 using Quasar.DataTransfer.Enderecos.Responses;
+using Quasar.DataTransfer.Genericos.Responses;
 using Quasar.Dominio.Categorias.Repositorios;
 using Quasar.Dominio.Enderecos.Entidades;
 using Quasar.Dominio.Enderecos.Repositorios;
 using Quasar.Dominio.Enderecos.Servicos;
 using Quasar.Dominio.Enderecos.Servicos.Interfaces;
+using Quasar.Dominio.Genericos.Entidades;
 
 namespace Quasar.Aplicacao.Enderecos.Servicos
 {
@@ -22,7 +24,7 @@ namespace Quasar.Aplicacao.Enderecos.Servicos
         private readonly IEnderecosRepositorio enderecosRepositorio;
         private readonly IMapper mapper;
 
-        public EnderecosAppServico(ISession session, IEnderecosServico enderecosServico, IEnderecosRepositorio enderecosRepopsitorio, IMapper mapper)
+        public EnderecosAppServico(ISession session, IEnderecosServico enderecosServico, IEnderecosRepositorio enderecosRepositorio, IMapper mapper)
         {
             this.session = session;
             this.enderecosServico = enderecosServico;
@@ -103,5 +105,23 @@ namespace Quasar.Aplicacao.Enderecos.Servicos
             }
         }
 
+        public ListaPaginadaResponse<EnderecoResponse> Listar(EnderecoListarRequest listarRequest)
+        {
+          try
+          {  
+            IQueryable<Endereco> query = enderecosRepositorio.Query();
+
+            if (listarRequest.CodUsuario != null)
+                {
+                    query = query.Where(f => f.Usuario.Id == listarRequest.CodUsuario);
+                }
+            ListaPaginada<Endereco> listaEndereco = enderecosRepositorio.Listar(query, listarRequest.Quantidade, listarRequest.Pagina);
+            return mapper.Map<ListaPaginadaResponse<EnderecoResponse>>(listaEndereco);
+          }
+          catch
+          {
+            throw;
+          }
+        }
     }
 }

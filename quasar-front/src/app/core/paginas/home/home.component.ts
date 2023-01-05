@@ -1,5 +1,6 @@
+import { CategoriaResponse } from './../../../shared/models/responses/categoria.response';
+import { CategoriasService } from './../../../shared/services/categorias.service';
 import { Component, OnInit } from '@angular/core';
-import { faCoffee } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-home',
@@ -7,11 +8,17 @@ import { faCoffee } from '@fortawesome/free-solid-svg-icons';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  public faCoffee = faCoffee;
+  public categorias!: any;
 
-  constructor() { }
+  constructor(private categoriasService: CategoriasService) { }
 
   ngOnInit(): void {
+    this.categoriasService.listarCategorias().subscribe(
+      (res: CategoriaResponse[]) => {
+        this.categorias = res;
+        console.log(this.categorias);
+      }
+    )
   }
 
 }
