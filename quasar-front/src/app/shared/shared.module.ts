@@ -1,3 +1,4 @@
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
@@ -44,7 +45,8 @@ import { InputQuantidadeComponent } from './components/input-quantidade/input-qu
     InputNumberModule,
     SidebarModule,
     CarouselModule,
-    HttpClientModule
+    BsDropdownModule,
+    HttpClientModule,
   ],
   exports: [
     HeaderComponent,
@@ -55,7 +57,7 @@ import { InputQuantidadeComponent } from './components/input-quantidade/input-qu
     IconeCoracaoComponent,
     LoadingSpinnerComponent,
     MenuLateralComponent,
-    CarroselDeProdutoComponent
+    CarroselDeProdutoComponent,
   ],
 })
 export class SharedModule {}
