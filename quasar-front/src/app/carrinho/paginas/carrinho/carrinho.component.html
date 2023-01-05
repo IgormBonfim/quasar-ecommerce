@@ -1,7 +1,7 @@
 <div class="background mb-5">
-  <div class="container-fluid p-0 mt-0 d-flex flex-column align-items-stretch">
+  <div class="container p-0 mt-0 d-flex flex-column align-items-stretch">
     <h2 class="font ml-5">Carrinho de Compras</h2>
-    <hr/>
+    <hr />
   </div>
   <div class="container-organizacao">
     <div class="justify-content-around">
@@ -11,6 +11,10 @@
         (lixo)="recuperarCarrinhos()"
       ></app-box-carrinho-selecionados>
     </div>
-    <app-finalizacao-outros (produtoAdicionado)="recuperarCarrinhos()" [carrinhos]="produtosCarrinho.lista" [produtosRelacionados]="produtosRelacionados"></app-finalizacao-outros>
+    <app-finalizacao-outros
+      (produtoAdicionado)="recuperarCarrinhos()"
+      [carrinhos]="produtosCarrinho.lista"
+      [produtosRelacionados]="produtosRelacionados"
+    ></app-finalizacao-outros>
   </div>
 </div>
