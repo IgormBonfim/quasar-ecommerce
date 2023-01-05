@@ -4,12 +4,13 @@
     <hr/>
   </div>
   <div class="container-organizacao">
-    <div class="row justify-content-around">
+    <div class="justify-content-around">
       <app-box-carrinho-selecionados
         *ngFor="let carrinho of produtosCarrinho.lista"
         [carrinho]="carrinho"
+        (lixo)="recuperarCarrinhos()"
       ></app-box-carrinho-selecionados>
     </div>
-    <app-finalizacao-outros [carrinhos]="produtosCarrinho.lista"></app-finalizacao-outros>
+    <app-finalizacao-outros [carrinhos]="produtosCarrinho.lista" [produtosRelacionados]="produtosRelacionados"></app-finalizacao-outros>
   </div>
 </div>

@@ -2,11 +2,18 @@
   <div class="container-fluid flex-column card-finalizacao d-flex">
     <div class="d-flex regula mt-n3">
       <p class="fonte-comprar">Total de Produtos:</p>
-      <p style="font-size: 14px" class="fonte-comprar mt-3">R$ XXX.XX</p>
-      <p style="font-size: 14px" class="fonte-comprar mt-3">R$ XX.XX</p>
-      <p style="font-size: 14px" class="fonte-comprar mt-3">R$ XXX.XX</p>
+      <p
+        style="font-size: 14px"
+        class="fonte-comprar mt-3"
+        *ngFor="let carrinho of carrinhos"
+      >
+        {{ carrinho.produto.valor * carrinho.quantidade | currency }}
+      </p>
+      <p class="fonte-total" class="fonte-comprar mt-3">
+        Total: {{ calcularValorTotal() | currency }}
+      </p>
     </div>
-    <button type="button" class="btn btn-primary d-flex finaliza mb-n3 mt-3">
+    <button [routerLink]="['/vendas']" type="button" class="btn d-flex finaliza mb-n3 mt-3">
       Finalizar o pedido
     </button>
   </div>
@@ -21,7 +28,7 @@
           class="form-control mt-2 estilo w-75"
           placeholder="CEP"
         />
-        <button type="button" class="btn btn-primary buscar mt-2 ml-2 mb-n3">
+        <button type="button" class="btn buscar mt-2 ml-2 mb-n3">
           Buscar
         </button>
       </div>
@@ -48,22 +55,25 @@
 <div class="container ml-2 mt-5 p-0 m-0">
   <div class="card-outros container-fluid mt-5 d-flex">
     <div class="d-flex flex-column mt-n3">
-      <h1 class="fonte-outros mb-4">Outros produtos:</h1>
-      <div class="card d-flex flex-column mt-3">
+      <h1 class="fonte-outros mb-4">Produtos similares:</h1>
+      <div
+        class="card d-flex flex-column mt-3"
+        *ngFor="let produto of produtosRelacionados"
+      >
         <div class="card-horizontal">
           <div class="">
             <img
               class="outros-imagens"
-              src="../../../../assets/0_i1v1In2Tn4Stnwnl.jpg"
+              src="{{ produto.imagem }}"
               alt="Card image cap"
             />
           </div>
           <div class="card-body outros-card p-3">
             <p class="card-title text-break titulo-outros mt-n3">
-              Parabrisa Vw Gol 95/14 Parati Saveiro Fanavid
+              {{ produto.nome }}
             </p>
-            <p class="outros-preco">R$ XXXXXX.XX</p>
-            <button type="button" class="btn btn-primary outros-comprar mt-4">
+            <p class="outros-preco">{{ produto.valor | currency }}</p>
+            <button type="button" class="btn outros-comprar mt-4">
               <img
                 class="adicionar-carrinho img-fluid mx-1"
                 src="assets/icone-adicionar-carrinho.svg"
@@ -78,3 +88,5 @@
           </div> -->
       </div>
     </div>
+  </div>
+</div>

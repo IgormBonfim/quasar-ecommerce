@@ -1,10 +1,11 @@
-import { PaginacaoResponse } from 'src/app/shared/models/responses/paginacao.response';
-import { environment } from './../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { PaginacaoResponse } from 'src/app/shared/models/responses/paginacao.response';
 import { ProdutoResponse } from 'src/app/shared/models/responses/produto.response';
-import { PaginacaoRequest } from 'src/app/shared/models/requests/paginacao.request';
+
+import { environment } from './../../../environments/environment';
+import { ProdutoBuscarRequest } from './../models/requests/produtoBuscar.request';
 
 @Injectable({
   providedIn: 'root',
@@ -15,19 +16,13 @@ export class ProdutosService {
   constructor(private readonly httpService: HttpClient) {}
 
   listarProdutos(
-    params: PaginacaoRequest
+    params: ProdutoBuscarRequest
   ): Observable<PaginacaoResponse<ProdutoResponse>> {
     return this.httpService.get<PaginacaoResponse<ProdutoResponse>>(
       this.baseUrl,
       {
         params: params as any,
       }
-    );
-  }
-
-  recuperar(CodigoProduto: number): Observable<ProdutoResponse> {
-    return this.httpService.get<ProdutoResponse>(
-      `${this.baseUrl}/${CodigoProduto}`
     );
   }
 }

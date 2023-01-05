@@ -1,6 +1,7 @@
 import { CarrinhoResponse } from './../../../shared/models/responses/carrinho.response';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
+import { CarrinhosService } from 'src/app/shared/services/carrinhos.service';
 
 @Component({
   selector: 'app-box-carrinho-selecionados',
@@ -16,9 +17,24 @@ export class BoxCarrinhoSelecionadosComponent implements OnInit {
   @Input()
   carrinho!: CarrinhoResponse;
 
-  constructor() { }
+  @Output()
+  lixo = new EventEmitter<boolean>();
+
+  constructor(
+    private carrinhosService: CarrinhosService
+  ) { }
 
   ngOnInit(): void {
   }
 
+  removerProdutoCarrinho(codigo: number) {
+    console.log(codigo);
+    this.carrinhosService
+    .remover(codigo)
+    .subscribe({
+      next: () => {
+        this.lixo.emit(true)
+      }
+    })
+  }
 }
