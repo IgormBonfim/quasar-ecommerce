@@ -16,6 +16,7 @@ import { LoadingSpinnerComponent } from './components/loading-spinner/loading-sp
 import { MenuLateralComponent } from './components/menu-lateral/menu-lateral.component';
 import { ProdutoCardComponent } from './components/produto-card/produto-card.component';
 import { CategoriaComponent } from './components/categoria/categoria.component';
+import { TituloComponent } from './components/titulo/titulo.component';
 
 
 
@@ -30,6 +31,7 @@ import { CategoriaComponent } from './components/categoria/categoria.component';
     MenuLateralComponent,
     CarroselDeProdutoComponent,
     CategoriaComponent,
+    TituloComponent,
   ],
   imports: [
     CommonModule,
@@ -49,7 +51,8 @@ import { CategoriaComponent } from './components/categoria/categoria.component';
     IconeCoracaoComponent,
     LoadingSpinnerComponent,
     MenuLateralComponent,
-    CarroselDeProdutoComponent
+    CarroselDeProdutoComponent,
+    TituloComponent
   ],
 })
 export class SharedModule {}
