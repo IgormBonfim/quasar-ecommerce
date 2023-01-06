@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { CidadeListarRequests } from '../models/requests/cidadeListar.request';
 import { CidadesResponse } from '../models/responses/cidades.response';
+import { PaginacaoResponse } from '../models/responses/paginacao.response';
 import { UfResponse } from '../models/responses/uf.response';
 
 @Injectable({
@@ -17,14 +18,12 @@ export class CidadesService {
     private router: Router
     ) { }
 
-    adicionarEndereco(params: CidadeListarRequests){
-      return this.httpClient.post(this.baseUrl, params);
-    }
+ 
 
   listarCidades (
     params: CidadeListarRequests
-  ): Observable<CidadesResponse> {
-    return this.httpClient.get<CidadesResponse>(
+  ): Observable<PaginacaoResponse<CidadesResponse>> {
+    return this.httpClient.get<PaginacaoResponse<CidadesResponse>>(
       this.baseUrl,
       {
           params: params as any,

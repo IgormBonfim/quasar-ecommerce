@@ -10,6 +10,7 @@ import { VendasIconesComponent } from './components/vendas-icones/vendas-icones.
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { SharedModule } from '../shared/shared.module';
 import { DropdownModule } from 'primeng/dropdown';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -26,7 +27,9 @@ import { DropdownModule } from 'primeng/dropdown';
     VendasRoutingModule,
     FontAwesomeModule,
     SharedModule,
-    DropdownModule
+    DropdownModule,
+    ReactiveFormsModule,
+    FormsModule
   ]
 })
 export class VendasModule { }
