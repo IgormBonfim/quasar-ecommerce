@@ -41,7 +41,7 @@ export class HomeComponent implements OnInit {
     this.produtosService.listarProdutos(request).subscribe({
       next: (res: PaginacaoResponse<ProdutoResponse>) => {
         this.nossosProdutos = res.lista;
-        this.outrosProdutos = res.lista;
+        this.outrosProdutos = res.lista.slice().reverse();
       }
     })
   }
