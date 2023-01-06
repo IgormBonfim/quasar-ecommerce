@@ -1,0 +1,28 @@
+<div class="container ml-2">
+  <div class="card-carrinho mt-5 d-flex">
+    <div class="card-menor-carrinho">
+      <img
+        class="img-fluid rounded"
+        [src]="carrinho.produto.imagem"
+        alt="Imagem do produto"
+      />
+    </div>
+    <div class="container-fluid flex-column ml-4">
+      <p class="fonte-produto my-2">{{ carrinho.produto.nome }}</p>
+      <p *ngIf="!disponivel" class="fonte-diponibilidade text-danger my-2">Produto: Indisponível</p>
+      <p *ngIf="disponivel" class="fonte-diponibilidade my-2 text-success">Produto: Diponível</p>
+      <p class="fonte-preco my-2">{{ carrinho.produto.valor | currency }}</p>
+
+      <div class="mt-3 fas fa-code fa-2x d-flex align-items-center">
+        <app-input-quantidade></app-input-quantidade>
+        <fa-icon
+          (click)="removerProdutoCarrinho(carrinho.codigo)"
+          class="ml-3 icone-lixo"
+          [icon]="iconeLixo"
+        ></fa-icon>
+        <i class="fas fa-fw fa-file-code"></i><br />
+        <i class="fas fa-fw fa-sitemap"></i>
+      </div>
+    </div>
+  </div>
+</div>

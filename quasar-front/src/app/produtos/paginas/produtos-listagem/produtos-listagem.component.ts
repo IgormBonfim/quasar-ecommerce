@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { ProdutoBuscarRequest } from './../../../shared/models/requests/produtoBuscar.request';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { faSlidersH } from '@fortawesome/free-solid-svg-icons';
+import { PageChangedEvent } from 'ngx-bootstrap/pagination';
 import { PaginacaoRequest } from 'src/app/shared/models/requests/paginacao.request';
 import { PaginacaoResponse } from 'src/app/shared/models/responses/paginacao.response';
 import { ProdutosService } from 'src/app/shared/services/produtos.service';
@@ -14,7 +16,7 @@ import { ProdutoResponse } from './../../../shared/models/responses/produto.resp
 export class ProdutosListagemComponent implements OnInit {
   public filtro = faSlidersH;
 
-  public request = new PaginacaoRequest({});
+  public request = new ProdutoBuscarRequest({});
   public produtos!: PaginacaoResponse<ProdutoResponse>;
 
   produtoCard = new ProdutoResponse();
@@ -27,11 +29,13 @@ export class ProdutosListagemComponent implements OnInit {
   recuperarProdutos() {
     this.produtosService.listarProdutos(this.request).subscribe((produtos) => {
       this.produtos = produtos;
+      console.log({ produtos });
     });
+    console.log(this.produtos.lista);
   }
 
-  trocarPagina(pagina: number) {
-    this.request.pagina = pagina;
+  trocarPagina(pagina: PageChangedEvent) {
+    this.request.pagina = pagina.page;
     this.recuperarProdutos();
   }
 

@@ -1,0 +1,13 @@
+.carousel-banner
+{
+  border-radius: 67px;
+  max-height: 340px;
+  margin-top: 60px;
+}
+.carousel
+{
+  border-radius: 67px;
+  max-height: 340px;
+  object-fit: cover;
+}
+

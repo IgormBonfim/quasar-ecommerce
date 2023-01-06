@@ -1,3 +1,4 @@
+import { ProdutoBuscarRequest } from './../../models/requests/produtoBuscar.request';
 import { Component, OnInit } from '@angular/core';
 
 import { PaginacaoRequest } from '../../models/requests/paginacao.request';
@@ -12,7 +13,7 @@ import { ProdutosService } from './../../services/produtos.service';
 })
 export class CarroselDeProdutoComponent implements OnInit {
 
-  request = new PaginacaoRequest({
+  request = new ProdutoBuscarRequest({
     quantidade: 10
   });
   produtos!: PaginacaoResponse<ProdutoResponse>;

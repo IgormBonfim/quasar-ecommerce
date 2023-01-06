@@ -1,6 +1,6 @@
 import { PaginacaoRequest } from "./paginacao.request";
 
-export class CidadeListarRequests extends PaginacaoRequest {
+export class CidadeListarRequests extends PaginacaoRequest<CidadeListarRequests> {
     public nome: string;
     public codUf: number | string;
 
