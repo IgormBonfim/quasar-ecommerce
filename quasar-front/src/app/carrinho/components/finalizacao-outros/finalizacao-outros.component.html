@@ -1,0 +1,98 @@
+<div class="container ml-2 mt-5">
+  <div class="container-fluid flex-column card-finalizacao d-flex">
+    <div class="d-flex regula mt-n3">
+      <p class="fonte-comprar">Total de Produtos:</p>
+      <p
+        style="font-size: 14px"
+        class="fonte-comprar mt-3"
+        *ngFor="let carrinho of carrinhos"
+      >
+        {{ carrinho.produto.valor * carrinho.quantidade | currency }}
+      </p>
+      <p class="fonte-total" class="fonte-comprar mt-3">
+        Total: {{ calcularValorTotal() | currency }}
+      </p>
+    </div>
+    <button
+      [routerLink]="['/vendas']"
+      type="button"
+      class="btn d-flex finaliza mb-n3 mt-3"
+    >
+      Finalizar o pedido
+    </button>
+  </div>
+</div>
+<div class="container ml-2 mt-5">
+  <div class="card-cep d-flex container-fluid flex-column">
+    <h2 class="fonte-comprar mt-n3">Calcular prazo de entrega:</h2>
+    <form>
+      <div class="col d-flex">
+        <input
+          type="text"
+          class="form-control mt-2 estilo w-75"
+          placeholder="CEP"
+        />
+        <button type="button" class="btn buscar mt-2 ml-2 mb-n3">Buscar</button>
+      </div>
+    </form>
+    <h5 class="localiza">Não sei o meu CEP</h5>
+    <div class="form-check form-check-inline">
+      <div class="frete-gratis">
+        <div class="form-check">
+          <input
+            class="form-check-input"
+            type="radio"
+            name="inlineRadioOptions"
+            id="inlineRadio1"
+            value="option1 cheked"
+          />
+          <label class="form-check-label" for="inlineRadio1"
+            >Frete Grátis</label
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container ml-2 mt-5 p-0 m-0">
+  <div class="card-outros container-fluid mt-5 d-flex">
+    <div class="d-flex flex-column mt-n3">
+      <h1 class="fonte-outros mb-4">Produtos similares:</h1>
+      <div
+        class="card d-flex flex-column mt-3"
+        *ngFor="let produto of produtosRelacionados"
+      >
+        <div class="card-horizontal">
+          <div class="">
+            <img
+              class="outros-imagens"
+              src="{{ produto.imagem }}"
+              alt="Card image cap"
+            />
+          </div>
+          <div class="card-body outros-card p-3">
+            <p class="card-title text-break titulo-outros mt-n3">
+              {{ produto.nome }}
+            </p>
+            <p class="outros-preco">{{ produto.valor | currency }}</p>
+            <button
+              (click)="colocarCarrinho(produto.codigo)"
+              type="button"
+              class="btn outros-comprar mt-4"
+            >
+              <img
+                class="adicionar-carrinho img-fluid mx-1"
+                src="assets/icone-adicionar-carrinho.svg"
+                alt=""
+              />
+              Comprar
+            </button>
+          </div>
+        </div>
+        <!-- <div class="card-footer">
+              <small class="text-muted">Last updated 3 mins ago</small>
+          </div> -->
+      </div>
+    </div>
+  </div>
+</div>

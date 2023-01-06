@@ -5,6 +5,7 @@ import { faCartShopping } from '@fortawesome/free-solid-svg-icons';
 import { CarrinhoInserirRequest } from '../../models/requests/carrinhoInserir.request';
 import { CarrinhosService } from '../../services/carrinhos.service';
 
+
 @Component({
   selector: 'app-botao-adicionar-carrinho',
   templateUrl: './botao-adicionar-carrinho.component.html',

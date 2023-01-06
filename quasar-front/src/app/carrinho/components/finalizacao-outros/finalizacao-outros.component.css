@@ -1,0 +1,162 @@
+.card-finalizacao {
+  width: 340px;
+  height: autopx;
+  min-height: 208px;
+  box-shadow: 0 5px 5px rgb(187, 184, 184);
+  border-radius: 5px;
+  padding: 50px;
+  background-color: white;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.card-cep {
+  width: 340px;
+  height: autopx;
+  min-height: 181px;
+  box-shadow: 0 5px 5px rgb(187, 184, 184);
+  border-radius: 5px;
+  padding: 50px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.estilo {
+  border-color: #010340;
+  width: 140px;
+
+  display: flex;
+}
+
+.buscar {
+  width: 57px;
+  height: 38px;
+  display: flex;
+  align-self: flex-start;
+  justify-content: center;
+  font-size: 14px;
+  background-color: var(--cor-primaria);
+  font-weight: bold;
+  color: white;
+}
+
+.card-outros {
+  width: 340px;
+  height: autopx;
+  min-height: 300px;
+  box-shadow: 0 5px 5px rgb(187, 184, 184);
+  border-radius: 5px;
+  padding: 35px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.fonte-comprar {
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+.localiza {
+  align-self: flex-start;
+  margin-left: 15px;
+  margin-top: 1px;
+  font-size: 14px;
+  color: #010340;
+}
+
+.frete-gratis {
+  width: 269px;
+  height: 35px;
+  box-shadow: 0 5px 5px rgb(187, 184, 184);
+  border-radius: 5px;
+  background-color: #d9d9d9;
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+  font-size: 15px;
+  margin-left: 10px;
+}
+
+.finaliza {
+  width: 152px;
+  height: 46px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  background-color: var(--cor-primaria);
+  font-weight: bold;
+  flex-direction: column;
+  color: white;
+}
+
+.regula {
+  flex-direction: column;
+  display: flex;
+  align-self: flex-start;
+}
+
+.fonte-outros {
+  font-weight: 500;
+  display: flex;
+  align-items: flex-start;
+}
+
+.card-horizontal {
+  display: flex;
+  flex: 1 1 auto;
+
+}
+
+.outros-imagens {
+  display: flex;
+  flex-direction: column;
+  width: 115px;
+  height: 145px;
+  justify-content: center;
+
+}
+
+.outros-card {
+  display: flex;
+  flex-direction: column;
+  max-width: 250px;
+  font-size: 18px;
+}
+
+.card {
+  border: none;
+}
+.outros-preco {
+  font-size: 18px;
+  color: #000A61;
+}
+
+.outros-comprar {
+  width: 106px;
+  height: 31px;
+  background-color: #16C932;
+  color: white;
+  font-size: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.adicionar-carrinho {
+  width: 18px;
+  height:18px;
+}
+
+.fonte-total {
+  font-weight: bold;
+  font-size: 14px;
+}

@@ -6,21 +6,27 @@ import { VendasEtapasComponent } from './components/vendas-etapas/vendas-etapas.
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { VendasDadosComponent } from './components/vendas-dados/vendas-dados.component';
-import { FinalizarVendaComponent } from './paginas/finalizar-venda/finalizar-venda.component';
+import { EtapasGuard } from './guards/etapas.guard';
 
 const routes: Routes = [
   {
-    path: "endereco",
-    component: VendasEnderecoComponent
+    path: "",
+    pathMatch: "full",
+    redirectTo: "endereco"
   },
   {
     path: "dados",
-    component: VendasDadosComponent
+    component: VendasDadosComponent,
+  },
+  {
+    path: "endereco",
+    component: VendasEnderecoComponent,
   },
   {
     path: "pagamento",
-    component: VendasPagamentoComponent
-  }
+    component: VendasPagamentoComponent,
+    canActivate: [EtapasGuard]
+  },
 ];
 
 @NgModule({

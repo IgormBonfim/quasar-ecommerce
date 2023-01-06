@@ -9,6 +9,7 @@ namespace Quasar.DataTransfer.Carrinhos.Responses
 {
     public class CarrinhoResponse
     {
+        public int Codigo { get; set; }
         public int Quantidade { get; set; }
         public ProdutoResponse Produto { get; set; }
     }
