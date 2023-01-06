@@ -1,6 +1,21 @@
 <div class="my-5 container">
-  <app-produto-info [produtoDetalhe]="produtoDetalhe" [produtoDisponivel]="produtoDisponivel"></app-produto-info>
-  
-  <app-carrosel-de-produto></app-carrosel-de-produto>
+
+  <div>
+    <app-produto-info [produtoDetalhe]="produtoDetalhe" [produtoDisponivel]="produtoDisponivel"></app-produto-info>
+  </div>
+
+  <div class="py-4 my-5 produtos-similares">
+    <h2 class="produtos-similares-titulo">
+      Produtos similares
+    </h2>
+    <div class="py-2">
+      <app-carrosel-de-produto [produtos]="produtosSimilares"></app-carrosel-de-produto>
+    </div>
+  </div>
+
+  <div>
+    <app-produto-especificacoes [produto]="produtoDetalhe"></app-produto-especificacoes>
+  </div>
+
 </div>
 
