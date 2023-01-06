@@ -88,14 +88,17 @@
               <fa-icon [icon]="bag" class="fa-2x icon mx-2"></fa-icon>
               <p class="texto-produtos">PRODUTOS</p>
             </div>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
+
+            <p
+            style="font-size: 14px"
+            class="fonte-comprar my-3 mx-5"
+            *ngFor="let carrinho of teste"
+          >
+            {{ carrinho.produto.valor * carrinho.quantidade | currency }}
+          </p>
             <div class="b d-flex inline-flex">
               <p class="textofinal">SUBTOTAL:</p>
-              <p class="margin1">R$: uns valor</p>
+              <p class="margin1">{{ calcularValorTotal() | currency }}</p>
             </div>
             <div class="b d-flex inline-flex">
               <p class="textofinal">FRETE:</p>
@@ -103,7 +106,7 @@
             </div>
             <div class="b d-flex inline-flex">
               <p class="textofinal">TOTAL:</p>
-              <p class="margin">R$: uns valor</p>
+              <p class="margin">{{ calcularValorTotal() | currency }}</p>
             </div>
           </div>
 

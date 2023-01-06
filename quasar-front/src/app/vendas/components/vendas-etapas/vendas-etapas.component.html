@@ -1,30 +1,21 @@
 <div class="icones">
 
-      <a class="d-flex inline-flex" routerLink="/carrinho">
+      <a class="d-flex inline-flex">
         <fa-icon [icon]="carrinho" class="fa-4x icone-cinza icone-concluido ml-2 mr-2"></fa-icon>
         <fa-icon [icon]="seta" class="fa-4x icone-cinza icone-concluido ml-2 mr-2"></fa-icon>
       </a>
 
-      <a routerLink="dados" class="d-flex inline-flex">
-        <fa-icon [icon]="usuario" *ngIf="!dadosConcluido" class="fa-4x icone-cinza ml-2 mr-2" routerLinkActive="ativo"></fa-icon>
-        <fa-icon [icon]="usuario" *ngIf="dadosConcluido" class="fa-4x icone-concluido ml-2 mr-2" routerLinkActive="ativo"></fa-icon>
-        <fa-icon [icon]="seta" *ngIf="!dadosConcluido" class="fa-4x icone-cinza ml-2 mr-2" routerLinkActive="ativo"></fa-icon>
-        <fa-icon [icon]="seta" *ngIf="dadosConcluido" class="fa-4x icone-concluido ml-2 mr-2" routerLinkActive="ativo"></fa-icon>
+      <a class="d-flex inline-flex">
+        <fa-icon [icon]="caminhao" [ngClass]="{'icone-ativo': etapasService.etapaEndereco, 'icone-concluido': etapasService.enderecoConcluido }" class="fa-4x icone-cinza ml-2 mr-2"></fa-icon>
+        <fa-icon [icon]="seta" [ngClass]="{'icone-ativo': etapasService.etapaEndereco, 'icone-concluido': etapasService.enderecoConcluido }" class="fa-4x icone-cinza ml-2 mr-2"></fa-icon>
       </a>
 
-      <a routerLink="endereco" class="d-flex inline-flex" (click)="irParaEndereco()">
-        <fa-icon [icon]="caminhao" *ngIf="!enderecoConcluido" class="fa-4x icone-cinza ml-2 mr-2" routerLinkActive="ativo"></fa-icon>
-        <fa-icon [icon]="caminhao" *ngIf="enderecoConcluido" class="fa-4x icone-concluido ml-2 mr-2" routerLinkActive="ativo"></fa-icon>
-        <fa-icon [icon]="seta" *ngIf="!enderecoConcluido" class="fa-4x icone-cinza ml-2 mr-2" routerLinkActive="ativo"></fa-icon>
-        <fa-icon [icon]="seta" *ngIf="enderecoConcluido" class="fa-4x icone-concluido ml-2 mr-2" routerLinkActive="ativo"></fa-icon>
+      <a class="d-flex inline-flex">
+        <fa-icon [icon]="cartao" [ngClass]="{'icone-ativo': etapasService.etapaPagamento, 'icone-concluido': etapasService.pagamentoConcluido }" class="fa-4x icone-cinza ml-2 mr-2"></fa-icon>
+        <fa-icon [icon]="seta" [ngClass]="{'icone-ativo': etapasService.etapaPagamento, 'icone-concluido': etapasService.pagamentoConcluido }" class="fa-4x icone-cinza ml-2 mr-2"></fa-icon>
       </a>
 
-      <a routerLink="pagamento" class="d-flex inline-flex"(click)="irParaPagamento()">
-        <fa-icon [icon]="cartao" *ngIf="!pagamentoConcluido" class="fa-4x icone-cinza ml-2 mr-2" routerLinkActive="ativo"></fa-icon>
-        <fa-icon [icon]="cartao" *ngIf="pagamentoConcluido" class="fa-4x icone-concluido ml-2 mr-2" routerLinkActive="ativo"></fa-icon>
-        <fa-icon [icon]="seta" *ngIf="!pagamentoConcluido" class="fa-4x icone-cinza ml-2 mr-2" routerLinkActive="ativo"></fa-icon>
-        <fa-icon [icon]="seta" *ngIf="pagamentoConcluido" class="fa-4x icone-concluido ml-2 mr-2" routerLinkActive="ativo"></fa-icon>
+      <a>
+        <fa-icon [icon]="concluido" [ngClass]="{'icone-concluido': etapasService.etapaConcluido }" class="fa-4x icone-cinza  d-flex inline-flex ml-2 mr-2"></fa-icon>
       </a>
-      
-      <fa-icon [icon]="concluido" class="fa-4x icone-cinza  d-flex inline-flex ml-2 mr-2" routerLinkActive="ativo" (click)="irParaConcluido()"></fa-icon>
 </div>

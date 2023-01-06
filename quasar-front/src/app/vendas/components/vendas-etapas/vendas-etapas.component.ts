@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { faArrowRightLong, faCircleCheck, faCreditCard, faGripHorizontal, faRulerHorizontal, faShoppingCart, faTruck, faUser } from '@fortawesome/free-solid-svg-icons';
+import { EtapasService } from '../../services/etapas.service';
 
 @Component({
   selector: 'app-vendas-etapas',
@@ -15,28 +16,14 @@ export class VendasEtapasComponent implements OnInit {
   seta = faArrowRightLong
 
   @Input()
-  dadosConcluido: boolean = false;
+  etapaDados!: string;
   @Input()
-  enderecoConcluido: boolean = false;
+  etapaEndereco!: string;
   @Input()
-  pagamentoConcluido: boolean = false
+  etapaPagamento!: string;
 
-  constructor() { }
+  constructor(public etapasService: EtapasService) { }
 
   ngOnInit(): void {
   }
-
-  irParaEndereco() {
-    this.dadosConcluido = true;
-    console.log(this.dadosConcluido);
-  }
-  irParaPagamento() {
-    this.enderecoConcluido = true;
-    console.log(this.enderecoConcluido);
-  }
-  irParaConcluido() {
-    this.pagamentoConcluido = true;
-    console.log(this.pagamentoConcluido);
-  }
-
 }
