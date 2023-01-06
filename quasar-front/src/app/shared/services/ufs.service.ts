@@ -3,7 +3,6 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { PaginacaoRequest } from '../models/requests/paginacao.request';
-import { PaginacaoResponse } from '../models/responses/paginacao.response';
 import { UfResponse } from '../models/responses/uf.response';
 
 @Injectable({
@@ -15,7 +14,7 @@ export class UfsService {
   constructor(private httpClient: HttpClient) { }
 
   listarUf (
-    params: PaginacaoRequest
+    params: PaginacaoRequest<UfResponse>
   ): Observable<UfResponse[]> {
     return this.httpClient.get<UfResponse[]>(
       this.baseUrl,
