@@ -2,6 +2,8 @@ import { ProdutoResponse } from './../../../shared/models/responses/produto.resp
 import { ProdutosService } from './../../../shared/services/produtos.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { PaginacaoResponse } from 'src/app/shared/models/responses/paginacao.response';
+import { PaginacaoRequest } from 'src/app/shared/models/requests/paginacao.request';
 
 @Component({
   selector: 'app-produtos-detalhes',
@@ -10,6 +12,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ProdutosDetalhesComponent implements OnInit {
   public produtoDetalhe!: ProdutoResponse;
+  public produtosSimilares!: ProdutoResponse[];
   public produtoDisponivel!: boolean;
   public quantidadeProduto = 1;
 
@@ -24,6 +27,7 @@ export class ProdutosDetalhesComponent implements OnInit {
       (params: any) => {
         const codProduto = params.codigo;
         this.recuperarProduto(codProduto);
+        this.listarSimilares();
         this.produtoDisponivel = true;
       }
     )
@@ -36,5 +40,17 @@ export class ProdutosDetalhesComponent implements OnInit {
         console.log(this.produtoDetalhe);
       }
     )
+  }
+
+  listarSimilares() {
+    let request = new PaginacaoRequest({
+      quantidade: 10
+    });
+
+    this.produtosService.listarProdutos(request).subscribe({
+      next: (res: PaginacaoResponse<ProdutoResponse>) => {
+        this.produtosSimilares = res.lista;
+      }
+    })
   }
 }

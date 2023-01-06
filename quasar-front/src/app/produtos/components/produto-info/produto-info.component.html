@@ -1,4 +1,4 @@
-<main class="container mt-5">
+<main class="mt-5">
 
   <div class="row">
     <div class="col-md-5 d-flex justify-content-center">
@@ -11,7 +11,8 @@
         <div class="d-flex borda-inferior justify-content-between">
           <h1 class="produto-info__titulo__nome"> {{ produtoDetalhe.nome }} </h1>
           <div>
-            <fa-icon class="px-2 icone-titulo" [icon]="iconeCoracao"></fa-icon>
+            <app-icone-coracao class="px-2 icone-titulo" *ngIf="favorito" (click)="removerFavorito(produtoDetalhe.codigo)"></app-icone-coracao>
+            <fa-icon class="px-2 icone-titulo" *ngIf="!favorito" [icon]="iconeCoracaoVazio" (click)="adicionarFavorito(produtoDetalhe.codigo)"></fa-icon>
             <fa-icon class="px-2 icone-titulo" [icon]="iconeShare"></fa-icon>
           </div>
         </div>

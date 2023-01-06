@@ -11,7 +11,7 @@ export class ProdutoResponse {
   public imagem: string;
   public fornecedor?: FornecedorResponse;
   public categoria?: CategoriaResponse;
-  public especificacao?: EspecificacaoResponse
+  public especificacao: EspecificacaoResponse
 
 
   constructor(params: Partial<ProdutoResponse>) {
@@ -22,6 +22,6 @@ export class ProdutoResponse {
     this.imagem = params.imagem || '';
     this.fornecedor = params.fornecedor;
     this.categoria = params.categoria;
-    this.especificacao = params.especificacao;
+    this.especificacao = params.especificacao || new EspecificacaoResponse({});
   }
 }

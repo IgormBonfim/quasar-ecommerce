@@ -8,6 +8,7 @@ import { ProdutoInfoComponent } from './components/produto-info/produto-info.com
 import { ProdutosDetalhesComponent } from './paginas/produtos-detalhes/produtos-detalhes.component';
 import { ProdutosListagemComponent } from './paginas/produtos-listagem/produtos-listagem.component';
 import { ProdutosRoutingModule } from './produtos-routing.module';
+import { ProdutoEspecificacoesComponent } from './components/produto-especificacoes/produto-especificacoes.component';
 
 
 
@@ -15,7 +16,8 @@ import { ProdutosRoutingModule } from './produtos-routing.module';
   declarations: [
     ProdutosDetalhesComponent,
     ProdutoInfoComponent,
-    ProdutosListagemComponent
+    ProdutosListagemComponent,
+    ProdutoEspecificacoesComponent
   ],
   imports: [
     CommonModule,

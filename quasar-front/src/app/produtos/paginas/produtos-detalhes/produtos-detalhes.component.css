@@ -1,0 +1,10 @@
+.produtos-similares {
+  border-top: 1px solid var(--cor-primaria);
+  border-bottom: 1px solid var(--cor-primaria);
+}
+
+.produtos-similares-titulo {
+  font-size: 36px;
+  color: var(--cor-primaria);
+  font-weight: bold;
+}

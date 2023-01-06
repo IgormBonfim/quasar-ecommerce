@@ -1,7 +1,3 @@
-
-
-
-
 .fundo-imagem {
   width: 415px;
   height: 415px;
@@ -82,4 +78,5 @@
 .icone-titulo {
   font-size: 35px;
   color: var(--cor-primaria);
+  cursor: pointer;
 }
