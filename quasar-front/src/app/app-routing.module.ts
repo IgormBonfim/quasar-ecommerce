@@ -16,6 +16,16 @@ const routes: Routes = [
     component: HomeComponent,
   },
   {
+    path: "login",
+    component: LoginComponent
+  },
+  {
+    path: 'carrinho',
+    loadChildren: () =>
+
+    import('./carrinho/carrinho.module').then((m) => m.CarrinhoModule),
+  },
+  {
     path: 'produtos',
     loadChildren: () =>
       import('./produtos/produtos.module').then((m) => m.ProdutosModule),
