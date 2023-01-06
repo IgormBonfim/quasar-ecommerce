@@ -2,13 +2,12 @@
   <div
     class="container-fluid container-xxl d-flex justify-content-around align-items-center"
   >
-  <div>
-
-    <i
+    <div>
+      <i
         (click)="visibilidade = !visibilidade"
         class="pi pi-bars header__icone__hamburguer"
       ></i>
-  </div>
+    </div>
     <a [routerLink]="['/home']"
       ><img class="header__logo" src="/assets/logo.png" alt="Logo Quasar"
     /></a>
@@ -19,6 +18,7 @@
         type="text"
         class="form-control border-5"
         placeholder="Buscando aqui..."
+        (keydown.enter)="onKeydown($event)"
       />
     </div>
 
