@@ -10,5 +10,6 @@ namespace Quasar.DataTransfer.Produtos.Requests
     {
         public int? Codigo { get; set; }
         public string? Nome { get; set; }
+        public int? CodCategoria { get; set; }
     }
 }
