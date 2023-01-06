@@ -1,0 +1,90 @@
+.box
+{
+  background-color: #ffffff;
+  border-radius: 5px;
+  border: 1px solid;
+}
+.minibox1
+{
+  background-color: #ffffff;
+  border-radius: 5px;
+  border: 1px solid;
+  width: 330px;
+  margin-left: 5%;
+  height: 275px;
+}
+.minibox2
+{
+  background-color: #ffffff;
+  border-radius: 5px;
+  border: 1px solid;
+  width: 330px;
+  height: 275px;
+}
+.linha1
+{
+  height: 500px;
+}
+.linha2
+{
+  height: 800px;
+}
+.header
+{
+  height: 50px;
+  background-color: #000954;
+  color: white;
+}
+.header1
+{
+  height: 50px;
+  background-color: #000954;
+  color: white;
+  padding-left: 110px;
+}
+.pagamento, .icon
+{
+  padding-top: 10px;
+  margin-right: 20px;
+}
+
+.botao
+{
+  margin-bottom: 15px;
+  border-radius: 5px;
+  border-style: solid;
+  border-color: #0f196b;
+  color: #000954;
+  font-size: 20px;
+  background-color: #f0f0f0;
+}
+.text
+{
+  margin-bottom: 15px;
+  font-weight: 500;
+}
+.input
+{
+  height: 30px;
+  width: 250px;
+  border-color: #C9C7C7;
+  border-style: solid;
+  border-radius: 5px;
+}
+.input1
+{
+  height: 30px;
+  width: 80px;
+  border-color: #C9C7C7;
+  border-style: solid;
+  border-radius: 5px;
+}
+.a
+{
+  margin-bottom: 10px;
+}
+.barra
+{
+  font-size: 30px;
+  color: #C9C7C7;
+}
