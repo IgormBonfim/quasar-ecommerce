@@ -40,11 +40,11 @@ export class ProdutosAdicionarComponent implements OnInit {
       posicao: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(50)]],
       cor: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(20)]],
       ano: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(100)]],
-      modelo: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(45)]],
+      veiculo: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(45)]],
       quantidade: [0, [Validators.required]],
       valor: [0, [Validators.required]],
-      categoria: [0, [Validators.required]],
-      fornecedor: [0, [Validators.required]],
+      codigoCategoria: [0, [Validators.required]],
+      codigoFornecedor: [0, [Validators.required]],
     })
   }
 
@@ -56,8 +56,6 @@ export class ProdutosAdicionarComponent implements OnInit {
     this.fornecedoresService.listarFornecedores(params).subscribe({
       next: (res: PaginacaoResponse<FornecedorResponse>) => {
         this.fornecedores = res.lista;
-        console.log(res);
-
       }
     })
   }
@@ -76,27 +74,14 @@ export class ProdutosAdicionarComponent implements OnInit {
 
   botaoEnviar() {
     let formulario = this.produtoForm.getRawValue();
-    console.log(formulario);
 
-    let especificacao = new EspecificacaoInserirRequest();
+    let especificacao = new EspecificacaoInserirRequest(formulario);
 
-    especificacao.ano = formulario.ano;
-    especificacao.cor = formulario.cor;
-    especificacao.posicao = formulario.posicao;
-    especificacao.veiculo = formulario.modelo;
-
-    let produto = new ProdutoInserirRequest();
-
-    produto.nome = formulario.nome;
-    produto.descricao = formulario.descricao;
-    produto.imagem = formulario.imagem;
-    produto.codigoCategoria = formulario.categoria.codigo;
-    produto.codigoFornecedor = formulario.fornecedor.codigo;
+    let produto = new ProdutoInserirRequest(formulario);
     produto.especificacao = especificacao;
 
     this.produtosService.adicionar(produto).subscribe({
       next: (response) => {
-        console.log(response);
       },
       error: (erro: HttpErrorResponse) => {
         console.log(erro);

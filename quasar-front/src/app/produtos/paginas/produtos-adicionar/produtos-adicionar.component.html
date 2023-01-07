@@ -62,8 +62,8 @@
 
         <div class="w-100 my-3 py-2">
           <label class="label-input mb-1">Modelo do veículo*</label>
-          <input class="form-control" formControlName="modelo" placeholder="Digite do modelo do veículo aqui"  type="text">
-          <span class="text-danger py-1" *ngIf="produtoForm.get('modelo')?.errors && (produtoForm.get('modelo')?.touched || produtoForm.get('modelo')?.dirty)">Campo obrigatório*</span>
+          <input class="form-control" formControlName="veiculo" placeholder="Digite do modelo do veículo aqui"  type="text">
+          <span class="text-danger py-1" *ngIf="produtoForm.get('veiculo')?.errors && (produtoForm.get('veiculo')?.touched || produtoForm.get('veiculo')?.dirty)">Campo obrigatório*</span>
         </div>
 
       </div>
@@ -88,12 +88,16 @@
         <div class="d-flex my-4">
           <div class="w-50 p-2">
             <label class="label-input mb-1">Categoria do produto*</label>
-            <p-dropdown [options]="categorias" optionLabel="nome" formControlName="categoria" placeholder="Selecione uma categoria"></p-dropdown>
+            <select formControlName="codigoCategoria" class="form-control">
+              <option class="form-control" *ngFor="let categoria of categorias" value="{{categoria.codigo}}"> {{ categoria.nome }} </option>
+            </select>
           </div>
 
           <div class="w-50 p-2">
             <label class="label-input mb-1">Fornecedor do produto*</label>
-            <p-dropdown [options]="fornecedores" optionLabel="nome" placeholder="Selecione um fornecedor" formControlName="fornecedor"></p-dropdown>
+            <select formControlName="codigoFornecedor" class="form-control">
+              <option class="form-control" *ngFor="let fornecedor of fornecedores" value="{{fornecedor.codigo}}"> {{ fornecedor.nome }} </option>
+            </select>
           </div>
         </div>
       </div>
