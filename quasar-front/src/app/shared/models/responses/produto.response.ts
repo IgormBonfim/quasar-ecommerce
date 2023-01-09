@@ -9,8 +9,8 @@ export class ProdutoResponse {
   public nome: string;
   public valor: number;
   public imagem: string;
-  public fornecedor?: FornecedorResponse;
-  public categoria?: CategoriaResponse;
+  public fornecedor: FornecedorResponse;
+  public categoria: CategoriaResponse;
   public especificacao: EspecificacaoResponse
 
 
@@ -20,8 +20,8 @@ export class ProdutoResponse {
     this.nome = params.nome || '';
     this.valor = params.valor || 0;
     this.imagem = params.imagem || '';
-    this.fornecedor = params.fornecedor;
-    this.categoria = params.categoria;
+    this.fornecedor = params.fornecedor || new FornecedorResponse({});
+    this.categoria = params.categoria || new CategoriaResponse({});
     this.especificacao = params.especificacao || new EspecificacaoResponse({});
   }
 }

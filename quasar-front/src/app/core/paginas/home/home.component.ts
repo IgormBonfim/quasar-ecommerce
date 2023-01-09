@@ -1,3 +1,4 @@
+import { ProdutoBuscarRequest } from './../../../shared/models/requests/produtoBuscar.request';
 import { ProdutoResponse } from './../../../shared/models/responses/produto.response';
 import { CategoriaResponse } from './../../../shared/models/responses/categoria.response';
 import { CategoriasService } from './../../../shared/services/categorias.service';
@@ -36,7 +37,7 @@ export class HomeComponent implements OnInit {
   }
 
   listarProdutos() {
-    let request = new PaginacaoRequest({});
+    let request = new ProdutoBuscarRequest({});
 
     this.produtosService.listarProdutos(request).subscribe({
       next: (res: PaginacaoResponse<ProdutoResponse>) => {

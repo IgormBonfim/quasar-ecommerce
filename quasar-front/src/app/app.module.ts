@@ -6,6 +6,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { AccordionModule } from 'primeng/accordion';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -28,6 +30,8 @@ registerLocaleData(ptBr);
     FontAwesomeModule,
     RouterModule,
     BrowserAnimationsModule,
+    PaginationModule.forRoot(),
+    BsDropdownModule.forRoot(),
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'pt' },

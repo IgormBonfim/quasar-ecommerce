@@ -1,0 +1,27 @@
+.background {
+  background-color: #F0F0F0;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+
+}
+
+.font {
+  font-size: 30px;
+  font-weight: bold;
+  color: #000A61;
+  margin-top: 40px;
+}
+
+hr {
+  margin:10px 30px;
+  border-top: 2px solid  lightgrey;
+  /* align-self: flex-start; */
+}
+
+.container-organizacao {
+  display: flex;
+  flex-direction: row;
+  justify-content: right;
+}

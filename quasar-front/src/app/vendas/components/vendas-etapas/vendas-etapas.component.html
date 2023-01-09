@@ -1,0 +1,21 @@
+<div class="icones">
+
+      <a class="d-flex inline-flex">
+        <fa-icon [icon]="carrinho" class="fa-4x icone-cinza icone-concluido ml-2 mr-2"></fa-icon>
+        <fa-icon [icon]="seta" class="fa-4x icone-cinza icone-concluido ml-2 mr-2"></fa-icon>
+      </a>
+
+      <a class="d-flex inline-flex">
+        <fa-icon [icon]="caminhao" [ngClass]="{'icone-ativo': etapasService.etapaEndereco, 'icone-concluido': etapasService.enderecoConcluido }" class="fa-4x icone-cinza ml-2 mr-2"></fa-icon>
+        <fa-icon [icon]="seta" [ngClass]="{'icone-ativo': etapasService.etapaEndereco, 'icone-concluido': etapasService.enderecoConcluido }" class="fa-4x icone-cinza ml-2 mr-2"></fa-icon>
+      </a>
+
+      <a class="d-flex inline-flex">
+        <fa-icon [icon]="cartao" [ngClass]="{'icone-ativo': etapasService.etapaPagamento, 'icone-concluido': etapasService.pagamentoConcluido }" class="fa-4x icone-cinza ml-2 mr-2"></fa-icon>
+        <fa-icon [icon]="seta" [ngClass]="{'icone-ativo': etapasService.etapaPagamento, 'icone-concluido': etapasService.pagamentoConcluido }" class="fa-4x icone-cinza ml-2 mr-2"></fa-icon>
+      </a>
+
+      <a>
+        <fa-icon [icon]="concluido" [ngClass]="{'icone-concluido': etapasService.etapaConcluido }" class="fa-4x icone-cinza  d-flex inline-flex ml-2 mr-2"></fa-icon>
+      </a>
+</div>
