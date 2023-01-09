@@ -1,3 +1,4 @@
+import { AlertsService, AlertTypes } from './../../../shared/services/alerts.service';
 import { PaginacaoRequest } from './../../../shared/models/requests/paginacao.request';
 import { FornecedoresService } from './../../../shared/services/fornecedores.service';
 import { HttpErrorResponse } from '@angular/common/http';
@@ -11,6 +12,8 @@ import { ProdutoInserirRequest } from './../../models/requests/produtoInserir.re
 import { PaginacaoResponse } from 'src/app/shared/models/responses/paginacao.response';
 import { CategoriasService } from 'src/app/shared/services/categorias.service';
 import { ProdutosService } from 'src/app/shared/services/produtos.service';
+import { ProdutoInserirResponse } from '../../models/responses/produtoInserir.response';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-produtos-adicionar',
@@ -26,8 +29,10 @@ export class ProdutosAdicionarComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private produtosService: ProdutosService,
+    private router: Router,
     private fornecedoresService: FornecedoresService,
-    private categoriasService: CategoriasService
+    private categoriasService: CategoriasService,
+    private alertsService: AlertsService
     ) { }
 
   ngOnInit(): void {
@@ -81,11 +86,20 @@ export class ProdutosAdicionarComponent implements OnInit {
     produto.especificacao = especificacao;
 
     this.produtosService.adicionar(produto).subscribe({
-      next: () => {
-        // Adicionar alerta
+      next: (res: ProdutoInserirResponse) => {
+        this.router.navigate(['/produtos'])
+        this.alertsService.adicionarAlerta(
+          "Produto adicionado com sucesso",
+          "O produto foi cadastrado com o codigo " + res.codigo,
+          AlertTypes.SUCESSO
+        )
       },
       error: (erro: HttpErrorResponse) => {
-        console.log(erro);
+        this.alertsService.adicionarAlerta(
+          "Erro ao adicionar produto",
+          erro.error,
+          AlertTypes.ERROR
+        )
       }
     });
   }
