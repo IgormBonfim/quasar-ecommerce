@@ -1,0 +1,16 @@
+.linha {
+  margin-top: 0%;
+  margin-bottom: 5%;
+}
+
+.ajuste-titulo {
+  margin-top: 5%;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--cor-primaria) ;
+}
+
+.ajuste-fonte-titulo {
+  color: #000A61;
+  font-size: 36px;
+  font-weight: 600;
+}
