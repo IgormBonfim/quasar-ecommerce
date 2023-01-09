@@ -15,7 +15,7 @@ export class CategoriasService {
 
   constructor(private httpClient: HttpClient) { }
 
-  listarCategorias(params: PaginacaoRequest): Observable<PaginacaoResponse<CategoriaResponse>> {
+  listarCategorias(params: PaginacaoRequest<CategoriaResponse>): Observable<PaginacaoResponse<CategoriaResponse>> {
     return this.httpClient.get<PaginacaoResponse<CategoriaResponse>>(
       this.baseUrl,
       {

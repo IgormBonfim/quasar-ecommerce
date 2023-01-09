@@ -15,7 +15,7 @@ export class FornecedoresService {
 
   constructor(private httpClient: HttpClient) { }
 
-  listarFornecedores(params: PaginacaoRequest): Observable<PaginacaoResponse<FornecedorResponse>> {
+  listarFornecedores(params: PaginacaoRequest<FornecedorResponse>): Observable<PaginacaoResponse<FornecedorResponse>> {
     return this.httpClient.get<PaginacaoResponse<FornecedorResponse>>(
       this.baseUrl,
       {

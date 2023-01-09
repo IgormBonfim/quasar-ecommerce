@@ -8,9 +8,9 @@ import { FornecedorResponse } from 'src/app/shared/models/responses/fornecedor.r
 
 import { EspecificacaoInserirRequest } from '../../models/requests/especificacaoInserir.request';
 import { ProdutoInserirRequest } from './../../models/requests/produtoInserir.request';
-import { ProdutosService } from './../../services/produtos.service';
 import { PaginacaoResponse } from 'src/app/shared/models/responses/paginacao.response';
 import { CategoriasService } from 'src/app/shared/services/categorias.service';
+import { ProdutosService } from 'src/app/shared/services/produtos.service';
 
 @Component({
   selector: 'app-produtos-adicionar',

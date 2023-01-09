@@ -2,7 +2,13 @@
   <div
     class="container-fluid container-xxl d-flex justify-content-around align-items-center"
   >
-    <i class="pi pi-bars header__icone__hamburguer"></i>
+  <div>
+
+    <i
+        (click)="visibilidade = !visibilidade"
+        class="pi pi-bars header__icone__hamburguer"
+      ></i>
+  </div>
     <a [routerLink]="['/home']"
       ><img class="header__logo" src="/assets/logo.png" alt="Logo Quasar"
     /></a>
@@ -37,4 +43,5 @@
       /></a>
     </nav>
   </div>
+  <app-menu-lateral [visibilidade]="visibilidade"></app-menu-lateral>
 </header>
