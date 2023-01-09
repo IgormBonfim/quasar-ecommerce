@@ -25,13 +25,15 @@
         <div class="w-100">
           <label class="label-input mb-1">Nome do produto*</label>
           <input class="form-control" formControlName="nome" placeholder="Digite o nome do produto aqui"  type="text">
-          <span class="text-danger py-1" *ngIf="produtoForm.get('nome')?.errors && (produtoForm.get('nome')?.touched || produtoForm.get('nome')?.dirty)">Campo obrigatório*</span>
+          <span class="text-danger py-1" *ngIf="(produtoForm.get('nome')?.errors?.['minlength'] || produtoForm.get('nome')?.errors?.['required']) && (produtoForm.get('nome')?.touched || produtoForm.get('nome')?.dirty)">Campo obrigatório*</span>
+          <span class="text-danger py-1" *ngIf="produtoForm.get('nome')?.errors?.['maxlength'] && (produtoForm.get('nome')?.touched || produtoForm.get('nome')?.dirty)">Número máximo de caracteres excedido*</span>
         </div>
 
         <div class="w-100">
           <label class="label-input mb-1">Descrição do produto*</label>
           <textarea [rows]="8" class="form-control" formControlName="descricao" pInputTextarea [autoResize]="true" placeholder="Digite a descrição do produto aqui"></textarea>
-          <span class="text-danger py-1" *ngIf="produtoForm.get('descricao')?.errors && (produtoForm.get('descricao')?.touched || produtoForm.get('descricao')?.dirty)">Campo obrigatório*</span>
+          <span class="text-danger py-1" *ngIf="(produtoForm.get('descricao')?.errors?.['minlength'] || produtoForm.get('descricao')?.errors?.['required']) && (produtoForm.get('descricao')?.touched || produtoForm.get('descricao')?.dirty)">Campo obrigatório*</span>
+          <span class="text-danger py-1" *ngIf="produtoForm.get('descricao')?.errors?.['maxlength'] && (produtoForm.get('descricao')?.touched || produtoForm.get('descricao')?.dirty)">Número máximo de caracteres excedido*</span>
         </div>
       </div>
 
@@ -44,25 +46,29 @@
         <div class="w-100 my-3 py-2">
           <label class="label-input mb-1">Posição do produto*</label>
           <input class="form-control" formControlName="posicao" placeholder="Digite a posição do produto aqui"  type="text">
-          <span class="text-danger py-1" *ngIf="produtoForm.get('posicao')?.errors && (produtoForm.get('posicao')?.touched || produtoForm.get('posicao')?.dirty)">Campo obrigatório*</span>
+          <span class="text-danger py-1" *ngIf="(produtoForm.get('posicao')?.errors?.['minlength'] || produtoForm.get('posicao')?.errors?.['required']) && (produtoForm.get('posicao')?.touched || produtoForm.get('posicao')?.dirty)">Campo obrigatório*</span>
+          <span class="text-danger py-1" *ngIf="produtoForm.get('posicao')?.errors?.['maxlength'] && (produtoForm.get('posicao')?.touched || produtoForm.get('posicao')?.dirty)">Número máximo de caracteres excedido*</span>
         </div>
 
         <div class="w-100 my-3 py-2">
           <label class="label-input mb-1">Cor do produto*</label>
           <input class="form-control" formControlName="cor" placeholder="Digite a cor do produto aqui"  type="text">
-          <span class="text-danger py-1" *ngIf="produtoForm.get('cor')?.errors && (produtoForm.get('cor')?.touched || produtoForm.get('cor')?.dirty)">Campo obrigatório*</span>
+          <span class="text-danger py-1" *ngIf="(produtoForm.get('cor')?.errors?.['minlength'] || produtoForm.get('cor')?.errors?.['required']) && (produtoForm.get('cor')?.touched || produtoForm.get('cor')?.dirty)">Campo obrigatório*</span>
+          <span class="text-danger py-1" *ngIf="produtoForm.get('cor')?.errors?.['maxlength'] && (produtoForm.get('cor')?.touched || produtoForm.get('cor')?.dirty)">Número máximo de caracteres excedido*</span>
         </div>
 
         <div class="w-100 my-3 py-2">
           <label class="label-input mb-1">Ano do produto*</label>
           <input class="form-control" formControlName="ano" placeholder="Digite o ano do produto aqui"  type="text">
-          <span class="text-danger py-1" *ngIf="produtoForm.get('ano')?.errors && (produtoForm.get('ano')?.touched || produtoForm.get('nome')?.dirty)">Campo obrigatório*</span>
+          <span class="text-danger py-1" *ngIf="(produtoForm.get('ano')?.errors?.['minlength'] || produtoForm.get('ano')?.errors?.['required']) && (produtoForm.get('ano')?.touched || produtoForm.get('ano')?.dirty)">Campo obrigatório*</span>
+          <span class="text-danger py-1" *ngIf="produtoForm.get('ano')?.errors?.['maxlength'] && (produtoForm.get('ano')?.touched || produtoForm.get('ano')?.dirty)">Número máximo de caracteres excedido*</span>
         </div>
 
         <div class="w-100 my-3 py-2">
           <label class="label-input mb-1">Modelo do veículo*</label>
           <input class="form-control" formControlName="veiculo" placeholder="Digite do modelo do veículo aqui"  type="text">
-          <span class="text-danger py-1" *ngIf="produtoForm.get('veiculo')?.errors && (produtoForm.get('veiculo')?.touched || produtoForm.get('veiculo')?.dirty)">Campo obrigatório*</span>
+          <span class="text-danger py-1" *ngIf="(produtoForm.get('veiculo')?.errors?.['minlength'] || produtoForm.get('veiculo')?.errors?.['required']) && (produtoForm.get('veiculo')?.touched || produtoForm.get('veiculo')?.dirty)">Campo obrigatório*</span>
+          <span class="text-danger py-1" *ngIf="produtoForm.get('veiculo')?.errors?.['maxlength'] && (produtoForm.get('veiculo')?.touched || produtoForm.get('veiculo')?.dirty)">Número máximo de caracteres excedido*</span>
         </div>
 
       </div>

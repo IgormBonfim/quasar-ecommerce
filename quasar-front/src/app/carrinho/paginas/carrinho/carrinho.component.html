@@ -1,0 +1,21 @@
+<div class="background mb-5">
+  <div class="container p-0 mt-0 d-flex flex-column align-items-stretch">
+    <h2 class="font ml-5">Carrinho de Compras</h2>
+    <hr />
+  </div>
+  <div class="container-organizacao">
+    <div class="justify-content-around">
+      <app-box-carrinho-selecionados
+        *ngFor="let carrinho of produtosCarrinho.lista"
+        [carrinho]="carrinho"
+        (lixo)="recuperarCarrinhos()"
+      ></app-box-carrinho-selecionados>
+    </div>
+    <app-finalizacao-outros
+      class="mr-3"
+      (produtoAdicionado)="recuperarCarrinhos()"
+      [carrinhos]="produtosCarrinho.lista"
+      [produtosRelacionados]="produtosRelacionados"
+    ></app-finalizacao-outros>
+  </div>
+</div>

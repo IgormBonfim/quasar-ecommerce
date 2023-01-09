@@ -1,0 +1,117 @@
+
+
+    <div class="container">
+
+      <div class="row">
+        <div class="p-4 col-md-12" style="background-color: #ffffff;">
+          <div class="d-flex">
+            <fa-icon class="house-icon-endereco mr-3" [icon]="houseIcon"></fa-icon>
+            <h1 class="endereco-top mb-5 my-4" style="font-weight: bold">
+              ENDEREÇO
+            </h1>
+            </div>
+          <form [formGroup]="formulario" class="row form-group">
+            <div class="col-md-6 p-3">
+              <div>
+                <label for="">CEP*</label>
+                <input type="text" class="w-100 form-control mt-1" formControlName="cep" placeholder="Digite seu CEP"/>
+                <span class="alerta text-danger" *ngIf="formulario.get('cep')?.errors?.['required'] && (formulario.get('cep')?.touched || formulario.get('cep')?.dirty)">*Este campo é obrigatório!*</span>
+              </div>
+            </div>
+
+            <!-- DIV VAZIA PARA PREENCHER UM LADO SÓ -->
+            <div class="col-md-6 p-3">
+            </div>
+            <!-- TERMINA AQUI -->
+
+            <div class="col-md-6 p-3">
+              <div>
+                <label for="">Endereço de Entrega*</label>
+                <input type="text" class="w-100 form-control mt-1" formControlName="rua" placeholder="Digite seu endereço" autocomplete="off"/>
+                <span class="alerta text-danger" *ngIf="formulario.get('rua')?.errors?.['required'] && (formulario.get('rua')?.touched || formulario.get('rua')?.dirty)">*Este campo é obrigatório!*</span>
+
+              </div>
+            </div>
+            <div class="col-md-6 p-3">
+              <div>
+                <label for="">Nº*</label>
+                <input type="text" class="form-control w-100 mt-1" formControlName="numero" placeholder="Digite o numero da sua casa"/>
+                <span class="alerta text-danger" *ngIf="formulario.get('numero')?.errors?.['required'] && (formulario.get('numero')?.touched || formulario.get('numero')?.dirty)">*Este campo é obrigatório!*</span>
+
+              </div>
+            </div>
+            <div class="col-md-6 p-3">
+              <label for="">Cidade*</label>
+              <!-- <input type="text" class="w-100 form-con trol mt-1" formControlName="codigoCidade" placeholder="Digite sua cidade"/> -->
+              <div>
+              <p-dropdown [options]="cidades" optionValue="codigo" optionLabel="nome" formControlName="codigoCidade" placeholder="Selecione a Cidade" [showClear]="true"></p-dropdown>
+              </div>
+              <span class="alerta text-danger" *ngIf="formulario.get('codigoCidade')?.errors?.['required'] && (formulario.get('codigoCidade')?.touched || formulario.get('codigoCidade')?.dirty)">*Este campo é obrigatório!*</span>
+
+            </div>
+            <div class="col-md-6 p-3">
+              <label>UF*</label>
+              <div>
+
+                <p-dropdown [options]="estados" placeholder="Selecione o Estado" optionValue="codigo" optionLabel="sigla" [showClear]="true"></p-dropdown>
+
+                </div>
+              <span class="alerta text-danger" *ngIf="formulario.get('uf')?.errors?.['required'] && (formulario.get('uf')?.touched || formulario.get('uf')?.dirty)">*Este campo é obrigatório!*</span>
+
+            </div>
+            <div class="col-md-6 p-3">
+              <label for="">Bairro*</label>
+              <input type="text " class="w-100 form-control mt-1" formControlName="bairro" placeholder="Digite seu bairro"/>
+              <span class="alerta text-danger" *ngIf="formulario.get('bairro')?.errors?.['required'] && (formulario.get('bairro')?.touched || formulario.get('bairro')?.dirty)">*Este campo é obrigatório!*</span>
+
+            </div>
+            <!-- DIV VAZIA PARA PREENCHER UM LADO SÓ -->
+            <div class="col-md-6 p-3">
+            </div>
+            <!-- TERMINA AQUI -->
+            <div class="col-md-6 p-3">
+              <label for="">Referência*</label>
+              <input type="text " class="w-100 form-control mt-1" formControlName="pontoReferencia" placeholder="Digite sua referência"/>
+              <span class="alerta text-danger" *ngIf="formulario.get('pontoReferencia')?.errors?.['required'] && (formulario.get('pontoReferencia')?.touched || formulario.get('pontoReferencia')?.dirty)">*Este campo é obrigatório!*</span>
+
+            </div>
+            <!-- DIV VAZIA PARA PREENCHER UM LADO SÓ -->
+            <div class="col-md-6 p-3">
+            </div>
+            <!-- TERMINA AQUI -->
+            <div class="col-md-6 p-3">
+              <label for="">Complemento*</label>
+              <input type="text " class="w-100 form-control mt-1" formControlName="complemento" placeholder="Digite o complemento"/>
+              <span class="alerta text-danger" *ngIf="formulario.get('complemento')?.errors?.['required'] && (formulario.get('complemento')?.touched || formulario.get('complemento')?.dirty)">*Este campo é obrigatório!*</span>
+
+            </div>
+            <!-- DIV VAZIA PARA PREENCHER UM LADO SÓ -->
+            <div class="col-md-6 p-3">
+            </div>
+            <!-- TERMINA AQUI -->
+            <div class="col-md-6">
+            <button
+                class="btn btn-danger w-100"
+                routerLink="/carrinho"
+                type="submit"
+                >
+                VOLTAR
+              </button>
+            </div>
+
+
+
+            <div class="col-md-6">
+              <button
+                (click)="teste()"
+                class="btn btn-primary w-100"
+                type="submit"
+                style="background-color: #000a61"
+
+                >CONTINUAR
+        </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>

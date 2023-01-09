@@ -127,6 +127,10 @@ namespace Quasar.Aplicacao.Produtos.Servicos
             {
                 query = query.Where(x => x.Nome.Contains(buscarRequest.Nome));
             }
+            if (buscarRequest.CodCategoria !=null)
+            {
+                query = query.Where(x => x.Categoria.Codigo == buscarRequest.CodCategoria);
+            }
 
             ListaPaginada<Produto> produtos = produtosRepositorio.Listar(query, buscarRequest.Quantidade, buscarRequest.Pagina);
 
