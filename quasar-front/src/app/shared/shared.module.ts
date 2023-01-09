@@ -22,6 +22,7 @@ import { CategoriaComponent } from './components/categoria/categoria.component';
 
 import { LoadingSpinnerComponent } from './components/loading-spinner/loading-spinner.component';
 import { InputQuantidadeComponent } from './components/input-quantidade/input-quantidade.component';
+import { MessageAlertComponent } from './components/message-alert/message-alert.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { InputQuantidadeComponent } from './components/input-quantidade/input-qu
     MenuLateralComponent,
     CarroselDeProdutoComponent,
     CategoriaComponent,
+    MessageAlertComponent,
   ],
   imports: [
     CommonModule,
