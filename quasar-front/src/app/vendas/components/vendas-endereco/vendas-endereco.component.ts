@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { EtapasService } from '../../services/etapas.service';
 
 @Component({
   selector: 'app-vendas-endereco',
@@ -8,7 +7,7 @@ import { EtapasService } from '../../services/etapas.service';
 })
 export class VendasEnderecoComponent implements OnInit {
 
-  constructor(public etapasService: EtapasService) { }
+  constructor() { }
 
   ngOnInit(): void {
   }
