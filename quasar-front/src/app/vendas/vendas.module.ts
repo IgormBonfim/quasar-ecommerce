@@ -11,7 +11,8 @@ import { VendasPagamentoComponent } from './components/vendas-pagamento/vendas-p
 import { VendasPagamentoBoletoComponent } from './components/vendas-pagamento-boleto/vendas-pagamento-boleto.component';
 import { VendasPagamentoPixComponent } from './components/vendas-pagamento-pix/vendas-pagamento-pix.component';
 import { VendasPagamentoCartaoComponent } from './components/vendas-pagamento-cartao/vendas-pagamento-cartao.component';
-import { SharedModule } from "../shared/shared.module";
+import { SharedModule } from '../shared/shared.module';
+
 
 
 @NgModule({
