@@ -1,3 +1,4 @@
+import { BotaoFinalizarComponent } from './components/botao-finalizar/botao-finalizar.component';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
@@ -37,7 +38,8 @@ import { FormsModule } from '@angular/forms';
     CarroselDeProdutoComponent,
     CategoriaComponent,
     TituloComponent,
-    MessageAlertComponent,
+    BotaoFinalizarComponent,
+    MessageAlertComponent
   ],
   imports: [
     CommonModule,
@@ -64,6 +66,7 @@ import { FormsModule } from '@angular/forms';
     MenuLateralComponent,
     CarroselDeProdutoComponent,
     TituloComponent,
+    BotaoFinalizarComponent,
     MessageAlertComponent,
   ],
 })
