@@ -8,6 +8,10 @@ import { FinalizarVendaComponent } from './paginas/finalizar-venda/finalizar-ven
 import { VendasEnderecoComponent } from './components/vendas-endereco/vendas-endereco.component';
 import { VendasDadosComponent } from './components/vendas-dados/vendas-dados.component';
 import { VendasPagamentoComponent } from './components/vendas-pagamento/vendas-pagamento.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { DropdownModule } from 'primeng/dropdown';
+
+
 
 
 @NgModule({
@@ -21,10 +25,9 @@ import { VendasPagamentoComponent } from './components/vendas-pagamento/vendas-p
   imports: [
     CommonModule,
     VendasRoutingModule,
-    FontAwesomeModule
-  ],
-  exports: [
-    FinalizarVendaComponent
+    ReactiveFormsModule,
+    FontAwesomeModule,
+    DropdownModule
   ]
 })
 export class VendasModule { }
