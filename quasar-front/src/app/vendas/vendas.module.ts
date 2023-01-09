@@ -26,14 +26,14 @@ import { SharedModule } from '../shared/shared.module';
         VendasPagamentoPixComponent,
         VendasPagamentoCartaoComponent
     ],
-    exports: [
-        FinalizarVendaComponent
-    ],
     imports: [
         CommonModule,
         VendasRoutingModule,
         FontAwesomeModule,
         SharedModule
+    ],
+    exports: [
+        FinalizarVendaComponent
     ]
 })
 export class VendasModule { }
