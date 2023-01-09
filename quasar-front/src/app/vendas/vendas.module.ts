@@ -13,27 +13,30 @@ import { VendasPagamentoPixComponent } from './components/vendas-pagamento-pix/v
 import { VendasPagamentoCartaoComponent } from './components/vendas-pagamento-cartao/vendas-pagamento-cartao.component';
 import { SharedModule } from '../shared/shared.module';
 
+import { ReactiveFormsModule } from '@angular/forms';
+import { DropdownModule } from 'primeng/dropdown';
+
+
 
 
 @NgModule({
-    declarations: [
-        FinalizarVendaComponent,
-        VendasEnderecoComponent,
-        VendasDadosComponent,
-        VendasPagamentoComponent,
-        VendasEtapasComponent,
-        VendasPagamentoBoletoComponent,
-        VendasPagamentoPixComponent,
-        VendasPagamentoCartaoComponent
-    ],
-    imports: [
-        CommonModule,
-        VendasRoutingModule,
-        FontAwesomeModule,
-        SharedModule
-    ],
-    exports: [
-        FinalizarVendaComponent
-    ]
+  declarations: [
+    FinalizarVendaComponent,
+    VendasEnderecoComponent,
+    VendasDadosComponent,
+    VendasPagamentoComponent,
+    VendasEtapasComponent,
+    VendasPagamentoBoletoComponent,
+    VendasPagamentoCartaoComponent,
+    VendasPagamentoPixComponent
+  ],
+  imports: [
+    CommonModule,
+    VendasRoutingModule,
+    ReactiveFormsModule,
+    FontAwesomeModule,
+    DropdownModule,
+    SharedModule
+  ]
 })
 export class VendasModule { }
