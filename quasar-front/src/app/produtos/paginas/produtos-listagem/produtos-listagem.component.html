@@ -81,7 +81,13 @@
         </fieldset>
       </form>
     </div>
-    <div class="row col-sm-10">
+    <ng-template #falta>
+      <p class="font-weight-bold">
+        O que você pesquisou não foi encontrado em nosso site, tente procurar
+        por outro nome
+      </p>
+    </ng-template>
+    <div class="row col-sm-10" *ngIf="produtos.lista.length > 0; else falta">
       <app-produto-card
         class="col-sm-3 mb-3"
         *ngFor="let produto of produtos.lista"
