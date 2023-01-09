@@ -22,8 +22,7 @@ import { MessageAlertComponent } from './components/message-alert/message-alert.
 import { ProdutoCardComponent } from './components/produto-card/produto-card.component';
 import { CategoriaComponent } from './components/categoria/categoria.component';
 import { TituloComponent } from './components/titulo/titulo.component';
-
-
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -51,7 +50,8 @@ import { TituloComponent } from './components/titulo/titulo.component';
     CarouselModule,
     BsDropdownModule,
     HttpClientModule,
-    ToastModule
+    FormsModule,
+    ToastModule,
   ],
   exports: [
     HeaderComponent,
@@ -64,7 +64,7 @@ import { TituloComponent } from './components/titulo/titulo.component';
     MenuLateralComponent,
     CarroselDeProdutoComponent,
     TituloComponent,
-    MessageAlertComponent
+    MessageAlertComponent,
   ],
 })
 export class SharedModule {}

@@ -12,3 +12,8 @@
 .filtro{
     font-size: 20px;
 }
+
+.nao-encontrado{
+  position:inherit;
+  margin-right: 20%;
+}
