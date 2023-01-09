@@ -1,7 +1,7 @@
 export class PaginacaoResponse<T> {
   pagina: number;
-  quantidade: number; // Total de itens cadastrados
-  totalPaginas: number; // Total de paginas que foram formadas
+  quantidade: number; // Número de itens por página
+  totalPaginas: number; // Total de paginas existentes
   lista: Array<T>; // Lista de itens da página atual
 
   constructor(params: Partial<PaginacaoResponse<T>>) {

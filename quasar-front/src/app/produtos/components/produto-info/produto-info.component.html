@@ -10,7 +10,7 @@
       <div class="produto-info">
         <div class="d-flex borda-inferior justify-content-between">
           <h1 class="produto-info__titulo__nome"> {{ produtoDetalhe.nome }} </h1>
-          <div>
+          <div class="d-flex">
             <app-icone-coracao class="px-2 icone-titulo" *ngIf="favorito" (click)="removerFavorito(produtoDetalhe.codigo)"></app-icone-coracao>
             <fa-icon class="px-2 icone-titulo" *ngIf="!favorito" [icon]="iconeCoracaoVazio" (click)="adicionarFavorito(produtoDetalhe.codigo)"></fa-icon>
             <fa-icon class="px-2 icone-titulo" [icon]="iconeShare"></fa-icon>
@@ -28,6 +28,14 @@
           <div class="produtos-info__pagamentos produtos-info__pagamentos__cartao">
             <fa-icon class="px-2 icone-cartao" [icon]="iconeCartao"></fa-icon>
             <span class="produtos-info__pagamentos-valor"> 10x de {{ produtoDetalhe.valor/10 | currency }} </span>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6 d-flex justify-content-center">
+            <app-input-quantidade></app-input-quantidade>
+          </div>
+          <div class="col-md-6 d-flex flex-column align-items-center justify-content-center">
+            <p>Frete grátis</p>
           </div>
         </div>
     </div>

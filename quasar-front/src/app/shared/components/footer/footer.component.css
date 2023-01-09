@@ -17,6 +17,11 @@ h4
   max-width: 340px;
   margin-top: 10%;
 }
+
+.texto {
+  text-align: justify;
+}
+
 p
 {
   margin-bottom: 10%;
