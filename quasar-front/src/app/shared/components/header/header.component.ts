@@ -1,5 +1,5 @@
-import { ActivatedRoute } from '@angular/router';
-import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -7,18 +7,18 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent implements OnInit {
-  constructor(private readonly activatedRoute: ActivatedRoute) {}
+  constructor(private readonly router: Router) {}
 
   public visibilidade: boolean = false;
-  public nome?: string; //Nome do produto
+  public pesquisa?: string;
 
   onKeydown(event: any) {
     if (event.key === 'Enter') {
-      console.log(event);
+      this.router.navigate(['/produtos'], {
+        queryParams: { search: this.pesquisa },
+      });
     }
   }
 
-  ngOnInit(): void {
-    this.nome = this.activatedRoute.snapshot.queryParams['nome'];
-  }
+  ngOnInit(): void {}
 }
