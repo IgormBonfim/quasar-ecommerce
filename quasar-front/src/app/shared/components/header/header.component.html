@@ -19,6 +19,7 @@
         class="form-control border-5"
         placeholder="Buscando aqui..."
         (keydown.enter)="onKeydown($event)"
+        [(ngModel)]="pesquisa"
       />
     </div>
 

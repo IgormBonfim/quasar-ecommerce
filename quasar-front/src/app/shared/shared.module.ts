@@ -7,7 +7,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { CarouselModule } from 'primeng/carousel';
 import { SidebarModule } from 'primeng/sidebar';
 import { InputTextModule } from 'primeng/inputtext';
-import { InputNumberModule} from 'primeng/inputnumber';
+import { InputNumberModule } from 'primeng/inputnumber';
 
 import { BotaoAdicionarCarrinhoComponent } from './components/botao-adicionar-carrinho/botao-adicionar-carrinho.component';
 import { CarroselDeProdutoComponent } from './components/carrosel-de-produto/carrosel-de-produto.component';
@@ -18,10 +18,9 @@ import { MenuLateralComponent } from './components/menu-lateral/menu-lateral.com
 import { ProdutoCardComponent } from './components/produto-card/produto-card.component';
 import { CategoriaComponent } from './components/categoria/categoria.component';
 
-
-
 import { LoadingSpinnerComponent } from './components/loading-spinner/loading-spinner.component';
 import { InputQuantidadeComponent } from './components/input-quantidade/input-quantidade.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -47,6 +46,7 @@ import { InputQuantidadeComponent } from './components/input-quantidade/input-qu
     CarouselModule,
     BsDropdownModule,
     HttpClientModule,
+    FormsModule,
   ],
   exports: [
     HeaderComponent,
