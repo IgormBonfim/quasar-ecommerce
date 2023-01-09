@@ -1,3 +1,4 @@
+import { AlertsService, AlertTypes } from './../../services/alerts.service';
 import { Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
@@ -22,7 +23,8 @@ export class BotaoAdicionarCarrinhoComponent implements OnInit {
 
   constructor(
     private carrinhosService: CarrinhosService,
-    private router: Router
+    private router: Router,
+    private alertsService: AlertsService
     ) { }
 
   ngOnInit(): void {
@@ -36,6 +38,11 @@ export class BotaoAdicionarCarrinhoComponent implements OnInit {
     this.carrinhosService.adicionar(body).subscribe({
       next: response => {
         this.carregando = false;
+        this.alertsService.adicionarAlerta(
+          "Sucesso",
+          "Produto adicionado ao carrinho",
+          AlertTypes.SUCESSO
+          )
       },
       error: (reason : HttpErrorResponse) => {
         console.error(reason);
