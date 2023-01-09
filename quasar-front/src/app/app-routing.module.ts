@@ -35,8 +35,8 @@ const routes: Routes = [
     component: LoginComponent,
   },
   {
-    path: 'perfil',
-    component: HomeComponent, // TROCAR QUANDO FOR FEITO A PAGINA DO PERFIL
+    path: 'usuario',
+    loadChildren: () => import('./usuario/usuario.module').then((m) => m.UsuarioModule),
     canActivate: [AuthGuard],
   },
   {
