@@ -47,40 +47,7 @@
   padding-top: 10px;
   margin-right: 20px;
 }
-.icon
-{
-  color: white;
-}
-.texto-produtos
-{
-  font-size: 20px;
-  margin-top: 20px;
-  font-weight: 600;
-  color: #000954;
-}
-.margin
-{
-  margin-top: 10px;
-  margin-left: 80px;
-}
-.margin1
-{
-  margin-top: 10px;
-  margin-left: 40px;
-}
-.textofinal
-{
-  font-size: 20px;
-  color: #000954;
-  font-weight: 600;
-  margin-left: 20px;
-  margin-top: 10px;
-}
-.b
-{
-  border-bottom: 1px solid var(--cor-primaria) ;
-  font-weight: 600;
-}
+
 .botao
 {
   margin-bottom: 15px;
