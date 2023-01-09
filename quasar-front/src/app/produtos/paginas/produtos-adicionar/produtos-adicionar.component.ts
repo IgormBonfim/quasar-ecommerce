@@ -37,11 +37,11 @@ export class ProdutosAdicionarComponent implements OnInit {
       nome: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(100)]],
       descricao: ['', [Validators.required, Validators.minLength(20), Validators.maxLength(255)]],
       imagem: ['', [Validators.required]],
+      quantidadeEstoque: [0],
       posicao: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(50)]],
       cor: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(20)]],
       ano: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(100)]],
       veiculo: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(45)]],
-      quantidade: [0, [Validators.required]],
       valor: [0, [Validators.required]],
       codigoCategoria: [0, [Validators.required]],
       codigoFornecedor: [0, [Validators.required]],
@@ -81,7 +81,8 @@ export class ProdutosAdicionarComponent implements OnInit {
     produto.especificacao = especificacao;
 
     this.produtosService.adicionar(produto).subscribe({
-      next: (response) => {
+      next: () => {
+        // Adicionar alerta
       },
       error: (erro: HttpErrorResponse) => {
         console.log(erro);
