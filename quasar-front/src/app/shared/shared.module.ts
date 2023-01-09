@@ -1,3 +1,4 @@
+import { BotaoFinalizarComponent } from './components/botao-finalizar/botao-finalizar.component';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
@@ -17,7 +18,6 @@ import { IconeCoracaoComponent } from './components/icone-coracao/icone-coracao.
 import { MenuLateralComponent } from './components/menu-lateral/menu-lateral.component';
 import { ProdutoCardComponent } from './components/produto-card/produto-card.component';
 import { CategoriaComponent } from './components/categoria/categoria.component';
-import { BotaoFinalizarComponent } from './components/botao-finalizar/botao-finalizar.component';
 
 
 
@@ -36,7 +36,7 @@ import { InputQuantidadeComponent } from './components/input-quantidade/input-qu
     MenuLateralComponent,
     CarroselDeProdutoComponent,
     CategoriaComponent,
-    BotaoFinalizarComponent,
+    BotaoFinalizarComponent
   ],
   imports: [
     CommonModule,

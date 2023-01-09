@@ -35,11 +35,6 @@ const routes: Routes = [
     component: LoginComponent,
   },
   {
-    path: 'usuario',
-    loadChildren: () => import('./usuario/usuario.module').then((m) => m.UsuarioModule),
-    canActivate: [AuthGuard],
-  },
-  {
     path: "vendas",
     component: FinalizarVendaComponent,
     loadChildren: () => import("./vendas/vendas.module").then((m) => m.VendasModule)
