@@ -5,6 +5,7 @@ export class ProdutoInserirRequest {
   public nome: string;
   public valor: number;
   public imagem: string;
+  public quantidadeEstoque: number;
   public codigoCategoria: number;
   public codigoFornecedor: number;
   public especificacao: EspecificacaoInserirRequest;
@@ -14,10 +15,9 @@ export class ProdutoInserirRequest {
     this.nome = params.nome || '';
     this.valor = params.valor || 0;
     this.imagem = params.imagem || '';
+    this.quantidadeEstoque = params.quantidadeEstoque || 0;
     this.codigoCategoria = params.codigoCategoria || 0;
     this.codigoFornecedor = params.codigoFornecedor || 0;
     this.especificacao = params.especificacao || new EspecificacaoInserirRequest({});
   }
 }
-
-
