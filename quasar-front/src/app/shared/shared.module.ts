@@ -17,6 +17,7 @@ import { IconeCoracaoComponent } from './components/icone-coracao/icone-coracao.
 import { MenuLateralComponent } from './components/menu-lateral/menu-lateral.component';
 import { ProdutoCardComponent } from './components/produto-card/produto-card.component';
 import { CategoriaComponent } from './components/categoria/categoria.component';
+import { TituloComponent } from './components/titulo/titulo.component';
 
 
 
@@ -35,6 +36,7 @@ import { InputQuantidadeComponent } from './components/input-quantidade/input-qu
     MenuLateralComponent,
     CarroselDeProdutoComponent,
     CategoriaComponent,
+    TituloComponent,
   ],
   imports: [
     CommonModule,
@@ -58,6 +60,7 @@ import { InputQuantidadeComponent } from './components/input-quantidade/input-qu
     LoadingSpinnerComponent,
     MenuLateralComponent,
     CarroselDeProdutoComponent,
+    TituloComponent,
   ],
 })
 export class SharedModule {}
