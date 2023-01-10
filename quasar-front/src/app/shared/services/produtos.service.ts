@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { ProdutoInserirRequest } from 'src/app/produtos/models/requests/produtoInserir.request';
+import { ProdutoInserirResponse } from 'src/app/produtos/models/responses/produtoInserir.response';
 import { PaginacaoResponse } from 'src/app/shared/models/responses/paginacao.response';
 import { ProdutoResponse } from 'src/app/shared/models/responses/produto.response';
 
@@ -24,6 +26,10 @@ export class ProdutosService {
         params: params as any,
       }
     );
+  }
+
+  adicionar(request: ProdutoInserirRequest) : Observable<ProdutoInserirResponse> {
+    return this.httpClient.post<ProdutoInserirResponse>(this.baseUrl, request);
   }
 
   public recuperarProduto(codigo: number): Observable<ProdutoResponse>  {

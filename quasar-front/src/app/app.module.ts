@@ -24,6 +24,7 @@ registerLocaleData(ptBr);
 
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AccordionModule,
     AppRoutingModule,
     SharedModule,
