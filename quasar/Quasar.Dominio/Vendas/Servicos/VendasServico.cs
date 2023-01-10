@@ -4,6 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Quasar.Dominio.Enderecos.Entidades;
 using Quasar.Dominio.Enderecos.Servicos.Interfaces;
+using Quasar.Dominio.Estoques.Entidades;
+using Quasar.Dominio.Estoques.Servicos.Interfaces;
 using Quasar.Dominio.FormasPagamento.Entidades;
 using Quasar.Dominio.FormasPagamento.Servicos.Interfaces;
 using Quasar.Dominio.Produtos.Entidades;
@@ -23,13 +25,15 @@ namespace Quasar.Dominio.Vendas.Servicos
         private readonly IFormasPagamentoServico formasPagamentoServico;
         private readonly IEnderecosServico enderecosServico;
         private readonly IUsuariosServico usuariosServico;
+        private readonly IEstoquesServico estoquesServico;
 
-        public VendasServico(IVendasRepositorio vendasRepositorio, IStatusVendasServico statusVendaServico, IFormasPagamentoServico formasPagamentoServico, IEnderecosServico enderecosServico, IUsuariosServico usuariosServico)
+        public VendasServico(IVendasRepositorio vendasRepositorio, IStatusVendasServico statusVendaServico, IFormasPagamentoServico formasPagamentoServico, IEnderecosServico enderecosServico, IUsuariosServico usuariosServico, IEstoquesServico estoquesServico)
         {
             this.vendasRepositorio = vendasRepositorio;
             this.statusVendaServico = statusVendaServico;
             this.formasPagamentoServico = formasPagamentoServico;
             this.usuariosServico = usuariosServico;
+            this.estoquesServico = estoquesServico;
             this.enderecosServico = enderecosServico;
         }
 
@@ -46,6 +50,13 @@ namespace Quasar.Dominio.Vendas.Servicos
 
         public Venda Inserir(Venda venda)
         {
+            foreach(ItemVenda itemVenda in venda.Itens)
+            {
+                Estoque estoqueProduto = estoquesServico.RetornarEstoquePeloProduto(itemVenda.Codigo); //Retorna quanto tem no estoque do banco de dados.
+                int estoqueDecrementado = estoqueProduto.Quantidade - itemVenda.Quantidade;
+                estoqueProduto.SetQuantidade(estoqueDecrementado); // Faz a diferença entre o que está no banco e a quantidade do produto que foi vendido.
+                estoquesServico.Editar(estoqueProduto);
+            }
             int codigo = vendasRepositorio.Inserir(venda);
             venda.SetCodigo(codigo);
             return venda;
