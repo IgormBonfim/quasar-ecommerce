@@ -20,10 +20,6 @@ const routes: Routes = [
     component: LoginComponent
   },
   {
-    path: "vendas",
-    loadChildren: () => import("./vendas/vendas.module").then((m) => m.VendasModule)
-  },
-  {
     path: "carrinho",
     loadChildren: () => import("./carrinho/carrinho.module").then((m) => m.CarrinhoModule),
     canActivate: [AuthGuard],

@@ -17,6 +17,7 @@
       [routerLink]="['/vendas']"
       type="button"
       class="btn d-flex finaliza mb-n3 mt-3"
+      [disabled]="carrinhos.length < 1"
     >
       Finalizar o pedido
     </button>

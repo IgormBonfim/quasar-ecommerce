@@ -12,4 +12,8 @@ export class VendasPagamentoPixComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  botaoFinalizarPix() {
+    localStorage.setItem("codigoFormaPagamento", "3")
+  }
+
 }
