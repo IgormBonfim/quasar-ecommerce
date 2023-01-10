@@ -38,7 +38,7 @@ namespace Quasar.Dominio.Vendas.Servicos
         }
 
         public Venda Editar(int codigo, int codStatusVenda)
-        {   
+        {
             StatusVenda statusVenda = statusVendaServico.Validar(codStatusVenda);
             Venda statusVendaEditar = Validar(codigo);
 
@@ -50,13 +50,6 @@ namespace Quasar.Dominio.Vendas.Servicos
 
         public Venda Inserir(Venda venda)
         {
-            foreach(ItemVenda itemVenda in venda.Itens)
-            {
-                Estoque estoqueProduto = estoquesServico.RetornarEstoquePeloProduto(itemVenda.Codigo); //Retorna quanto tem no estoque do banco de dados.
-                int estoqueDecrementado = estoqueProduto.Quantidade - itemVenda.Quantidade;
-                estoqueProduto.SetQuantidade(estoqueDecrementado); // Faz a diferença entre o que está no banco e a quantidade do produto que foi vendido.
-                estoquesServico.Editar(estoqueProduto);
-            }
             int codigo = vendasRepositorio.Inserir(venda);
             venda.SetCodigo(codigo);
             return venda;
@@ -75,7 +68,7 @@ namespace Quasar.Dominio.Vendas.Servicos
 
         public Venda Validar(int codigo)
         {
-             Venda vendaValidar = vendasRepositorio.Recuperar(codigo);
+            Venda vendaValidar = vendasRepositorio.Recuperar(codigo);
             if (vendaValidar == null)
                 throw new Exception("Venda não encontada.");
             return vendaValidar;
