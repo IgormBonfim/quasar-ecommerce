@@ -15,6 +15,6 @@ export class UsuariosService {
 
 
   adicionar(request: UsuarioCadastroRequest) : Observable<UsuarioCadastroResponse> {
-    return this.httpService.post<UsuarioCadastroResponse>(this.baseUrl, request);
+    return this.httpService.post<UsuarioCadastroResponse>(this.baseUrl + "/cadastrar", request);
   }
 }

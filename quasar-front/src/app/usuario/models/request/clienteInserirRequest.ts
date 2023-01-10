@@ -5,7 +5,7 @@ export class ClienteInserirRequest {
   public cpfCnpj: string;
   public inscricaoEstadual: string;
   public razaoSocial: string;
-  public tipoCliente: string;
+  public tipoCliente: number;
 
   constructor(params: Partial<ClienteInserirRequest>) {
     this.nome = params.nome || '';
@@ -14,6 +14,6 @@ export class ClienteInserirRequest {
     this.cpfCnpj = params.cpfCnpj || '';
     this.inscricaoEstadual = params.inscricaoEstadual || '';
     this.razaoSocial = params.razaoSocial || '';
-    this.tipoCliente = params.tipoCliente || '';
+    this.tipoCliente = params.tipoCliente || 0;
   }
 }
