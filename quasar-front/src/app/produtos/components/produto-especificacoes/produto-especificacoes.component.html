@@ -1,0 +1,28 @@
+<div class="px-5">
+  <div class="linha d-flex ">
+    <p class="py-2 px-4 opcao" [ngClass]="{'opcao-ativa': descricao}" (click)="descricao = true">Descrição</p>
+    <p class="py-2 px-4 opcao" [ngClass]="{'opcao-ativa': !descricao}" (click)="descricao = false">Especificações</p>
+  </div>
+
+  <div class="py-4 informacoes" *ngIf="descricao">
+    <p class="descricao">
+      {{ produto.descricao }}
+    </p>
+  </div>
+
+  <div class="p-4 informacoes" *ngIf="!descricao">
+    <div>
+      <p class="py-2 titulo-especificacao">Posição da peça: </p> <p class="p-2">{{ produto.especificacao.posicao }}</p>
+    </div>
+    <div class="d-fle">
+      <p class="py-2 titulo-especificacao">Cor: </p> <p class="p-2">{{ produto.especificacao.cor }}</p>
+    </div>
+    <div class="d-fle">
+      <p class="py-2 titulo-especificacao">Modelo do veículo: </p> <p class="p-2">{{ produto.especificacao.veiculo }}</p>
+    </div>
+    <div class="d-fle">
+      <p class="py-2 titulo-especificacao">Ano: </p> <p class="p-2">{{ produto.especificacao.ano }}</p>
+    </div>
+  </div>
+
+</div>

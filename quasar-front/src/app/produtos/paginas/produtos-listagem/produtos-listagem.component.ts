@@ -20,8 +20,6 @@ export class ProdutosListagemComponent implements OnInit {
   public produtos!: PaginacaoResponse<ProdutoResponse>;
   public search!: string;
 
-  produtoCard = new ProdutoResponse();
-
   constructor(
     private readonly produtosService: ProdutosService,
     private readonly activatedRoute: ActivatedRoute,
@@ -34,6 +32,7 @@ export class ProdutosListagemComponent implements OnInit {
     this.search = this.activatedRoute.snapshot.queryParams['search'];
     this.recuperarProdutos();
   }
+
   recuperarProdutos() {
     if (this.search) this.request.nome = this.search;
     this.produtosService.listarProdutos(this.request).subscribe((produtos) => {

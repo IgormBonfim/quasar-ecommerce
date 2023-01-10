@@ -1,6 +1,6 @@
 
 <div>
-  <p-carousel [value]="produtos.lista" [numVisible]="4" [responsiveOptions]="responsiveOptions" [circular]="true">
+  <p-carousel [value]="produtos" [numVisible]="4" [responsiveOptions]="responsiveOptions" [circular]="true">
       <ng-template let-produto pTemplate="item">
         <div class="py-4 px-3">
           <app-produto-card [produto]="produto"></app-produto-card>
