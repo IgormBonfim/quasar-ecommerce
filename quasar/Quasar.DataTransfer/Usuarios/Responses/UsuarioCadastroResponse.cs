@@ -9,13 +9,12 @@ namespace Quasar.DataTransfer.Usuarios.Responses
     public class UsuarioCadastroResponse
     {
         public bool Sucesso { get; set; }
-        
+
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         public string? Erro { get; set; }
 
-        public UsuarioCadastroResponse(bool sucesso = true)
+        public UsuarioCadastroResponse()
         {
-            Sucesso = sucesso;
         }
 
         public void AdicionarErro(string erro)
