@@ -12,4 +12,8 @@ export class BotaoFinalizarComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  botaoFinalizar() {
+    
+  }
+
 }

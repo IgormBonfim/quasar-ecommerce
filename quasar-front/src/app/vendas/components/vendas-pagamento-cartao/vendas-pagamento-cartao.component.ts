@@ -16,4 +16,8 @@ export class VendasPagamentoCartaoComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  botaoFinalizarCartao() {
+    localStorage.setItem("codigoFormaPagamento", "1");
+  }
+
 }

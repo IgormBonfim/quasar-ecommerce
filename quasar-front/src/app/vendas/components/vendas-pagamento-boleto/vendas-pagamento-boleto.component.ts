@@ -12,4 +12,8 @@ export class VendasPagamentoBoletoComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  botaoFinalizarBoleto() {
+    localStorage.setItem("codigoFormaPagamento", "2")
+  }
+
 }
