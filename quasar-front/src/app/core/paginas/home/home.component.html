@@ -6,7 +6,7 @@
     <p class="textCategoria">Principais Categorias</p>
   </div>
   <div>
-    <app-categoria *ngFor="let categoria of categorias.lista" [categoria]="categoria" class="categoriaExterna d-inline-flex"></app-categoria>
+    <app-categoria *ngFor="let categoria of categorias" [categoria]="categoria" class="categoriaExterna d-inline-flex"></app-categoria>
   </div>
   <div class="verTodasExterno">
     <a [routerLink]="['/categorias']"><span class="verTodas" >Ver todas</span></a>
@@ -15,7 +15,7 @@
     <p class="textCategoria">Nossos Produtos</p>
   </div>
   <div class="ajuste">
-    <app-carrosel-de-produto ></app-carrosel-de-produto>
+    <app-carrosel-de-produto [produtos]="nossosProdutos"></app-carrosel-de-produto>
   </div>
   <div class="banner d-inline-flex">
     <img class="banner2" src="assets/banner2.png" alt="Icone de carrinho">
@@ -25,6 +25,6 @@
     <p class="textCategoria">Outros Produtos</p>
   </div>
   <div class="ajuste">
-    <app-carrosel-de-produto ></app-carrosel-de-produto>
+    <app-carrosel-de-produto [produtos]="outrosProdutos"></app-carrosel-de-produto>
   </div>
 </main>

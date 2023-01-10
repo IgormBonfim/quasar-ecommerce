@@ -1,10 +1,10 @@
-import { AlertsService, AlertTypes } from './../../services/alerts.service';
 import { Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
 import { faCartShopping } from '@fortawesome/free-solid-svg-icons';
 import { CarrinhoInserirRequest } from '../../models/requests/carrinhoInserir.request';
 import { CarrinhosService } from '../../services/carrinhos.service';
+import { AlertsService, AlertTypes } from '../../services/alerts.service';
 
 
 @Component({

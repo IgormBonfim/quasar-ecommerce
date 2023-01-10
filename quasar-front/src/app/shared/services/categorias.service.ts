@@ -1,21 +1,26 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
+import { PaginacaoRequest } from '../models/requests/paginacao.request';
 import { CategoriaResponse } from '../models/responses/categoria.response';
-import { environment } from './../../../environments/environment';
+import { PaginacaoResponse } from '../models/responses/paginacao.response';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CategoriasService {
-
-  baseUrl = environment.apiBaseUrl + "categorias";
+  public baseUrl = environment.apiBaseUrl + "categorias";
 
   constructor(private httpClient: HttpClient) { }
 
-  listarCategorias(): Observable<CategoriaResponse[]> {
-    return this.httpClient.get<CategoriaResponse[]>(this.baseUrl);
+  listarCategorias(params: PaginacaoRequest<CategoriaResponse>): Observable<PaginacaoResponse<CategoriaResponse>> {
+    return this.httpClient.get<PaginacaoResponse<CategoriaResponse>>(
+      this.baseUrl,
+      {
+        params: params as any,
+      }
+      )
   }
-
 }

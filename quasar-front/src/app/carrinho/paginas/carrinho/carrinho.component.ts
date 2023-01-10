@@ -1,12 +1,12 @@
-import { ProdutoBuscarRequest } from './../../../shared/models/requests/produtoBuscar.request';
-import { PaginacaoRequest } from './../../../shared/models/requests/paginacao.request';
-import { CarrinhosService } from './../../../shared/services/carrinhos.service';
-import { PaginacaoResponse } from 'src/app/shared/models/responses/paginacao.response';
 import { Component, OnInit } from '@angular/core';
 import { CarrinhoResponse } from 'src/app/shared/models/responses/carrinho.response';
-import { faThumbsDown } from '@fortawesome/free-solid-svg-icons';
-import { ProdutosService } from 'src/app/shared/services/produtos.service';
+import { PaginacaoResponse } from 'src/app/shared/models/responses/paginacao.response';
 import { ProdutoResponse } from 'src/app/shared/models/responses/produto.response';
+import { ProdutosService } from 'src/app/shared/services/produtos.service';
+
+import { PaginacaoRequest } from './../../../shared/models/requests/paginacao.request';
+import { ProdutoBuscarRequest } from './../../../shared/models/requests/produtoBuscar.request';
+import { CarrinhosService } from './../../../shared/services/carrinhos.service';
 
 @Component({
   selector: 'app-carrinho',
@@ -23,7 +23,7 @@ export class CarrinhoComponent implements OnInit {
 
   constructor(
     private readonly carrinhosService: CarrinhosService,
-    private readonly produtosService: ProdutosService
+    private readonly produtosService: ProdutosService,
     ) { }
 
   ngOnInit(): void {
@@ -34,7 +34,6 @@ export class CarrinhoComponent implements OnInit {
     this.carrinhosService.listar(this.request).subscribe({
       next: (res: PaginacaoResponse<CarrinhoResponse>) => {
         this.produtosCarrinho = res;
-        console.log(res);
         this.recuperarRelacionados();
       }
     })
@@ -43,16 +42,13 @@ export class CarrinhoComponent implements OnInit {
   recuperarRelacionados() {
     let request = new ProdutoBuscarRequest({
       quantidade: 3,
-      codCategoria: this.produtosCarrinho.lista[0].produto.categoria?.codigo || 1,
+      codCategoria: this.produtosCarrinho.lista[0].produto.categoria.codigo || 1,
     })
 
     this.produtosService.listarProdutos(request).subscribe({
       next: (res: PaginacaoResponse<ProdutoResponse>) => {
         this.produtosRelacionados = res.lista;
-        console.log(this.produtosRelacionados);
-
       }
     });
   }
-
 }

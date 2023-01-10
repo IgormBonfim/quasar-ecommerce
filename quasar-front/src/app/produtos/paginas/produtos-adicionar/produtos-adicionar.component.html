@@ -1,0 +1,130 @@
+<main class="container">
+  <div class="my-5 topo">
+    <h1 class="titulo">Adicionar novo produto</h1>
+  </div>
+
+  <form [formGroup]="produtoForm" (submit)="botaoEnviar()" class="row tela form-group d-flex">
+
+    <div class="col-md-5">
+      <div class="mb-4 p-4 box linha1 d-flex flex-column align-items-center justify-content-between">
+        <div class="imagem my-4 p-4">
+          <img class="img-fluid" [src]="produtoForm.value.imagem || '/assets/sem-imagem.png' " alt="Imagem do produto">
+        </div>
+
+        <div class="w-100">
+          <label class="label-input mb-1">Imagem do produto*</label>
+          <input class="form-control" formControlName="imagem" placeholder="Insira a URL da imagem aqui" type="text">
+          <span class="text-danger py-1" *ngIf="produtoForm.get('imagem')?.errors && (produtoForm.get('imagem')?.touched || produtoForm.get('imagem')?.dirty)">Campo obrigatório*</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-7">
+      <div class="mb-4 p-4 box linha1 d-flex flex-column justify-content-between">
+
+        <div class="w-100">
+          <label class="label-input mb-1">Nome do produto*</label>
+          <input class="form-control" formControlName="nome" placeholder="Digite o nome do produto aqui"  type="text">
+          <span class="text-danger py-1" *ngIf="(produtoForm.get('nome')?.errors?.['minlength'] || produtoForm.get('nome')?.errors?.['required']) && (produtoForm.get('nome')?.touched || produtoForm.get('nome')?.dirty)">Campo obrigatório*</span>
+          <span class="text-danger py-1" *ngIf="produtoForm.get('nome')?.errors?.['maxlength'] && (produtoForm.get('nome')?.touched || produtoForm.get('nome')?.dirty)">Número máximo de caracteres excedido*</span>
+        </div>
+
+        <div class="w-100">
+          <label class="label-input mb-1">Descrição do produto*</label>
+          <textarea [rows]="8" class="form-control" formControlName="descricao" pInputTextarea [autoResize]="true" placeholder="Digite a descrição do produto aqui"></textarea>
+          <span class="text-danger py-1" *ngIf="(produtoForm.get('descricao')?.errors?.['minlength'] || produtoForm.get('descricao')?.errors?.['required']) && (produtoForm.get('descricao')?.touched || produtoForm.get('descricao')?.dirty)">Campo obrigatório*</span>
+          <span class="text-danger py-1" *ngIf="produtoForm.get('descricao')?.errors?.['maxlength'] && (produtoForm.get('descricao')?.touched || produtoForm.get('descricao')?.dirty)">Número máximo de caracteres excedido*</span>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="col-md-5">
+      <div class="mb-4 p-4 box linha2">
+        <h2 class="box-titulo">Especificações do produto</h2>
+
+        <div class="w-100 my-3 py-2">
+          <label class="label-input mb-1">Posição do produto*</label>
+          <input class="form-control" formControlName="posicao" placeholder="Digite a posição do produto aqui"  type="text">
+          <span class="text-danger py-1" *ngIf="(produtoForm.get('posicao')?.errors?.['minlength'] || produtoForm.get('posicao')?.errors?.['required']) && (produtoForm.get('posicao')?.touched || produtoForm.get('posicao')?.dirty)">Campo obrigatório*</span>
+          <span class="text-danger py-1" *ngIf="produtoForm.get('posicao')?.errors?.['maxlength'] && (produtoForm.get('posicao')?.touched || produtoForm.get('posicao')?.dirty)">Número máximo de caracteres excedido*</span>
+        </div>
+
+        <div class="w-100 my-3 py-2">
+          <label class="label-input mb-1">Cor do produto*</label>
+          <input class="form-control" formControlName="cor" placeholder="Digite a cor do produto aqui"  type="text">
+          <span class="text-danger py-1" *ngIf="(produtoForm.get('cor')?.errors?.['minlength'] || produtoForm.get('cor')?.errors?.['required']) && (produtoForm.get('cor')?.touched || produtoForm.get('cor')?.dirty)">Campo obrigatório*</span>
+          <span class="text-danger py-1" *ngIf="produtoForm.get('cor')?.errors?.['maxlength'] && (produtoForm.get('cor')?.touched || produtoForm.get('cor')?.dirty)">Número máximo de caracteres excedido*</span>
+        </div>
+
+        <div class="w-100 my-3 py-2">
+          <label class="label-input mb-1">Ano do produto*</label>
+          <input class="form-control" formControlName="ano" placeholder="Digite o ano do produto aqui"  type="text">
+          <span class="text-danger py-1" *ngIf="(produtoForm.get('ano')?.errors?.['minlength'] || produtoForm.get('ano')?.errors?.['required']) && (produtoForm.get('ano')?.touched || produtoForm.get('ano')?.dirty)">Campo obrigatório*</span>
+          <span class="text-danger py-1" *ngIf="produtoForm.get('ano')?.errors?.['maxlength'] && (produtoForm.get('ano')?.touched || produtoForm.get('ano')?.dirty)">Número máximo de caracteres excedido*</span>
+        </div>
+
+        <div class="w-100 my-3 py-2">
+          <label class="label-input mb-1">Modelo do veículo*</label>
+          <input class="form-control" formControlName="veiculo" placeholder="Digite do modelo do veículo aqui"  type="text">
+          <span class="text-danger py-1" *ngIf="(produtoForm.get('veiculo')?.errors?.['minlength'] || produtoForm.get('veiculo')?.errors?.['required']) && (produtoForm.get('veiculo')?.touched || produtoForm.get('veiculo')?.dirty)">Campo obrigatório*</span>
+          <span class="text-danger py-1" *ngIf="produtoForm.get('veiculo')?.errors?.['maxlength'] && (produtoForm.get('veiculo')?.touched || produtoForm.get('veiculo')?.dirty)">Número máximo de caracteres excedido*</span>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="col-md-7">
+      <div class="mb-4 p-4 box linha2">
+        <h2 class="box-titulo">Detalhes do produto</h2>
+        <div class="d-flex my-4">
+          <div class="w-50 p-2">
+            <label class="label-input mb-1">Valor do produto*</label>
+            <p-inputNumber [size]="26" [min]="0" [maxlength]="15" formControlName="valor" placeholder="R$ 1.500,00" mode="currency" currency="BRL" locale="pt-BR" [minFractionDigits]="2"></p-inputNumber>
+            <span class="text-danger py-1" *ngIf="produtoForm.get('valor')?.errors && (produtoForm.get('valor')?.touched || produtoForm.get('valor')?.dirty)">Campo obrigatório*</span>
+          </div>
+
+          <div class="w-50 p-2">
+            <label class="label-input mb-1">Quantidade em estoque</label>
+            <p-inputNumber [size]="26" [min]="0" [maxlength]="15" formControlName="quantidadeEstoque" placeholder="Quantidade disponível" [minFractionDigits]="0"></p-inputNumber>
+          </div>
+        </div>
+
+        <div class="d-flex my-4">
+          <div class="w-50 p-2">
+            <label class="label-input mb-1">Categoria do produto*</label>
+            <select formControlName="codigoCategoria" class="form-control">
+              <option class="form-control" *ngFor="let categoria of categorias" value="{{categoria.codigo}}"> {{ categoria.nome }} </option>
+            </select>
+          </div>
+
+          <div class="w-50 p-2">
+            <label class="label-input mb-1">Fornecedor do produto*</label>
+            <select formControlName="codigoFornecedor" class="form-control">
+              <option class="form-control" *ngFor="let fornecedor of fornecedores" value="{{fornecedor.codigo}}"> {{ fornecedor.nome }} </option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="col-md-5">
+      <div class="mb-4">
+        <div class="w-100">
+          <button class="w-100 btn btn-danger">Cancelar</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-7">
+      <div class="mb-4">
+        <div class="w-100">
+          <button class="w-100 btn btn-salvar" [disabled]="produtoForm.invalid" type="submit">Adicionar produto</button>
+        </div>
+      </div>
+    </div>
+
+
+  </form>
+</main>
