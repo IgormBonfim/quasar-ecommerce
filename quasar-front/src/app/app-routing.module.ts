@@ -24,6 +24,11 @@ const routes: Routes = [
     loadChildren: () => import("./vendas/vendas.module").then((m) => m.VendasModule)
   },
   {
+    path: "carrinho",
+    loadChildren: () => import("./carrinho/carrinho.module").then((m) => m.CarrinhoModule),
+    canActivate: [AuthGuard],
+  },
+  {
     path: 'produtos',
     loadChildren: () =>
       import('./produtos/produtos.module').then((m) => m.ProdutosModule),

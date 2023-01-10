@@ -13,16 +13,20 @@ import { ProdutoBuscarRequest } from './../models/requests/produtoBuscar.request
 export class ProdutosService {
   baseUrl = environment.apiBaseUrl + 'produtos';
 
-  constructor(private readonly httpService: HttpClient) {}
+  constructor(private readonly httpClient: HttpClient) {}
 
   listarProdutos(
     params: ProdutoBuscarRequest
   ): Observable<PaginacaoResponse<ProdutoResponse>> {
-    return this.httpService.get<PaginacaoResponse<ProdutoResponse>>(
+    return this.httpClient.get<PaginacaoResponse<ProdutoResponse>>(
       this.baseUrl,
       {
         params: params as any,
       }
     );
+  }
+
+  public recuperarProduto(codigo: number): Observable<ProdutoResponse>  {
+    return this.httpClient.get<ProdutoResponse>(`${this.baseUrl}/${codigo}`)
   }
 }
