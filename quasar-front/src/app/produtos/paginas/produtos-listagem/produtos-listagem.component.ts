@@ -1,12 +1,13 @@
-import { ProdutoBuscarRequest } from './../../../shared/models/requests/produtoBuscar.request';
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { faSlidersH } from '@fortawesome/free-solid-svg-icons';
 import { PageChangedEvent } from 'ngx-bootstrap/pagination';
 import { PaginacaoResponse } from 'src/app/shared/models/responses/paginacao.response';
 import { ProdutosService } from 'src/app/shared/services/produtos.service';
 
+import { ProdutoBuscarRequest } from './../../../shared/models/requests/produtoBuscar.request';
 import { ProdutoResponse } from './../../../shared/models/responses/produto.response';
-import { ActivatedRoute, Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-produtos-listagem',
@@ -19,6 +20,7 @@ export class ProdutosListagemComponent implements OnInit {
   public request = new ProdutoBuscarRequest({});
   public produtos!: PaginacaoResponse<ProdutoResponse>;
   public search!: string;
+  public categoria!: string;
 
   produtoCard = new ProdutoResponse();
 
@@ -32,9 +34,11 @@ export class ProdutosListagemComponent implements OnInit {
 
   ngOnInit(): void {
     this.search = this.activatedRoute.snapshot.queryParams['search'];
+    this.categoria = this.activatedRoute.snapshot.queryParams['categoria']
     this.recuperarProdutos();
   }
   recuperarProdutos() {
+    if (this.categoria) this.request.codCategoria = parseInt(this.categoria);
     if (this.search) this.request.nome = this.search;
     this.produtosService.listarProdutos(this.request).subscribe((produtos) => {
       this.produtos = produtos;
