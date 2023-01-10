@@ -4,7 +4,7 @@
     <div class="imgCategoria">
       <img class="img-fluid"  [src]="categoria.imagem" alt="imagem da categoria">
     </div>
-    <a [routerLink]="['/produtos']"><button class="btn buttonCategoria">Ver produtos</button></a>
+    <a (click)="navegarPorCategoria(categoria.codigo)"><button class="btn buttonCategoria">Ver produtos</button></a>
   </div>
 </div>
 

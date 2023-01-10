@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, Input, OnInit } from '@angular/core';
 import { CategoriaResponse } from '../../models/responses/categoria.response';
 
@@ -11,9 +12,15 @@ export class CategoriaComponent implements OnInit {
   @Input()
   public categoria!: CategoriaResponse
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
+  }
+
+  navegarPorCategoria(codigo: number) {
+    this.router.navigate(['/produtos'],{
+      queryParams: { categoria: codigo }
+    } )
   }
 
 }
