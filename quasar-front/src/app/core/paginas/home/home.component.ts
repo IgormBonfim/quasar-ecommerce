@@ -13,7 +13,7 @@ import { PaginacaoRequest } from 'src/app/shared/models/requests/paginacao.reque
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  public categorias!: any;
+  public categorias!: CategoriaResponse[];
   public nossosProdutos!: ProdutoResponse[];
   public outrosProdutos!: ProdutoResponse[];
 
@@ -28,10 +28,13 @@ export class HomeComponent implements OnInit {
   }
 
   listarCategorias() {
-    this.categoriasService.listarCategorias().subscribe(
-      (res: CategoriaResponse[]) => {
-        this.categorias = res;
-        console.log(this.categorias);
+    let request = new PaginacaoRequest({
+      quantidade: 5
+    });
+
+    this.categoriasService.listarCategorias(request).subscribe(
+      (res: PaginacaoResponse<CategoriaResponse>) => {
+        this.categorias = res.lista;
       }
     )
   }
