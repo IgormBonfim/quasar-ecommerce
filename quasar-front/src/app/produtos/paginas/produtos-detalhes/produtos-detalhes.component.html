@@ -1,4 +1,4 @@
-<div class="my-5 container">
+<div *ngIf="produtoDetalhe; else teste;" class="my-5 container">
 
   <div>
     <app-produto-info [produtoDetalhe]="produtoDetalhe" [produtoDisponivel]="produtoDisponivel"></app-produto-info>
@@ -19,3 +19,6 @@
 
 </div>
 
+<ng-template #teste>
+  <app-loading-spinner></app-loading-spinner>
+</ng-template>

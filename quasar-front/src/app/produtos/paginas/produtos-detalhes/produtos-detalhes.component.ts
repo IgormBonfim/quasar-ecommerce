@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProdutoBuscarRequest } from 'src/app/shared/models/requests/produtoBuscar.request';
+import { EstoqueResponse } from 'src/app/shared/models/responses/estoque.response';
 import { PaginacaoResponse } from 'src/app/shared/models/responses/paginacao.response';
+import { EstoquesService } from 'src/app/shared/services/estoques.service';
 
 import { ProdutoResponse } from './../../../shared/models/responses/produto.response';
 import { ProdutosService } from './../../../shared/services/produtos.service';
@@ -20,6 +22,7 @@ export class ProdutosDetalhesComponent implements OnInit {
 
   constructor(
     private produtosService: ProdutosService,
+    private estoquesService: EstoquesService,
     private route: ActivatedRoute,
   ) { }
 
@@ -28,7 +31,7 @@ export class ProdutosDetalhesComponent implements OnInit {
       (params: any) => {
         const codProduto = params.codigo;
         this.recuperarProduto(codProduto);
-        this.produtoDisponivel = true;
+        this.recuperarDoEstoque(codProduto);
       }
     )
   }
@@ -38,9 +41,16 @@ export class ProdutosDetalhesComponent implements OnInit {
       (res: ProdutoResponse) => {
         this.produtoDetalhe = res
         this.listarSimilares(this.produtoDetalhe.categoria.codigo)
-        console.log(this.produtoDetalhe);
       }
     )
+  }
+
+  private recuperarDoEstoque(codigo: number) {
+    this.estoquesService.recuperarEstoquePeloCodigoDoProduto(codigo).subscribe({
+      next: (res: EstoqueResponse) => {
+        this.produtoDisponivel = res.quantidade > 0;
+      }
+    })
   }
 
   listarSimilares(codCategoria: number) {
@@ -49,15 +59,9 @@ export class ProdutosDetalhesComponent implements OnInit {
       codCategoria: codCategoria
     });
 
-    console.log(codCategoria);
-    console.log(request);
-
-
-
     this.produtosService.listarProdutos(request).subscribe({
       next: (res: PaginacaoResponse<ProdutoResponse>) => {
         this.produtosSimilares = res.lista;
-        console.log(res);
       }
     })
   }

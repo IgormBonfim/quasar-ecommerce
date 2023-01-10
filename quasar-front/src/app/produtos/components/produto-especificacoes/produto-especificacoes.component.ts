@@ -16,7 +16,6 @@ export class ProdutoEspecificacoesComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    console.log(this.produto);
   }
 
 }

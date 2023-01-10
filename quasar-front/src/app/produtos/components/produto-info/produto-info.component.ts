@@ -7,6 +7,9 @@ import { FavoritoRequest } from 'src/app/shared/models/requests/favorito.request
 
 import { ProdutoResponse } from './../../../shared/models/responses/produto.response';
 import { FavoritosService } from './../../../shared/services/favoritos.service';
+import { CarrinhoInserirRequest } from 'src/app/shared/models/requests/carrinhoInserir.request';
+import { CarrinhosService } from 'src/app/shared/services/carrinhos.service';
+import { AlertsService, AlertTypes } from 'src/app/shared/services/alerts.service';
 
 @Component({
   selector: 'app-produto-info',
@@ -25,9 +28,12 @@ export class ProdutoInfoComponent implements OnInit {
   public produtoDetalhe!: ProdutoResponse;
   @Input()
   public produtoDisponivel!: boolean;
+  public quantidade: number = 1;
 
   constructor(
     private favoritosService: FavoritosService,
+    private carrinhosService: CarrinhosService,
+    private alertsService: AlertsService,
     private router: Router
     ) { }
 
@@ -62,6 +68,33 @@ export class ProdutoInfoComponent implements OnInit {
         }
       }
     })
+  }
+
+  adicionarAoCarrinho() {
+    let codigo = this.produtoDetalhe.codigo;
+    let quantidade = this.quantidade;
+
+    let request = new CarrinhoInserirRequest(quantidade, codigo);
+
+    this.carrinhosService.adicionar(request).subscribe({
+      next: () => {
+        this.alertsService.adicionarAlerta(
+          "Sucesso",
+          "Produto adicionado ao carrinho",
+          AlertTypes.SUCESSO
+        )
+      },
+      error: (erro: HttpErrorResponse) => {
+        if (erro.status == 401) {
+          this.router.navigate(['login']);
+        }
+      }
+    })
+
+  }
+
+  mudarQuantidade(valor: number) {
+    this.quantidade = valor;
   }
 
 }
