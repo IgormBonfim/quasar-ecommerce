@@ -2,7 +2,7 @@ import { Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
 import { faHeart } from '@fortawesome/free-regular-svg-icons';
-import { faCreditCard, faMoneyBill, faShareNodes } from '@fortawesome/free-solid-svg-icons';
+import { faCreditCard, faMoneyBill, faShareNodes, faCartShopping } from '@fortawesome/free-solid-svg-icons';
 import { FavoritoRequest } from 'src/app/shared/models/requests/favorito.request';
 
 import { ProdutoResponse } from './../../../shared/models/responses/produto.response';
@@ -23,6 +23,7 @@ export class ProdutoInfoComponent implements OnInit {
   public iconeShare = faShareNodes;
   public iconeDinheiro = faMoneyBill;
   public iconeCartao = faCreditCard;
+  public iconeCarrinho = faCartShopping;
 
   @Input()
   public produtoDetalhe!: ProdutoResponse;
@@ -87,6 +88,9 @@ export class ProdutoInfoComponent implements OnInit {
       error: (erro: HttpErrorResponse) => {
         if (erro.status == 401) {
           this.router.navigate(['login']);
+        }
+        else {
+          this.alertsService.adicionarExcecao(erro.error)
         }
       }
     })

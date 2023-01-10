@@ -38,7 +38,10 @@
             <p>Frete grátis</p>
           </div>
           <div class="col-md-12 py-4">
-            <button class="w-100 btn btn-success" (click)="adicionarAoCarrinho()" [disabled]="!produtoDisponivel">Comprar</button>
+            <button class="w-100 btn btn-success" (click)="adicionarAoCarrinho()" [disabled]="!produtoDisponivel">
+              <fa-icon class="px-2" [icon]="iconeCarrinho"></fa-icon>
+              Comprar
+            </button>
           </div>
         </div>
     </div>
