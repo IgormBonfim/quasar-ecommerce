@@ -1,0 +1,23 @@
+.linha {
+  border-bottom: 1px solid rgba(0, 10, 97, 0.3);
+}
+
+.opcao {
+  cursor: pointer;
+}
+
+.opcao-ativa {
+  border-bottom: 2px solid rgba(0, 10, 97, 1);
+}
+
+.descricao {
+  text-align: justify;
+}
+
+.informacoes {
+  font-size: 18px;
+}
+
+.titulo-especificacao {
+  font-weight: bold;
+}
