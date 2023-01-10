@@ -1,6 +1,7 @@
 import { PerfilComponent } from './paginas/perfil/perfil.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { CadastroComponent } from './paginas/cadastro/cadastro.component';
 
 const routes: Routes = [
   {
@@ -11,6 +12,11 @@ const routes: Routes = [
   {
     path: "perfil",
     component: PerfilComponent
+  },
+
+  {
+    path: "cadastro",
+    component: CadastroComponent
   }
 ];
 

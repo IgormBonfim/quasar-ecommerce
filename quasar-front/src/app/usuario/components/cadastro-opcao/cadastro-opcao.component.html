@@ -1,0 +1,21 @@
+<section class="backgroud">
+  <div class="p-3 text-center d-flex justify-content-center container">
+    <fa-icon class="logo-icon-cadastro mx-4" [icon]="userIcon"></fa-icon>
+    <h1 class="iniciar-sessao mb-4 my-2" style="font-weight: bold">
+      Criar minha conta
+    </h1>
+  </div>
+  <div class="container opcao">
+    <ul class="nav nav-tabs">
+      <li class="nav-item">
+        <a (click)="trocarParaFisica()" class="nav-link color" [ngClass]="{'ativo' : pessoaFisica}">Pessoa Física</a>
+      </li>
+      <li class="nav-item">
+        <a (click)="trocarParaJuridico()" class="nav-link color" [ngClass]="{'ativo' : pessoaJuridica}">Pessoa Jurídica</a>
+      </li>
+    </ul>
+  </div>
+
+  <app-cadastro-fisico *ngIf="pessoaFisica"></app-cadastro-fisico>
+
+  <app-cadastro-juridico *ngIf="pessoaJuridica"></app-cadastro-juridico>
