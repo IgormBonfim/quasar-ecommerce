@@ -20,10 +20,8 @@ const routes: Routes = [
     component: LoginComponent
   },
   {
-    path: 'carrinho',
-    loadChildren: () =>
-
-    import('./carrinho/carrinho.module').then((m) => m.CarrinhoModule),
+    path: "vendas",
+    loadChildren: () => import("./vendas/vendas.module").then((m) => m.VendasModule)
   },
   {
     path: 'produtos',
@@ -33,11 +31,6 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent,
-  },
-  {
-    path: 'usuario',
-    loadChildren: () => import('./usuario/usuario.module').then((m) => m.UsuarioModule),
-    canActivate: [AuthGuard],
   },
   {
     path: "vendas",
