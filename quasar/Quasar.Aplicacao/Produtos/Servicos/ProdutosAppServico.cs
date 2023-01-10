@@ -8,6 +8,8 @@ using Quasar.Aplicacao.Produtos.Servicos.Interfaces;
 using Quasar.DataTransfer.Genericos.Responses;
 using Quasar.DataTransfer.Produtos.Requests;
 using Quasar.DataTransfer.Produtos.Responses;
+using Quasar.Dominio.Estoques.Entidades;
+using Quasar.Dominio.Estoques.Servicos.Interfaces;
 using Quasar.Dominio.Genericos.Entidades;
 using Quasar.Dominio.Produtos.Entidades;
 using Quasar.Dominio.Produtos.Repositorios;
@@ -20,15 +22,17 @@ namespace Quasar.Aplicacao.Produtos.Servicos
         private readonly ISession session;
         private readonly IProdutosServico produtosServico;
         private readonly IEspecificacoesServico especificacoesServico;
+        private readonly IEstoquesServico estoquesServico;
         private readonly IMapper mapper;
         private readonly IProdutosRepositorio produtosRepositorio;
 
-        public ProdutosAppServico(ISession session, IProdutosServico produtosServico, IEspecificacoesServico especificacoesServico, IProdutosRepositorio produtosRepositorio, IMapper mapper)
+        public ProdutosAppServico(ISession session, IProdutosServico produtosServico, IEspecificacoesServico especificacoesServico, IEstoquesServico estoquesServico, IProdutosRepositorio produtosRepositorio, IMapper mapper)
         {
             this.produtosRepositorio = produtosRepositorio;
             this.session = session;
             this.produtosServico = produtosServico;
             this.especificacoesServico = especificacoesServico;
+            this.estoquesServico = estoquesServico;
             this.mapper = mapper;
         }
 
@@ -92,8 +96,11 @@ namespace Quasar.Aplicacao.Produtos.Servicos
                 Especificacao especificacaoInserir = especificacoesServico.Instanciar(inserirRequest.Especificacao.Posicao, inserirRequest.Especificacao.Cor, inserirRequest.Especificacao.Ano, inserirRequest.Especificacao.Veiculo);
                 Especificacao especificacaoSalva = especificacoesServico.Inserir(especificacaoInserir);
 
-                Produto produtoInserir = produtosServico.Instanciar(inserirRequest.Descricao, inserirRequest.Nome, inserirRequest.Valor, inserirRequest.Imagem, especificacaoSalva.Codigo, inserirRequest.CodigoCategoria, inserirRequest.CodigoFornecedor);
+                Produto produtoInserir = produtosServico.Instanciar(inserirRequest.Descricao, inserirRequest.Nome, inserirRequest.Valor, inserirRequest.Imagem, especificacaoSalva.Codigo, inserirRequest.CodigoFornecedor, inserirRequest.CodigoCategoria);
                 Produto produtoSalvo = produtosServico.Inserir(produtoInserir);
+
+                Estoque estoqueInserir = estoquesServico.Instanciar(inserirRequest.QuantidadeEstoque, produtoSalvo.Codigo);
+                estoquesServico.Inserir(estoqueInserir);
 
                 if (transacao.IsActive)
                     transacao.Commit();

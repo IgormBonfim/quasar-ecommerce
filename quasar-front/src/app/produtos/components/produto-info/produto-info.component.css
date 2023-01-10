@@ -1,0 +1,82 @@
+.fundo-imagem {
+  width: 415px;
+  height: 415px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.imagem-produto {
+  margin: auto;
+  width: 350px;
+}
+
+.produto-info__titulo__nome {
+  font-size: 2rem;
+}
+
+.borda-inferior {
+  border-bottom: 1px solid var(--cor-primaria);
+}
+
+.produto-info__estoque h2 {
+  font-size: 1.5rem;
+}
+
+.icone-pagamento {
+  color: #109E27;
+  font-size: 35px;
+}
+
+.icone-cartao {
+  color: var(--cor-primaria);
+  font-size: 30px;
+}
+
+.produtos-info__pagamento {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.produtos-info__pagamentos-icone {
+  width: 28px;
+}
+
+.produtos-info__pagamentos-valor {
+  font-size: 20px;
+}
+
+.produtos-info__pagamentos {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 10px;
+}
+
+.produtos-info__pagamentos__total {
+}
+
+.produtos-info__pagamentos__cartao {
+  border-left: 1px solid var(--cor-primaria);
+}
+
+.produtos-info__quantidade {
+  display: flex;
+  border: 1px solid;
+}
+
+.produtos-info__quantidade span {
+  font-size: 25px;
+  cursor: pointer;
+  padding: 10px;
+}
+
+.produtos-info__quantidade__numero {
+  border-left: 1px solid;
+  border-right: 1px solid;
+}
+
+.icone-titulo {
+  font-size: 35px;
+  color: var(--cor-primaria);
+  cursor: pointer;
+}
