@@ -2,3 +2,18 @@
   border: 2px solid var(--cor-primaria);
   }
 
+.borda {
+  border: 2px solid var(--cor-primaria);
+}
+
+.borda-d {
+  border-right: 2px solid var(--cor-primaria);
+}
+
+.borda-e {
+  border-left: 2px solid var(--cor-primaria);
+}
+
+.btn-quantidade {
+  cursor: pointer;
+}

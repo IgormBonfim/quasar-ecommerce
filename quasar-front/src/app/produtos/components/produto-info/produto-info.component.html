@@ -6,7 +6,7 @@
         <img class="imagem-produto img-fluid p-4 card-img-top" [src]="produtoDetalhe.imagem" alt="imagem do produto">
       </div>
     </div>
-    <div class="col-md-7 my-4">
+    <div class="col-md-7 my-4 d-flex flex-column justify-content-center">
       <div class="produto-info">
         <div class="d-flex borda-inferior justify-content-between">
           <h1 class="produto-info__titulo__nome"> {{ produtoDetalhe.nome }} </h1>
@@ -17,8 +17,8 @@
           </div>
         </div>
         <div class="produto-info__estoque borda-inferior">
-          <h2 class="py-2" *ngIf="produtoDisponivel">Produto : Disponível</h2>
-          <h2 class="py-2" *ngIf="!produtoDisponivel">Produto : Indisponível</h2>
+          <h2 class="py-2 text-success" *ngIf="produtoDisponivel">Produto Disponível</h2>
+          <h2 class="py-2 text-danger" *ngIf="!produtoDisponivel">Produto Indisponível</h2>
         </div>
         <div class="produtos-info__pagamento mt-3">
           <div class="produtos-info__pagamentos produtos-info__pagamentos__total">
@@ -30,12 +30,15 @@
             <span class="produtos-info__pagamentos-valor"> 10x de {{ produtoDetalhe.valor/10 | currency }} </span>
           </div>
         </div>
-        <div class="row">
-          <div class="col-md-6 d-flex justify-content-center">
-            <app-input-quantidade></app-input-quantidade>
+        <div class="row p-4">
+          <div class="col-md-6">
+            <app-input-quantidade (quantidade)="mudarQuantidade($event)"></app-input-quantidade>
           </div>
           <div class="col-md-6 d-flex flex-column align-items-center justify-content-center">
             <p>Frete grátis</p>
+          </div>
+          <div class="col-md-12 py-4">
+            <button class="w-100 btn btn-success" (click)="adicionarAoCarrinho()" [disabled]="!produtoDisponivel">Comprar</button>
           </div>
         </div>
     </div>
