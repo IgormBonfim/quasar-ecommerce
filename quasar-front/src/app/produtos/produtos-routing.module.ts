@@ -1,8 +1,10 @@
-import { ProdutosAdicionarComponent } from './paginas/produtos-adicionar/produtos-adicionar.component';
-import { ProdutosListagemComponent } from './paginas/produtos-listagem/produtos-listagem.component';
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes, CanActivate } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
+
 import { AuthGuard } from '../shared/guards/auth.guard';
+import { ProdutosAdicionarComponent } from './paginas/produtos-adicionar/produtos-adicionar.component';
+import { ProdutosDetalhesComponent } from './paginas/produtos-detalhes/produtos-detalhes.component';
+import { ProdutosListagemComponent } from './paginas/produtos-listagem/produtos-listagem.component';
 
 const routes: Routes = [
   {
@@ -14,7 +16,13 @@ const routes: Routes = [
     path: "adicionar",
     component: ProdutosAdicionarComponent,
     canActivate: [AuthGuard]
-  }
+  },
+  {
+    path: ":codigo",
+    component: ProdutosDetalhesComponent
+  },
+
+
 ];
 
 @NgModule({

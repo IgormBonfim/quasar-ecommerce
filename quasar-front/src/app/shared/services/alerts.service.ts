@@ -15,6 +15,17 @@ export class AlertsService {
       detail: mensagem
     });
   }
+
+  adicionarExcecao(mensagem: string) {
+    let mensagens = mensagem.split("at");
+    let mensagemTratada = mensagens[0].replace("System.Exception: ", "")
+
+    this.adicionarAlerta(
+      "Erro",
+      mensagemTratada,
+      AlertTypes.ERROR
+    );
+  }
 }
 
 export enum AlertTypes {
