@@ -6,12 +6,11 @@ import { CommonModule } from '@angular/common';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { UsuarioRoutingModule } from './usuario-routing.module';
-import { PerfilComponent } from './paginas/perfil/perfil.component';
+
 import { CadastroComponent } from './paginas/cadastro/cadastro.component';
 
 @NgModule({
   declarations: [
-    PerfilComponent,
     CadastroComponent,
     CadastroOpcaoComponent,
     CadastroFisicoComponent,

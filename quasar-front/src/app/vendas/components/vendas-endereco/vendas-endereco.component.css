@@ -1,0 +1,24 @@
+label {
+    color: var(--cor-primaria);
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.endereco-top {
+    color: var(--cor-primaria);
+    font-size: 36px;
+}
+
+.house-icon-endereco {
+    font-size: 75px;
+    color: var(--cor-primaria);
+}
+
+input {
+    border-radius: 5px;
+}
+
+button {
+    font-size: 18px;
+    font-weight: bold;
+}

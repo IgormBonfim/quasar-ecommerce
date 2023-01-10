@@ -1,4 +1,4 @@
-import { PerfilComponent } from './paginas/perfil/perfil.component';
+
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CadastroComponent } from './paginas/cadastro/cadastro.component';
@@ -9,10 +9,7 @@ const routes: Routes = [
     pathMatch: "full",
     redirectTo: "perfil",
   },
-  {
-    path: "perfil",
-    component: PerfilComponent
-  },
+
 
   {
     path: "cadastro",

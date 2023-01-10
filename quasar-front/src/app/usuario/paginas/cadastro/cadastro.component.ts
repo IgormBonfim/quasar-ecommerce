@@ -8,6 +8,7 @@ import {
 } from '@angular/forms';
 import { Router } from '@angular/router';
 import { faUserCircle } from '@fortawesome/free-solid-svg-icons';
+import { AlertsService, AlertTypes } from 'src/app/shared/services/alerts.service';
 import { UsuariosService } from 'src/app/shared/services/usuarios.service';
 import { UsuarioCadastroRequest } from '../../models/request/usuarioCadastroRequest';
 import { UsuarioCadastroResponse } from '../../models/response/usuarioCadastroResponse';
@@ -104,16 +105,25 @@ export class CadastroComponent implements OnInit {
 
     this.usuariosService.adicionar(usuario).subscribe({
       next: (res: UsuarioCadastroResponse) => {
-        this.router.navigate(['/produtos'])
+        if (res.sucesso)
+        {
+        this.router.navigate(['/usuarios'])
         this.alertsService.adicionarAlerta(
-          "Produto adicionado com sucesso",
-          "O produto foi cadastrado com o codigo " + res.codigo,
+          "Sucesso",
+          "Cadastro realizado com sucesso",
           AlertTypes.SUCESSO
-        )
+        )}
+        else {
+          this.alertsService.adicionarAlerta(
+            "Aviso",
+            res.erro,
+            AlertTypes.AVISO
+          )
+        }
       },
       error: (erro: HttpErrorResponse) => {
         this.alertsService.adicionarAlerta(
-          "Erro ao adicionar produto",
+          "Erro, tente novamente",
           erro.error,
           AlertTypes.ERROR
         )
