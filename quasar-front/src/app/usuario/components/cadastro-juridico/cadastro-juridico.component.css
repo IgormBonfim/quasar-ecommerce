@@ -1,0 +1,49 @@
+
+
+.card-cadastro {
+  background-color: white;
+  width: 1000px;
+  height: auto;
+  margin-bottom: 50px;
+  padding: 15px;
+  border-radius: 20px;
+}
+
+.ajuste {
+  display: flex;
+
+}
+
+label {
+  color:#000A61;
+  font-size: 20px;
+  font-weight:bold;
+}
+
+input {
+  border-radius: 5px;
+}
+
+
+
+input[type=checkbox]{
+  width: 24px;
+  height: 25px;
+  border-radius: 6px;
+  margin-left: 230px;
+}
+
+.ciente {
+  padding-left: 260px;
+}
+
+.botao {
+  width: 200;
+  height: 60px;
+  border-radius: 5px;
+  margin-top: 10px;
+  margin-left: 230px;
+  font-weight: 24px;
+  background-color: #000A61;
+  color: #f0f0f0;
+}

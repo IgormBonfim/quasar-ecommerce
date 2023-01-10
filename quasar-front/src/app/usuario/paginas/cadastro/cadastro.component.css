@@ -1,0 +1,25 @@
+
+
+.card-cadastro {
+  background-color: white;
+  width: 1000px;
+  height: auto;
+  margin-bottom: 50px;
+  padding: 15px;
+  border-radius: 20px;
+}
+
+.ajuste {
+  display: flex;
+
+}
+
+label {
+  color:#000A61;
+  font-size: 20px;
+  font-weight:bold;
+}
+
+input {
+  border-radius: 5px;
+}

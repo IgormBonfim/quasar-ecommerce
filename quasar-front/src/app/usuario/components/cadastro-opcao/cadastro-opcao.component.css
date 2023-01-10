@@ -1,0 +1,39 @@
+
+.backgroud {
+  background-color: #F0F0F0;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+.logo-icon-cadastro {
+  font-size: 50px;
+  color: var(--cor-primaria)
+}
+
+.iniciar-sessao {
+  font-size: 2rem;
+  color: var(--cor-primaria);
+}
+
+.opcao {
+  display: flex;
+  justify-items:first baseline;
+  flex-direction: row;
+  margin-left: 160px;
+}
+
+.nav-item {
+  cursor: pointer;
+}
+
+.color {
+  color: #000A61;
+  background-color: #bfbfbf;
+}
+
+.ativo {
+  background-color: #ffffff;
+}
+
