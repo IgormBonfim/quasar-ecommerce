@@ -3,7 +3,7 @@ export class UsuarioCadastroResponse {
   public erro!: string;
 
   constructor(params: Partial<UsuarioCadastroResponse>) {
-    this.sucesso = params.sucesso || true;
+    this.sucesso = params.sucesso || false;
     this.erro = params.erro || '';
   }
 }
