@@ -1,6 +1,6 @@
 .logo-icon-login {
     font-size: 50px;
-    color: var(--cor-primaria) 
+    color: var(--cor-primaria)
 }
 .iniciar-sessao, .login, .senha {
     color: #000954;
@@ -12,4 +12,8 @@
 .alerta {
     font-size: 12px;
     padding: 2px    ;
+}
+
+.iniciar-sessao {
+  font-size: 2rem;
 }

@@ -70,7 +70,7 @@ namespace Quasar.Dominio.Usuarios.Entidades
 
         public virtual void SetRazaoSocial(string? razaoSocial)
         {
-            if(!string.IsNullOrWhiteSpace(razaoSocial) && razaoSocial.Length >= 2)
+            if(!string.IsNullOrWhiteSpace(razaoSocial) && razaoSocial.Length <= 2)
                 throw new Exception("O campo Razão Social deve contar no minímo 3 caracteres");
             RazaoSocial = razaoSocial;
         }

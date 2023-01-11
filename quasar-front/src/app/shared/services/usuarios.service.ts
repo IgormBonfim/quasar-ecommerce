@@ -16,4 +16,8 @@ export class UsuariosService {
   public recuperar(codigo: string): Observable<UsuarioResponse> {
     return this.httpClient.get<UsuarioResponse>(`${this.baseUrl}/${codigo}`);
   }
+
+  adicionar(request: UsuarioCadastroRequest): Observable<UsuarioCadastroResponse> {
+    return this.httpClient.post<UsuarioCadastroResponse>(this.baseUrl + "/cadastrar", request);
+  }
 }
