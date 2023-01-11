@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { faUserCircle } from '@fortawesome/free-solid-svg-icons';
+import { SweetAlertService } from 'src/app/shared/services/sweet-alert.service';
 import { UsuarioLoginRequest } from '../../models/requests/usuarioLogin.request';
 import { UsuarioLoginResponse } from '../../models/responses/usuarioLogin.response';
 import { LoginService } from '../../services/login.service';
@@ -19,6 +20,7 @@ export class LoginComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder,
     private loginService: LoginService,
+    private sweetAlertService: SweetAlertService,
     private Router: Router
     ) { }
 
@@ -43,7 +45,7 @@ export class LoginComponent implements OnInit {
           this.Router.navigate(["home"])
         }
         if(!response.sucesso) {
-          console.log(response.erro)
+          this.sweetAlertService.erro(response.erro);
         }
       },
     })

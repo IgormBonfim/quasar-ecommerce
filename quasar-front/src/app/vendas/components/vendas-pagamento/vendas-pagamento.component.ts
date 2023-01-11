@@ -1,3 +1,4 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
 import { faCcAmex, faCcMastercard, faCcVisa, faPiedPiper } from '@fortawesome/free-brands-svg-icons';
 import { faBagShopping, faCreditCard, faHouse, faUser } from '@fortawesome/free-solid-svg-icons';
@@ -5,7 +6,12 @@ import { PaginacaoRequest } from 'src/app/shared/models/requests/paginacao.reque
 import { CarrinhoResponse } from 'src/app/shared/models/responses/carrinho.response';
 import { PaginacaoResponse } from 'src/app/shared/models/responses/paginacao.response';
 import { CarrinhosService } from 'src/app/shared/services/carrinhos.service';
-import { ProdutosService } from 'src/app/shared/services/produtos.service';
+import { SweetAlertService } from 'src/app/shared/services/sweet-alert.service';
+
+import { ItemVendaInserirRequest } from '../../models/requests/itemVendaInserir.request';
+import { VendaInserirRequest } from '../../models/requests/vendaInserir.request';
+import { VendaInserirResponse } from '../../models/responses/vendaInserir.response';
+import { VendasService } from '../../services/vendas.service';
 
 @Component({
   selector: 'app-vendas-pagamento',
@@ -22,7 +28,7 @@ export class VendasPagamentoComponent implements OnInit {
   line = faPiedPiper;
   bag = faBagShopping;
 
-  public produtosCarrinho!: PaginacaoResponse<CarrinhoResponse>;
+  public venda: VendaInserirRequest = new VendaInserirRequest({});
   public request = new PaginacaoRequest({
     quantidade: 9999
   })
@@ -31,15 +37,15 @@ export class VendasPagamentoComponent implements OnInit {
   public pagamentoPix: boolean = false;
   public pagamentoBoleto: boolean = false;
 
-  constructor(private readonly carrinhosService: CarrinhosService,
-    private readonly produtosService: ProdutosService) { }
+  constructor(
+    private readonly carrinhosService: CarrinhosService,
+    private readonly sweetAlertService: SweetAlertService,
+    private readonly vendasService: VendasService) { }
 
   @Input()
-  teste: CarrinhoResponse[] = [];
+  carrinhos: CarrinhoResponse[] = [];
 
   valorTotal!: number;
-
-
 
   ngOnInit(): void {
     this.recuperarCarrinhos();
@@ -66,19 +72,66 @@ export class VendasPagamentoComponent implements OnInit {
   calcularValorTotal() {
     let total = 0;
 
-    this.teste.forEach((carrinho) => {
+    this.carrinhos.forEach((carrinho) => {
       let valor = carrinho.produto.valor * carrinho.quantidade;
 
       total += valor;
     });
+
+    this.valorTotal = total;
     return total;
   }
 
   recuperarCarrinhos(){
     this.carrinhosService.listar(this.request).subscribe({
       next: (res: PaginacaoResponse<CarrinhoResponse>) => {
-        this.teste = res.lista;
-        console.log(res);
+        this.carrinhos = res.lista;
+        this.construirVenda()
+      }
+    })
+  }
+
+  construirVenda() {
+    this.venda.codStatusVenda = 1;
+
+    let codEndereco = localStorage.getItem("codigoEndereco") || '';
+    this.venda.codEndereco = parseInt(codEndereco);
+
+    this.carrinhos.forEach(carrinho => {
+
+      let itemVenda = new ItemVendaInserirRequest({
+        codProduto: carrinho.produto.codigo,
+        quantidade: carrinho.quantidade
+      })
+
+      this.venda.itens.push(itemVenda)
+    });
+  }
+
+  public finalizarVenda(codFormaPagamento: number) {
+
+    this.venda.codFormaPagamento = codFormaPagamento;
+    console.log(this.venda);
+
+    this.sweetAlertService.alertPersonalizado({
+      title: 'Você confirma sua compra no valor de R$ ' + this.valorTotal + ' ?'  ,
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.vendasService.adicionar(this.venda).subscribe({
+          next: (res: VendaInserirResponse) => {
+            this.sweetAlertService.sucesso("carrinhos","Compra realizada com sucesso")
+          },
+          error: (httpError: HttpErrorResponse) => {
+            this.sweetAlertService.excecao(httpError.error);
+          }
+        })
+
       }
     })
   }
