@@ -1,6 +1,8 @@
-import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
+
 import { FavoritoRequest } from '../models/requests/favorito.request';
 
 @Injectable({
@@ -11,12 +13,12 @@ export class FavoritosService {
 
   constructor(private httpClient: HttpClient) { }
 
-  adicionarFavorito(request: FavoritoRequest) {
-    return this.httpClient.post(this.baseUrl + "adicionar", request);
+  adicionarFavorito(request: FavoritoRequest): Observable<any> {
+    return this.httpClient.post<any>(this.baseUrl + "adicionar", request);
   }
 
-  removerFavorito(request: FavoritoRequest) {
-    return this.httpClient.post(this.baseUrl + "remover", request);
+  removerFavorito(request: FavoritoRequest): Observable<any> {
+    return this.httpClient.post<any>(this.baseUrl + "remover", request);
   }
 
 }
