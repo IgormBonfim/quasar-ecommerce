@@ -32,5 +32,12 @@ namespace Quasar.API.Controllers.Usuarios
             var retorno = await usuariosAppServico.Login(loginRequest);
             return Ok(retorno);
         }
+
+        [HttpGet("{codigo}")]
+        public ActionResult<UsuarioResponse> Recuperar([FromRoute] string codigo)
+        {
+            var retorno = usuariosAppServico.Recuperar(codigo);
+            return Ok(retorno);
+        }
     }
 }

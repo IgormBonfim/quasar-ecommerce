@@ -17,9 +17,7 @@ export class EtapasGuard implements CanActivate {
     const rota = this.router.url;
 
     if (rota == "/vendas/endereco") {
-      if(this.etapasService.dadosConcluido){
-        return true;
-      }
+      return true;
     }
 
     if (rota == "/vendas/pagamento") {

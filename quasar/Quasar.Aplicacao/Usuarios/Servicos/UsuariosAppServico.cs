@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using NHibernate;
 using Quasar.Aplicacao.Usuarios.Servicos.Interfaces;
 using Quasar.DataTransfer.Usuarios.Requests;
@@ -18,11 +19,13 @@ namespace Quasar.Aplicacao.Usuarios.Servicos
         private readonly IUsuariosServico usuariosServico;
         private readonly IClientesServico clientesServico;
         private readonly ISession session;
+        private readonly IMapper mapper;
 
-        public UsuariosAppServico(IUsuariosServico usuariosServico, IClientesServico clientesServico, ISession session)
+        public UsuariosAppServico(IUsuariosServico usuariosServico, IClientesServico clientesServico, ISession session, IMapper mapper)
         {
             this.clientesServico = clientesServico;
             this.session = session;
+            this.mapper = mapper;
             this.usuariosServico = usuariosServico;
         }
 
@@ -76,6 +79,13 @@ namespace Quasar.Aplicacao.Usuarios.Servicos
                 response.Erro = e.Message;
                 return response;
             }
+        }
+
+        public UsuarioResponse Recuperar(string codigo)
+        {
+            Usuario usuario = usuariosServico.Validar(codigo);
+            
+            return mapper.Map<UsuarioResponse>(usuario);
         }
     }
 }

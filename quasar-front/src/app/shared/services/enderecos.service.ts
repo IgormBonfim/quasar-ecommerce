@@ -17,4 +17,8 @@ export class EnderecosService {
   adicionar(request: EnderecoInserirRequest): Observable<EnderecoResponse> {
     return this.httpClient.post<EnderecoResponse>(this.baseUrl, request);
   }
+
+  recuperar(codigo: number): Observable<EnderecoResponse> {
+    return this.httpClient.get<EnderecoResponse>(`${this.baseUrl}/${codigo}`)
+  }
 }
