@@ -52,14 +52,15 @@ namespace Quasar.Aplicacao.Usuarios.Servicos
 
                 response.Sucesso = await usuariosServico.Cadastrar(usuario, cadastroRequest.Senha);
 
-                if(transacao.IsActive)
+                if (transacao.IsActive)
                     transacao.Commit();
             }
             catch (UsuarioInvalidoExcecao e)
             {
-                if(transacao.IsActive)
+                if (transacao.IsActive)
                     transacao.Rollback();
                 response.Erro = e.Message;
+                response.Sucesso = false;
             }
             return response;
         }

@@ -4,6 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Quasar.Dominio.Enderecos.Entidades;
 using Quasar.Dominio.Enderecos.Servicos.Interfaces;
+using Quasar.Dominio.Estoques.Entidades;
+using Quasar.Dominio.Estoques.Servicos.Interfaces;
 using Quasar.Dominio.FormasPagamento.Entidades;
 using Quasar.Dominio.FormasPagamento.Servicos.Interfaces;
 using Quasar.Dominio.Produtos.Entidades;
@@ -23,18 +25,20 @@ namespace Quasar.Dominio.Vendas.Servicos
         private readonly IFormasPagamentoServico formasPagamentoServico;
         private readonly IEnderecosServico enderecosServico;
         private readonly IUsuariosServico usuariosServico;
+        private readonly IEstoquesServico estoquesServico;
 
-        public VendasServico(IVendasRepositorio vendasRepositorio, IStatusVendasServico statusVendaServico, IFormasPagamentoServico formasPagamentoServico, IEnderecosServico enderecosServico, IUsuariosServico usuariosServico)
+        public VendasServico(IVendasRepositorio vendasRepositorio, IStatusVendasServico statusVendaServico, IFormasPagamentoServico formasPagamentoServico, IEnderecosServico enderecosServico, IUsuariosServico usuariosServico, IEstoquesServico estoquesServico)
         {
             this.vendasRepositorio = vendasRepositorio;
             this.statusVendaServico = statusVendaServico;
             this.formasPagamentoServico = formasPagamentoServico;
             this.usuariosServico = usuariosServico;
+            this.estoquesServico = estoquesServico;
             this.enderecosServico = enderecosServico;
         }
 
         public Venda Editar(int codigo, int codStatusVenda)
-        {   
+        {
             StatusVenda statusVenda = statusVendaServico.Validar(codStatusVenda);
             Venda statusVendaEditar = Validar(codigo);
 
@@ -64,7 +68,7 @@ namespace Quasar.Dominio.Vendas.Servicos
 
         public Venda Validar(int codigo)
         {
-             Venda vendaValidar = vendasRepositorio.Recuperar(codigo);
+            Venda vendaValidar = vendasRepositorio.Recuperar(codigo);
             if (vendaValidar == null)
                 throw new Exception("Venda não encontada.");
             return vendaValidar;
