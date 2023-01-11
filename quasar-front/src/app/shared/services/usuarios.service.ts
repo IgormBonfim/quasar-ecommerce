@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { UsuarioCadastroRequest } from 'src/app/usuario/models/request/usuarioCadastroRequest';
+import { UsuarioCadastroResponse } from 'src/app/usuario/models/response/usuarioCadastroResponse';
 import { environment } from 'src/environments/environment';
 import { UsuarioResponse } from '../models/responses/usuario.response';
 
