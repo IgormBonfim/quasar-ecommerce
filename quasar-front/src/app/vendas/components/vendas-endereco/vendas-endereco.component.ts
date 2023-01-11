@@ -14,6 +14,7 @@ import { EnderecosService } from 'src/app/shared/services/enderecos.service';
 import { UfsService } from 'src/app/shared/services/ufs.service';
 import { EtapasService } from '../../services/etapas.service';
 import { HttpErrorResponse } from '@angular/common/http';
+import { SweetAlertService } from 'src/app/shared/services/sweet-alert.service';
 
 @Component({
   selector: 'app-vendas-endereco',
@@ -38,6 +39,7 @@ export class VendasEnderecoComponent implements OnInit {
     private ufService: UfsService,
     private cidadesService: CidadesService,
     private enderecoService: EnderecosService,
+    private sweetAlertService: SweetAlertService,
     private etapasService: EtapasService,
     private formBuilder : FormBuilder,
     private router : Router
@@ -83,10 +85,11 @@ export class VendasEnderecoComponent implements OnInit {
     this.enderecoService.adicionar(endereco).subscribe({
       next: (res: EnderecoResponse) => {
         localStorage.setItem("codigoEndereco", res.codigo.toString());
+        this.sweetAlertService.sucesso("Endereço cadastrado com sucesso!")
         this.etapasService.irParaPagamento();
       },
       error: (erro: HttpErrorResponse) => {
-
+        this.sweetAlertService.excecao(erro.error)
       }
     })
   }

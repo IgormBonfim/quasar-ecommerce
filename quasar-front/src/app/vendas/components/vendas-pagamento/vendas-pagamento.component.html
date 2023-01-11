@@ -26,9 +26,9 @@
             </div>
 
             <div class="col-md-6">
-              <app-vendas-pagamento-cartao *ngIf="pagamentoCartao"></app-vendas-pagamento-cartao>
-              <app-vendas-pagamento-boleto *ngIf="pagamentoBoleto"></app-vendas-pagamento-boleto>
-              <app-vendas-pagamento-pix *ngIf="pagamentoPix"></app-vendas-pagamento-pix>
+              <app-vendas-pagamento-cartao (formaPagamentoEvent)="finalizarVenda($event)" *ngIf="pagamentoCartao"></app-vendas-pagamento-cartao>
+              <app-vendas-pagamento-boleto (formaPagamentoEvent)="finalizarVenda($event)" *ngIf="pagamentoBoleto"></app-vendas-pagamento-boleto>
+              <app-vendas-pagamento-pix (formaPagamentoEvent)="finalizarVenda($event)" *ngIf="pagamentoPix"></app-vendas-pagamento-pix>
             </div>
 
           </div>
@@ -36,39 +36,41 @@
         </div>
       </div>
 
-      <div class="row">
-        <div class="col-md-6">
-          <div class="minibox1">
+      <div class="col-md-12">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="minibox1">
 
-            <div class="header px-4 d-flex inline-flex">
-              <fa-icon [icon]="usuario" class="fa-2x icon"></fa-icon>
-              <p class="pagamento h4 m-0">DADOS PESSOAIS</p>
+              <div class="header px-4 d-flex inline-flex">
+                <fa-icon [icon]="usuario" class="fa-2x icon"></fa-icon>
+                <p class="pagamento h4 m-0">DADOS PESSOAIS</p>
+              </div>
+
+              <div class="w-100 my-3 mx-4">
+                <p class="my-2 h5">Nome: {{"Nome.seila"}}</p>
+                <p class="my-2 h5">Telefone: {{"Telefone.seila"}}</p>
+                <p class="my-2 h5">Email: {{"Email.seila"}}</p>
+              </div>
+
             </div>
-
-            <div class="w-100 my-3 mx-4">
-              <p class="my-2 h5">Nome: {{"Nome.seila"}}</p>
-              <p class="my-2 h5">Telefone: {{"Telefone.seila"}}</p>
-              <p class="my-2 h5">Email: {{"Email.seila"}}</p>
-            </div>
-
           </div>
-        </div>
 
-        <div class="col-md-6">
-          <div class="minibox2">
+          <div class="col-md-6">
+            <div class="minibox2">
 
-            <div class="header px-4 d-flex inline-flex">
-              <fa-icon [icon]="casa" class="fa-2x icon"></fa-icon>
-              <p class="pagamento h4 m-0">ENTREGA</p>
+              <div class="header px-4 d-flex inline-flex">
+                <fa-icon [icon]="casa" class="fa-2x icon"></fa-icon>
+                <p class="pagamento h4 m-0">ENTREGA</p>
+              </div>
+
+              <div class="w-100 my-3 mx-4">
+                <p class="my-2 h5">Rua: {{"Rua.seila"}}</p>
+                <p class="my-2 h5">N°: {{"Numero.seila"}}</p>
+                <p class="my-2 h5">Bairro: {{"Bairro.seila"}}</p>
+                <p class="my-2 h5">Cidade: {{"Cidade.seila"}}</p>
+              </div>
+
             </div>
-
-            <div class="w-100 my-3 mx-4">
-              <p class="my-2 h5">Rua: {{"Rua.seila"}}</p>
-              <p class="my-2 h5">N°: {{"Numero.seila"}}</p>
-              <p class="my-2 h5">Bairro: {{"Bairro.seila"}}</p>
-              <p class="my-2 h5">Cidade: {{"Cidade.seila"}}</p>
-            </div>
-
           </div>
         </div>
 
@@ -92,7 +94,7 @@
             <p
             style="font-size: 14px"
             class="fonte-comprar my-3 mx-5"
-            *ngFor="let carrinho of teste"
+            *ngFor="let carrinho of carrinhos"
           >
             {{ carrinho.produto.valor * carrinho.quantidade | currency }}
           </p>
