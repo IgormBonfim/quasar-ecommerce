@@ -104,7 +104,7 @@ export class CadastroJuridicoComponent implements OnInit {
       next: (res: UsuarioCadastroResponse) => {
         if (res.sucesso)
         {
-        this.router.navigate(['/usuario'])
+        this.router.navigate(['/home'])
         this.alertsService.adicionarAlerta(
           "Sucesso",
           "Cadastro realizado com sucesso",
