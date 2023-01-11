@@ -46,10 +46,15 @@
                 <p class="pagamento h4 m-0">DADOS PESSOAIS</p>
               </div>
 
-              <div class="w-100 my-3 mx-4">
-                <p class="my-2 h5">Nome: {{"Nome.seila"}}</p>
-                <p class="my-2 h5">Telefone: {{"Telefone.seila"}}</p>
-                <p class="my-2 h5">Email: {{"Email.seila"}}</p>
+              <div class="w-100 m-3">
+                <div class="d-flex align-items-center py-2">
+                  <p class="texto-titulo">Nome: </p>
+                  <p class="px-1 texto-info">{{ usuarioResponse.cliente.nome }}</p>
+                </div>
+                <div class="d-flex align-items-center py-2">
+                  <p class="texto-titulo">Email:</p>
+                  <p class="px-1 texto-info text-wrap">{{ usuarioResponse.email }}</p>
+                </div>
               </div>
 
             </div>
@@ -63,11 +68,23 @@
                 <p class="pagamento h4 m-0">ENTREGA</p>
               </div>
 
-              <div class="w-100 my-3 mx-4">
-                <p class="my-2 h5">Rua: {{"Rua.seila"}}</p>
-                <p class="my-2 h5">N°: {{"Numero.seila"}}</p>
-                <p class="my-2 h5">Bairro: {{"Bairro.seila"}}</p>
-                <p class="my-2 h5">Cidade: {{"Cidade.seila"}}</p>
+              <div class="w-100 m-3">
+                <div class="d-flex align-items-center py-2">
+                  <p class="texto-titulo">Rua:</p>
+                  <p class="px-1 texto-info">{{ endereco.rua }}</p>
+                </div>
+                <div class="d-flex align-items-center py-2">
+                  <p class="texto-titulo">N°:</p>
+                  <p class="px-1 texto-info">{{ endereco.numero }}</p>
+                </div>
+                <div class="d-flex align-items-center py-2">
+                  <p class="texto-titulo">Bairro:</p>
+                  <p class="px-1 texto-info">{{ endereco.bairro }}</p>
+                </div>
+                <div class="d-flex align-items-center py-2">
+                  <p class="texto-titulo">Cidade:</p>
+                  <p class="px-1 texto-info">{{ endereco.cidade.nome }}</p>
+                </div>
               </div>
 
             </div>

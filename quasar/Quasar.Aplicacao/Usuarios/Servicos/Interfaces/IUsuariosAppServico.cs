@@ -11,5 +11,6 @@ namespace Quasar.Aplicacao.Usuarios.Servicos.Interfaces
     {
         Task<UsuarioCadastroResponse> Cadastrar(UsuarioCadastroRequest cadastroRequest);
         Task<UsuarioLoginResponse> Login(UsuarioLoginRequest loginRequest);
+        UsuarioResponse Recuperar(string codigo);
     }
 }
