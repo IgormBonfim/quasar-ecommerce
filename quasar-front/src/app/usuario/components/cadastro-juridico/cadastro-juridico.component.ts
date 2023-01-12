@@ -1,15 +1,11 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import {
-  EmailValidator,
-  FormBuilder,
-  FormGroup,
-  Validators,
-} from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { faUserCircle } from '@fortawesome/free-solid-svg-icons';
 import { AlertsService, AlertTypes } from 'src/app/shared/services/alerts.service';
 import { UsuariosService } from 'src/app/shared/services/usuarios.service';
+
 import { ClienteInserirRequest } from '../../models/request/clienteInserirRequest';
 import { UsuarioCadastroRequest } from '../../models/request/usuarioCadastroRequest';
 import { UsuarioCadastroResponse } from '../../models/response/usuarioCadastroResponse';
@@ -70,7 +66,7 @@ export class CadastroJuridicoComponent implements OnInit {
         0,
         [
           Validators.required,
-          Validators.minLength(11),
+          Validators.minLength(10),
           Validators.maxLength(11),
         ],
       ],
@@ -78,8 +74,8 @@ export class CadastroJuridicoComponent implements OnInit {
         '',
         [
           Validators.required,
-          Validators.minLength(11),
-          Validators.maxLength(11),
+          Validators.minLength(14),
+          Validators.maxLength(14),
         ],
       ],
       inscricaoEstadual: [

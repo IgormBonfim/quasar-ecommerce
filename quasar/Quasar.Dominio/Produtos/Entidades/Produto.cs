@@ -61,7 +61,7 @@ namespace Quasar.Dominio.Produtos.Entidades
         }
         public virtual void SetValor(decimal? valor)
         {
-            if(!valor.HasValue)
+            if(!valor.HasValue || valor.Value <=0)
                 throw new Exception("Valor do produto é obrigatório!");
             Valor = valor.Value;
         }

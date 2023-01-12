@@ -4,7 +4,7 @@
     (submit)="botaoEnviar()"
     class="row tela form-group d-flex"
   >
-    <div class="card-cadastro container mb-4" style="border-radius: 5px">
+    <div class="card-cadastro container shadow mb-4" style="border-radius: 5px">
       <div class="row mt-3">
         <div class="col col-md-6">
           <label for="nome">Nome*</label>
@@ -98,12 +98,20 @@
           <span
             class="text-danger py-1"
             *ngIf="
-              cadastroForm.get('email')?.errors &&
+              cadastroForm.get('email')?.errors?.['required'] &&
               (cadastroForm.get('email')?.touched ||
                 cadastroForm.get('email')?.dirty)
             "
-            >Campo obrigatório*</span
-          >
+            >Campo obrigatório*</span>
+            <span
+            class="text-danger py-1"
+            *ngIf="
+              cadastroForm.get('email')?.errors?.['email'] &&
+              (cadastroForm.get('email')?.touched ||
+                cadastroForm.get('email')?.dirty)
+            "
+            >Digite um email válido*</span>
+
         </div>
         <div class="col col-md-6 mt-4">
           <label for="confirmeEmail">Confirme o seu e-mail*</label>
@@ -117,12 +125,19 @@
           <span
             class="text-danger py-1"
             *ngIf="
-              cadastroForm.get('confirmarEmail')?.errors &&
+              cadastroForm.get('confirmarEmail')?.errors?.['required'] &&
               (cadastroForm.get('confirmarEmail')?.touched ||
                 cadastroForm.get('confirmarEmail')?.dirty)
             "
-            >Campo obrigatório*</span
-          >
+            >Campo obrigatório*</span>
+          <span
+          class="text-danger py-1"
+          *ngIf="
+            cadastroForm.get('confirmarEmail')?.errors?.['email'] &&
+            (cadastroForm.get('confirmarEmail')?.touched ||
+              cadastroForm.get('confirmarEmail')?.dirty)
+          "
+          >Digite um email válido*</span>
         </div>
         <div class="col col-md-6 mt-4">
           <label for="senha">Senha*</label>
@@ -165,7 +180,7 @@
       </div>
       <section class="fim">
         <div class="container row mt-3">
-          <p style="">Os campos com * são obrigatórios.</p>
+          <p>Os campos com * são obrigatórios.</p>
           <div class="form-check mt-n1">
             <input
               class="form-check-input"
@@ -173,6 +188,7 @@
               id="blankCheckbox"
               value="option1"
               aria-label="..."
+              formControlName="termos"
             />
             <p class="ciente mt-1" style="font-weight: 14px">
               Estou ciente e concordo com as <br />

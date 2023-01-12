@@ -12,8 +12,8 @@ export class SweetAlertService {
     mensagem: string,
     icone: SweetAlertIcon,
     titulo?: string
-  ) {
-    Swal.fire({
+  ): Promise<SweetAlertResult<any>> {
+    return Swal.fire({
       title: titulo,
       text: mensagem,
       icon: icone,
@@ -21,38 +21,34 @@ export class SweetAlertService {
     })
   }
 
-  public sucesso(mensagem: string, titulo?: string) {
-    this.showAlert(mensagem, 'success', titulo);
+  public sucesso(mensagem: string, titulo?: string): Promise<SweetAlertResult<any>> {
+    return this.showAlert(mensagem, 'success', titulo);
   }
 
-  public erro(mensagem: string, titulo?: string) {
-    this.showAlert(mensagem, 'error', titulo);
+  public erro(mensagem: string, titulo?: string): Promise<SweetAlertResult<any>> {
+    return this.showAlert(mensagem, 'error', titulo);
   }
 
-  public aviso(mensagem: string, titulo?: string) {
-    this.showAlert(mensagem, 'warning', titulo)
+  public aviso(mensagem: string, titulo?: string): Promise<SweetAlertResult<any>> {
+    return this.showAlert(mensagem, 'warning', titulo)
   }
 
-  public info(mensagem: string, titulo?: string) {
-    this.showAlert(mensagem, 'info', titulo)
+  public info(mensagem: string, titulo?: string): Promise<SweetAlertResult<any>> {
+    return this.showAlert(mensagem, 'info', titulo)
   }
 
-  public pergunta(mensagem: string, titulo?: string) {
-    this.showAlert(mensagem, 'question', titulo)
+  public pergunta(mensagem: string, titulo?: string): Promise<SweetAlertResult<any>> {
+    return this.showAlert(mensagem, 'question', titulo)
   }
 
   public alertPersonalizado(options: SweetAlertOptions): Promise<SweetAlertResult<any>> {
     return Swal.fire(options);
   }
 
-  public finalizarCompra() {
-    Swal.fire();
-  }
-
-  public excecao(mensagem: string, titulo?: string) {
+  public excecao(mensagem: string, titulo?: string): Promise<SweetAlertResult<any>> {
     let mensagens = mensagem.split("\n");
     let mensagemTratada = mensagens[0].replace("System.Exception: ", "")
 
-    this.erro(mensagemTratada, titulo);
+    return this.erro(mensagemTratada, titulo);
   }
 }
