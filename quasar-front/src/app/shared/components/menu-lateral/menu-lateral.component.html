@@ -7,13 +7,13 @@
     <div class="estilo">
       <img class="sidebar-logo" src="assets/logo.png" alt="Logo da página" />
       <div class="text-left">
-        <a (click)="visibilidade = !visibilidade" class="sidebar-a" [routerLink]="['/home']">Página Principal</a>
-        <a (click)="visibilidade = !visibilidade" class="sidebar-a" [routerLink]="['/categorias']">Categorias</a>
-        <a (click)="visibilidade = !visibilidade" class="sidebar-a" [routerLink]="['/produtos']">Produtos</a>
-        <a (click)="visibilidade = !visibilidade" class="sidebar-a" [routerLink]="['/carrinho']">Carrinho</a>
-        <a (click)="visibilidade = !visibilidade" class="sidebar-a" [routerLink]="['/favoritos']">Favoritos</a>
-        <a (click)="visibilidade = !visibilidade" class="sidebar-a" [routerLink]="['/perfil']">Meu Perfil</a>
-        <a (click)="visibilidade = !visibilidade" class="sidebar-a" [routerLink]="['/produtos/adicionar']">Administrador</a>
+        <a (click)="visibilidade = false" class="sidebar-a" [routerLink]="['/home']">Página Principal</a>
+        <a (click)="visibilidade = false" class="sidebar-a" [routerLink]="['/categorias']">Categorias</a>
+        <a (click)="visibilidade = false" class="sidebar-a" [routerLink]="['/produtos']">Produtos</a>
+        <a (click)="visibilidade = false" class="sidebar-a" [routerLink]="['/carrinho']">Carrinho</a>
+        <a (click)="visibilidade = false" class="sidebar-a" [routerLink]="['/usuario/favoritos']">Favoritos</a>
+        <a (click)="visibilidade = false" class="sidebar-a" [routerLink]="['/usuario/perfil']">Meu Perfil</a>
+        <a *ngIf="administrador" (click)="visibilidade = false" class="sidebar-a" [routerLink]="['/produtos/adicionar']">Administrador</a>
       </div>
     </div>
   </p-sidebar>
