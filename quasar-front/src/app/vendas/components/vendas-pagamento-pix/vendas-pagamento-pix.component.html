@@ -2,7 +2,7 @@
 
   <div class="w-100">
     <p class="text mt-3">O código de barra do pix será enviado através do seu email</p>
-    <app-botao-finalizar></app-botao-finalizar>
+    <app-botao-finalizar [formaPagamento]="formaPagamento" (finalizar)="finalizar($event)"></app-botao-finalizar>
   </div>
 
 </div>

@@ -1,20 +1,25 @@
-import { UsuarioCadastroResponse } from './../../usuario/models/response/usuarioCadastroResponse';
-import { HttpClient } from "@angular/common/http";
-import { Injectable } from "@angular/core";
-import { UsuarioCadastroRequest } from "src/app/usuario/models/request/usuarioCadastroRequest";
-import { environment } from "src/environments/environment";
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { UsuarioCadastroRequest } from 'src/app/usuario/models/request/usuarioCadastroRequest';
+import { UsuarioCadastroResponse } from 'src/app/usuario/models/response/usuarioCadastroResponse';
+import { environment } from 'src/environments/environment';
+import { UsuarioResponse } from '../models/responses/usuario.response';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class UsuariosService {
-  baseUrl = environment.apiBaseUrl + 'usuarios';
 
-  constructor(private readonly httpService: HttpClient) {}
+  public baseUrl = environment.apiBaseUrl + "usuarios";
 
+  constructor(private httpClient: HttpClient) { }
 
-  adicionar(request: UsuarioCadastroRequest) : Observable<UsuarioCadastroResponse> {
-    return this.httpService.post<UsuarioCadastroResponse>(this.baseUrl + "/cadastrar", request);
+  public recuperar(codigo: string): Observable<UsuarioResponse> {
+    return this.httpClient.get<UsuarioResponse>(`${this.baseUrl}/${codigo}`);
+  }
+
+  adicionar(request: UsuarioCadastroRequest): Observable<UsuarioCadastroResponse> {
+    return this.httpClient.post<UsuarioCadastroResponse>(this.baseUrl + "/cadastrar", request);
   }
 }

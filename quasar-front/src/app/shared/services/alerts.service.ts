@@ -17,7 +17,7 @@ export class AlertsService {
   }
 
   adicionarExcecao(mensagem: string) {
-    let mensagens = mensagem.split("at");
+    let mensagens = mensagem.split("\n");
     let mensagemTratada = mensagens[0].replace("System.Exception: ", "")
 
     this.adicionarAlerta(

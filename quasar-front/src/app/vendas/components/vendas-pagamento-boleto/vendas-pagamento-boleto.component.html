@@ -2,7 +2,7 @@
 
     <div class="w-100">
       <p class="text mt-3">Boleto será enviado através do seu email</p>
-      <a [routerLink]="['/concluido']"><app-botao-finalizar></app-botao-finalizar></a>
+      <app-botao-finalizar (finalizar)="finalizar($event)" [formaPagamento]="formaPagamento"></app-botao-finalizar>
     </div>
 
 </div>
