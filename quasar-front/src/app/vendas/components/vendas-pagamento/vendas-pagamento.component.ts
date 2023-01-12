@@ -1,3 +1,4 @@
+import { formatCurrency } from '@angular/common';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
@@ -152,7 +153,8 @@ export class VendasPagamentoComponent implements OnInit {
     this.venda.codFormaPagamento = codFormaPagamento;
 
     this.sweetAlertService.alertPersonalizado({
-      title: 'Você confirma sua compra no valor de R$ ' + this.valorTotal + ' ?'  ,
+      title: 'Você confirma sua compra no valor de ' + formatCurrency(this.valorTotal, "pt", "R$") + ' ?'  ,
+      text: "As informações para realização do pagamento serão enviadas no email cadastrado.",
       icon: 'warning',
       showCancelButton: true,
       confirmButtonText: 'Confirmar',
