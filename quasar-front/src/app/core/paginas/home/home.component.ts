@@ -40,7 +40,9 @@ export class HomeComponent implements OnInit {
   }
 
   listarProdutos() {
-    let request = new ProdutoBuscarRequest({});
+    let request = new ProdutoBuscarRequest({
+      quantidade: 10
+    });
 
     this.produtosService.listarProdutos(request).subscribe({
       next: (res: PaginacaoResponse<ProdutoResponse>) => {

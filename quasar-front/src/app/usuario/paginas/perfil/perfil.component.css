@@ -1,0 +1,26 @@
+.icone {
+  font-size: 60px;
+}
+
+.cor-primaria {
+  color: var(--cor-primaria);
+  font-weight: bold;
+}
+
+.nav {
+  cursor: pointer;
+  background-color: var(--cor-primaria);
+  border-radius: 5px;
+}
+
+a {
+  color: #ffffff;
+}
+
+.nav:hover {
+  background-color: #010340;
+}
+
+a:hover {
+  text-decoration: none;
+}

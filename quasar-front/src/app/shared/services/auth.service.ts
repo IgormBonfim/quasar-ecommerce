@@ -37,4 +37,8 @@ export class AuthService {
   recuperarToken() {
     return localStorage.getItem("token");
   }
+
+  public logout() {
+    localStorage.removeItem("token");
+  }
 }
