@@ -8,6 +8,7 @@ import { CadastroJuridicoComponent } from './components/cadastro-juridico/cadast
 import { CadastroOpcaoComponent } from './components/cadastro-opcao/cadastro-opcao.component';
 import { CadastroComponent } from './paginas/cadastro/cadastro.component';
 import { UsuarioRoutingModule } from './usuario-routing.module';
+import { PerfilComponent } from './paginas/perfil/perfil.component';
 
 
 @NgModule({
@@ -16,6 +17,7 @@ import { UsuarioRoutingModule } from './usuario-routing.module';
     CadastroOpcaoComponent,
     CadastroFisicoComponent,
     CadastroJuridicoComponent,
+    PerfilComponent,
   ],
   imports: [
     CommonModule,

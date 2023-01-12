@@ -22,7 +22,7 @@
                   />
                   <span class="alerta text-danger" *ngIf="formulario.get('login')?.errors?.['required'] && (formulario.get('login')?.touched || formulario.get('login')?.dirty)">*Este campo é obrigatório!*</span>
                 </div>
-                
+
                 <div
                   class="form-outline mb-4 text-left"
                   style="font-weight: bold"
@@ -48,10 +48,9 @@
               </form>
               <hr class="my-4" />
               <div class="esqueceu-nao-tem">
-                <a href="" style="color: var(--cor-primaria)"
-                  ><u>Cadastrar-se</u></a
-                >
-                
+                <a [routerLink]="['/usuario/cadastro']" style="color: var(--cor-primaria)">
+                  <u>Cadastrar-se</u>
+                </a>
               </div>
             </div>
           </div>

@@ -14,6 +14,7 @@ import { CategoriasService } from 'src/app/shared/services/categorias.service';
 import { ProdutosService } from 'src/app/shared/services/produtos.service';
 import { ProdutoInserirResponse } from '../../models/responses/produtoInserir.response';
 import { Router } from '@angular/router';
+import { SweetAlertService } from 'src/app/shared/services/sweet-alert.service';
 
 @Component({
   selector: 'app-produtos-adicionar',
@@ -32,7 +33,8 @@ export class ProdutosAdicionarComponent implements OnInit {
     private router: Router,
     private fornecedoresService: FornecedoresService,
     private categoriasService: CategoriasService,
-    private alertsService: AlertsService
+    private alertsService: AlertsService,
+    private sweetAlertService: SweetAlertService
     ) { }
 
   ngOnInit(): void {
@@ -47,9 +49,9 @@ export class ProdutosAdicionarComponent implements OnInit {
       cor: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(20)]],
       ano: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(100)]],
       veiculo: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(45)]],
-      valor: [0, [Validators.required]],
-      codigoCategoria: [0, [Validators.required]],
-      codigoFornecedor: [0, [Validators.required]],
+      valor: [0, [Validators.required, Validators.min(1)]],
+      codigoCategoria: [0, [Validators.required, Validators.min(1)]],
+      codigoFornecedor: [0, [Validators.required, Validators.min(1)]],
     })
   }
 
@@ -87,19 +89,14 @@ export class ProdutosAdicionarComponent implements OnInit {
 
     this.produtosService.adicionar(produto).subscribe({
       next: (res: ProdutoInserirResponse) => {
-        this.router.navigate(['/produtos'])
-        this.alertsService.adicionarAlerta(
-          "Produto adicionado com sucesso",
-          "O produto foi cadastrado com o codigo " + res.codigo,
-          AlertTypes.SUCESSO
+        this.sweetAlertService.sucesso("O produto foi cadastrado com o codigo " + res.codigo,"Produto cadastrado com sucesso")
+        .then( () => {
+            this.router.navigate(['/produtos'])
+          }
         )
       },
       error: (erro: HttpErrorResponse) => {
-        this.alertsService.adicionarAlerta(
-          "Erro ao adicionar produto",
-          erro.error,
-          AlertTypes.ERROR
-        )
+        this.sweetAlertService.excecao(erro.error, "Falha ao cadastrar produto");
       }
     });
   }

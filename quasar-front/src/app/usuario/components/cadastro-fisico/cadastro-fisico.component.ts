@@ -1,18 +1,15 @@
-import { ClienteInserirRequest } from './../../models/request/clienteInserirRequest';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import {
-  EmailValidator,
-  FormBuilder,
-  FormGroup,
-  Validators,
-} from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { faUserCircle } from '@fortawesome/free-solid-svg-icons';
 import { AlertsService, AlertTypes } from 'src/app/shared/services/alerts.service';
+import { SweetAlertService } from 'src/app/shared/services/sweet-alert.service';
 import { UsuariosService } from 'src/app/shared/services/usuarios.service';
+
 import { UsuarioCadastroRequest } from '../../models/request/usuarioCadastroRequest';
 import { UsuarioCadastroResponse } from '../../models/response/usuarioCadastroResponse';
+import { ClienteInserirRequest } from './../../models/request/clienteInserirRequest';
 
 @Component({
   selector: 'app-cadastro-fisico',
@@ -30,7 +27,7 @@ export class CadastroFisicoComponent implements OnInit {
     private usuariosService: UsuariosService,
     private router: Router,
     private alertsService: AlertsService,
-
+    private sweetAletService: SweetAlertService
   ) {}
 
   ngOnInit(): void {
@@ -52,10 +49,10 @@ export class CadastroFisicoComponent implements OnInit {
         ],
       ],
       telefone: [
-        0,
+        '',
         [
           Validators.required,
-          Validators.minLength(11),
+          Validators.minLength(10),
           Validators.maxLength(11),
         ],
       ],
@@ -67,11 +64,12 @@ export class CadastroFisicoComponent implements OnInit {
           Validators.maxLength(11),
         ],
       ],
-      email: ['', [Validators.required]],
-      confirmarEmail: ['', [Validators.required]],
+      email: ['', [Validators.required, Validators.email]],
+      confirmarEmail: ['', [Validators.required, Validators.email]],
       senha: ['', [Validators.required]],
       senhaConfirmacao: ['', [Validators.required]],
-      tipoCliente: [0,]
+      tipoCliente: [0],
+      termos: [false, [Validators.required, Validators.requiredTrue]]
     });
   }
   botaoEnviar() {
@@ -79,13 +77,15 @@ export class CadastroFisicoComponent implements OnInit {
     let usuario = new UsuarioCadastroRequest(formulario);
     let cliente = new ClienteInserirRequest(formulario);
     usuario.cliente = cliente;
+    console.log(formulario);
+
 
 
     this.usuariosService.adicionar(usuario).subscribe({
       next: (res: UsuarioCadastroResponse) => {
         if (res.sucesso)
         {
-        this.router.navigate(['/home'])
+        this.router.navigate(['/home']);
         this.alertsService.adicionarAlerta(
           "Sucesso",
           "Cadastro realizado com sucesso",
@@ -100,12 +100,12 @@ export class CadastroFisicoComponent implements OnInit {
         }
       },
       error: (erro: HttpErrorResponse) => {
-        this.alertsService.adicionarAlerta(
-          "Erro, tente novamente",
-          erro.error,
-          AlertTypes.ERROR
-        )
-
+        if (erro.status == 400) {
+          this.sweetAletService.aviso(erro.error.errors.SenhaConfirmacao[0],"Aviso");
+        }
+        else {
+          this.sweetAletService.excecao(erro.error);
+        }
       }
     });
   }

@@ -6,23 +6,14 @@ import { faLessThanEqual } from '@fortawesome/free-solid-svg-icons';
   providedIn: 'root'
 })
 export class EtapasService {
-  etapaDados: boolean = true;
   etapaEndereco: boolean = true;
   etapaPagamento: boolean = false;
   etapaConcluido: boolean = false;
 
-  dadosConcluido: boolean = true;
   enderecoConcluido: boolean = false;
   pagamentoConcluido: boolean = false;
 
   constructor(private router: Router) { }
-
-  irParaEndereco() {
-    this.etapaDados = false;
-    this.dadosConcluido = true;
-    this.etapaEndereco = true;
-    this.router.navigate(['/vendas/endereco'])
-  }
 
   irParaPagamento() {
     this.etapaEndereco = false;
@@ -35,5 +26,14 @@ export class EtapasService {
     this.etapaPagamento = false;
     this.pagamentoConcluido = true;
     this.etapaConcluido = true;
+    this.router.navigate(['/vendas/concluido'])
+  }
+
+  reiniciarEtapas() {
+    this.etapaEndereco = true;
+    this.etapaPagamento = false;
+    this.etapaConcluido = false;
+    this.enderecoConcluido = false;
+    this.pagamentoConcluido = false;
   }
 }

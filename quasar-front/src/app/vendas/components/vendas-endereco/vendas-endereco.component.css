@@ -1,3 +1,7 @@
+.borda {
+  border-radius: 5px;
+}
+
 label {
     color: var(--cor-primaria);
     font-size: 16px;

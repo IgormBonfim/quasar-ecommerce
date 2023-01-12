@@ -55,3 +55,7 @@
   background-color: #010340;
 }
 
+.btn-salvar:disabled {
+  background-color: var(--cor-primaria);
+}
+

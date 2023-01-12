@@ -41,6 +41,10 @@ namespace Quasar.Dominio.Usuarios.Servicos
             if (result.Succeeded)
                 await userManager.SetLockoutEnabledAsync(usuario, false);
 
+            if (!result.Succeeded) {
+                throw new UsuarioInvalidoExcecao("A senha deve conter uma letra maiúscula, uma letra minúscula, um caractere especial e um número");
+            }
+
             return result.Succeeded;
         }
 

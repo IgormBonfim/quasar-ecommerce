@@ -49,6 +49,7 @@ export class BotaoAdicionarCarrinhoComponent implements OnInit {
         if (reason.status == 401) {
           this.router.navigate(['login']);
         }
+        this.alertsService.adicionarExcecao(reason.error)
         this.carregando = false;
       }
     })

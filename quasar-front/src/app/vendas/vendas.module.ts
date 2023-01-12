@@ -15,6 +15,8 @@ import { SharedModule } from '../shared/shared.module';
 
 import { ReactiveFormsModule } from '@angular/forms';
 import { DropdownModule } from 'primeng/dropdown';
+import { BotaoFinalizarComponent } from './components/botao-finalizar/botao-finalizar.component';
+import { VendasConcluidoComponent } from './components/vendas-concluido/vendas-concluido.component';
 
 
 
@@ -28,7 +30,9 @@ import { DropdownModule } from 'primeng/dropdown';
     VendasEtapasComponent,
     VendasPagamentoBoletoComponent,
     VendasPagamentoCartaoComponent,
-    VendasPagamentoPixComponent
+    VendasPagamentoPixComponent,
+    BotaoFinalizarComponent,
+    VendasConcluidoComponent
   ],
   imports: [
     CommonModule,

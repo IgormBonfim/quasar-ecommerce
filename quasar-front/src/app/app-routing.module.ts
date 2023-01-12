@@ -20,10 +20,6 @@ const routes: Routes = [
     component: LoginComponent
   },
   {
-    path: "vendas",
-    loadChildren: () => import("./vendas/vendas.module").then((m) => m.VendasModule)
-  },
-  {
     path: "carrinho",
     loadChildren: () => import("./carrinho/carrinho.module").then((m) => m.CarrinhoModule),
     canActivate: [AuthGuard],
@@ -34,12 +30,7 @@ const routes: Routes = [
   },
   {
     path: 'produtos',
-    loadChildren: () =>
-      import('./produtos/produtos.module').then((m) => m.ProdutosModule),
-  },
-  {
-    path: 'login',
-    component: LoginComponent,
+    loadChildren: () => import('./produtos/produtos.module').then((m) => m.ProdutosModule),
   },
   {
     path: "vendas",
@@ -50,7 +41,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {scrollPositionRestoration: 'enabled'})],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}

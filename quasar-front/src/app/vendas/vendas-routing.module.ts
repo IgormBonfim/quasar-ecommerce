@@ -1,3 +1,4 @@
+import { VendasConcluidoComponent } from './components/vendas-concluido/vendas-concluido.component';
 import { VendasPagamentoPixComponent } from './components/vendas-pagamento-pix/vendas-pagamento-pix.component';
 import { VendasPagamentoBoletoComponent } from './components/vendas-pagamento-boleto/vendas-pagamento-boleto.component';
 import { VendasPagamentoComponent } from './components/vendas-pagamento/vendas-pagamento.component';
@@ -27,6 +28,11 @@ const routes: Routes = [
     component: VendasPagamentoComponent,
     canActivate: [EtapasGuard]
   },
+  {
+    path: "concluido",
+    component: VendasConcluidoComponent,
+    canActivate: [EtapasGuard]
+  }
 ];
 
 @NgModule({
