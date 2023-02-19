@@ -11,7 +11,7 @@ namespace Quasar.Infra.Cidades.Mapeamentos
     {
         public CidadeMap()
         {
-            Schema("quasarecommerce");
+            Schema("railway");
             Table("cidade");
             Id(p => p.Codigo).Column("codCidade").GeneratedBy.Identity();
             Map(p => p.Nome).Column("Nome");

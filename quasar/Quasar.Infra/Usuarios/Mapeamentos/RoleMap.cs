@@ -11,7 +11,7 @@ namespace Quasar.Infra.Usuarios.Mapeamentos
     {
         public RoleMap() : base(t => t.Column("Id"))
         {
-            Schema("quasarecommerce");
+            Schema("railway");
         }
     }
 }

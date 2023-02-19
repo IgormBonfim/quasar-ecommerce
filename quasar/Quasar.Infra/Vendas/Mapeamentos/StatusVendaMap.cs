@@ -11,7 +11,7 @@ namespace Quasar.Infra.Vendas.Mapeamentos
     {
         public StatusVendaMap()
         {
-            Schema("quasarecommerce");
+            Schema("railway");
             Table("statusVenda");
             Id(p => p.Codigo).Column("codStatusVenda").GeneratedBy.Identity();
             Map(p => p.Descricao).Column("descricao");

@@ -12,7 +12,7 @@ namespace Quasar.Infra.Usuarios.Mapeamentos
     {
         public UsuarioMap() : base(u => u.Column("Id"))
         {
-            Schema("quasarecommerce");
+            Schema("railway");
             Table("Aspnetusers");
             References(u => u.Cliente).Column("CodCliente");
             HasManyToMany(x => x.Favoritos)

@@ -22,7 +22,7 @@ VALUES
     )
     ;
     
-    INSERT INTO FORNECEDOR(nome, razaoSocial, cnpj, ie)
+    INSERT INTO fornecedor(nome, razaoSocial, cnpj, ie)
 VALUES (
     'CAR7',
     'CAR SEVEN DISTRIBUIDORA DE VIDROS',
@@ -94,7 +94,7 @@ VALUES (
   );
 #retrovisor
 
-INSERT INTO Especificacao(codEspecificacao, posicao, cor, ano, veiculo) 
+INSERT INTO especificacao(codEspecificacao, posicao, cor, ano, veiculo) 
 VALUES 
   (
     1,
@@ -177,7 +177,7 @@ VALUES
   );
 #farol diurno
 
-INSERT INTO Produto(codProduto, descricao, nome, valor, imagem, codCategoria, codFornecedor, codEspecificacao) 
+INSERT INTO produto(codProduto, descricao, nome, valor, imagem, codCategoria, codFornecedor, codEspecificacao) 
 VALUES
   (
 	1,
@@ -290,7 +290,7 @@ VALUES
   );
 #farol diurno
 
-INSERT INTO ESTOQUE(CODESTOQUE, QUANTIDADE, CODPRODUTO)
+INSERT INTO estoque(codEstoque, quantidade, codProduto)
 VALUES
 	(
     1,
@@ -343,7 +343,7 @@ VALUES
     10
 );
 
-INSERT INTO quasarecommerce.UF (nome, sigla)
+INSERT INTO uf (nome, sigla)
 VALUES ("Acre", "AC"),
     ("Alagoas", "AL"),
     ("Amazonas", "AM"),
@@ -373,7 +373,7 @@ VALUES ("Acre", "AC"),
     ("Tocantins", "TO")
     ;
     
-    INSERT INTO quasarecommerce.cidade (nome, codUf)
+    INSERT INTO cidade (nome, codUf)
 VALUES -- ES (8)
     ('Guarapari', 8),
     ('Itapemirim', 8),
@@ -543,7 +543,7 @@ VALUES(1, 'Cartão de Crédito'),
 (2, 'Boleto'),
 (3, 'Pix');
 
-INSERT INTO quasarecommerce.STATUSVENDA (descricao)
+INSERT INTO statusVenda (descricao)
 VALUES ("Aguardando pagamento"),
 ("Pagamento aprovado"),
 ("Pedido enviado"),
