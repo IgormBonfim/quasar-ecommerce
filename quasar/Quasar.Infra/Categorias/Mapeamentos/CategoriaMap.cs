@@ -11,7 +11,7 @@ namespace Quasar.Infra.Categorias.Mapeamentos
     {
       public CategoriaMap()
         {
-            Schema("quasarecommerce");
+            Schema("railway");
             Table("categoria");
             Id(c => c.Codigo).Column("codCategoria").GeneratedBy.Identity();
             Map(c => c.Nome).Column("nome");

@@ -11,7 +11,7 @@ namespace Quasar.Infra.Fornecedores.Mapeamentos
     {
         public FornecedorMap()
         {
-            Schema("quasarecommerce");
+            Schema("railway");
             Table("fornecedor");
             Id(f => f.Codigo).Column("codFornecedor").GeneratedBy.Identity();
             Map(f => f.Nome).Column("nome");

@@ -11,7 +11,7 @@ namespace Quasar.Infra.Estoques.Mapeamentos
     {
         public EstoquesMap()
         {
-            Schema("quasarecommerce");
+            Schema("railway");
             Table("estoque");
             Id(p => p.Codigo).Column("codEstoque").GeneratedBy.Identity();
             Map(p => p.Quantidade).Column("quantidade");

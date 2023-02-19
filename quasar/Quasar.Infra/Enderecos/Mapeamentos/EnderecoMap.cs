@@ -11,7 +11,7 @@ namespace Quasar.Infra.Enderecos.Mapeamentos
     {
         public EnderecoMap()
         {
-            Schema("quasarecommerce");
+            Schema("railway");
             Table("endereco");
             Id(e => e.Codigo).Column("codEndereco").GeneratedBy.Identity();
             Map(e => e.Numero).Column("numero");

@@ -11,7 +11,7 @@ namespace Quasar.Infra.FormasPagamento.Mapeamentos
     {
         public FormaPagamentoMap()
         {
-            Schema("quasarecommerce");
+            Schema("railway");
             Table("formaPagamento");
             Id(f => f.Codigo).Column("codFormaPagamento").GeneratedBy.Identity();
             Map(f => f.Descricao).Column("descricao");

@@ -11,7 +11,7 @@ namespace Quasar.Infra.Produtos.Mapeamentos
     {
         public ProdutoMap()
         {
-            Schema("quasarecommerce");
+            Schema("railway");
             Table("produto");
             Id(p => p.Codigo).Column("codProduto").GeneratedBy.Identity();
             Map(p => p.Descricao).Column("descricao");

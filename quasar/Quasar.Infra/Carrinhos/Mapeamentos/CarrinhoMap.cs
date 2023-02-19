@@ -11,7 +11,7 @@ namespace Quasar.Infra.Carrinhos.Mapeamentos
     {
         public CarrinhoMap() 
         {
-            Schema("quasarecommerce");
+            Schema("railway");
             Table("Carrinho");
             Id(c => c.Codigo).Column("codCarrinho").GeneratedBy.Identity();
             Map(c => c.Quantidade).Column("quantidade");
