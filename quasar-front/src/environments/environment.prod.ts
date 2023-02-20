@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  apiBaseUrl: "https://quasar-ecommerce.up.railway.app/api/"
 };
