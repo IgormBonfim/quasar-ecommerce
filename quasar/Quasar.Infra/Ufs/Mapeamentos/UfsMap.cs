@@ -13,7 +13,7 @@ namespace Quasar.Infra.Ufs.Mapeamentos
         public UfsMap()
         {
             Schema("railway");
-            Table("UF");
+            Table("uf");
             Id(u => u.Codigo).Column("codUf").GeneratedBy.Identity();
             Map(u => u.Sigla).Column("sigla");
             Map(u => u.Nome).Column("nome");

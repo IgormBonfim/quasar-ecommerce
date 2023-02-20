@@ -17,7 +17,7 @@ namespace Quasar.Ioc.Extensions
 {
     public static class ConfiguraAutenticacao
     {
-        public static void AddAutenticacao(this IServiceCollection services, IConfiguration configuration)
+        public static void AddAutenticacao(this IServiceCollection services)
         {
             services.AddIdentity<Usuario, Role>()
                 .ExtendConfiguration()
@@ -25,18 +25,6 @@ namespace Quasar.Ioc.Extensions
                 .AddUserRole<UsuarioRole>()
                 .AddNHibernateStores(x => x.SetSessionAutoFlush(false))
                 .AddDefaultTokenProviders();
-
-            IConfigurationSection jwtAppSettingOptions = configuration.GetSection("JwtOptions");
-            string secretKey = configuration.GetSection("JwtOptions:SecurityKey").Value;
-            SymmetricSecurityKey securityKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(secretKey));
-
-            services.Configure<Jwt>(options =>
-            {
-                options.Issuer = jwtAppSettingOptions[nameof(Jwt.Issuer)];
-                options.Audience = jwtAppSettingOptions[nameof(Jwt.Audience)];
-                options.SigningCredentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha512);
-                options.Expiration = int.Parse(jwtAppSettingOptions[nameof(Jwt.Expiration)] ?? "0");
-            });
 
             services.Configure<IdentityOptions>(options =>
             {
@@ -51,13 +39,13 @@ namespace Quasar.Ioc.Extensions
             TokenValidationParameters tokenValidationParameters = new TokenValidationParameters
             {
                 ValidateIssuer = true,
-                ValidIssuer = configuration.GetSection("JwtOptions:Issuer").Value,
+                ValidIssuer = Jwt.GetIssuer(),
 
                 ValidateAudience = true,
-                ValidAudience = configuration.GetSection("JwtOptions:Audience").Value,
+                ValidAudience = Jwt.GetAudience(),
 
                 ValidateIssuerSigningKey = true,
-                IssuerSigningKey = securityKey,
+                IssuerSigningKey = Jwt.GetSecurityKey(),
 
                 RequireExpirationTime = true,
                 ValidateLifetime = true,

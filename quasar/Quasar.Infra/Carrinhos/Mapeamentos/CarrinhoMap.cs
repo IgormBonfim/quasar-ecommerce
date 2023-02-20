@@ -12,7 +12,7 @@ namespace Quasar.Infra.Carrinhos.Mapeamentos
         public CarrinhoMap() 
         {
             Schema("railway");
-            Table("Carrinho");
+            Table("carrinho");
             Id(c => c.Codigo).Column("codCarrinho").GeneratedBy.Identity();
             Map(c => c.Quantidade).Column("quantidade");
             References(c => c.Produto).Column("codProduto");
