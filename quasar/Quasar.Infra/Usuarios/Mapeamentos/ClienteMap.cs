@@ -13,7 +13,7 @@ namespace Quasar.Infra.Usuarios.Mapeamentos
         public ClienteMap()
         {
             Schema("railway");
-            Table("Cliente");
+            Table("cliente");
             Id(c => c.Codigo).Column("CodCliente").GeneratedBy.Identity();
             Map(c => c.Nome).Column("Nome");
             Map(c => c.NomeFantasia).Column("NomeFantasia");

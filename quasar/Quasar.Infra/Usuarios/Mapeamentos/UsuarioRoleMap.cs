@@ -12,6 +12,7 @@ namespace Quasar.Infra.Usuarios.Mapeamentos
         public UsuarioRoleMap() : base(t => t.KeyProperty(x => x.UserId).KeyProperty(x => x.RoleId))
         {
             Schema("railway");
+            Table("aspnetuserroles");
         }
     }
 }

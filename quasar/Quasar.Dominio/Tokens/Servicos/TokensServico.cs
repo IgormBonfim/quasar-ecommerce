@@ -14,29 +14,25 @@ namespace Quasar.Dominio.Tokens.Servicos
 {
     public class TokensServico : ITokensServico
     {
-        private readonly Jwt jwtOptions;
         private readonly UserManager<Usuario> userManager;
-        private readonly IOptions<Jwt> jwtOptions1;
 
-        public TokensServico(UserManager<Usuario> userManager, IOptions<Jwt> jwtOptions)
+        public TokensServico(UserManager<Usuario> userManager)
         {
-            this.jwtOptions = jwtOptions.Value;
             this.userManager = userManager;
-            jwtOptions1 = jwtOptions;
         }
         public async Task<string> GerarToken(Usuario usuario)
         {
             IList<Claim> tokenClaims = await ObterClamis(usuario);
 
-            DateTime dataExpiracao = DateTime.Now.AddSeconds(jwtOptions.Expiration);
+            DateTime dataExpiracao = DateTime.Now.AddSeconds(Jwt.GetExpiration());
 
             JwtSecurityToken jwt = new JwtSecurityToken(
-                issuer: jwtOptions.Issuer,
-                audience: jwtOptions.Audience,
+                issuer: Jwt.GetIssuer(),
+                audience: Jwt.GetAudience(),
                 claims: tokenClaims,
                 notBefore: DateTime.Now,
                 expires: dataExpiracao,
-                signingCredentials: jwtOptions.SigningCredentials
+                signingCredentials: Jwt.GetSigningCredentials()
             );
 
             return new JwtSecurityTokenHandler().WriteToken(jwt);

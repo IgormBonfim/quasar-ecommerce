@@ -79,6 +79,7 @@ using Quasar.Aplicacao.Usuarios;
 using FluentNHibernate.AspNetCore.Identity.Mappings;
 using Quasar.Dominio.Tokens.Servicos;
 using Quasar.Dominio.Tokens.Servicos.Interfaces;
+using Quasar.Infra.Configs;
 
 namespace Quasar.Ioc
 {
@@ -89,7 +90,7 @@ namespace Quasar.Ioc
 
             services.AddSingleton<ISessionFactory>(factory =>
             {
-                string connectionString = configuration.GetConnectionString("MySql");
+                string connectionString = ConnectionHelper.GetConnectionString();
                 return Fluently.Configure().Database(MySQLConfiguration.Standard
                                             .ConnectionString(connectionString)
                                             .FormatSql()
@@ -103,7 +104,7 @@ namespace Quasar.Ioc
                                             .BuildSessionFactory();
             });
 
-            services.AddAutenticacao(configuration);
+            services.AddAutenticacao();
 
             services.ConfiguracoesCors();
 
