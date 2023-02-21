@@ -1,0 +1,36 @@
+name: Build
+
+on: 
+  pull_request:
+    branches:
+      - desenvolvimento
+
+jobs:
+
+  testes-unitarios:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Baixar o .Net
+      uses: actions/setup-dotnet@1
+      with: 
+        dotnet-version: '6.0.x'
+        include-prerelease: true
+        
+    - name: Restaurar pacotes
+      run: dotnet restore
+      
+    - name: Executar testes unitários
+      run: dotnet test -v
+
+  build:
+    needs: testes-unitarios
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v3
+      
+    - name: Build
+      run: dotnet build
