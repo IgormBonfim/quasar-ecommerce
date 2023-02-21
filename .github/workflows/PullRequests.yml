@@ -23,7 +23,7 @@ jobs:
       run: dotnet restore ./quasar
       
     - name: Executar testes unitários
-      run: dotnet test ./quasar -v
+      run: dotnet test ./quasar
 
   build:
     needs: testes-unitarios
