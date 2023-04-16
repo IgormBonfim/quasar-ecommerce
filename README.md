@@ -23,5 +23,5 @@
 * ``Figma``
 
 ## Autores
-| [<img src="https://avatars.githubusercontent.com/u/83429569?v=4" width=115><br><sub>Igor Bonfim</sub>](https://github.com/IgormBonfim) |  [<img src="https://avatars.githubusercontent.com/u/108484853?v=4" width=115><br><sub>Livia Pin</sub>](https://github.com/liviapin) |  [<img src="https://avatars.githubusercontent.com/u/62403512?v=4" width=115><br><sub>Aline Kato</sub>](https://github.com/AlineKato) | [<img src="https://avatars.githubusercontent.com/u/103531983?v=4" width=115><br><sub>Gabriel Araújo</sub>](https://github.com/GabrielAraujo027) |
+| [<img src="https://avatars.githubusercontent.com/u/83429569?v=4" width=115><br><sub>Igor Bonfim</sub>](https://github.com/IgormBonfim) |  [<img src="https://avatars.githubusercontent.com/u/108484853?v=4" width=115><br><sub>Livia Pin</sub>](https://github.com/liviapin) |  [<img src="https://avatars.githubusercontent.com/u/62403512?v=4" width=115><br><sub>Aline Kato</sub>](https://github.com/AlineKato) | [<img src="https://avatars.githubusercontent.com/u/103531983?v=4" width=115><br><sub>Gabriel Araújo</sub>](https://github.com/GabrielAraujo027) | [<img src="https://avatars.githubusercontent.com/u/19541147?v=4" width=115><br><sub>Kevison Brandes</sub>](https://github.com/kevisoncb)
 | :-: | :-: | :-: | :-:
